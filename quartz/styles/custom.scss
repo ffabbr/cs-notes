@@ -1,13 +1,42 @@
 @use "./base.scss";
+@use "./variables.scss" as *;
 
 
 // put your custom CSS here!
 #quartz-body {
-  gap: 50px;
+  gap: 70px !important;
+
+  @media all and ($mobile) {
+    gap: 20px !important;
+  }
 }
 
 .table-container {
   &>table {
     width: 100%;
+  }
+}
+
+button.title-button.explorer-toggle.desktop-explorer {
+  display: none !important;
+}
+
+.search-button {
+  border-radius: 100px !important;
+  padding: 10px !important;
+  height: 40px !important;
+}
+
+.breadcrumb-container {
+  opacity: 0.3;
+}
+
+@media all and ($mobile) {
+  .search {
+    min-width: 100% !important;
+  }
+
+  .sidebar>.flex-component {
+    flex-grow: 1 !important;
   }
 }

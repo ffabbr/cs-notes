@@ -1,7 +1,7 @@
 ---
-title: 252 0027 Einführung in die Programmierung
+title: Einführung in die Programmierung
 ---
-- [[Exercises/]]
-- [[Notizen/]]
-- [[Slides/]]
+- [[1st Semester/EProg/Exercises/]]
+- [[1st Semester/EProg/Notizen/]]
+- [[1st Semester/EProg/Slides/]]
 

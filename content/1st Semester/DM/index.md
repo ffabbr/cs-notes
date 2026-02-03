@@ -1,10 +1,10 @@
 ---
-title: 252 0025 Diskrete Mathematik
+title: Diskrete Mathematik
 ---
 - [[1st Semester/DM/DiskMat Exam.md|DiskMat Exam]]
 - [[1st Semester/DM/DM Week Timeline.md|DM Week Timeline]]
-- [[Exercises/]]
-- [[Notes/]]
+- [[1st Semester/DM/Exercises/]]
+- [[1st Semester/DM/Notes/]]
 - [[1st Semester/DM/Skript.pdf|Skript]]
-- [[Übungsstunden/]]
+- [[1st Semester/DM/Übungsstunden/]]
 
