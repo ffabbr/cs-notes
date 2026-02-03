@@ -1,3 +1,14 @@
 @use "./base.scss";
 
+
 // put your custom CSS here!
+.quartz-body {
+  gap: 50px;
+}
+
+.table-container {
+  & > table {
+    width: 100%;
+  }
+}
+
