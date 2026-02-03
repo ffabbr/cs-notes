@@ -147,6 +147,18 @@ const videoExtensionRegex = new RegExp(/\.(mp4|webm|ogg|avi|mov|flv|wmv|mkv|mpg|
 const wikilinkImageEmbedRegex = new RegExp(
   /^(?<alt>(?!^\d*x?\d*$).*?)?(\|?\s*?(?<width>\d+)(x(?<height>\d+))?)?$/,
 )
+const pdfViewerParams = "toolbar=0&navpanes=0&scrollbar=0&statusbar=0&messages=0"
+
+const buildPdfEmbedSrc = (url: string, anchor: string) => {
+  const trimmed = anchor.trim()
+  if (!trimmed) {
+    return `${url}#${pdfViewerParams}`
+  }
+
+  const hash = trimmed.startsWith("#") ? trimmed.slice(1) : trimmed
+  const withParams = hash.length > 0 ? `${hash}&${pdfViewerParams}` : pdfViewerParams
+  return `${url}#${withParams}`
+}
 
 export const ObsidianFlavoredMarkdown: QuartzTransformerPlugin<Partial<Options>> = (userOpts) => {
   const opts = { ...defaultOptions, ...userOpts }
@@ -259,9 +271,10 @@ export const ObsidianFlavoredMarkdown: QuartzTransformerPlugin<Partial<Options>>
                       value: `<audio src="${url}" controls></audio>`,
                     }
                   } else if ([".pdf"].includes(ext)) {
+                    const pdfSrc = buildPdfEmbedSrc(url, anchor)
                     return {
                       type: "html",
-                      value: `<iframe src="${url}" class="pdf"></iframe>`,
+                      value: `<iframe src="${pdfSrc}" class="pdf" scrolling="no" tabindex="-1"></iframe>`,
                     }
                   } else {
                     const block = anchor
