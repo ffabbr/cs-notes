@@ -7,7 +7,7 @@
 SOURCE="/Users/fabian/Library/Mobile Documents/iCloud~md~obsidian/Documents/Computer Science/"
 DEST="./content"
 
-echo "📂 Syncing content from Obsidian..."
+echo "Syncing content from Obsidian..."
 rm -rf "$DEST"/* # Optional: Clear old content to ensure a clean slate, similar to 'create'
 mkdir -p "$DEST"
 cp -R "$SOURCE" "$DEST" 
