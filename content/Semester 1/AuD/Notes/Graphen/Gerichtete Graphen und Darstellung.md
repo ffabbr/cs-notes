@@ -31,9 +31,12 @@ A_{uv} =
 \begin{cases} 
 1 & \text{falls } (u,v) \in E \\
 0 & \text{sonst}
-\end{cases}$$
+\end{cases}
+$$
+
 
 ![](Adjazenzmatrix.png)
+
 
 ### Adjazenzliste
 
