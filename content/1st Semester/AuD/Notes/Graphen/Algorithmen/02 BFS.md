@@ -33,4 +33,4 @@ Path(v, Adj, visited)
 
 ![[BFS Notes.png]]
 
-![[1st Semester/Media/Übung 10.pdf]]
+![[1st Semester/media/Übung 10.pdf]]

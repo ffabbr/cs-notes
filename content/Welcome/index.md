@@ -1,7 +1,8 @@
 ---
 title: New here?
 ---
-
+- [[Welcome/Keyboard Layout and Typing.md|Keyboard Layout and Typing]]
+- [[Welcome/Welcome to Zurich.md|Welcome to Zurich]]
 
 ## Links
 

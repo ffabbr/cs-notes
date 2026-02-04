@@ -37,4 +37,4 @@ Priority Queue, wie Min-Heap (vgl. Max-Heap aber umgekehrt)
 
 
 
-![[1st Semester/Media/Übung 10.pdf]]
+![[1st Semester/media/Übung 10.pdf]]
