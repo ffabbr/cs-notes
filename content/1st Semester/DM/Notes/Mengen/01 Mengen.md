@@ -112,8 +112,8 @@ $$
 Beispiele: 
 - $\emptyset \times A = A \times \emptyset = \emptyset$
 - $\{1, 2\} \times \{3, 4\} = \{(1,3), (1,4), (2,3), (2,4)\}$
-
-![[#Beispiele]]
+- $\{ (\emptyset, \emptyset) \} \subseteq \{\emptyset\} \times \{\emptyset\}$
+- $(\emptyset, \emptyset) \in \{\emptyset\} \times \{\emptyset\}$
 
 Anzahl Elemente im Kartesischen Produkt: $m\cdot n$ (Produkt der Anzahl der Elemente (Kardinalität) der beiden Mengen)
 
