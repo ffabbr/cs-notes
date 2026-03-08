@@ -1,3 +1,6 @@
+---
+draft: "true"
+---
 I passed. What kind of felt impossible during the semester, during the exams, and even after the exams now is black and white on my computer screen. I passed, and that’s crazy.
 
 Here are my 15 takeaways from the first semester.
