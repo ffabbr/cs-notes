@@ -9,6 +9,7 @@ Here you can find my lecure notes from my studies in Computer Science at ETH Zur
 
 Otherwise, dive right in:
 
-- [[1st Semester/]] 
+- [[1st Semester/]]
+- [[2nd Semester/]]
 
 

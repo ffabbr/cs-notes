@@ -40,15 +40,15 @@
 - $\sum_{v∈V}\text{deg}(v)=2|E|$ (**Handschlagslemma**) 
 - Weg ist Zyklus $\Longleftrightarrow$ der Endknoten vom Eulerweg ist inzident zu einer geraden Anzahl von Kanten
 - ein Graph hat maximal $\frac{|V|\cdot(|V|-1)}{2}$ Kanten 
-- Eulerzyklus existiert $\Longleftrightarrow$ alle Knotengrade gerade, Graph connectedk
+- Eulerzyklus existiert $\Longleftrightarrow$ alle Knotengrade gerade, Graph connected
 - Walk-Algorithmus: 
   
-  ```java
+```java
   walk(u):
 	  if ∃ v mit uv ∈ E, nicht markiert
 		  markiere uv
 		  walk(v)
-	  ```
+```
 
 - Euler-Walk Algorithmus nutzt eine ```for``` Schleife statt einer if
 
