@@ -16,9 +16,11 @@ Gegeben:
 - Distanzen zwischen allen Knoten
 
 Gesucht: 
-- minimale Länge eines Hamiltonkreises (kürzeste Rundreise)
+- minimale Länge eines Hamiltonkreises (kürzeste Rundreise, jeder Knoten darf nur einmal besucht werden)
 
 ### NP Vollständigkeit zeigen
+
+*Das TSP ist eine Verallgemeinerung des Hamiltonkreis-Problems.* 
 
 Hamiltonkreis-Problem zu TSP umformulieren. In den Graph fehlende Kanten mit Länge 1 hinzufügen, existierende Kanten Länge 0. Hamiltonkreis in $G \iff$ TSP Lösung von $G' = 0$. 
 
@@ -52,9 +54,13 @@ Wir bringen ***jeden Knoten auf geraden Grad, damit es eine Eulertour gibt***. D
 
 #### 1.5 Approximation für METRISCHES TSP
 
+$O(n^3)$
+
 1. bestimme ==MST==
-2. X := alle Knoten mit ungeradem Grad im MST. Gibt eine gerade Anzahl ungerader Knoten (Handschlaglemma, $2|E|$ ist gerade)
+2. X := alle Knoten mit ungeradem Grad im MST. Gibt eine gerade Anzahl ungerader Knoten (Handschlaglemma, $2|E|$ ist gerade). Ziel der 2-Approximation war ja, alle Knoten auf geraden Grad zu bringen. 
 3. Bestimme ==minimales Matching== M für X. Es gilt $l(M) \leq \frac{1}{2} \text{opt}(K_{n}, l)$
-4. Bestimme ==Eulertour==, es gilt $l(T) + l(M) \leq \frac{3}{2} \text{opt}(K_{n}, l)$
+4. Bestimme ==Eulertour== (gibt es, da gerader Grad), es gilt $l(T) + l(M) \leq \frac{3}{2} \text{opt}(K_{n}, l)$
 5. durchlaufe W, mit ==Abkürzungen==, sodass jeder Knoten nur einmal besucht wird $\implies$ Hamiltonkreis. $l(T)+l(M) \leq \frac{3}{2} \text{opt}(K_{n}, l)$
+
+
 

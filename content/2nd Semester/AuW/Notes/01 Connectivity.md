@@ -32,7 +32,7 @@ G ist k-Knoten-zusammenhängend $\iff$ egal welche k-1 Knoten man entfernt, der 
 G ist k-Kanten-zusammenhängend $\iff$ egal welche k-1 Kanten man entfernt, der Graph bleibt zusammenhängend
 
 > [!success] Es gilt immer
-> (Knoten-)Zusammenhang $\leq$ Kanten-Zusammenhang $\leq$ min. Grad
+> (**Knoten**-)Zusammenhang $\leq$ **Kanten**-Zusammenhang $\leq$ min. **Grad**
 
 ![[Bildschirmfoto 2026-02-25 um 15.38.13.png]]
 
@@ -77,6 +77,8 @@ G ist k-zusammenhängend $\iff \forall u,v \in V, u \neq v$, gibt es k kantendis
 
 ## Blöcke
 
+> Blocks are basically units that contain all ==**edges**== which are in a cycle with one another (or also just a single edge).
+
 Äquivalenzklassen der Äquivalenzrelation auf ==Kanten== 
 $$e \sim f :\Longleftrightarrow 
 \begin{cases} e = f, & \text{oder} \\ 
@@ -87,8 +89,18 @@ Wenn sich zwei Blöcke schneiden, dann schneiden sie sich an einem Artikulations
 
 ### Block-Graph
 
-Ist G zusammenhängend, so ist der Blockgraph von G ein Baum.
+- Two blocks can only overlap in a cut-vertex.
+- Block-Partitionings can be determined in $O(|E|)$
+- If G (original graph) was **connected**:
+	- I (the block partitioning graph) is connected
+	- I has no cycles
+	- I is a **tree**
 
 ![[Bildschirmfoto 2026-02-17 um 15.56.55.png]]
+
+> [!info]
+> Building the block partitioning in time $O(|E|)$ requires **finding Cut Vertices and -Edges** in $O(|E|)$ time: → [[02 Tarjan]]
+
+![[Bildschirmfoto 2026-03-10 um 09.03.45.png]]
 
 

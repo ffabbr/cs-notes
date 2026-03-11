@@ -76,7 +76,9 @@ while (buffer.isEmpty()); // spin-wait
 performLongRunningComputation(buffer.remove());
 ```
 
-Dann könnte ein Consumer zwischen dem `.isEmpty()`check und dem removen das letzte Element removen, dann ist `.remove()` ungültig da leer. Selbst wenn nur eine Anweisung; z.B. `.remove()` sind mehrere Anweisungen im Bytecode. 
+Dann könnte ein Consumer zwischen dem `.isEmpty()`check und dem removen das letzte Element removen, dann ist `.remove()` ungültig da leer. 
+
+Selbst wenn nur eine Anweisung; z.B. `.remove()` sind **mehrere Anweisungen im Bytecode**. 
 
 Synchronize? → ==Deadlock== 
 

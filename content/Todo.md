@@ -4,9 +4,14 @@ cssclasses:
 draft: "true"
 ---
 
+Mittwoch: 
 
- - Josia
- - Skript
- - Peer Sheet
-- Satz von Berge
-- Satz von Hall
+- [ ] ==Analysis== Blatt
+- [ ] Analysis Vorlesung Montag, etc. lernen 
+
+---
+
+Donnerstag: 
+- [ ] AuW Vorlesung
+- [ ] AuW Skript
+- [ ] DDCA lernen

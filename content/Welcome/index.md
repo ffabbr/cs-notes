@@ -1,9 +1,9 @@
 ---
 title: New here?
 ---
-- [[Welcome/Keyboard Layout and Typing.md|Keyboard Layout and Typing]]
-- [[Welcome/Welcome to Zurich.md|Welcome to Zurich]]
-- [[1st Semester Takeways]]
+- [[02 Keyboard Layout and Typing|02 Keyboard Layout and Typing]]
+- [[01 Welcome to Zurich|01 Welcome to Zurich]]
+- [[03 1st Semester Takeways]]
 
 ## Links
 

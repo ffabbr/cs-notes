@@ -61,6 +61,22 @@ _BG_PATTERNS: list[tuple[re.Pattern, int | None]] = [
         rf'({_QQ}q\s+[\d.\s]+re\s+W\*?\s+n\s+/\w+\s+cs\s+)'
         rf'{_NW}\s+scn?\s+[\d.\s-]+m(?:\s+[\d.\s-]+l)+\s+h\s+f\*?'
     ), None),
+    # 9. Split clip/fill: clip group closes (Q) then new group (q) re-establishes
+    #    colorspace before white path fill — e.g. "q Q q <rect> re W n /Cs1 cs Q q /Cs1 cs 1 1 1 sc <path> h f"
+    (re.compile(
+        rf'({_QQ}q\s+[\d.\s]+re\s+W\*?\s+n\s+/\w+\s+cs\s+Q\s+q\s+/\w+\s+cs\s+)'
+        rf'{_NW}\s+{_NW}\s+{_NW}\s+scn?\s+[\d.\s-]+m(?:\s+[\d.\s-]+l)+\s+h\s+f\*?'
+    ), None),
+    # 10. Same split clip/fill but with single-component sc/scn
+    (re.compile(
+        rf'({_QQ}q\s+[\d.\s]+re\s+W\*?\s+n\s+/\w+\s+cs\s+Q\s+q\s+/\w+\s+cs\s+)'
+        rf'{_NW}\s+scn?\s+[\d.\s-]+m(?:\s+[\d.\s-]+l)+\s+h\s+f\*?'
+    ), None),
+    # 11. Same split clip/fill but with rect fill instead of path fill
+    (re.compile(
+        rf'({_QQ}q\s+[\d.\s]+re\s+W\*?\s+n\s+/\w+\s+cs\s+Q\s+q\s+/\w+\s+cs\s+)'
+        rf'{_NW}\s+{_NW}\s+{_NW}\s+scn?\s+[\d.\s-]+re\s+f\*?'
+    ), None),
 ]
 
 def _remove_bg(raw: str) -> tuple[str, int]:

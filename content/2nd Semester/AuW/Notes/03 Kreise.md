@@ -9,31 +9,39 @@
 | Hamiltonpfad         | jeder Knoten genau einmal                                                                                                          |
 | Zyklus (closed walk) | **Weg mit Start = Ende**, mindestens 2 Knoten (hin-zurück-hin), Endknoten inzident zu (verbunden mit) geraden Anzahl Kanten im Weg |
 | ==Eulertour==        | Closed Walk, jede Kante genau einmal                                                                                               |
-| Kreis (cycle)        | Anfang = Ende, aber kein Knoten wird 2 mal besucht, also mindestens 3 Knoten                                                       |
+| Kreis                | Anfang = Ende, aber kein Knoten wird 2 mal besucht, also mindestens 3 Knoten                                                       |
 | ==Hamiltonkreis==    | Kreis über alle Knoten                                                                                                             |
 
 
-> Eulertour existiert $\Longleftrightarrow$ alle Knotengrade gerade, Graph connected
-
 > $\sum_{v∈V}\text{deg}(v)=2|E|$ (**Handschlagslemma**) 
-
-> Weg ist Zyklus $\Longleftrightarrow$ der Endknoten vom Eulerweg ist inzident zu einer geraden Anzahl von Kanten
 
 > ein Graph hat maximal $\frac{|V|\cdot(|V|-1)}{2}$ Kanten 
 
-### Eulertour in linearer Zeit
+## Eulertouren 
 
-1. Ein Kreis finden
-2. Repeat: Einen Knoten, wo es noch nicht markierte Kanten hat, von dort aus neuen Kreis finden 
+> Geschlossener Weg (Zyklus), jede Kante genau einmal
 
-### Hamiltonkreise
+- Eulertour existiert $\Longleftrightarrow$ alle Knotengrade gerade, Graph connected
+- Weg ist Zyklus $\Longleftrightarrow$ der Endknoten vom Eulerweg ist inzident zu einer geraden Anzahl von Kanten
 
-==P/NP Problem==
-Ein $n \times m$ Gitter hat einen Hamiltonkreis $\iff$ $n\cdot m$ gerade ist
+**Eulertouren finden**
 
-![[Bildschirmfoto 2026-02-26 um 17.28.52.png]]
+$O(|E|)$ 
 
-![[2nd Semester/AuW/Slides/03 Slides.pdf#page=6|03 Slides]]
+1. Ein random Kreis finden 
+2. Repeat: Einen Knoten, wo es noch nicht markierte Kanten hat, von dort aus neuen Kreis finden und in die bisherige Lösung einfügen
+
+## Hamiltonkreise
+
+> Kreis mit allen Knoten genau einmal
+
+- Ist ein [[04 NP, TSP|P/NP Problem]] 
+- Anzahl Hamiltonkreise: $\frac{1}{2} (n-1)!$ 
+- Ein $n \times m$ Gitter hat einen Hamiltonkreis $\iff$ $n\cdot m$ gerade 
+- Bipartiter Graph $A \cup B$, mit $|A| \neq |B|$, hat ==keinen== Hamiltonkreis
+
+- Können Existenz in $O(|V| \cdot 2^{|V|})$ finden 
+
 
 ---
 
@@ -46,7 +54,6 @@ $|A_{1} \cup A_{2}| = |A_{1}| + |A_{2}| - |A_{1} \cap A_{2}|$
 
 
 ---
-
 
 ## Dirak (Dirac)
 
