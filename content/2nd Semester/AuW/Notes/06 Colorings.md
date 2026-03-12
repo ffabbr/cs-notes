@@ -32,7 +32,7 @@ Der Greedy-Algorithmus färbt Knoten nacheinander und nimmt immer die erste verf
 
 Wenn man die Knoten in einer perfekten Reihenfolge anordnet, arbeitet der Algorithmus optimal. 
 
-Adjecency list: $O(|E|)$. 
+mit Adjecency list: $O(|E|)$. 
 
 ```pseudocode
 GREEDY-FÄRBUNG (G)
@@ -110,7 +110,8 @@ $\implies G$ kann in Zeit $O(|E|)$ mit $\Delta(G)$ Farben gefärbt werden
 > a) Kreisen mit **ungerader** Anzahl Knoten  
 > b) **kompletten** Graphen
 >
-> Sonst, **höchstens Δ(G)** verschiedene Farben.
+> Sonst, **höchstens Δ(G)** verschiedene Farben (zusammenhängend).
 
+Beweis nicht prüfungsrelevant. 
 
 ![[Bildschirmfoto 2026-03-10 um 22.47.25.png]]
