@@ -124,13 +124,16 @@ Bei Addition/Subtraktion von Wurzeln, Formel mit konjugierter Form erweitern (Br
 
 Beispiel: 
 
-$$ \begin{aligned}
+$$
+\begin{aligned}
 \lim_{ n \to \infty } n(\sqrt{ n+1 } - \sqrt{ n })  & = \lim_{ n \to \infty } n \cdot \frac{n+1-n}{\sqrt{ n+1 } + \sqrt{ n }}  \\
  & = \lim_{ n \to \infty } \frac{n}{\sqrt{ n+1 } + \sqrt{ n }}  \\
  & = \lim_{ n \to \infty }  \frac{\cancel{\sqrt{ n }} \cdot \sqrt{ n }}{\cancel{\sqrt{ n }} \left( \sqrt{ 1+\frac{1}{n} } + 1 \right)}  \\
  & = \lim_{ n \to \infty } \frac{\sqrt{ n }}{2}  \\
  & = \infty
-\end{aligned} $$
+\end{aligned}
+$$
+
 
 ### Sandwich Theorem
 
