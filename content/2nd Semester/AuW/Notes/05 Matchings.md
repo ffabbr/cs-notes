@@ -66,6 +66,9 @@ $$|E| + \frac{1}{2}|E| + \frac{1}{4}|E| + \frac{1}{8}|E| + \dots = 2|E| \text{ (
 > [!info]
 > Let $G=(A \uplus B,E)$ be a $k$\-regular bipartite graph. Then there exist matchings $M_1,\dots,M_k$ such that they are pairwise disjoint and construct the entire set of edges together $E=M_1 \uplus \dots \uplus M_k$ and all $M_i$ are perfect matchings.
 
+
+---
+
 ## Augmentierende Pfade
 
 > [!Note] 
@@ -106,6 +109,10 @@ $N(X)$ sind die Nachbarknoten von X.
 ![[Bildschirmfoto 2026-03-08 um 14.00.41.png]]
 
 **Beweis von Hall's Theorem**
+
+→ [[2nd Semester/AuW/Skript.pdf#page=76|Skript]] 
+
+Slides
 - [[04 Slides.pdf#page=35|=> Richtung]]
 - [[04 Slides.pdf#page=36|<= Richtung]]
 - [[04 Slides.pdf#page=37|<= Richtung]]
@@ -124,11 +131,16 @@ Perfektes Matching finden
 
 ## Hopcroft und Karp
 
+→ nur auf ==bipartiten== Graphen 
+→ [[2nd Semester/AuW/Skript.pdf#page=70|Skript]] 
+
 [[#Augmentierende Pfade]] finden mit besserer Laufzeit.
 
 > **Idee**: Wenn wir effizient augmentierende Pfade finden können, können wir die Grösse des Matchings vergrössern bis wir ein kardinalitätsmaximales Matching haben. Upper bound für Vergrösserungen ist $O(|V|)$, da max. $\frac{|V|}{2}$ edges in Matchings. 
 
 - it is able to find a maximal set of shortest pairwise disjoint M-augmenting-paths
+
+
 
 **Runtime**
 

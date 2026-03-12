@@ -4,12 +4,9 @@ cssclasses:
 draft: "true"
 ---
 
-
-
-- [ ] ==Analysis== Blatt
-- [ ] Analysis Vorlesung Montag, etc. lernen 
-
-- [ ] AuW Vorlesung
-- [ ] AuW Skript
-
-- [ ] DDCA lernen
+- [ ] Analysis Vorlesungen
+- [ ] Analysis Blatt
+- [ ] PProg Assignment
+- [ ] Analysis Blat II
+- [ ] Peer Grading
+- [ ] Code Expert

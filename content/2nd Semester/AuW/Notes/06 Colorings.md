@@ -16,7 +16,7 @@
 	- Exponentiell
 	- ist ==NP-vollständig==
 	- gibt ==keine Approximation==
-- Einen 3-färbbaren Graphen kann man in Zeit $O(|V| + |E|)$ mit $O(\sqrt{|V|})$ Farben färben.
+- Einen ==3-färbbaren Graphen== kann man in Zeit $O(|V| + |E|)$ mit $O(\sqrt{|V|})$ Farben färben.
 - Anzahl Färbungen: $O(2^{|V|} \cdot |V|)$
 
 $\forall k \in \mathbb{N}, \forall r \in \mathbb{N} :$ Es gibt Graphen ohne einen Kreis mit Länge $\le k$, aber mit chromatischer Zahl $\ge r$.
@@ -81,6 +81,8 @@ Erklärung:
 - Die Heuristik findet eine Färbung mit $\le 6$ Farben für planare Graphen: 
   Gibt immer einen Knoten mit max. 5 Nachbarn, $k=5$. Also $5+1=6$
 
+- ginge auch mit 4 Farben
+
 ---
 
 ## Block-Graph
@@ -115,3 +117,20 @@ $\implies G$ kann in Zeit $O(|E|)$ mit $\Delta(G)$ Farben gefärbt werden
 Beweis nicht prüfungsrelevant. 
 
 ![[Bildschirmfoto 2026-03-10 um 22.47.25.png]]
+
+
+---
+
+## 3-Färbung in linearer Zeit mit sqrt(n) Farben
+
+Einen ==3-färbbaren Graphen== kann man in Zeit $O(|V| + |E|)$ mit $O(\sqrt{|V|})$ Farben färben.
+
+1. Während es Knoten v gibt mit $> \sqrt{ |V| }$ ungefärbten Nachbarn: Färbe v mit neuer Farbe und Nachbarn mit 2 weiteren **neuen** Farben (BFS). 
+2. Lösche v und Nachbarn (alle gefärbten Knoten). Restgraph hat Maximalgrad $\Delta \leq \sqrt{ |V| }$
+3. Färbe verbleibende Knoten mit [[#Greedy Algorithm]] mit $\Delta + 1$ neuen Farben
+
+There are at most $n/\sqrt{n} = \sqrt{n}$ many vertices of degree $\ge \sqrt{n}$. Thus in the first step, we used at most $3 \cdot \sqrt{n}$ colors (3 colors per neighborhood). In the second step, we used another $O(\sqrt{n})$ many colors. Since we used BFS and the greedy-algorithm, the algorithm operates in $O(|E|)$ runtime in total, which proves the theorem.
+
+---
+
+![[Bildschirmfoto 2026-03-12 um 16.02.10.png]]

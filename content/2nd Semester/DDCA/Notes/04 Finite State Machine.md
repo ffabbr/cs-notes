@@ -71,8 +71,16 @@ Solution: → [[03 Storage#D Flip-Flop|D Flip-Flop]]
 
 ## Moore vs Mealy
 
-- ==Moore FSM==: output depends only on current state
-- ==Mealy FSM==: output depends on current state and inputs
+**Moore FSM**: 
+- output depends only on current state, every state has an output
+- inputs cause state transitions
+
+**Mealy FSM**: 
+- output is tied to state transition (depends on depends on current state and inputs)
+
+**Both**
+- don't forget the [[#Reset State]]
+- all states have transitions for all inputs
 
 FSM: 
 
@@ -103,3 +111,26 @@ You ==NEED== to have a reset state, this is where it starts from
 ![[05 Verilog#Reset]]
 
 
+---
+
+
+## Example Task, Designing an FSM
+
+Design a ==Moore FSM== with one input and one output. The input provides an unsigned binary number in a bit-serial fashion from the most-significant bit to the least-significant bit. The output should be logic-1 in a clock cycle if the provided input so far is divisible by 8 (i.e., \[the input number\] mod 8 = 0). 
+
+Example bit-streams that should output a logic-1 value.
+- 1000
+- 10000
+- 11000
+
+![[Bildschirmfoto 2026-03-12 um 15.21.15.png]]
+
+## Example Task, Simplifying an FSM
+
+1. Create Table with inpout, output, next state
+2. Check unreachable states, f.ex. here State C, and remove
+3. Check identical rows, and merge
+
+Create and check the truth table after finishing to see if it can be simplified further. 
+
+![[Bildschirmfoto 2026-03-12 um 15.36.34.png]]
