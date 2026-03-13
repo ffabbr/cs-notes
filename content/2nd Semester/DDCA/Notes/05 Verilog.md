@@ -22,7 +22,22 @@ All hardware logic operates concurrently
 
 ## Basic Syntax
 
-### Logic Gates
+### Gates
+
+```Verilog
+not my_not(output, input);
+buf my_buf(output, input);
+
+and my_and(output, input1, input2, ...);
+or my_or(output, input1, input2, ...);
+xor my_xor(output, input1, input2, ...);
+
+nand my_nand(output, input1, input2, ...);
+nor my_nor(output, input1, input2, ...);
+xnor my_xnor(output, input1, input2, ...);
+```
+
+### Boolean equations
 
 ```verilog
 assign y1 = a & b;       // AND

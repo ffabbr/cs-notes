@@ -10,6 +10,7 @@
 - Overhead and time for synchronization/locking 
 - Memory bandwidth, cache misses
 
+
 ---
 
 ## Speedup

@@ -16,7 +16,11 @@
 	- Exponentiell
 	- ist ==NP-vollständig==
 	- gibt ==keine Approximation==
-- Einen ==3-färbbaren Graphen== kann man in Zeit $O(|V| + |E|)$ mit $O(\sqrt{|V|})$ Farben färben.
+
+- **2-färbbarer Graph**: Färbung mit BFS, ungerade/gerade Distanz
+- **3-färbbarer Graph**: Zeit $O(|V| + |E|)$ mit $O(\sqrt{|V|})$ Farben färben
+- **NP-vollständig**: gibt es eine Färbung mit $\leq k$  Farben mit $k \geq 3$
+
 - Anzahl Färbungen: $O(2^{|V|} \cdot |V|)$
 
 $\forall k \in \mathbb{N}, \forall r \in \mathbb{N} :$ Es gibt Graphen ohne einen Kreis mit Länge $\le k$, aber mit chromatischer Zahl $\ge r$.
@@ -30,11 +34,13 @@ $\forall k \in \mathbb{N}, \forall r \in \mathbb{N} :$ Es gibt Graphen ohne eine
 
 Der Greedy-Algorithmus färbt Knoten nacheinander und nimmt immer die erste verfügbare Farbe. 
 
-Wenn man die Knoten in einer perfekten Reihenfolge anordnet, arbeitet der Algorithmus optimal. 
+Knoten in perfekter Reihenfolge: optimale Lösung
 
-mit Adjecency list: $O(|E|)$. 
+Laufzeit mit Adjecency list: 
+- zusammenhängend: $O(|E|)$
+- nicht zusammenhängend: $O(|E| + |V|)$ 
 
-```pseudocode
+```java
 GREEDY-FÄRBUNG (G)
 1: wähle eine beliebige Reihenfolge der Knoten: V = {v1, ..., vn}
 2: c[v1] ← 1
@@ -45,27 +51,22 @@ GREEDY-FÄRBUNG (G)
 Number of colors $C(G)$ needed: 
 $$\chi(G) \leq C(G) \leq \Delta(G) + 1.$$
 
-- Es gibt eine Reihenfolge $V = \{v_1, \dots, v_n\}$ der Knoten, für die der Greedy-Algorithmus nur $\chi(\mathbf{G})$ viele Farben benötigt.
+- Gibt Reihenfolge $V = \{v_1, \dots, v_n\}$ der Knoten, Greedy-Algorithmus braucht nur $\chi(\mathbf{G})$ viele Farben
 - Es gibt bipartite Graphen und eine Reihenfolge der Knoten, für die der GreedyAlgorithmus $|V|/2$ viele Farben benötigt. Kann auch passieren, dass bei bipartitem Graphen mehrere Farben benötigt. 
 
 - Gilt für die (gewählte) Reihenfolge $|N(v_i) \cap \{v_1, \dots, v_{i-1}\}| \le k \quad \forall 2 \le i \le n$,  benötigt  Greedy-Algorithmus max. $\mathbf{k+1}$ Farben.
   
   Wenn du Knoten $v_i$ färbst, er hat max. $k$ Nachbarn , die in der Rhf vor ihm, so können diese Nachbarn max. $k$  Farben blockieren. Nehmen nächste freie Farbe nehmen, worst case Farbe $k+1$
 
----
+- In jedem möglichen Restgraphen existiert ein Knoten, der maximal $k$ Nachbarn hat $\implies$ max. $k+1$ Farben (z.B. 2 Farben für Bäume)
 
-**Smallest Last** für eine gute Reihenfolge: setze Knoten mit wenigsten Verbinungen ans Ende und entferne, suche weiter im Graphen Knoten mit wenigsten Verbindungen
+- Wenn ein **zusammenhängender Graph** einen Knoten besitzt, dessen Grad **kleiner als das Maximum** ($\Delta(G)$) ist, liefert eine schlaue Sortierung eine Färbung mit höchstens $\Delta(G)$ Farben.
 
 ### Heuristik
 
-- in jedem möglichen Restgraphen existiert ein Knoten, der maximal $k$ Nachbarn hat $\implies$ max. $k+1$ Farben (z.B. 2 Farben für Bäume)
+**Smallest Last Coloring** für eine gute Reihenfolge: setze Knoten mit wenigsten Verbinungen ans Ende und entferne, suche weiter im Graphen Knoten mit wenigsten Verbindungen
 
----
-
-> Wenn ein **zusammenhängender Graph** einen Knoten besitzt, dessen Grad **kleiner als das Maximum** ($\Delta(G)$) ist, liefert eine schlaue Sortierung eine Färbung mit höchstens $\Delta(G)$ Farben.
-
-Erklärung:
-1.  Platzierung: Setze den =="schwachen" Knoten== (Grad < Maximum) auf den ==letzten Platz== der Liste.
+1.  Platzierung: einfachsten Knoten ans Ende
 2.  Sortierung: Ordne den Rest so an, dass ==jeder Knoten eine Verbindung zu einem späteren Knoten in der Liste== hat (z. B. per Breitensuche rückwärts).
 3.  Vorteil: Beim Färben hat jeder Knoten höchstens $\Delta(G)-1$ bereits gefärbte Nachbarn – die "normalen" Knoten, weil einer ihrer Nachbarn noch ungefärbt ist; der letzte Knoten, weil er ohnehin nicht mehr Nachbarn hat.
 

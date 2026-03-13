@@ -132,7 +132,7 @@ Perfektes Matching finden
 ## Hopcroft und Karp
 
 → nur auf ==bipartiten== Graphen 
-→ [[2nd Semester/AuW/Skript.pdf#page=70|Skript]] 
+**→ [[2nd Semester/AuW/Skript.pdf#page=70|Skript]]** 
 
 [[#Augmentierende Pfade]] finden mit besserer Laufzeit.
 
@@ -140,7 +140,12 @@ Perfektes Matching finden
 
 - it is able to find a maximal set of shortest pairwise disjoint M-augmenting-paths
 
-
+1. Füge random Kante zu M
+2. While $\exists$ augmentierende Pfade
+	1. finde kürzesten augmentierenden Pfad
+	2. finde inklusionsmaximale S dieser augmentierenden Pfade (disjunkt)
+	3. augmentiere mit allen Pfaden aus S
+3. kardinalitätsmax. Matching gefunden
 
 **Runtime**
 
