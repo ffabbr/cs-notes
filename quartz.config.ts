@@ -10,7 +10,7 @@ import { SocialImage } from "./quartz/components/SocialImage"
 const config: QuartzConfig = {
   configuration: {
     pageTitle: "CS Notes",
-    pageTitleSuffix: "",
+    pageTitleSuffix: " - Fabian Rohlik",
     enableSPA: true,
     enablePopovers: true,
     analytics: {

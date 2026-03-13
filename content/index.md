@@ -1,5 +1,5 @@
 ---
-title: Home
+title: CS Notes
 ---
 Hi there, glad you found your way to this site :) 
 
