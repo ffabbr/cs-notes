@@ -116,7 +116,8 @@ IPL ==can also **reorder** statements==, if independend from one another.
 
 → split a "process" into different stages, each with clear function, f.ex. clothing washing process
 
-**Balanced pipeline**: all steps require same time
+> [!info] Balenced
+> **Balanced pipeline**: all steps require same time
 
 **1. Instruction Fetch**
 - CPU reads the instruction from memory
@@ -162,6 +163,7 @@ Beispiele:
 - **Latency bound** = (no of stages) $\cdot$ Dauer vom längsten Schritt
 
 - Konstant: nehme einfach erste Instanz `latency = Zeit für erste Instanz` 
+
 - Nicht konstant: `latency = Zeit für erste Instanz + (Längste Stage - Time of first stage) * (n-1)
 
 #### Example: unbalanced Pipeline creates waiting delays

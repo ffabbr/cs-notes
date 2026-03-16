@@ -39,6 +39,8 @@ $$\frac{1}{2}|M_{\text{kard.max}}| \leq |M_{\text{inkl.max}}| \leq |M_{\text{kar
 
 → $M_{\text{max}}$ ist ein kardinalitätsmaximales Matching 
 
+![[2nd Semester/AuW/Slides/05 Slides.pdf#page=14|05 Slides]]
+
 ![[Bildschirmfoto 2026-03-08 um 00.54.43.png]]
 
 ```java
@@ -50,6 +52,7 @@ GREEDY-MATCHING (G)
 5:     lösche e und alle inzidenten Kanten in G
 ```
 
+![[Bildschirmfoto 2026-03-14 um 17.46.26.png]]
 
 ## Perfect matching in $2^k$ regular graph
 
@@ -61,7 +64,7 @@ Let $G = (A \cup B, E)$ be a $2^k$ -regular graph. We can find a perfect matchin
 	3. remove every second edge
 	4. we have $|E|/2$ edges left, the graph is $2^{k-1}$ -regular 
 2. Each vertex now is degree 1, the graph itself is a perfect matching
-$$|E| + \frac{1}{2}|E| + \frac{1}{4}|E| + \frac{1}{8}|E| + \dots = 2|E| \text{ (geometric series formula)}$$
+$$|E| + \frac{1}{2}|E| + \frac{1}{4}|E| + \frac{1}{8}|E| + \dots = 2|E| \text{ (Geometrische Summe)}$$
 
 > [!info]
 > Let $G=(A \uplus B,E)$ be a $k$\-regular bipartite graph. Then there exist matchings $M_1,\dots,M_k$ such that they are pairwise disjoint and construct the entire set of edges together $E=M_1 \uplus \dots \uplus M_k$ and all $M_i$ are perfect matchings.
@@ -80,6 +83,17 @@ $$|E| + \frac{1}{2}|E| + \frac{1}{4}|E| + \frac{1}{8}|E| + \dots = 2|E| \text{ (
 Können Matching M vergrössern mit **XOR zu M-augmentierendem Pfad**: 
 - $M' = M \oplus P$
 - gewinnen Länge +1. 
+
+- Anzahl kantendisjunkte augmentierende Pfade bzgl. Matching M: 
+  $|M^*| - |M|$, wobei $M^*$ ein kardinalitätsmaximales Matching ist
+
+
+**Augmentierenden Pfad in ==bipartitem Graph== in linearer Zeit finden:** 
+
+- BFS mit abwechselnd Kanten aus dem Matching und nicht dem Matching. 
+- Ende, wenn es nicht überdeckten Knoten in aktuellem Layer gibt 
+
+![[2nd Semester/AuW/Slides/06 Slides.pdf#page=6|06 Slides]]
 
 ---
 ## Satz von Berge
@@ -109,6 +123,8 @@ $N(X)$ sind die Nachbarknoten von X.
 ![[Bildschirmfoto 2026-03-08 um 14.00.41.png]]
 
 **Beweis von Hall's Theorem**
+
+![[Bildschirmfoto 2026-03-14 um 17.39.31.png]]
 
 → [[2nd Semester/AuW/Skript.pdf#page=76|Skript]] 
 

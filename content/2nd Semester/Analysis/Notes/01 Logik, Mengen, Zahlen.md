@@ -12,7 +12,7 @@
 - $\mathbb{N}=\{1,2,3, \dots\}$  
 - $\mathbb{R} = (-\infty, \infty)$ 
 
-## Intevalle
+## Intervalle
 
 - **Intervall offen** $(a,b)$
 - **Intervall abgeschlossen** $[a,b]$

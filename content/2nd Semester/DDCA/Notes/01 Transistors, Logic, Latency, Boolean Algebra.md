@@ -15,7 +15,7 @@
   ![[Bildschirmfoto 2026-02-23 um 22.22.04.png]]
 - ![[Bildschirmfoto 2026-02-23 um 22.37.57.png]]
 
-## Gates
+## Logic Gates
 
 ![[2nd Semester/DDCA/Slides/02 Slides.pdf#page=32]]
 

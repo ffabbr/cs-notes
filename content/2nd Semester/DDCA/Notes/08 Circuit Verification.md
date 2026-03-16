@@ -1,7 +1,5 @@
 
-How can we test for **functionality** and **timing**? 
-
-→ ==Simulation==
+We test for **functionality** and **timing** through verification and testing.
 
 ---
 
@@ -20,7 +18,11 @@ How can we test for **functionality** and **timing**?
 - a module created specifically to test a design
 - Tested design is called the "device under test (DUT)"
 
-### Example
+![[2nd Semester/DDCA/Slides/06 Slides.pdf#page=103|06 Slides]]
+
+## Self-Checking Testbench Example
+
+still **not scalable**
 
 ```verilog
 module testbench2(); // No inputs, outputs
@@ -42,5 +44,21 @@ module testbench2(); // No inputs, outputs
 endmodule
 ```
 
-Problem: ==not scalable==
+## Testvectors
+
+- separate clock just for testing
+- apply input on rising edge, check outputs on falling edge
+
+Code Example starting at [[2nd Semester/DDCA/Slides/06 Slides.pdf#page=111|Slide 111]]
+
+## Golden Models
+
+- represent ideal behaviour on the highest abstraction
+- compare your behaviour with the Golden Model
+- automated testing, scalable, can also compare timing, separation of roles
+
+![[2nd Semester/DDCA/Slides/06 Slides.pdf#page=118|06 Slides]]
+
+→ Code Example for automated testing: 
+![[2nd Semester/DDCA/Slides/06 Slides.pdf#page=120|Slide 120]]
 

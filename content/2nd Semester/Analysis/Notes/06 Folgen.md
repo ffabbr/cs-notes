@@ -4,12 +4,14 @@
 
 ## Konvergenz und Divergenz
 
-==konvergent==: Folge hat ein *einziges*, ausgezeichnetes Langzeitverhalten zu dem 
-Wenn nicht konvergent, dann ==divergent==. z.B. $a_{n} = (-1)^n$ ist **divergent**.
+- ==konvergent==: Folge strebt gegen konkreten, endlichen reellen Wert
+- Wenn nicht konvergent, dann ==divergent==. z.B. $a_{n} = (-1)^n$ ist **divergent**.
+- Differenz konvergenter Folgen konvergiert
+- Gegenbeispiel für: Setze $a_n = (-1)^n$ und $b_n = -(-1)^n$. Dann ist $c_n = 0$ für alle $n$, also $\lim_{n\to\infty} c_n = 0$. Aber weder $(a_n)$ noch $(b_n)$ konvergiert.
+- Falls $(a_n)$ konvergiert, ist die Folge $b_n = a_{n+1} + a_n$ konvergent. $$\lim_{n \to \infty} b_n = \lim_{n \to \infty} (a_{n+1} + a_n) = \lim_{n \to \infty} a_{n+1} + \lim_{n \to \infty} a_n = L + L = 2L$$
 ### Grenzwert
 
-==Grenzwert== L (z.B. $1, \infty, - \infty$)
-  $$\forall \varepsilon > 0 \; \exists N \in \mathbb{N}_0 \; \forall n \geq N : |a_n - L| < \varepsilon$$
+==Grenzwert== L   $$\forall \varepsilon > 0 \; \exists N \in \mathbb{N}_0 \; \forall n \geq N : |a_n - L| < \varepsilon$$
 → alternativ: die Menge der Elemente NICHT in Nähe des Grenzwertes ist endlich
 
 z.B. $b(n)=n^{-p}$ konvergiert für $p>0$, divergiert für $p < 0$.
@@ -65,7 +67,7 @@ $$\forall \varepsilon > 0 \; \forall N \in \mathbb{N}_0 \; \exists n \geq N : |a
 
 ## Grenzwerte
 
-1. Kann ich den schnellsten Term ausklammern? 
+1. Kann ich den schnellsten Term ausklammern oder dividieren?  
 2. [[#Wurzeltrick]]: Bei Addition/Subtraktion von Wurzeln, Formel mit konjugierter Form erweitern (Bruch, im Prinzip $\cdot 1$), vereinfachen 
 3. [[#Sandwich Theorem]]
 4. [[#Abschätzungen, Euler]]: Ähnlichkeit zu Folge e oder bekannter Folge aus den Regeln
@@ -118,6 +120,20 @@ $$\forall \varepsilon > 0 \; \forall N \in \mathbb{N}_0 \; \exists n \geq N : |a
 
 > $\lim_{n \to \infty} \sqrt[n]{x} = 1$ für beliebige $x, y$, auch z.B. bei $\lim_{n \to \infty} \sqrt[n]{n} = 1$
 
+
+### Schnellsten Term ausklammern
+
+Beispiel: 
+
+$$ e_n = \sqrt[n]{5^n + 11^n + 17^n} $$
+
+Wir klammern $17^n$ aus
+
+$$ e_n = \sqrt[n]{17^n\left(\left(\frac{5}{17}\right)^n + \left(\frac{11}{17}\right)^n + 1\right)} = 17 \cdot \sqrt[n]{\left(\frac{5}{17}\right)^n + \left(\frac{11}{17}\right)^n + 1} $$
+$\frac{5}{17} < 1$ und $\frac{11}{17} < 1$, konvergieren also gegen 0. Also
+$$ \sqrt[n]{1} \leq \sqrt[n]{\left(\frac{5}{17}\right)^n + \left(\frac{11}{17}\right)^n + 1} \leq \sqrt[n]{3} $$
+Da $\sqrt[n]{3} \to 1$, per [[#Sandwich Theorem]], $\lim_{n \to \infty} e_n = 17 \cdot 1 = \boxed{17}$.
+
 ### Wurzeltrick
 
 Bei Addition/Subtraktion von Wurzeln, Formel mit konjugierter Form erweitern (Bruch, im Prinzip $\cdot 1$), vereinfachen 
@@ -168,15 +184,47 @@ $$\begin{align}
 
 ---
 
-## MONTAG UND CO
+## Beschränkungen
 
-Montag
+- Eine Folge die nach oben und unten beschränkt ist, ist beschränkt. z.B. $(-1)^n$
+- monoton fallend/wachsend: strikte Abnahme/Zunahme
+- streng monoton fallend/wachsend: Abnahme/Zunahme oder gleich
 
-![[2nd Semester/Analysis/Slides/04 Slides.pdf#page=17]]
+> [!Note] Lemmas
+> - Jeder konvergente Folge ist beschränkt. 
+> - Jede beschränkte und monotone Folge konvergiert. Hier fällt $(-1)^n$ nicht hinein
+> - Eine monotone Folge konvergiert $\iff$ beschränkt
+> - beschränkte Folge hat mindestens einen Häufungspunkt und konvergente Teilfolge
+> - konvergierend, monoton, beschränkt: vgl. Grenzwert mit [[01 Logik, Mengen, Zahlen#Intervalle|sup/inf von Intervallen]] 
 
-> [!Note] 
-> Jede beschränkte und monotone Folge konvergiert.
 
-→ add in handwritten notes by Kobel-Keller for limes calculation
-Limes und Grenzwerte 
+---
 
+## Limes Superior, Inferior
+
+- beschreiben das Verhalten der oberen/unteren Schranke
+- Jede beschränkte Folge hat sie, selbst wenn keinen normalen Limes
+- Wenn Limes superior und der Limes inferior selben Wert haben, dann gibt es auch den normalen Limes
+
+- Der Limes superior (inferior) ist der grösste (kleinste) Häufungspunkt einer Folge.
+- Superior: $\lim_{n \to \infty} \sup \{ a_k \mid k \ge n \}$
+- Inferior: $\lim_{n \to \infty} \inf \{ a_k \mid k \ge n \}$ 
+
+- für eine beschränkte Folge geben Lim Sup/Inf **Häufungspunkte** an 
+- der Limes Sup (Inf) gibt den grössten (kleinsten) Häufungspunkt an
+
+---
+
+## Cauchy-Folge
+
+- beschränkt
+- der Abstand von zwei beliebigen Punkten ist $< \epsilon$ . $$\forall \varepsilon > 0, \exists N \in \mathbb{N}, \forall m, n \geq N \quad |a_n - a_m| < \varepsilon $$
+- Folge konvergiert $\iff$ ist Cauchy-Folge 
+
+### Beispiele
+
+- $\sum_{k=1}^{n} \frac{1}{k^2}, n\geq_{1}$ ist eine konvergierende Cauchy Folge
+- $\sum_{k=1}^{\infty} \frac{1}{k}$ ist keine Cauchy Folge, divergiert
+
+
+![[Bildschirmfoto 2026-03-14 um 15.54.01.png]]
