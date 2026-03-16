@@ -3,7 +3,7 @@ Was, wenn ein Thread sehr viel länger braucht als die anderen? Dann funktionier
 
 ## Divide and Conquer
 
-![[08 Slides.pdf#page=35]]
+![[2nd Semester/PProg/Slides/08 Slides.pdf#page=35|08 Slides]]
 
 ```pseudocode
 - if cannot divide:
@@ -15,7 +15,7 @@ Was, wenn ein Thread sehr viel länger braucht als die anderen? Dann funktionier
 - return result
 ```
 
-Code example: [[08 Slides.pdf#page=23|Summing an Array]]
+Code example: [[2nd Semester/PProg/Slides/08 Slides.pdf#page=23|Summing an Array]]
 
 - Wenn ein Thread nicht erstellt werden kann aufgrund mangelnder Ressourcen: **Exception, out of Memory**
 - Achtung auf richtige `start/join` Reihenfolge, sonst ist es vielleicht sequentiell
@@ -32,7 +32,7 @@ Zur Arbeitsaufteilung, also der Zuteilung von Tasks zu Threads nutzen wir ==Java
 ## Framework: Executor Service
 
 > [!warning]
-> Problem vom Executor Service: [[08 Slides.pdf#page=47|Threads blockieren]]. Daher ==nicht verwenden== für rekursive Probleme. Für flat structures or tasks that can run independently in parallel gut. 
+> Problem vom Executor Service: [[2nd Semester/PProg/Slides/08 Slides.pdf#page=47|Threads blockieren]]. Daher ==nicht verwenden== für rekursive Probleme. Für flat structures or tasks that can run independently in parallel gut. 
 
 
 1. Main thread submits task to the Executor Service
@@ -42,7 +42,7 @@ Zur Arbeitsaufteilung, also der Zuteilung von Tasks zu Threads nutzen wir ==Java
 
 ### Callable vs Runnable
 
-![[08 Slides.pdf#page=40]]
+![[2nd Semester/PProg/Slides/08 Slides.pdf#page=40]]
 
 ```java
 .submit(Callable<T> task) → Future<T>

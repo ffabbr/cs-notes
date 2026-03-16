@@ -39,6 +39,8 @@ xnor my_xnor(output, input1, input2, ...);
 
 ### Boolean equations
 
+> Never use `assign` inside of an [[#Always]] block 
+
 ```verilog
 assign y1 = a & b;       // AND
 assign y2 = a | b;       // OR
@@ -76,8 +78,8 @@ endcase
 *must be in always statement, f.ex. *
 
 ```verilog
-module priorityckt(input  logic [3:0] a,
-                   output logic [3:0] y);
+module priorityckt(input reg [3:0] a,
+                   output reg [3:0] y);
 
   always @(*)
     if      (a[3]) y <= 4'b1000;
@@ -91,8 +93,8 @@ endmodule
 ### multi input and
 
 ```verilog
-module and8(input  logic [7:0] a,
-            output logic       y);
+module and8(input  reg [7:0] a,
+            output reg       y);
 
   assign y = &a;
 
@@ -152,6 +154,16 @@ Examples:
 	assign shortbus = longbus [12:5];
 ```
 
+### Reg vs wire
+
+A wire represents a physical, electrical connection between hardware components.  How it holds a value: It has no memory. F.ex. `assign my_wire = a & b;`.
+
+A `reg`  holds a value until you tell it to change. Must assign a value to a `reg` **inside** f.ex. an  `always` or `initial` block. A `reg` is like memory but does NOT mean it's an acutal register in the hardware. 
+
+Vgl. 
+→ [[#Sequential Statements]]
+→ [[#Always]]
+
 ### Concatenation, Copies
 
 ```verilog
@@ -161,7 +173,7 @@ Examples:
 	assign x = {a [0], a[0], a[0], a[ol}
 	assign y = { 4{a[0]} }
 ```
-
+****
 ### Number Representation
 
 ![[2nd Semester/DDCA/Slides/05 Slides.pdf#page=58]]
@@ -262,9 +274,20 @@ Usage:
 
 ![[2nd Semester/DDCA/Slides/05 Slides.pdf#page=84]]
 
+## Sequential Statements
+
+- Sequential statements are within an always block
+- Signals assigned within an always must be declared as reg
+
+`reg` : ==Assigned variables need to be declared as reg==. The name reg does not necessarily mean that the value is a register (It could be, but it does not have to be)
+
 ## Always
 
-Immer wenn was passiert, mach ma was
+Immer wenn was passiert, mach ma was. 
+
+> [!warning]
+> - Any variable that is assigned a value inside an `always` block MUST be declared as a `reg`, NOT a  `wire` . See [[#Reg vs wire]]
+> - Do NOT put an `assign` statement in an always block
 
 ```verilog
 always @ (sensitivity list)
@@ -273,12 +296,53 @@ always @ (sensitivity list)
 
 ![[2nd Semester/DDCA/Slides/05 Slides.pdf#page=107]]
 
+## Assign
 
-## Sequential Statements
+You must use `assign` when you are outside of an `always` or `initial` block and you want to drive a signal continuously.
 
-`reg` : Assigned variables need to be declared as reg. The name reg does not necessarily mean that the value is a register (It could be, but it does not have to be)
+```verilog
+wire y1;
+assign y1 = a & b;
+```
 
-![[2nd Semester/DDCA/Slides/05 Slides.pdf#page=105]]
+**Inside `always` blocks:** If you are inside an `always @(*)` or `always @(posedge clk)` block, you simply write the variable name and the assignment operator (`=` or `<=`). Writing `assign` inside an `always` block is a syntax error.
+
+```verilog
+reg y1;
+always @(*) begin
+    y1 = a & b; 
+end
+```
+
+## Blocking vs non-Blocking Assignments
+
+Blocking (a = b): 
+- Executes sequentially, one line after the other
+- use for combinational logic
+
+```verilog 
+reg [3:0] new_count = 1;
+always @* begin
+	new_count = 0; // immediately
+	// new_count is 0
+	count = new_count;
+end
+```
+
+Non-blocking (a <= b): 
+- Executes concurrently. All right-hand sides are evaluated at the clock edge, and all left-hand sides are updated simultaneously at the end of the time step.
+- use for sequential logic, f.ex.
+
+```verilog
+reg [3:0] new_count = 1;
+always @* begin
+	new_count <= 0;
+	// new_count is 1
+	count <= new_count;
+end // all assignments happen here
+// count is 0, new_count = 1
+```
+
 
 ## Reset
 

@@ -4,7 +4,6 @@ draft: "true"
 ---
 
 - [ ] Analysis Arbeitsblatt Beweise lösen und verstehen
-- [ ] DDCA Vorlesungen
+- [ ] DDCA Vorlesungen, Shivi print?
+- [ ] DDCA Problem Solving Session
 - [ ] AuW Arbeitsblatt lösen, Theorie lernen 
-- [ ] Analysis Übungsstunde
-- [ ] DDCA Reading
