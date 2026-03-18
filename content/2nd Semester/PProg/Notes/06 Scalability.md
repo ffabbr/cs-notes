@@ -93,6 +93,11 @@ So in the definition of speedup:
 $$
 S_{p} = \frac{T_{1}}{T_{p}} \leq \frac{W_{ser} + W_{par}}{W_{ser} + \frac{W_{par}}{p}}
 $$
+> [!info] Formula with percentage
+> $f$ is the percentage of how much is sequential
+> $$
+> S_{p} = \frac{1}{f+ \frac{1-f}{P}}
+> $$
 
 ![[2nd Semester/PProg/Slides/07 Slides.pdf#page=34]]
 

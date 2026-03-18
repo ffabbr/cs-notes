@@ -187,44 +187,75 @@ $$\begin{align}
 ## Beschränkungen
 
 - Eine Folge die nach oben und unten beschränkt ist, ist beschränkt. z.B. $(-1)^n$
-- monoton fallend/wachsend: strikte Abnahme/Zunahme
-- streng monoton fallend/wachsend: Abnahme/Zunahme oder gleich
+- **monoton** fallend/wachsend: **strikte** Abnahme/Zunahme
+- **streng monoton** fallend/wachsend: Abnahme/Zunahme oder gleich
+
+> Immer wenn es einen **Limes Superior (Inferior) gibt**, gibt es auch eine **obere (untere) Schranke**
+
 
 > [!Note] Lemmas
-> - Jeder konvergente Folge ist beschränkt. 
-> - Jede beschränkte und monotone Folge konvergiert. Hier fällt $(-1)^n$ nicht hinein
-> - Eine monotone Folge konvergiert $\iff$ beschränkt
-> - beschränkte Folge hat mindestens einen Häufungspunkt und konvergente Teilfolge
+> - Jede konvergente Folge ist beschränkt. 
+> - **==Jede beschränkte und monotone Folge konvergiert.==** 
+>   Eine monotone Folge konvergiert $\iff$ beschränkt
+> - beschränkte Folge hat mindestens einen Häufungspunkt **und konvergente Teilfolge** (Bolzano-Weierstrass)
 > - konvergierend, monoton, beschränkt: vgl. Grenzwert mit [[01 Logik, Mengen, Zahlen#Intervalle|sup/inf von Intervallen]] 
 
+![[Pasted image 20260317201505.png]]
+### Konvergenz zeigen durch beschränkt und monoton, bei rekursiv definierter Folge
+
+![[Bildschirmfoto 2026-03-17 um 19.35.20.png]]
 
 ---
 
 ## Limes Superior, Inferior
 
 - beschreiben das Verhalten der oberen/unteren Schranke
-- Jede beschränkte Folge hat sie, selbst wenn keinen normalen Limes
-- Wenn Limes superior und der Limes inferior selben Wert haben, dann gibt es auch den normalen Limes
+- Jede beschränkte Folge hat lim sup und inf, auch, wenn keinen normalen Limes
 
-- Der Limes superior (inferior) ist der grösste (kleinste) Häufungspunkt einer Folge.
+- Folge konvergiert $\implies \limsup = \liminf$
+- $(\limsup = \liminf \implies) ∧ \text{beschränkt} \implies$ Folge konvergiert 
+- $\limsup \neq \liminf \implies$ Folge divergent
+
+- `lim sup = lim inf`: gibt normalen limes, Folge **konvergent**
+- Nutzen, um Konvergenz zu zeigen 
+
+- Der Limes superior (inferior) ist der **grösste (kleinste) Häufungspunkt** 
 - Superior: $\lim_{n \to \infty} \sup \{ a_k \mid k \ge n \}$
 - Inferior: $\lim_{n \to \infty} \inf \{ a_k \mid k \ge n \}$ 
 
-- für eine beschränkte Folge geben Lim Sup/Inf **Häufungspunkte** an 
-- der Limes Sup (Inf) gibt den grössten (kleinsten) Häufungspunkt an
+**Wie beweisen?**
+
+- [[#Sandwich Theorem]], oder
+- Der lim einer konvergenten Folge (falls existent) ist auch ein Häufungspunkt. **Folge in Teilfolgen unterteilen**, z.B. gerade/ungerage, die ==alle== Stellen abdecken, dann **limes dieser Teilfolgen vergleichen**. Es kann keinen anderen Häufungspunkt geben, da diese Teillfolgen alles abdecken. Der Grenzwert einer Teilfolge ist der Häufungspunkt. Gilt auch als Beweis
+
+![[Bildschirmfoto 2026-03-17 um 17.04.09.png]]
+
+![[Bildschirmfoto 2026-03-17 um 20.15.53.png]]
+
 
 ---
 
 ## Cauchy-Folge
 
-- beschränkt
-- der Abstand von zwei beliebigen Punkten ist $< \epsilon$ . $$\forall \varepsilon > 0, \exists N \in \mathbb{N}, \forall m, n \geq N \quad |a_n - a_m| < \varepsilon $$
-- Folge konvergiert $\iff$ ist Cauchy-Folge 
+- konvergiert $\iff$ ist Cauchy-Folge 
+- Folge ist beschränkt
+- lim sup = lim inf $\implies$ ist Cauchy Folge
+- der Abstand von zwei beliebigen Punkten ist $< \epsilon$ . 
 
-### Beispiele
+$$
+\forall \varepsilon > 0, \exists N \in \mathbb{N}, \forall m, n \geq N \quad |a_n - a_m| < \varepsilon
+$$
+- Konvergenz zeigen, wenn Grenzwert unbekannt, indem wir zeigen, dass eine Folge eine Cauchy-Folge ist
 
-- $\sum_{k=1}^{n} \frac{1}{k^2}, n\geq_{1}$ ist eine konvergierende Cauchy Folge
+- $\sum_{k=1}^{n} \frac{1}{k^2}, n\geq_{1}$ ist eine Cauchy Folge, konvergiert
 - $\sum_{k=1}^{\infty} \frac{1}{k}$ ist keine Cauchy Folge, divergiert
 
+### Konvergenz zeigen durch Cauchy-Folge
+
+- Beispiel, Beweis: $\frac{1}{n}$ konvergiert
 
 ![[Bildschirmfoto 2026-03-14 um 15.54.01.png]]
+
+
+---
+

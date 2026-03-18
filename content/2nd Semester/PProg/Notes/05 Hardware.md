@@ -164,7 +164,7 @@ Beispiele:
 
 - Konstant: nehme einfach erste Instanz `latency = Zeit für erste Instanz` 
 
-- Nicht konstant: `latency = Zeit für erste Instanz + (Längste Stage - Time of first stage) * (n-1)
+- Nicht konstant: `latency = Zeit für erste Instanz + (Längste Stage - Time of first stage) * (n-1)` 
 
 #### Example: unbalanced Pipeline creates waiting delays
 

@@ -1,3 +1,4 @@
+
 ## Logik
 
 - $\exists!$ es gibt genau eins
@@ -23,8 +24,8 @@
 
 - eine obere (untere) Schranke einer Teilmenge X ist eine Zahl die grösser gleich (kleiner gleich) ist, als alle Zahlen in der Teilmenge. Gibt viele.
 
-- Supremum $\text{sup}(X)$: kleinste obere Schranke. Unique if exists.
-- Infimum $\text{inf}(X)$: grösste untere Schranke. Unique if exists.
+- **Supremum** $\text{sup}(X)$: kleinste obere Schranke. Unique if exists.
+- **Infimum** $\text{inf}(X)$: grösste untere Schranke. Unique if exists.
 
 - ein Maximum (Minimum) einer Menge ist das grösste bzw. kleinste Element der Menge. Unique if exists.
 ### Beispiel
@@ -35,6 +36,10 @@ $X=[-2,1)$
 
 $X=\{\}$
 - Supremum: $-\infty$ 
+
+![[Bildschirmfoto 2026-03-17 um 17.12.33.png]]
+![[Bildschirmfoto 2026-03-17 um 17.12.53.png]]
+
 
 
 ![[Bildschirmfoto 2026-02-17 um 23.11.30.png]]

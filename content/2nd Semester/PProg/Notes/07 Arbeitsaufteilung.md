@@ -32,8 +32,7 @@ Zur Arbeitsaufteilung, also der Zuteilung von Tasks zu Threads nutzen wir ==Java
 ## Framework: Executor Service
 
 > [!warning]
-> Problem vom Executor Service: [[2nd Semester/PProg/Slides/08 Slides.pdf#page=47|Threads blockieren]]. Daher ==nicht verwenden== für rekursive Probleme. Für flat structures or tasks that can run independently in parallel gut. 
-
+> Problem vom Executor Service: [[2nd Semester/PProg/Slides/08 Slides.pdf#page=47|Threads blockieren]]. Daher ==nicht verwenden für **rekursive** Probleme==. Für flat structures or tasks that can run independently in parallel gut. 
 
 1. Main thread submits task to the Executor Service
 2. Main thread immediately gets back a `future` by the Executor Service. The future will later hold the result once the calculation is done. 
@@ -80,3 +79,38 @@ static class HelloTask implements Runnable {
 ```
 
 
+## Fork Join Framework
+
+→ when a task is waiting, it is suspended and other tasks are allowed to run
+
+Wie beim [[#Framework Executor Service]] lesen Threads von der `global queue`. Neu: jeder Thread hat eine `local queue`. 
+
+
+Jeder Thread arbeitet die `local queue` in LIFO (last in first out) ab. Also stellt man sich die Queue als Röhre vor, kommen neue Aufgaben (bei einer Rekusion also zuerst die grösseren Aufgaben) von links hinein, und werden per LIFO auch von links abgearbeitet. 
+
+Ein Thread kann auch auf die `local queue` von einem anderen Thread zugreiten, in FIFO (also von hinten der local queue des anderen Threads). Eine hintere Aufgabe ist also eine aufwendigere (gut für Lastverteilung).
+
+![[2nd Semester/PProg/Slides/08 Slides.pdf#page=55]]
+
+Instead of 
+
+
+
+```java
+ForkJoinRecursiveSum left = new ForkJoinRecursiveSum(arr, lo, mid);
+ForkJoinRecursiveSum right = new ForkJoinRecursiveSum(arr, mid, hi);
+
+left.fork();
+right.fork();
+
+int leftAns = left.join();
+int rightAns = right.join();
+
+// Better:
+//left.fork();
+//int rightAns = right.compute();
+//int leftAns = left.join();
+```
+
+
+![[2nd Semester/PProg/Slides/08 Slides.pdf#page=62]]
