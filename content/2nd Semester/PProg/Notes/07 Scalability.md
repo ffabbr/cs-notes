@@ -75,6 +75,8 @@ $$
 
 ## Amdahl's Law
 
+*"Will ein Problem lösen, geht nimmer schneller"*
+
 > The speedup from parallelization is limited by the part that must run sequentially.
 
 $W_{ser}$ ... time spend on non-parallelizable work
@@ -105,6 +107,8 @@ $$
 
 ## Gustafson's Law
 
+*"Geht nimmer schneller, aber egal, ich kann mehr (anderes) in der selben Zeit machen"*
+
 Parallel part of a program scales with the problem size. 
 
 Wie viel Arbeit können wir in einem fixen Zeitfenster ausführen, wenn wir mehr Hardware hinzufügen? 
@@ -121,15 +125,26 @@ Wie viel Arbeit können wir in einem fixen Zeitfenster ausführen, wenn wir mehr
 $$
 W=P\cdot (1-f)\cdot T_{wall} + f \cdot  T_{wall}
 $$
-$$
+
+> [!success]
+> $$
 \begin{align}
 S_{p} &= f+P\cdot (1-f) \\
  & = P-f\cdot (P-1)
 \end{align}
 $$
 
+
 ![[2nd Semester/PProg/Slides/07 Slides.pdf#page=39]]
 
-> Gustafson's Law can be seen as ==more work in the same time==, Amdahl's Law would be ==same work but faster== need to happen. 
+![[Bildschirmfoto 2026-03-18 um 17.47.02.png]]
 
-Siehe #exam , Kosten-Nutzen Analyse, lohnt es sich, mehr Hardware hinzuzufügen? 
+![[Bildschirmfoto 2026-03-18 um 17.49.46.png]]
+
+![[Bildschirmfoto 2026-03-18 um 17.51.28.png]]
+
+
+Siehe #exam , Kosten-Nutzen Analyse, lohnt es sich, mehr Hardware hinzuzufügen?
+
+
+![[Bildschirmfoto 2026-03-19 um 14.12.29.png]]![[Bildschirmfoto 2026-03-19 um 14.12.40.png]]![[Bildschirmfoto 2026-03-19 um 14.12.49.png]]

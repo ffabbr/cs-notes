@@ -40,15 +40,21 @@ $$
 
 Maximum Parallelism
 $$
-= \frac{T_{1}}{T_{\infty}}
+S_{\infty}= \frac{T_{1}}{T_{\infty}}
 $$
 
 **Work:** $T_1$
 - execution time if sequentially run 
-- on DAG, total number of nodes in the entire graph.
+- on DAG, ==total number of nodes in the entire graph==.
 
 **Span, Critical Path:** $T_{\infty}$
-- longest chain of dependent operations in the DAG (tasks that cannot be run simultaneously)
+- ==longest chain of dependent operations in the DAG== (tasks that cannot be run simultaneously)
+
+**Width of the Graph**: number of processors to archive $T_{\infty}$, so the maximum speed
+
+![[Bildschirmfoto 2026-03-19 um 14.37.21.png]]
+
+
 
 ![[2nd Semester/PProg/Slides/09 Slides.pdf#page=20]]
 

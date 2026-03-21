@@ -6,6 +6,9 @@
 
 ## synchronized
 
+> [!warning]
+> NIE synchronized auf einen Boxed type wie z.B. `Integer`. Problem ist, bei `x+=1` erstellt Java ein neues Objekt! 
+
 Wenn mehrere Objekte von/auf die gleiche Quelle readen/writen, dann ist ja die Reihenfolge random. Mit `synchronized` können wir aber Code-Blöcke festlegen, die definitiv in der Reihenfolge (und nacheinander) ausgeführt werden. 
 
 Während `synchronized` ausgeführt wird, bekommt das einzig **der aktuelle Thread** den Zugriff auf die gemeinsame Quelle. Die Quelle ist ==locked==. Nachdem `synchronized` fertig ist, wird der lock freigegeben und andere Objekte können diesen "aquiren".
@@ -13,6 +16,16 @@ Während `synchronized` ausgeführt wird, bekommt das einzig **der aktuelle Thre
 *==**locked**: no other thread can lock the object==*
 
 When we perform a write on a thread with shared memory, do so under a lock.
+
+Wenn wir `public synchronized run() {}` zur Methode schreiben synchronisieren wir auf `this`. Wenn wir auf ein anderes Objekt synchronisieren wollen, müssen wir 
+
+```java
+public void run(){
+	synchronized (x) {
+		// code
+	}
+}
+```
 
 ![[2nd Semester/PProg/Slides/05 Slides.pdf#page=16]]
 ![[2nd Semester/PProg/Slides/05 Slides.pdf#page=17]]
@@ -62,6 +75,14 @@ Both threads must ==lock on the same object to protect the same shared resource=
 > Exceptions are passed up
 
 ## Wait, Notify, NotifyAll
+
+![[Bildschirmfoto 2026-03-18 um 17.23.31.png]]
+
+![[Bildschirmfoto 2026-03-18 um 17.09.54.png]]
+
+> [!warning]
+> NIE synchronized auf einen Boxed type wie z.B. `Integer`. Problem ist, bei `x+=1` erstellt Java ein neues Objekt! 
+
 
 Often one part of the system generates work, another part processes it, buffer stores it for passing it on (f.ex. through a linked list):
 

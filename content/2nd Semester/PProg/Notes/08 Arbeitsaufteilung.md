@@ -79,21 +79,21 @@ static class HelloTask implements Runnable {
 ```
 
 
-## Fork Join Framework
+## Framework: Fork Join 
 
-→ when a task is waiting, it is suspended and other tasks are allowed to run
+→ when a task is waiting, it is suspended and **other tasks are allowed to run** on that thread. Tasks on the thread are exchanged such that it always runs. 
 
 Wie beim [[#Framework Executor Service]] lesen Threads von der `global queue`. Neu: jeder Thread hat eine `local queue`. 
-
 
 Jeder Thread arbeitet die `local queue` in LIFO (last in first out) ab. Also stellt man sich die Queue als Röhre vor, kommen neue Aufgaben (bei einer Rekusion also zuerst die grösseren Aufgaben) von links hinein, und werden per LIFO auch von links abgearbeitet. 
 
 Ein Thread kann auch auf die `local queue` von einem anderen Thread zugreiten, in FIFO (also von hinten der local queue des anderen Threads). Eine hintere Aufgabe ist also eine aufwendigere (gut für Lastverteilung).
 
+![[Bildschirmfoto 2026-03-19 um 14.43.42.png]]
+![[Bildschirmfoto 2026-03-19 um 14.45.25.png]]
+
+
 ![[2nd Semester/PProg/Slides/08 Slides.pdf#page=55]]
-
-Instead of 
-
 
 
 ```java
@@ -114,3 +114,5 @@ int rightAns = right.join();
 
 
 ![[2nd Semester/PProg/Slides/08 Slides.pdf#page=62]]
+
+![[Bildschirmfoto 2026-03-18 um 17.42.06.png]]

@@ -42,3 +42,5 @@ $$
 ## Siebformel
 
 ![[Bildschirmfoto 2026-03-17 um 15.52.18.png]]
+
+

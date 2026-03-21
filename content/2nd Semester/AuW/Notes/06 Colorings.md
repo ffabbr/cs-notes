@@ -81,8 +81,9 @@ $$\chi(G) \leq C(G) \leq \Delta(G) + 1.$$
 
 - Die Heuristik findet eine Färbung mit $\le 6$ Farben für planare Graphen: 
   Gibt immer einen Knoten mit max. 5 Nachbarn, $k=5$. Also $5+1=6$
+- ==jeder planare Graph ist 4-färbbar== 
 
-- ginge auch mit 4 Farben
+- jeder Teilgraph ist immer noch planar
 
 ---
 
@@ -104,7 +105,7 @@ Warum gilt das?
 Jeder Graph kann in Zeit $O(|E|)$ mit $\Delta(G)+1$ Farben gefärbt werden
 
 *Satz von Brooks:*
-$G \neq K_n, \quad G \neq C_{2n+1}, \quad G \text{ zusammenhängend:}$
+(1) $G$ zusammenhängend, (2) $G$ ist kein Kreis ungerader Länge, (3) nicht vollständiger Graph
 $\implies G$ kann in Zeit $O(|E|)$ mit $\Delta(G)$ Farben gefärbt werden
 
 > [!info]
@@ -122,7 +123,7 @@ Beweis nicht prüfungsrelevant.
 
 ---
 
-## 3-Färbung in linearer Zeit mit sqrt(n) Farben
+## 3-Färbung in linearer Zeit mit 4*sqrt(n)+1 Farben
 
 Einen ==3-färbbaren Graphen== kann man in Zeit $O(|V| + |E|)$ mit $O(\sqrt{|V|})$ Farben färben.
 
@@ -131,6 +132,11 @@ Einen ==3-färbbaren Graphen== kann man in Zeit $O(|V| + |E|)$ mit $O(\sqrt{|V|}
 3. Färbe verbleibende Knoten mit [[#Greedy Algorithm]] mit $\Delta + 1$ neuen Farben
 
 There are at most $n/\sqrt{n} = \sqrt{n}$ many vertices of degree $\ge \sqrt{n}$. Thus in the first step, we used at most $3 \cdot \sqrt{n}$ colors (3 colors per neighborhood). In the second step, we used another $O(\sqrt{n})$ many colors. Since we used BFS and the greedy-algorithm, the algorithm operates in $O(|E|)$ runtime in total, which proves the theorem.
+
+---
+
+> [!info]
+> Die **chromatische Zahl** ist unabhängig von der **Länge des kürzesten Kreises**.
 
 ---
 

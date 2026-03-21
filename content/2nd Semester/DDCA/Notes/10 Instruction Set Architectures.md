@@ -1,4 +1,14 @@
 
+> [!info] ISA vs Microarchitecture
+> **ISA**
+> - describes set of instructions that a processor can execute
+> - what the processor can do (the instruction set)
+> 
+> **Microarchitecture**
+> - how the processor executes the instructions defined by the ISA
+> - defines the specific implementation of a processor based on that ISA
+> - pipeline design, branch prediction policies, memory management
+
 ## Glossary
 
 | **Kürzel** | **Term**                     | **Description**                                                    |
@@ -24,6 +34,7 @@
 | **JMP**    | Jump                         |                                                                    |
 | **beq**    | branch if equal              |                                                                    |
 | **BRz**    | Branch if zero               |                                                                    |
+| **PC**     | Program Counter              | Stores address of next instruction                                 |
 
 
 ## ISA Introduction

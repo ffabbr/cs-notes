@@ -3,7 +3,10 @@ cssclasses:
 draft: "true"
 ---
 
-DDCA Schematic auf Slides verstehen, PVW
-AuW Arbeitsblatt restliche Aufgaben
+- AuW, restliche Aufgaben letztes Blatt
+- AuW, Aufgaben Peer Sheet
+- AuW Code Expert
+- AuW Vorlesung Donnerstag
 
-PProg PVW
+- Analysis Vorlesung Mittwoch
+- DDCA 

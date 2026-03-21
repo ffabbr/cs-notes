@@ -26,11 +26,11 @@
 - **Stored-Program**: Instructions stored in linear memory array, memory between insstructions and data is unified
 - **Sequential Instruction Execution:** Instructions executed sequentially one at the time. *Program counter*  identifies current instruction.
 
-## Component Overview
+## Components
 
 ![[2nd Semester/DDCA/Slides/07 Slides.pdf#page=30|07 Slides]]
 
-## Memory
+### 01 Memory
 
 - Stores **Programs** and **Data** through **bits**. 
 	- bits is the smallest unit
@@ -43,9 +43,7 @@
 
 Example, suppose a word is 4 Bytes (4 columns in one row). That's why the adresses on the left make 4er Schritte (C is 12). A box is 1 Byte, the content in hex format. 
 
-### Accessing Memory
-
-
+#### Accessing Memory
 
 - **MAR**: Memory Address Register
   Holds the address of where the data is stored or where to save something. 
@@ -61,13 +59,13 @@ Conventions to order the four bytes in a row:
 - **Little Endian**: Most significant byte gets **higher** byte address
 
 
-## Processing Unit
+### 02 Processing Unit
 
 ![[2nd Semester/DDCA/Slides/07 Slides.pdf#page=42|07 Slides]]
 
 - ALU performs arithmetic and bitwise operations. 
 - Registers hold temporary data. 
-### Registers
+#### Registers
 
 - [[#Memory]] is large but slow, ==Registers are for fast access==
 - Computer has small memory close to ALU for fast temporary access (f.ex. for intermediate results in a calculation)
@@ -75,12 +73,12 @@ Conventions to order the four bytes in a row:
 - F.ex. `LC-3` has 8 general purpose registers, `MIPS` has 32
 - [[03 Storage#Register|Implementation (03 Storage)]]
 
-## I/O, Input and Output
+### 03  I/O, Input and Output
 
 Well, the obvious. 
 Here, we mainly consider keyboard and monitor. 
 
-## Control Unit
+### 04 Control Unit
 
 Conducts step by step process of executing a program. Sends signals to ALU to select an operation, to registers to read or write data,  to memory to initiate read or write cycles. 
 
@@ -95,6 +93,9 @@ Conducts step by step process of executing a program. Sends signals to ALU to se
 
 ![[2nd Semester/DDCA/Slides/07 Slides.pdf#page=66|07 Slides]]
 ![[2nd Semester/DDCA/Slides/07 Slides.pdf#page=67|07 Slides]]
+
+
+---
 
 ## Instructions
 
@@ -189,5 +190,6 @@ The memory address is `A+i`. A is base address and i is the offset.
 
 
 ![[2nd Semester/DDCA/Slides/08 Slides.pdf#page=12|08 Slides]]
+
 ![[2nd Semester/DDCA/Slides/08 Slides.pdf#page=13|08 Slides]]
 ![[2nd Semester/DDCA/Slides/08 Slides.pdf#page=14|08 Slides]]

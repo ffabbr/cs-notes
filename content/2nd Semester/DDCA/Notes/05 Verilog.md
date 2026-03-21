@@ -65,7 +65,7 @@ endcase
 The casez statement acts like a case statement except that it also recognizes `?` as don’t care.
 
 ```verilog
-casex (address)
+case (address)
     4'b1???: data_out = bus_a;
     4'b01??: data_out = bus_b;
     4'b001?: data_out = bus_c;
