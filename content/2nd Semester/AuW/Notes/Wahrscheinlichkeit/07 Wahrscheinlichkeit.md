@@ -1,4 +1,6 @@
 
+## Introduction
+
 Ein **diskreter Wahrscheinlichkeitsraum** hat eine ==Ergebnismenge== $\Omega$ von Elementareineignissen $\omega_{i}$ mit je einer Wahrscheinlichkeit $P[\omega_{i}]$. Alle Wahrscheinlichkeiten addieren sich zu 1 auf. 
 
 Ein **Ereignis** E, oder oft $A_{i}$ ist eine Teilmenge von der Ergebnismenge. Die Wahrscheinlichkeit ist die Summe aller Wahrscheinlichkeiten aller Elementarereignisse die Teil des Ereignisses sind. Vgl. Komplementärereignis $\overline{E} = \Omega \setminus E$. 
@@ -19,17 +21,22 @@ $$
 3. $\text{Pr}[\bar{A}] = 1 - \text{Pr}[A]$.
 4. Wenn $A \subseteq B$, dann $Pr[A] \leq Pr[B]$
 
-In einem **Laplace-Raum** sind alle Elementarereignisse gleich wahrscheinlich. Somit 
-$$
-Pr[E]=\frac{|E|}{|\Omega|}
-$$
 
 > [!info]- Binomialkoeffizient, Formel
 > $$
 > \binom{n}{k} = \frac{n!}{k! \cdot (n - k)!}
 > $$
 
-**Vereinigung von Ereignissen**
+## Laplace
+
+In einem **Laplace-Raum** sind alle Elementarereignisse gleich wahrscheinlich. Somit 
+$$
+Pr[E]=\frac{|E|}{|\Omega|}
+$$
+
+$\Omega$ berechnen: z.B. 3 Mal Münze werfen: $2^3$. (Anzahl der möglichen Outcomes)
+
+## Vereinigung von Ereignissen
 
 Wenn die Ereignisse $A_1, \dots, A_n$ **paarweise disjunkt** sind, gilt. 
 $$ \text{Pr}\left[\bigcup_{i=1}^{n} A_i\right] = \sum_{i=1}^{n} \text{Pr}[A_i]. $$
