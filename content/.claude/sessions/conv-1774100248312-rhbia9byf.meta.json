@@ -1,0 +1,19 @@
+{
+  "id": "conv-1774100248312-rhbia9byf",
+  "title": "Find file references",
+  "titleGenerationStatus": "success",
+  "createdAt": 1774100248312,
+  "updatedAt": 1774361849067,
+  "lastResponseAt": 1774203991123,
+  "sessionId": "800c0893-8635-4917-bafe-e47157dc3e1a",
+  "sdkSessionId": "800c0893-8635-4917-bafe-e47157dc3e1a",
+  "usage": {
+    "model": "sonnet",
+    "inputTokens": 3,
+    "cacheCreationInputTokens": 805,
+    "cacheReadInputTokens": 28362,
+    "contextWindow": 200000,
+    "contextTokens": 29170,
+    "percentage": 15
+  }
+}

@@ -73,6 +73,8 @@ Conventions to order the four bytes in a row:
 - F.ex. `LC-3` has 8 general purpose registers, `MIPS` has 32
 - [[03 Storage#Register|Implementation (03 Storage)]]
 
+More Registers: better register allocation, fewer saves, re-stores, BUT larger instruction size and register file size
+
 ### 03  I/O, Input and Output
 
 Well, the obvious. 
@@ -97,99 +99,10 @@ Conducts step by step process of executing a program. Sends signals to ALU to se
 
 ---
 
-## Instructions
+## Dataflow
 
-- an instruction is the most basic unit of computer processing 
-- the ISA (instruction set architecture) is like the "vocabulary" of the computer language
-- can be written as machine language (0's and 1's) or Assembly (human readable)
-- `LC-3` vs `MIPS` instructions
+The Von Neumann model has a **fixed sequence**. 
 
-1. **Opcode**: what to do
-2. **Operands**: who does it
+The Dataflow model goes by data availability (in data flow order), meaning f.ex. when Operands are loaded, in dependence of the program, etc. multiple Instructions can run at the same time, thus in **parallel**.
 
-**3 Types of Instructions**
-
-1. operate instructions (in the ALU)
-2. move data 
-3. change sequence of execution
-
-> [!info]- Assembly Instructions, Examples
-> **Assembly**: 
-> ```
-> add a, b, c
-> ```
-> 
-> **LC-3 registers**: 
-> ```
-> b = R1 
-> c = R2
-> a = RO
-> ```
-> 
-> **MIPS-registers**
-> ```
-> b = $s1
-> c = $s2
-> a = $s0
-> ```
-
-> [!success] Example for an LC-3 Instruction
-> In binary code, `0001` is the **opcode for ADD**. Next, we have the desgination register. The R's stand for the Registers. `110` is the binary number for 6, so R6. R2 is the source register 1, so the first number to be added. A `0` in bit 5 means we want to add a value of another register, and not a raw number. Bits 4 and 5 are ignored, and R6 is our Source Register 2. 
-> 
-> ==Generally, we do not need to know such syntax.== 
-> 
-> ![[Bildschirmfoto 2026-03-16 um 15.18.25.png]]
-> 
-> ![[2nd Semester/DDCA/Slides/07 Slides.pdf#page=74|07 Slides]]
-
-> [!Note] Example for a MIPS Instruction
-> ![[2nd Semester/DDCA/Slides/07 Slides.pdf#page=76|07 Slides]]
-
-
-## Reading Operands from Memory
-
-- load from memory to register
-- store from register to memory
-
-### Example, load word
-
-High level code: 
-`A = A[i];`
-
-Assembly: 
-`load a, A, i`
-
-The memory address is `A+i`. A is base address and i is the offset. 
-
-→ [[2nd Semester/DDCA/Slides/08 Slides.pdf#page=60|Base+Offset Addressing Mode]]
-
-![[2nd Semester/DDCA/Slides/07 Slides.pdf#page=79|07 Slides]]
-![[2nd Semester/DDCA/Slides/07 Slides.pdf#page=80|07 Slides]]
-![[2nd Semester/DDCA/Slides/07 Slides.pdf#page=81|07 Slides]]
-
-## Instruction Processing Cycle
-
-*If a value from memory is interpreted as an instruction depends on when in the instruction cycle it is fetched. F.ex. in the FETCH  state, it is an instruction, in FETCH OPERANDS as see it as Data.* 
-
-1. **Fetch**
-   Retrieve the instruction from memory
-	1. Load the MAR with contents of the PC, increment the PC
-	2. Interrogate memory, pleace instruction in MDR
-	3. Load the IR with contents of the MDR
-2. **Decode:** Determine the instruction’s operation and operands
-3. **Evaluate Address:** Calculate memory addresses for memory operands (if needed).
-4. **FETCH OPERANDS**
-   Get the operands from registers or memory.
-	- **LDR** (Load Register): load MAR with address calculated in [[#03 Evaluate Address]], read memory, place source operand in MDR
-	- **ADD**: Get source operands from register file. 
-5. **EXECUTE:** Perform the operation in the ALU.
-6. **STORE RESULT:** Write the result back to a register or memory.
-
-
----
-
-
-![[2nd Semester/DDCA/Slides/08 Slides.pdf#page=12|08 Slides]]
-
-![[2nd Semester/DDCA/Slides/08 Slides.pdf#page=13|08 Slides]]
-![[2nd Semester/DDCA/Slides/08 Slides.pdf#page=14|08 Slides]]
+![[Bildschirmfoto 2026-03-21 um 14.37.04.png]]

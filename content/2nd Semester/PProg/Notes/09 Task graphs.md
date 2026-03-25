@@ -22,7 +22,6 @@
 ## Example, Fibonacci
 
 ![[2nd Semester/PProg/Slides/09 Slides.pdf#page=12]]
-![[2nd Semester/PProg/Slides/09 Slides.pdf#page=14]]
 
 
 ## Performance Model
@@ -54,17 +53,12 @@ $$
 
 ![[Bildschirmfoto 2026-03-19 um 14.37.21.png]]
 
-
-
 ![[2nd Semester/PProg/Slides/09 Slides.pdf#page=20]]
-
-**Goals and Motivation**
-
-![[2nd Semester/PProg/Slides/09 Slides.pdf#page=27]]
 
 ### DAG Bounds
 
-![[2nd Semester/PProg/Slides/09 Slides.pdf#page=21]]
+**wide graph**: higher potential parallelism (shorter $T_{\infty}$)
+**deep graph**: more dependencies, less speedup
 
 #### Lower bound
 
@@ -100,3 +94,55 @@ $$
 
 ---
 
+## Asymptotic Bound
+
+Summing an Array: 
+- Sequential: $O(n) = T_{1}$
+- Parallel: $O(\log n) = T_{\infty} = span$
+- Parallelism: $O\left( \frac{n}{\log n} \right)$
+
+## Patterns
+
+Reduction always achieve $O(\log n)$
+Map achieves $O(\log n)$ with Divide & Conquer
+### Reduction
+
+The dimension (size) of the output is smaller than of the input. We get the output by applying an **associative operator** on all Input entries. 
+
+### Maps
+
+A map applies a function to each element. f.ex. squaring each element of an array
+
+|output| = |input|
+
+**Zip map**: multiple inputs, f.ex. element-wise addition of 2 arrays
+**Stencil**: multiple inputs of the same array to calculate the output. f.ex. `O[i] = f(Input[i-1], Input[i])`. 
+
+### Prefix-sum
+
+![[Bildschirmfoto 2026-03-24 um 09.24.12.png]]
+
+![[2nd Semester/PProg/Slides/09 Slides.pdf#page=64]]
+
+`fromLeft = sum_of_left + fromLeft of top`
+
+$O(n)$ work, $O(\log n)$ span
+
+### Pack
+
+Given an array input, produce an array output containing only elements such that f(elt) is true.
+
+Output array hat Elemente aus dem Input mit bestimmen Eigenschaften. Erkennen: [[#Maps]]. In neues Array screiben: [[#Prefix-sum]]. 
+
+![[2nd Semester/PProg/Slides/09 Slides.pdf#page=72]]
+
+
+## Data structures
+
+For parallelism: **balanced trees / arrays** are better than lists, as we can bet all data in $O(\log n)$ instead of $O(n)$.
+
+![[Bildschirmfoto 2026-03-24 um 09.23.47.png]]
+
+
+## Example, Quicksort
+![[2nd Semester/PProg/Slides/09 Slides.pdf#page=76]]![[2nd Semester/PProg/Slides/09 Slides.pdf#page=77]]h

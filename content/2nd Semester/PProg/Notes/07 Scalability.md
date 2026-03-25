@@ -147,4 +147,6 @@ $$
 Siehe #exam , Kosten-Nutzen Analyse, lohnt es sich, mehr Hardware hinzuzufügen?
 
 
-![[Bildschirmfoto 2026-03-19 um 14.12.29.png]]![[Bildschirmfoto 2026-03-19 um 14.12.40.png]]![[Bildschirmfoto 2026-03-19 um 14.12.49.png]]
+![[Amdahls Law, PVW.png]]
+![[PVW Amdahl Percentage.png]]
+![[Gustafsons Law, PVW.png]]

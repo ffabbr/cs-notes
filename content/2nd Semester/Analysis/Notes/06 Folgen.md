@@ -55,7 +55,21 @@ $$\forall \varepsilon > 0 \; \forall N \in \mathbb{N}_0 \; \exists n \geq N : |a
 
 ---
 
-![[2nd Semester/Analysis/Slides/04 Slides.pdf#page=14]]
+Es gelte 
+- $\lim_{n\to\infty} a_n = A (\neq \pm \infty)$
+- $\lim_{n\to\infty} b_n = B (\neq \pm \infty)$
+- $C$ ist eine Zahl
+
+So gilt:
+
+1. $\lim_{n\to\infty} (a_n + b_n) = A + B$
+2. $\lim_{n\to\infty} (a_n - b_n) = A - B$
+3. $\lim_{n\to\infty} (a_n \cdot b_n) = A \cdot B$
+4. $\lim_{n\to\infty} (C \cdot a_n) = C \cdot A$
+5. $B \neq 0 \wedge b_n \neq 0 \implies \lim_{n\to\infty} (a_n/b_n) = A/B$
+6. $A < B \implies \exists N \in \mathbb{N} : a_n < b_n \quad \forall n \geq N$
+7. $(\exists N \in \mathbb{N} : a_n \leq b_n \quad \forall n \geq N) \implies A \leq B$
+
 
 > [!example] Beweis für iii)
 > 1. Stelle Formel $\forall \varepsilon > 0 \; \exists N \in \mathbb{N}_0 \; \forall n \geq N : |a_n - L| < \varepsilon$ für $a$ und $b$ auf
@@ -67,7 +81,7 @@ $$\forall \varepsilon > 0 \; \forall N \in \mathbb{N}_0 \; \exists n \geq N : |a
 
 ## Grenzwerte
 
-1. Kann ich den schnellsten Term ausklammern oder dividieren?  
+1. Kann ich den [[#Schnellsten Term ausklammern|schnellsten Term ausklammern]] oder dividieren?  
 2. [[#Wurzeltrick]]: Bei Addition/Subtraktion von Wurzeln, Formel mit konjugierter Form erweitern (Bruch, im Prinzip $\cdot 1$), vereinfachen 
 3. [[#Sandwich Theorem]]
 4. [[#Abschätzungen, Euler]]: Ähnlichkeit zu Folge e oder bekannter Folge aus den Regeln
@@ -167,7 +181,6 @@ $\lim_{ n \to \infty } \sqrt[n]{ 2n^2 + 5n }$
 
 ![[2nd Semester/Analysis/Slides/04 Slides.pdf#page=16]]
 
-
 ### Abschätzungen, Euler
 
 > [!success] Allgemein
@@ -194,16 +207,16 @@ $$\begin{align}
 
 
 > [!Note] Lemmas
-> - Jede konvergente Folge ist beschränkt. 
-> - **==Jede beschränkte und monotone Folge konvergiert.==** 
->   Eine monotone Folge konvergiert $\iff$ beschränkt
+> - konvergente Folge $\implies$ beschränkt. 
+> - **==beschränkt und monoton $\implies$ konvergiert==**
+> - monotone Folge konvergiert $\iff$ beschränkt
 > - beschränkte Folge hat mindestens einen Häufungspunkt **und konvergente Teilfolge** (Bolzano-Weierstrass)
 > - konvergierend, monoton, beschränkt: vgl. Grenzwert mit [[01 Logik, Mengen, Zahlen#Intervalle|sup/inf von Intervallen]] 
 
 ![[Pasted image 20260317201505.png]]
 ### Konvergenz zeigen durch beschränkt und monoton, bei rekursiv definierter Folge
 
-![[Bildschirmfoto 2026-03-17 um 19.35.20.png]]
+![[Bildschirmfoto 2026-03-17 um 19.35.20.png|590]]
 
 ---
 
@@ -213,7 +226,7 @@ $$\begin{align}
 - Jede beschränkte Folge hat lim sup und inf, auch, wenn keinen normalen Limes
 
 - Folge konvergiert $\implies \limsup = \liminf$
-- $(\limsup = \liminf \implies) ∧ \text{beschränkt} \implies$ Folge konvergiert 
+- $(\limsup = \liminf) \land \text{beschränkt} \implies \text{Folge konvergiert}$
 - $\limsup \neq \liminf \implies$ Folge divergent
 
 - `lim sup = lim inf`: gibt normalen limes, Folge **konvergent**
@@ -228,7 +241,7 @@ $$\begin{align}
 - [[#Sandwich Theorem]], oder
 - Der lim einer konvergenten Folge (falls existent) ist auch ein Häufungspunkt. **Folge in Teilfolgen unterteilen**, z.B. gerade/ungerage, die ==alle== Stellen abdecken, dann **limes dieser Teilfolgen vergleichen**. Es kann keinen anderen Häufungspunkt geben, da diese Teillfolgen alles abdecken. Der Grenzwert einer Teilfolge ist der Häufungspunkt. Gilt auch als Beweis
 
-![[Bildschirmfoto 2026-03-17 um 17.04.09.png]]
+![[Bildschirmfoto 2026-03-17 um 17.04.09.png|635]]
 
 ![[Bildschirmfoto 2026-03-17 um 20.15.53.png]]
 
@@ -254,7 +267,7 @@ $$
 
 - Beispiel, Beweis: $\frac{1}{n}$ konvergiert
 
-![[Bildschirmfoto 2026-03-14 um 15.54.01.png]]
+![[Bildschirmfoto 2026-03-14 um 15.54.01.png|751]]
 
 
 ---

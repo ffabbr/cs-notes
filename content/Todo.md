@@ -2,11 +2,7 @@
 cssclasses:
 draft: "true"
 ---
-
-- AuW, restliche Aufgaben letztes Blatt
-- AuW, Aufgaben Peer Sheet
-- AuW Code Expert
-- AuW Vorlesung Donnerstag
-
-- Analysis Vorlesung Mittwoch
-- DDCA 
+1. AuW Vorlesung gestern
+2. AuW, Quiz Training
+3. AuW lernen, Peer Sheet 
+4. AuW, restliche ==Aufgaben letztes Blatt== 

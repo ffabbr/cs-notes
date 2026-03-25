@@ -44,7 +44,7 @@ Laufzeit mit Adjecency list:
 GREEDY-FÄRBUNG (G)
 1: wähle eine beliebige Reihenfolge der Knoten: V = {v1, ..., vn}
 2: c[v1] ← 1
-3: for i = 2 to i = n do
+3: for i=2 to i=n
 4:     c[vi] ← min{k ∈ ℕ | k ≠ c(u) für alle u ∈ N(vi) ∩ {v1, ..., vi-1}}
 ```
 

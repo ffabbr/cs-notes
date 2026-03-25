@@ -1,4 +1,45 @@
 
+## Introduction
+
+- an instruction is the most basic unit of computer processing 
+- the [[10 Instruction Set Architectures|ISA]] (instruction set architecture) is like the "vocabulary" of the computer language
+- can be written as machine language (0's and 1's) or Assembly (human readable)
+- `LC-3` vs `MIPS` instructions
+
+
+> [!info]- Assembly Instructions, Examples
+> **Assembly**: 
+> ```
+> add a, b, c
+> ```
+> 
+> **LC-3 registers**: 
+> ```
+> b = R1 
+> c = R2
+> a = RO
+> ```
+> 
+> **MIPS-registers**
+> ```
+> b = $s1
+> c = $s2
+> a = $s0
+> ```
+
+> [!success]- Example for an LC-3 Instruction
+> In binary code, `0001` is the **opcode for ADD**. Next, we have the desgination register. The R's stand for the Registers. `110` is the binary number for 6, so R6. R2 is the source register 1, so the first number to be added. A `0` in bit 5 means we want to add a value of another register, and not a raw number. Bits 4 and 5 are ignored, and R6 is our Source Register 2. 
+> 
+> ==Generally, we do not need to know such syntax.== 
+> 
+> ![[Bildschirmfoto 2026-03-16 um 15.18.25.png]]
+> 
+> ![[2nd Semester/DDCA/Slides/07 Slides.pdf#page=74|07 Slides]]
+
+> [!Success]- Example for a MIPS Instruction
+> ![[2nd Semester/DDCA/Slides/07 Slides.pdf#page=76|07 Slides]]
+
+
 > [!info] ISA vs Microarchitecture
 > **ISA**
 > - describes set of instructions that a processor can execute
@@ -9,7 +50,27 @@
 > - defines the specific implementation of a processor based on that ISA
 > - pipeline design, branch prediction policies, memory management
 
-## Glossary
+### Instruction Processing Cycle
+
+*If a value from memory is interpreted as an instruction depends on when in the instruction cycle it is fetched. F.ex. in the FETCH  state, it is an instruction, in FETCH OPERANDS as see it as Data.* 
+
+1. **Fetch**
+   Retrieve the instruction from memory
+	1. Load the MAR with contents of the PC, increment the PC
+	2. Interrogate memory, pleace instruction in MDR
+	3. Load the IR with contents of the MDR
+2. **Decode:** Determine the instruction’s operation and operands
+3. **Evaluate Address:** Calculate memory addresses for memory operands (if needed).
+4. **FETCH OPERANDS**
+   Get the operands from registers or memory.
+	- **LDR** (Load Register): load MAR with address calculated in [[#03 Evaluate Address]], read memory, place source operand in MDR
+	- **ADD**: Get source operands from register file. 
+5. **EXECUTE:** Perform the operation in the ALU.
+6. **STORE RESULT:** Write the result back to a register or memory.
+
+![[2nd Semester/DDCA/Slides/08 Slides.pdf#page=14|08 Slides]]
+
+### Glossary
 
 | **Kürzel** | **Term**                     | **Description**                                                    |
 | ---------- | ---------------------------- | ------------------------------------------------------------------ |
@@ -41,30 +102,27 @@
 
 The ISA is the connection of software and hardware. It specifies the memoriy organization, the register set and the instruction set (Opcodes, Data types, Addressing modes). 
 
+1. **Opcode**: what operation
+2. **Operands**: who does it
 ## Opcodes
-
-Recall:
-1. **Opcode**: Opcodes ==specify what operation to do==.
-2. Operands: who does it
 
 Use a large or small set of opcodes, f.ex. an operation for $(A\cdot B) + C$, but many operations mean complex hardware. So tradeoffs between 
 
 - Hardware vs Software complexity
 - Latency
 
-LC-3, MIPS have 3 types of opcodes
+**3 Types of Instructions**
 
 1. operate instructions (in the ALU)
 2. move data 
-3. control
-
-### Opcodes in LC-3
+3. control / change sequence of execution
+### LC-3 Opcodes
 
 Example Opcode for ADD: 0001. There are 15 in total. 
 
 ![[2nd Semester/DDCA/Slides/08 Slides.pdf#page=23|08 Slides]]
 
-### Opcodes in MIPS
+### MIPS Opcodes
 
 #### MIPS Instruction Types
 
@@ -72,13 +130,7 @@ Example Opcode for ADD: 0001. There are 15 in total.
 - **I-type (Immediate):** versions of R-type that involve f.ex. memory access, immediate operand, etc.
 - **J-type (Jump):** f.ex. floating point operations, jumps to different part of program, large address space needed, etc.
 
-#### MIPS Instruction Type Slides
-
 ![[2nd Semester/DDCA/Slides/08 Slides.pdf#page=25|08 Slides]]
-
-(this is only a selection of MIPS Upcodes, ==there are more==).
-
-![[2nd Semester/DDCA/Slides/08 Slides.pdf#page=26|08 Slides]]
 
 
 ## Data Types
@@ -107,13 +159,13 @@ Example Opcode for ADD: 0001. There are 15 in total.
 > - more work for the compiler at once 
 > - more complex hardware
 
-### LC-3
+### LC-3 Data Types
 
 - **2's Complement:** standard binary system, represent whole numbers (both positive and negative)
 - **Finding the negative version of a binary number**: 
   `Negative of ... X = NOT(X) + 1`. To make a positive number negative (or vice versa), you **invert every bit**, then add 1. So to display `-2`, so `00010`, we make `11101`, then add `0001`, and get `11110`. 
 
-### MIPS
+### MIPS Data Types
 
 - **2's complement**
 - **Unsigned integers**: numbers that will never be negative
@@ -152,19 +204,18 @@ Compared to LC-3, MIPS has pseudo-direct addressing (j, jal), but NO indirect ad
 
 ## Operate Instructions
 
-### LC-3
+### LC-3 Operate Instructions
 
 - NOT
 - ADD
 - AND
-
 
 Bit no. 5 ("steering bit") is an extension of the Opcode. It determines what Bits 4 to 0 are. `0` means we have `00`, followed by a source register (3 bit address). `1` means the upcoming 5 bits are the values directly ("an immediate").
 
 ![[2nd Semester/DDCA/Slides/08 Slides.pdf#page=48|08 Slides]]
 
 
-### MIPS
+### MIPS Operate Instructions
 
 - there is NO `NOT` 
 
@@ -176,7 +227,7 @@ F.ex. an **I-type** instruction:
 
 ---
 
-### Subtraction, MIPS vs LC-3
+### Example: Subtraction
 
 `a = b + c - d`
 
@@ -201,22 +252,18 @@ In **LC-3**:
 2. DR or SR
 3. Address generation bits
 
-
 Remember [[#LC-3 Addressing Modes]], we are using PC relative addressing. 
 
 **LD**: Load from memory 
 **ST**: Store into memory
 
+![[2nd Semester/DDCA/Slides/07 Slides.pdf#page=79|07 Slides]]
+
 ![[2nd Semester/DDCA/Slides/08 Slides.pdf#page=57|08 Slides]]
 
+→ [[2nd Semester/DDCA/Slides/08 Slides.pdf#page=58|Indirect Accessing Mode]]
 
-**Indirect Addressing Mode**
-
-![[2nd Semester/DDCA/Slides/08 Slides.pdf#page=58|08 Slides]]
-
-### Immediate Addressing Mode
-
-### LC-3
+### LC-3 Data Movement
 
 **LEA**: Load Effective Address
 Loading an immediate value into the register without going to memory. The "effective address" stored is the result of `PC + offset`. So the calculated address itself is stored in the register. 
@@ -226,7 +273,7 @@ For comparison, at LD/ST, we need to first calculate the address and THEN go to 
 So LEA: `DR <- PC + sign-extended(PCoffset9)`
 
 
-### MIPS
+### MIPS Data Movement
 
 Instructions are exactly 32 bits long, so you cannot fit a full 32-bit constant inside a single instruction. In an I-type instruction (like `addi`), the **immediate** field is only 16 bits. If you want to load the value `0x6d5e4f3c`, you can't do it in one go because that value is 32 bits wide.
 
@@ -246,11 +293,30 @@ We "build" the number in two 16-bit halves:
 
 ### Conditions
 
-Condition codes are separate single bit hardware registers. When a value is written into a general purpose register, 3 condition codes are updated. 
+### LC-3 Conditions
+
+**Branch if Zero**
+
+Condition codes are separate single bit hardware registers. When a value is written into a general purpose register, 3 condition codes are updated. The branch instruction itself does **no comparison**.
 
 3 condition codes, EXACTLY 1 is set to 1, others 0
 - N set, Z and P cleared: value **negative**
 - Z set, N and P cleared: **value is 0**
 - P set, N and Z cleared: value **positive**
 
-![[2nd Semester/DDCA/Slides/08 Slides.pdf#page=76]]![[2nd Semester/DDCA/Slides/08 Slides.pdf#page=78]]
+### MIPS Conditions
+
+The comparison happens in the branch instruction itself. So instead of reading of stored bits as in LC-3, we perform the comparison when requested. For example, beq (branch if rs and rt are equal)
+
+```pseudocode
+beq	$s0, $s1, offset
+
+-------------------------
+| 4 | rs | rt | offset   |
+-------------------------
+```
+
+
+
+
+
