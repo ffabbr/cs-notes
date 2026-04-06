@@ -1,15 +1,16 @@
 
-Seien $A$ und $B$ Ereignisse mit$\Pr[B] > 0$.
+Seien $A$ und $B$ Ereignisse mit $\Pr[B] > 0$.
 Die bedingte Wahrscheinlichkeit $\Pr[A|B]$von $A$ gegeben $B$ ist definiert durch
 
-$$\Pr[A|B] := \frac{Pr[A \cap B]}{Pr[B]}$$
+$$
+\Pr[A|B] := \frac{Pr[A \cap B]}{Pr[B]}
+$$
 
 > [!success] Allgemein
 > - $\Pr[A|\Omega] = \Pr[A]$
 > - $\Pr[A|A] = 1$
 > - $\Pr[A|\bar{A}] = 0$
 > - $\Pr[A \cap B] = \Pr[A|B] \cdot \Pr[B] = \Pr[B|A] \cdot \Pr[A]$
-> - $\Pr[A \cap B] = Pr[A|B] \cdot Pr[B]$
 
 > [!example]- 2-Kinder-Problem
 > Familie hat 2 Kinder, mindestens ein Kind ist ein Mädchen. Was ist die Wahrscheinlichkeit, dass das andere Kind auch ein Mädchen ist. 
@@ -32,7 +33,13 @@ Wahrscheinlichkeit, dass mehrere Ereignisse zusammen (oder nacheinander) eintret
 
 ![[Bildschirmfoto 2026-03-23 um 11.27.38.png]]
 
+
 > [!example]- Geburtstagsproblem
+> Wahrscheinlichkeit, dass mindestens 2 Personen von m gleichen Geburtstag haben. Gegenwahrscheinlichkeit, alle haben unterschiedlichen Geburtstag. Erste Person hat $\frac{365}{365}$ Möglichkeiten, 2. hat $\frac{364}{365}$ Möglichkeiten, usw., somit
+> $$
+> P(\text{mindestens 2 gleichen Geb})=1-\prod_{k=0}^{m-1} \frac{365-k}{365}
+> $$
+> **Alternative Vorstellung**
 > Jeder Ball wird zufällig in einen der 365 Körbe geworfen. *Was ist die Wahrscheinlichkeit, dass 2 Bälle im gleichen Korb landen?*, bzw. ==Komplementärereignis==: *Was ist die W'keit, dass alle Bälle in unterschiedlichen Körben landen?*
 > - Bälle ($m$): Personen im Raum
 > - Körbe ($n$): möglichen Geburtstage (365)
@@ -42,39 +49,42 @@ Wahrscheinlichkeit, dass mehrere Ereignisse zusammen (oder nacheinander) eintret
 > **Vereinfachen**:
 > $$
 > \begin{aligned}
-\left(1 - \frac{1}{n}\right) \left(1 - \frac{2}{n}\right) \dots \left(1 - \frac{m-1}{n}\right) &\approx e^{-\frac{1}{n}} \cdot e^{-\frac{2}{n}} \dots e^{-\frac{m-1}{n}} \\
-&\approx e^{-\frac{1}{n} (1 + 2 + \dots + (m-1))} \\
-&= e^{-\frac{(m-1) \cdot m}{2n}}
-\end{aligned}
+> \left(1 - \frac{1}{n}\right) \left(1 - \frac{2}{n}\right) \dots \left(1 - \frac{m-1}{n}\right) &\approx e^{-\frac{1}{n}} \cdot e^{-\frac{2}{n}} \dots e^{-\frac{m-1}{n}} \\
+> &\approx e^{-\frac{1}{n} (1 + 2 + \dots + (m-1))} \\
+> &= e^{-\frac{(m-1) \cdot m}{2n}}
+> \end{aligned}
 > $$
 
 
 ## Satz der totalen Wahrscheinlichkeit
 
-Der Satz von der totalen Wahrscheinlichkeit berechnet die Gesamtwahrscheinlichkeit eines Ereignisses $B$, das über mehrere, sich gegenseitig ausschließende Wege ($A_1$ bis $A_n$) erreicht werden kann. Man multipliziert die Wahrscheinlichkeit jedes Weges mit der Wahrscheinlichkeit, dass $B$ auf genau diesem Weg eintritt, und summiert die Ergebnisse auf:
+Wir haben ein Ereignis $B$, dass sich mit den $A_{i}$ überschneidet. Wir addieren alle Unionen mit den $A_{i}$.
+
 $$
-\Pr[B] = \sum_{i=1}^{n} \Pr[B|A_i] \cdot \Pr[A_i]
+\Pr[B] = \sum_{i=1}^{n} \Pr[B|A_i] \cdot \Pr[A_i]=\sum_{i=1}^{n} \Pr[B \cap A_i]
 $$
 
 **Beweis:** 
- 1. Zerlegen: Das Ereignis $B$ wird in nicht-überlappende Stücke aufgeteilt, basierend darauf, mit welchem $A_i$ es sich überschneidet: $B = (B \cap A_1) \cup \dots \cup (B \cap A_n)$.
-2. Addieren: Da sich diese Stücke nicht überlappen, ist die Gesamtwahrscheinlichkeit von $B$ einfach die Summe der Wahrscheinlichkeiten dieser Stücke: $\Pr[B] = \sum \Pr[B \cap A_i]$.
+ 1. $B$ in nicht-überlappende Stücke aufteilen $B = (B \cap A_1) \cup \dots \cup (B \cap A_n)$.
+2. Da sich diese Stücke nicht überlappen, ist die Gesamtwahrscheinlichkeit von $B$ einfach die Summe der Wahrscheinlichkeiten dieser Stücke: $\Pr[B] = \sum \Pr[B \cap A_i]$.
 3. Umformen: Die Definition der bedingten Wahrscheinlichkeit besagt, dass $\Pr[B \cap A_i] = \Pr[B|A_i] \cdot \Pr[A_i]$ ist. Setzt man dies in die Summe ein, erhält man die finale Formel.
 
 ![[Bildschirmfoto 2026-03-23 um 11.45.19.png]]
 
-## Satz von Beyes
+## Satz von Bayes
 
-Seien $A_{1}, \dots, A_{n}$ paarweise disjunkte Ereignisse, und $B \subseteq A_{1} \cup \dots \cup A_{n}$ ein Ereignis mit $\Pr[B] > 0$. Für jedes $i \in \{1, \dots, n\}$ gilt
+Im Prinzip einfach Günstige durch Mögliche. Oben hat man den "richtigen" Weg zum Ereignis B, und unten hat man alle möglichen Wege zum Ereignis B, addiert. Die Addition geht ja nur wenn disjunkt, also müssen $A_{1}, \dots, A_{n}$ paarweise disjunkt sein, und $B \subseteq A_{1} \cup \dots \cup A_{n}$ ein Ereignis mit $\Pr[B] > 0$. 
 
 $$
-\text{Pr}[A_i|B] = \frac{\text{Pr}[B|A_i] \cdot \text{Pr}[A_i]}{\sum_{j=1}^{n} \text{Pr}[B|A_j] \cdot \text{Pr}[A_j]}
+\text{Pr}[A_i|B] = \frac{\text{Pr}[B|A_i] \cdot \text{Pr}[A_i]}{\sum_{j=1}^{n} \text{Pr}[B|A_j] \cdot \text{Pr}[A_j]} = \frac{\Pr(B \cap A_i)} {\sum_{j=1}^{n} \Pr(B \cap A_j)}
 $$
 
-Beweis: siehe Bedingte Wahrscheinlichkeit und Satz der totalen Wahrscheinlichkeit
+**Beweis**: siehe Bedingte Wahrscheinlichkeit und Satz der totalen Wahrscheinlichkeit
 
 - $\Pr[B] = \sum_{i=1}^{n} \Pr[B|A_i] \cdot \Pr[A_i]$  
 - $\Pr[A|B] := \frac{Pr[A \cap B]}{Pr[B]}$.
+
+Hat man ein Gesundheitsexperiment und möchte auf falsch positive, etc. überprüfen, hat man oben den "richtigen Weg", also krank und positiv, unten dann alle möglichen Wege die der Test positiv sein könnte. 
 
 ![[2nd Semester/AuW/Slides/08 Slides.pdf#page=5]]
 

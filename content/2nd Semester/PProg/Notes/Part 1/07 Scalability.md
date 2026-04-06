@@ -39,37 +39,34 @@ $$
 E=\frac{S_{p}}{p}
 $$
 
----
-
-### Beispiel
-
-80% parallelisierbar, 20% sequenziell. 
-
-- $T_{1} = 10$
-- $T_{seq} = 10 \cdot 0.2$
-- $T_{p} = 10 \cdot 0.8$
-- $p=8$ CPUs
-
-$T_{8} = ?$
-$$
-\begin{align}
-T_{8} &= T_{seq} + T_{par} \\
- & = 10\cdot 0.2 + \frac{10\cdot 0.8}{8} \\
- & = 2+1 \\
- & = 3
-\end{align}
-$$
-
-$S_{8} = ?$ 
-$$
-S_{8} = \frac{T_{1}}{T_{8}}=\frac{10}{3}=3.33
-$$
-
-$E=?$
-$$
-E=\frac{3.33}{8} \approx 0.4 \implies 40\%
-$$
-
+> [!example]- 
+> ### Beispiel
+> 80% parallelisierbar, 20% sequenziell.
+>
+> - $T_{1} = 10$
+> - $T_{seq} = 10 \cdot 0.2$
+> - $T_{par} = 10 \cdot 0.8$
+> - $p = 8$ CPUs
+>
+> $T_{8} = ?$
+> $$
+> \begin{align}
+> T_{8} &= T_{seq} + T_{par} \\
+>  &= 10 \cdot 0.2 + \frac{10 \cdot 0.8}{8} \\
+>  &= 2 + 1 \\
+>  &= 3
+> \end{align}
+> $$
+>
+> $S_{8} = ?$
+> $$
+> S_{8} = \frac{T_{1}}{T_{8}} = \frac{10}{3} = 3.33
+> $$
+>
+> $E = ?$
+> $$
+> E = \frac{3.33}{8} \approx 0.4 \implies 40\%
+> $$
 
 ---
 
@@ -107,10 +104,8 @@ $$
 
 ## Gustafson's Law
 
-*"Geht nimmer schneller, aber egal, ich kann mehr (anderes) in der selben Zeit machen"*
-
+*"ich kann mehr (anderes) in der selben Zeit machen"*
 Parallel part of a program scales with the problem size. 
-
 Wie viel Arbeit können wir in einem fixen Zeitfenster ausführen, wenn wir mehr Hardware hinzufügen? 
 
 **Formulas**

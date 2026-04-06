@@ -7,7 +7,7 @@ $$
 Wenn wir die Formel für die bedingte Wahrscheinlichkeit nehmen, können wir $\Pr[A|B] := \frac{Pr[A \cap B]}{Pr[B]}$ umformen auf 
 
 $$
-\Pr[A] \cdot \Pr[B] = \Pr[A \cap B]
+\Pr[A \cap B] = \Pr[A] \cdot \Pr[B]
 $$
 
 > [!warning]

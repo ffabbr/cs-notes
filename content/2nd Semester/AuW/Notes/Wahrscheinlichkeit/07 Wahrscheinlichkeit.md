@@ -1,3 +1,14 @@
+## Gymi thoughts
+
+- Versuche als Baum darstellen, multiplizieren oder addieren
+- Günstige durch Mögliche
+- bei [[08 Bedingte Wahrscheinlichkeit|bedingter Wahrscheinlichkeit]] eine Tabelle machen
+- $P(E_1 | E_2) = \frac{P(E_1 \wedge E_2)}{P(E_2)}$ 
+- $P(E_1 \wedge E_2) = P(E_1) \cdot P(E_2 | E_1)$
+- Einander ausschliessende Ereignisse (disjunkt): [[#Vereinigung von Ereignissen]]: $P(E_1 \vee E_2) = P(E_1) + P(E_2)$
+- Unabhängigkeit prüfen $P(E_1 \wedge E_2) = P(E_1) \cdot P(E_2)$
+- [[#Laplace]]: alles gleich Wahrscheinlich
+- wenn z.B. "mindestens", nutze Gegenwahrscheinlichkeit
 
 ## Introduction
 
@@ -9,6 +20,10 @@ $$
 \Pr[\overline{A} \cap B] = \Pr[B] - \Pr[A \cap B]
 $$
 
+$$
+Pr[B] = Pr[B|A] \cdot Pr[A] + Pr[B|\bar{A}] \cdot Pr[\bar{A}]
+$$
+
 Out-of-context fun fact: 
 $$
 1-x \approx e^{-x}
@@ -17,10 +32,8 @@ $$
 **Für Ereignisse A, B gilt:**
 
 1. $\text{Pr}[\emptyset] = 0, \text{Pr}[\Omega] = 1$.
-2. $0 \leq \text{Pr}[A] \leq 1$.
-3. $\text{Pr}[\bar{A}] = 1 - \text{Pr}[A]$.
-4. Wenn $A \subseteq B$, dann $Pr[A] \leq Pr[B]$
-
+2. $\text{Pr}[\bar{A}] = 1 - \text{Pr}[A]$.
+3. Wenn $A \subseteq B$, dann $Pr[A] \leq Pr[B]$
 
 > [!info]- Binomialkoeffizient, Formel
 > $$
@@ -31,7 +44,7 @@ $$
 
 In einem **Laplace-Raum** sind alle Elementarereignisse gleich wahrscheinlich. Somit 
 $$
-Pr[E]=\frac{|E|}{|\Omega|}
+\Pr[E]=\frac{|E|}{|\Omega|}
 $$
 
 $\Omega$ berechnen: z.B. 3 Mal Münze werfen: $2^3$. (Anzahl der möglichen Outcomes)
@@ -80,12 +93,3 @@ $$
 Wir mischen ein Deck von n Karten. 
 
 ![[Bildschirmfoto 2026-03-23 um 10.26.23.png]]
-
-## Kombinatorik 
-
-> [!info]- Binomialkoeffizient, Formel
-> $$
-> \binom{n}{k} = \frac{n!}{k! \cdot (n - k)!}
-> $$
-
-![[Bildschirmfoto 2026-03-19 um 17.22.16.png]]

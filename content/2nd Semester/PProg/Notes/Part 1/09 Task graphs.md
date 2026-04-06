@@ -1,4 +1,6 @@
 
+> Graph ohne cycles
+
 ## Introduction
 
 - a program using fork/join can be seen as a DAG
@@ -130,7 +132,7 @@ $O(n)$ work, $O(\log n)$ span
 
 ### Pack
 
-Given an array input, produce an array output containing only elements such that f(elt) is true.
+Given an array input, produce an array output containing only elements such that f(element) is true.
 
 Output array hat Elemente aus dem Input mit bestimmen Eigenschaften. Erkennen: [[#Maps]]. In neues Array screiben: [[#Prefix-sum]]. 
 
@@ -145,4 +147,4 @@ For parallelism: **balanced trees / arrays** are better than lists, as we can be
 
 
 ## Example, Quicksort
-![[2nd Semester/PProg/Slides/09 Slides.pdf#page=76]]![[2nd Semester/PProg/Slides/09 Slides.pdf#page=77]]h
+![[2nd Semester/PProg/Slides/09 Slides.pdf#page=76]]![[2nd Semester/PProg/Slides/09 Slides.pdf#page=77]]

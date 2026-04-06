@@ -4,18 +4,20 @@ draft: "true"
 
 ### PProg
 
+- [ ] Prüfungsaufgaben lösen
+
 ### Analysis
 
-- [ ] Prüfungsaufgaben lösen
-- [ ] Serien wiederholen
+- [ ] Skript durchgehen
+- [ ] Prüfungsaufgaben und Übungen lösen
+
 ### DDCA
 
-- [ ] erste Prüfungsaufgaben lösen
-- [ ] Shivi General Summary durchgehen
-- [ ] H&H reading
+- [ ] PVW Skript
+- [ ] Prüfungsaufgaben
 
 ### AuW
 
-- [ ] Beweise verstehen
+- [ ] Skript durchgehen, Beweise in-depth
 - [ ] Serien
 - [ ] Code Expert üben

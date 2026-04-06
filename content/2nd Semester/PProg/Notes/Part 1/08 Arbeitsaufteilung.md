@@ -41,12 +41,12 @@ Zur Arbeitsaufteilung, also der Zuteilung von Tasks zu Threads nutzen wir ==Java
 
 ### Callable vs Runnable
 
-![[2nd Semester/PProg/Slides/08 Slides.pdf#page=40]]
-
 ```java
 .submit(Callable<T> task) → Future<T>
 .submit(Runnable task) → Future<?>
 ```
+
+→ Callable hat einen return
 
 ### Executor Service Syntax (Hello World)
 
@@ -81,6 +81,11 @@ static class HelloTask implements Runnable {
 
 ## Framework: Fork Join 
 
+- recursiveAction has return type void
+- recursiveTask has a return value
+
+- fork/join only from within the pool, invoke externally
+
 → when a task is waiting, it is suspended and **other tasks are allowed to run** on that thread. Tasks on the thread are exchanged such that it always runs. 
 
 Wie beim [[#Framework Executor Service]] lesen Threads von der `global queue`. Neu: jeder Thread hat eine `local queue`. 
@@ -89,7 +94,12 @@ Jeder Thread arbeitet die `local queue` in LIFO (last in first out) ab. Also ste
 
 Ein Thread kann auch auf die `local queue` von einem anderen Thread zugreiten, in FIFO (also von hinten der local queue des anderen Threads). Eine hintere Aufgabe ist also eine aufwendigere (gut für Lastverteilung).
 
+> `Extends RecursiveTask<Integer>` und die `compute()` methode statt run. 
+
+![[Bildschirmfoto 2026-03-25 um 17.26.03.png]]
+
 ![[Bildschirmfoto 2026-03-19 um 14.43.42.png]]
+
 ![[Bildschirmfoto 2026-03-19 um 14.45.25.png]]
 
 
@@ -111,8 +121,5 @@ int rightAns = right.join();
 //int rightAns = right.compute();
 //int leftAns = left.join();
 ```
-
-
-![[2nd Semester/PProg/Slides/08 Slides.pdf#page=62]]
 
 ![[Bildschirmfoto 2026-03-18 um 17.42.06.png]]

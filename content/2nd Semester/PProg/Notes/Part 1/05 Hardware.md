@@ -1,6 +1,6 @@
 
 > [!warning] Not important
-> This chapter can be skipeed imo, I recommend jumping to [[06 Pipelining]] instead.
+> This chapter can be skipped/speedrun, I recommend jumping to [[06 Pipelining]] instead.
 
 - Modern CPUs exploit parallelism internally (caching, vectorization, ILP, pipelining), even on a single core
 - Code structure determines how effective these structures are

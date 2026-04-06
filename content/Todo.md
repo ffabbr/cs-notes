@@ -2,7 +2,14 @@
 cssclasses:
 draft: "true"
 ---
-1. AuW Vorlesung gestern
-2. AuW, Quiz Training
-3. AuW lernen, Peer Sheet 
-4. AuW, restliche ==Aufgaben letztes Blatt== 
+Analysis Vorlesung Mittwoch  
+Analysis AB Konvergenzradius  
+Analysis von vorne mit YouTube, etc. und Prüfungsaufgaben, Skript
+
+DDCA lectures  
+DDCA Notizen, Skript, Prüfungsaufgaben
+
+AuW Aufgabe Unten und Peer Grading
+AuW Wahrscheinlichkeit deep dive  
+AuW Graphen deep dive  
+Josia PDFs

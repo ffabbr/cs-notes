@@ -50,6 +50,17 @@ Beispiele:
 
 - Nicht konstant, für die **==n-te Instanz==**: `latency = Zeit für erste Instanz + (Längste Stage - Time of first stage) * (n-1)` 
 
+## Total time
+
+Example, we want to know how much time is needed for 100 instances. 
+
+Suppose in this example we are processing images. Every image has a sequence of operations. 
+
+1. Calculate for first instance. $T_{first} = 40 + 50 + 30 + 40 = 160\text{ ms}$
+2. Once the pipeline is full, it outputs one finished image at the rate of its bottleneck.
+   $T_{remaining} = 99 \times 50\text{ ms} = 4950\text{ ms}$
+3. $T_{total} = 160\text{ ms} + 4950\text{ ms} = 5110\text{ ms}$
+
 ## Example: unbalanced Pipeline creates waiting delays
 
 Example: washing loads

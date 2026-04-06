@@ -199,7 +199,20 @@ $$
 ## Potenzreihen
 
 → Polynom mit unendlich vielen Gliedern
+→ die geometrische Reihe ist eine Potenzreihe
 
 $$
 \sum_{k=0}^{\infty} c_k(x-a)^k
 $$
+
+- $a$ Entwicklungspunkt
+- $c$ Koeffizienten
+- $x$ Argument
+
+==Achtung==, wenn z.B. hoch 2k, dann substituiere 
+
+Innerhalb des ==Konvergenzintervalls== konvergiert die Folge, ausserhalb divergiert sie. Die **==Randpunkte==** des Konvergenzintervalls muss man händisch prüfen. Achtung, z.B. multiple choice "Reihe konvergiert absolut" in diesem Intervall, konvergiert es sicher absolut an den Rändern? #exam 
+
+![[Bildschirmfoto 2026-03-27 um 14.32.48.png]]
+
+![[Bildschirmfoto 2026-03-30 um 16.56.01.png]]
