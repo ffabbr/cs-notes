@@ -2,14 +2,13 @@
 cssclasses:
 draft: "true"
 ---
-Analysis Vorlesung Mittwoch  
-Analysis AB Konvergenzradius  
-Analysis von vorne mit YouTube, etc. und Prüfungsaufgaben, Skript
+Analysis	Prüfungsaufgaben
+		Vorlesung Mittwoch 
+		Konvergenzradius üben
 
-DDCA lectures  
-DDCA Notizen, Skript, Prüfungsaufgaben
+DDCA		Vorlesungen
+		Prüfungsaufgaben
 
-AuW Aufgabe Unten und Peer Grading
-AuW Wahrscheinlichkeit deep dive  
-AuW Graphen deep dive  
-Josia PDFs
+AuW 		Blatt und Peer Grading
+		Vorlesung schauen
+		Josia PDFs

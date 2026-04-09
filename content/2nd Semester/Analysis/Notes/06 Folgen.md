@@ -28,7 +28,7 @@ z.B. $b(n)=n^{-p}$ konvergiert für $p>0$, divergiert für $p < 0$.
 
 Können Konvergenz auf bestimmten Teilfolgen beobachten. z.B. nur jedes dritte Folgeglied. 
 
-> Haben wir eine konvergente Folge mit Grenzwert L, dann ==konvergiert auch jede Teilfolge zum gleichen Grenzwert L==. 
+> Eine Folge $(a_n)$ konvergiert gegen $L \iff$ Jede Teilfolge $(a_{n_k})$ konvergiert gegen $L$.
 
 Können zeigen, dass gesamte Folge nicht konvergiert (divergent ist), indem wir 2 Teilfolgen finden, die unterschiedliche Grenzwerte haben. 
 

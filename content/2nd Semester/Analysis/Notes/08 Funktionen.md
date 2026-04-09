@@ -6,7 +6,7 @@
 - **Injektiv**: nie 2 inputs zu gleichem output
 - **Surjektiv**: jeder output hat einen input
 - **Bijektiv**: injektiv und surjektiv, 1 to 1 
-
+	
 - Jede streng monotone Funktion ist injektiv.
 - Falls bijkeitv, existiert eine Umkehrfunktion. 
 
@@ -112,6 +112,7 @@ Hab ich z.B. einen Spitz, dann kann ich beliebig nahe ran-zoomen und komme dem S
 > - $f \cdot g$ ist stetig
 > - $\frac{f}{g}$ ist stetig, sofern $g \neq 0$
 > - Verknüpfung stetiger Funktionen wieder stetig, Grenzwert ist Grenzwert der inneren Funktion ausgewertet auf die äussere Funktion
+> - Umkehrfunktion einer stetigen Funktion ist auch stetig
 
 ### Folgenstetigkeit
 

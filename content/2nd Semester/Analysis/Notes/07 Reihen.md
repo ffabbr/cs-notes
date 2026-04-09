@@ -10,7 +10,7 @@
 - eine Reihe ist die **Summe der Glieder einer Folge**
 - darf NICHT umgeordnet werden
 
-eine Reihe konvergiert, wenn die Folge der Teilsummen konvergiert: 
+- Reihe konvergiert $\iff$ die Folge der Teilsummen konvergiert
 
 - **Teilsummen**: Summe der ersten $n$ Glieder der Reihe ($s_{1} = a_{1}, s_{2} = a_{1} + a_{2}, \dots$)
 - $s_1, s_2, s_3, \dots$ bilden eine neue Folge

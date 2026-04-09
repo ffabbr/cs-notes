@@ -3,18 +3,17 @@
   "title": "Search for addition theorem usage",
   "titleGenerationStatus": "success",
   "createdAt": 1774361860338,
-  "updatedAt": 1774363316714,
-  "lastResponseAt": 1774363316714,
+  "updatedAt": 1775583741770,
+  "lastResponseAt": 1775583741770,
   "sessionId": "a53d40f9-b4f2-4024-bb20-e8a29d607ade",
   "sdkSessionId": "a53d40f9-b4f2-4024-bb20-e8a29d607ade",
-  "currentNote": "2nd Semester/AuW/Notes/07 Wahrscheinlichkeit.md",
   "usage": {
     "model": "sonnet",
-    "inputTokens": 3,
-    "cacheCreationInputTokens": 554,
-    "cacheReadInputTokens": 15990,
+    "inputTokens": 1,
+    "cacheCreationInputTokens": 130,
+    "cacheReadInputTokens": 17495,
     "contextWindow": 200000,
-    "contextTokens": 16547,
-    "percentage": 8
+    "contextTokens": 17626,
+    "percentage": 9
   }
 }
