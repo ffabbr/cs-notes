@@ -1,4 +1,12 @@
 
+> [!info]- Rechenregeln
+> - $\log(a \cdot b) = \log(a) + \log(b)$
+> - |**Funktion f(x)**|**Ableitung f′(x)**|**Erklärung**|
+> |---|---|---|
+> |$e^x$|$e^x$|Die Ableitung von $x$ ist 1, also $e^x \cdot 1$.|
+> |$e^{5x}$|$5e^{5x}$|Die Ableitung von $5x$ ist 5.|
+> |$e^{x^2}$|$2x \cdot e^{x^2}$|Die Ableitung von $x^2$ ist $2x$.|
+> |$e^{\sin(x)}$|$\cos(x) \cdot e^{\sin(x)}$|Die Ableitung von $\sin(x)$ ist $\cos(x)$.|
 ## Logik
 
 - $\exists!$ es gibt genau eins

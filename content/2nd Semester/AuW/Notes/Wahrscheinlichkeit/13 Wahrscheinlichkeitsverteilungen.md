@@ -2,6 +2,17 @@
 - **Dichtefunktion**: Mit welcher Wahrscheinlichkeit tritt diese Zufallsvariable ein
 - **Verteilungsfunktion**: Mit welcher Wahrscheinlichkeit tritt eine kleiner gleiche Zufallsvariable ein (vorherrige aufaddiert)
 
+**Gemeinsame Dichte** (Wslkt, dass beides eintritt)
+$$
+f_{X,Y} (\alpha, \beta)=\Pr[X=\alpha, Y=\beta]
+$$
+
+**Dichte von X (Randdichte)**
+$$
+f_{X}(\alpha) = \sum_{\beta \in W_{y}} f_{X,Y}(\alpha, \beta) = \sum \Pr[X=\alpha, Y=\beta]=\Pr[X=\alpha]
+$$
+  Um die Wahrscheinlichkeit herauszufinden, dass es sonnig ist ($\Pr[X=\text{Sonnig}]$), müssen wir alle möglichen Kombinationen zusammenzählen, in denen die Sonne vorkommt.
+
 | **Verteilung / Begriff**         | **Kurzbeschreibung**                                                         |
 | -------------------------------- | ---------------------------------------------------------------------------- |
 | [[#Bernoulli-Verteilung]]        | Wslkt für Erfolg oder Misserfolg bei einem einzigen Versuch (Ja/Nein)        |
@@ -104,3 +115,4 @@ Beispiel Münzwurf: $Pr[X = k] = \binom{k-1}{n-1} (1-p)^{k-n} p^n$
 - $\mathbb{E}[X] = \sum_{i=1}^n \mathbb{E}[X_i] = \sum_{i=1}^n \frac{1}{p} = n \cdot \frac{1}{p} = \frac{n}{p}$
 
 ![[Bildschirmfoto 2026-04-02 um 23.40.00.png]]
+

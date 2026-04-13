@@ -2,13 +2,14 @@
 cssclasses:
 draft: "true"
 ---
-Analysis	Prüfungsaufgaben
-		Vorlesung Mittwoch 
-		Konvergenzradius üben
+PProg Vorlesung
+DDCA Vorlesungen
 
-DDCA		Vorlesungen
-		Prüfungsaufgaben
+AuW Code Expert
+AuW Peer Sheet
 
-AuW 		Blatt und Peer Grading
-		Vorlesung schauen
-		Josia PDFs
+Analysis 07 Sheet
+
+---
+
+7 weeks to go

@@ -9,7 +9,7 @@
 
 - eine Reihe ist die **Summe der Glieder einer Folge**
 - darf NICHT umgeordnet werden
-
+	
 - Reihe konvergiert $\iff$ die Folge der Teilsummen konvergiert
 
 - **Teilsummen**: Summe der ersten $n$ Glieder der Reihe ($s_{1} = a_{1}, s_{2} = a_{1} + a_{2}, \dots$)
@@ -34,6 +34,7 @@ $$
 \sum_{n=0}^{\infty} C \cdot a_n = C \cdot \sum_{n=0}^{\infty} a_n \quad (C \in \mathbb{R})
 $$
 
+
 $$
 \sum_{n=0}^{\infty} (a_n + b_n) = \sum_{n=0}^{\infty} a_n + \sum_{n=0}^{\infty} b_n
 $$
@@ -52,8 +53,11 @@ Es gibt nur 2 Reihen, bei denen wir das können. Die geometrische Reihe und die 
 
 konvergiert bei $q < 1$, divergiert bei $q > 1$.
 
-$$\sum_{n=k}^{\infty} a \cdot q^n = a\cdot \frac{q^k}{1-q} \quad \text{für } |q| 
-< 1$$
+$$
+\sum_{n=k}^{\infty} a \cdot q^n = a\cdot \frac{q^k}{1-q} \quad \text{für } |q| 
+< 1
+$$
+
 oder (einfachere) Formel ==ab 0== verwenden $\sum_{n=0}^{\infty} a\cdot q^n = a\cdot \frac{1}{1-q}$ und wenn z.B. ab 2, dann für 0, 1 abziehen. 
 
 ### Teleskope Reihe
@@ -78,14 +82,18 @@ $$
 
 **Harmonische Reihe**, konvergiert bei $s > 1$, divergiert bei $s \leq 1$
 
-$$\sum_{k=1}^{\infty} \frac{1}{k^s}$$
+$$
+\sum_{k=1}^{\infty} \frac{1}{k^s}
+$$
 
 
 **Beispiel**
 
 Konvergiert für $s > 1$ und divergiert für $s \leq 1$:
 
-$$\sum_{k=1}^{\infty} \frac{1}{k^s} = \sum_{k=1}^{\infty} k^{-s}$$
+$$
+\sum_{k=1}^{\infty} \frac{1}{k^s} = \sum_{k=1}^{\infty} k^{-s}
+$$
 
 **Beispiel**
 
@@ -98,6 +106,7 @@ $$\sum_{k=1}^{\infty} \frac{1}{k^s} = \sum_{k=1}^{\infty} k^{-s}$$
 **Absolut konvergent**:
 - $\sum_{n=0}^{\infty} |a_n|$ (Reihe der Absolutbeträge) konvergiert
 - Absolute Konvergenz $\implies$ Konvergenz
+- Jede absolut konvergente Reihe kann beliebig umgeordnet werden und sie konvergiert trotzdem absolut mit demselben Grenzwert.
 
 **Bedingt konvergent**: 
 - Reihe konvergiert
@@ -186,8 +195,6 @@ $$
 ### Quotientenkriterium
 
 → Wachstumsfaktor
-Indiz: Bruch mit Faktorial
-
 Indiz: Fakultät
 
 $$
@@ -211,7 +218,7 @@ $$
 
 ==Achtung==, wenn z.B. hoch 2k, dann substituiere 
 
-Innerhalb des ==Konvergenzintervalls== konvergiert die Folge, ausserhalb divergiert sie. Die **==Randpunkte==** des Konvergenzintervalls muss man händisch prüfen. Achtung, z.B. multiple choice "Reihe konvergiert absolut" in diesem Intervall, konvergiert es sicher absolut an den Rändern? #exam 
+Innerhalb des ==Konvergenzintervalls== konvergiert die Folge, ausserhalb divergiert sie. Die **==Randpunkte==** des Konvergenzintervalls muss man händisch prüfen. Achtung, z.B. multiple choice "Reihe konvergiert absolut" in diesem Intervall, konvergiert es sicher absolut an den Rändern? #exam  
 
 ![[Bildschirmfoto 2026-03-27 um 14.32.48.png]]
 

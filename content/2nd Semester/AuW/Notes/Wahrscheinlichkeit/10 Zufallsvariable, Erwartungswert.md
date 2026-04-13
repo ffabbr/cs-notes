@@ -118,7 +118,8 @@ $$
 > \end{align}
 > $$
 
-Zufallsvariable X und a, $b \in \mathbb{R}$. $\text{Var}[a \cdot X + b]$ ist unabhängig von $b$, und $a^2$ multipliziert sich. 
+Zufallsvariable X und a, $b \in \mathbb{R}$. 
+$\text{Var}[a \cdot X + b]$ ist unabhängig von $b$, und $a^2$ multipliziert sich. 
 
 ## Momente
 

@@ -9,6 +9,7 @@
 	
 - Jede streng monotone Funktion ist injektiv.
 - Falls bijkeitv, existiert eine Umkehrfunktion. 
+- Wenn $f$ streng monoton ist, ist auch die Umkehrfunktion $f^{-1}$ streng monoton
 
 ==Achtung==, multiple choice, bspw. "ist das eine injektive Funktion" → überprüfen, ob überhaupt eine Funktion #exam 
 
@@ -102,6 +103,8 @@ $$
 \forall \varepsilon > 0 \exists \delta > 0 \text{ s.d. } \forall x \in I \left( |x - x_0| < \delta \Rightarrow |f(x) - f(x_0)| < \varepsilon \right)
 $$
 
+Wenn der Abstand des x-Wertes zu unserem Startpunkt $x_0$ kleiner als das Delta ist dann ist auch der Abstand der Funktionswerte zueinander kleiner als das Epsilon.
+
 Hab ich z.B. einen Spitz, dann kann ich beliebig nahe ran-zoomen und komme dem Spitz immer näher, somit stetig.
 
 > [!info] Rechenregeln Stetigkeit
@@ -111,16 +114,24 @@ Hab ich z.B. einen Spitz, dann kann ich beliebig nahe ran-zoomen und komme dem S
 > - $c \cdot f$, respektive $c \cdot g$, ist für jede beliebige Konstante $c \in \mathbb{R}$ stetig
 > - $f \cdot g$ ist stetig
 > - $\frac{f}{g}$ ist stetig, sofern $g \neq 0$
-> - Verknüpfung stetiger Funktionen wieder stetig, Grenzwert ist Grenzwert der inneren Funktion ausgewertet auf die äussere Funktion
+> - Verknüpfung stetiger Funktionen wieder stetig, Grenzwert ist Grenzwert der inneren Funktion ausgewertet auf die äussere Funktion. [[2nd Semester/Analysis/Slides/06 Slides.pdf#page=19|Beweis]]
 > - Umkehrfunktion einer stetigen Funktion ist auch stetig
 
 ### Folgenstetigkeit
 
-$f$ an der Stelle $x_0$ genau dann stetig, wenn für jede Folge $(x_n)_{n \in \mathbb{N}_0}$ mit $x_n \to x_0$ die Folge $(f(x_n))_{n \in \mathbb{N}_0}$ gegen $f(x_0)$ konvergiert
+$f$ an der Stelle $x_0$ genau dann stetig, wenn für jede Folge $(x_n)_{n \in \mathbb{N}_0}$ mit $x_n \to x_0$ die Folge der Funktionswerte $(f(x_n))_{n \in \mathbb{N}_0}$ gegen $f(x_0)$ konvergiert.
 
-ODER
+### Zwischenwertsatz
 
-Folge genau dann stetig
+Eine stetige Funktion kann keine Werte überspringen. ==Achtung==, Stetigkeit muss auch am Rand gelten.
 
----
+> Es sei $f : [a, b] \to \mathbb{R}$ eine stetige Funktion und es sei $c$ eine Zahl zwischen $f(a)$ und $f(b)$. Dann gibt es ein $x \in [a, b]$ mit $f(x) = c$.
 
+Also: 
+Es sei $f : I \subset \mathbb{R} \to \mathbb{R}$ eine stetige Funktion, und es seinen $a, b \in I$ mit $f(a) < 0$ und $f(b) > 0$. Dann hat $f$ mindestens eine Nullstelle zwischen $a$ und $b$.
+
+Eine stetige Funktion, die auf einem abgeschlossenen und beschränkten Intervall definiert ist, nimmt dort immer einen konkreten maximalen und minimalen Wert an.
+
+## Ableitung
+
+→ siehe [[09 Differenzialrechnung]]

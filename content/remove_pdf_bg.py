@@ -77,6 +77,13 @@ _BG_PATTERNS: list[tuple[re.Pattern, int | None]] = [
         rf'({_QQ}q\s+[\d.\s]+re\s+W\*?\s+n\s+/\w+\s+cs\s+Q\s+q\s+/\w+\s+cs\s+)'
         rf'{_NW}\s+{_NW}\s+{_NW}\s+scn?\s+[\d.\s-]+re\s+f\*?'
     ), None),
+    # 12. DeviceGray white set before q — "1 g 1 G q <rect> re f Q" (beamer/LaTeX exports).
+    #    Color is set outside the graphics state save, so we match across that boundary.
+    #    max_start=80: restrict to near the start of the stream to avoid false positives.
+    (re.compile(
+        r'((?:0\s+g\s+0\s+G\s+)*)'
+        r'1\s+g\s+(?:1\s+G\s+)?q\s+[\d.\s-]+re\s+f\*?\s*Q'
+    ), 80),
 ]
 
 def _remove_bg(raw: str) -> tuple[str, int]:
