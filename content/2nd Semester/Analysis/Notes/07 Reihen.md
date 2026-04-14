@@ -157,7 +157,7 @@ vgl. ähnlich wie [[06 Folgen#Sandwich Theorem|Sandwich-Theorem]]
 
 Nehme Folge
 - hat nur positive Zahlen
-- ist monoton fallend
+- ist monoton fallend ($a_{n+1} \leq a_{n}$, oder $\frac{a_{n+1}}{a_{n}} \leq 1$ zeigen)
 - konvergiert ==nach 0== 
 
 Erstelle Reihe

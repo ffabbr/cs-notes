@@ -2,13 +2,17 @@
 cssclasses:
 draft: "true"
 ---
-PProg Vorlesung
-DDCA Vorlesungen
 
-AuW Code Expert
 AuW Peer Sheet
 
-Analysis 07 Sheet
+Abendessen
+WG besuchen
+
+---
+
+AuW CE
+DDCA Vorlesungen
+AuW Vorlesung Dienstag
 
 ---
 

@@ -45,8 +45,24 @@ $$
 
 ### Extremstellen
 
-![[Bildschirmfoto 2026-04-13 um 00.27.31.png]]
+### Lokale Extremstellen
 
-![[Bildschirmfoto 2026-04-13 um 00.28.52.png]]
+Wenn es eine lokale Extremstelle $x_{0}$ gibt, so ist sie entweder
 
-![[Bildschirmfoto 2026-04-13 um 00.29.03.png]]
+1. am Rand des Intervalls (Endpunkt)
+2. an einem Knick ($f$ ist an $x_{0}$ nicht differenzierbar)
+3. an waagrechten Stelle ($f'(x_{0})=0$)
+
+### Satz von Rolle
+
+Funktion im Intervall $[a,b]$ **stetig** und **differenzierbar**. Wenn $f(a) = f(b)$, dann gibt es eine Stelle $x \in (a,b)$ mit $f(x)=0$. 
+
+### Mittelwertsatz
+
+Funktion im Intervall $[a,b]$ **stetig** und **differenzierbar**. Es gibt eine Stelle $x$, an der der Wert der Ableitung genau der Differenzenquotient (Durchschnitt) ist.
+
+$$
+f'(x) = \frac{f(b) - f(a)}{b - a}
+$$
+
+

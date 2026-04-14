@@ -95,17 +95,16 @@ $$f|_{D'} : D' \to \mathbb{R} \text{ mit } f|_{D'}(x) = f(x) \forall x \in D'$$
 
 ## Stetigkeit
 
-Eine Funktion ist stetig, wenn an jedem Punkt stetig, aka keinen Sprung.
+Eine Funktion ist stetig, wenn an jedem Punkt stetig, aka keinen Sprung. Vorstellung Zoom: Hab ich z.B. einen Spitz, dann kann ich beliebig nahe ran-zoomen und komme dem Spitz immer näher, somit stetig. 
 
-Eine Funktion ist an der Stelle $x_0$ **stetig**, wenn zu jedem $\varepsilon$ um den Funktionswert $f(x_0)$ ein Bereich $\delta$ um $x_0$ existiert, sodass alle $x$-Werte aus diesem Bereich Funktionswerte liefern, die weniger als $\varepsilon$ von $f(x_0)$ abweichen.
+==Ich darf annehmen, dass Polynome, sin(x), log, etc. stetisch sind.== 
 
-$$
-\forall \varepsilon > 0 \exists \delta > 0 \text{ s.d. } \forall x \in I \left( |x - x_0| < \delta \Rightarrow |f(x) - f(x_0)| < \varepsilon \right)
-$$
+Stetigkeit zeigen: 
 
-Wenn der Abstand des x-Wertes zu unserem Startpunkt $x_0$ kleiner als das Delta ist dann ist auch der Abstand der Funktionswerte zueinander kleiner als das Epsilon.
+- [[#Definition]]
+- [[#Links- und rechtsseitiger Limes]]
+- [[#Folgenstetigkeit]]
 
-Hab ich z.B. einen Spitz, dann kann ich beliebig nahe ran-zoomen und komme dem Spitz immer näher, somit stetig.
 
 > [!info] Rechenregeln Stetigkeit
 > Wir gehen von zwei stetigen Funktionen $f, g : D \subset \mathbb{R} \to \mathbb{R}$ aus. Dann gilt:
@@ -113,17 +112,58 @@ Hab ich z.B. einen Spitz, dann kann ich beliebig nahe ran-zoomen und komme dem S
 > - $f - g$ ist stetig
 > - $c \cdot f$, respektive $c \cdot g$, ist für jede beliebige Konstante $c \in \mathbb{R}$ stetig
 > - $f \cdot g$ ist stetig
-> - $\frac{f}{g}$ ist stetig, sofern $g \neq 0$
+> - $\frac{f}{g}$ ist stetig, wenn $g \neq 0$
 > - Verknüpfung stetiger Funktionen wieder stetig, Grenzwert ist Grenzwert der inneren Funktion ausgewertet auf die äussere Funktion. [[2nd Semester/Analysis/Slides/06 Slides.pdf#page=19|Beweis]]
+>   $$
+>   \lim_{n \to \infty} f(x_n) = f\left(\lim_{n \to \infty} x_n\right)
+>   $$
 > - Umkehrfunktion einer stetigen Funktion ist auch stetig
 
+
+### Definition
+
+Wenn der **Abstand des x-Wertes** zu unserem Startpunkt $x_0$ **kleiner als Delta** ist dann ist auch der **Abstand der Funktionswerte kleiner als Epsilon**. 
+
+Eine Funktion ist an Stelle $x_0$ stetig, wenn wir
+1. für jeden beliebig vorgegebenen $\varepsilon$-Bereich (y-Achse) um $f(x_0)$
+2. einen $\delta$-Bereich (x-Achse) um $x_0$ finden, sodass
+3. alle $x$-Werte aus diesem $\delta$-Bereich Funktionswerte liefern, die in den $\varepsilon$-Bereich fallen
+
+$$
+\forall \varepsilon > 0 \exists \delta > 0 \text{ s.d. } \forall x \in I \left( |x - x_0| < \delta \Rightarrow |f(x) - f(x_0)| < \varepsilon \right)
+$$
+
+**Vorgehen**
+
+1. Forme um, bis $|x-x_{0}|$ als eigener Faktor vorkommt. 
+2. Schätze den Rest so lange nach oben ab, bis **kein** $x$ vorkommt ($x_{0}$ darf vorkommen). Jetzt haben wir Form $< |x - x_0| \cdot R$ 
+3. nutze $\frac{\varepsilon}{R}$. 
+4. $\delta$ ist minimum von allen $|x-2| <$ Abschätzungen
+
+![[Bildschirmfoto 2026-04-13 um 17.15.58.png]]
+![[Bildschirmfoto 2026-04-14 um 15.21.57.png]]
+
+
+### Links- und rechtsseitiger Limes
+
+Stetigkeit an Stelle zeigen, indem **linksseitiger limes gleich rechtsseitiger limes**. 
+$$
+\lim_{x \to x_0^-} f(x) = \lim_{x \to x_0^+} f(x) = f(x_0)
+$$
+ 
+ ![[Bildschirmfoto 2026-04-13 um 17.38.58.png]]
+ 
 ### Folgenstetigkeit
 
-$f$ an der Stelle $x_0$ genau dann stetig, wenn für jede Folge $(x_n)_{n \in \mathbb{N}_0}$ mit $x_n \to x_0$ die Folge der Funktionswerte $(f(x_n))_{n \in \mathbb{N}_0}$ gegen $f(x_0)$ konvergiert.
+$f$ an der Stelle $x_0$ genau dann stetig, wenn 
+- für jede Folge $(x_n)_{n \in \mathbb{N}_0}$ mit $\lim_{ n \to \infty }x_{n}=x_{0}$ 
+- die Folge der Funktionswerte $(f(x_n))_{n \in \mathbb{N}_0}$ gegen $f(x_0)$ konvergiert.
+
+![[Bildschirmfoto 2026-04-13 um 17.16.28.png]]
 
 ### Zwischenwertsatz
 
-Eine stetige Funktion kann keine Werte überspringen. ==Achtung==, Stetigkeit muss auch am Rand gelten.
+Eine stetige Funktion kann keine Werte überspringen. ==Achtung==, um zu Verwenden, zuerst **Stetigkeit** zeigen, muss auch am Rand gelten.
 
 > Es sei $f : [a, b] \to \mathbb{R}$ eine stetige Funktion und es sei $c$ eine Zahl zwischen $f(a)$ und $f(b)$. Dann gibt es ein $x \in [a, b]$ mit $f(x) = c$.
 
@@ -131,6 +171,14 @@ Also:
 Es sei $f : I \subset \mathbb{R} \to \mathbb{R}$ eine stetige Funktion, und es seinen $a, b \in I$ mit $f(a) < 0$ und $f(b) > 0$. Dann hat $f$ mindestens eine Nullstelle zwischen $a$ und $b$.
 
 Eine stetige Funktion, die auf einem abgeschlossenen und beschränkten Intervall definiert ist, nimmt dort immer einen konkreten maximalen und minimalen Wert an.
+
+### Stetig fortsetzbar
+
+Wenn man einen **==endlichen==** Wert für eine Stelle finden kann, die nicht definiert ist, kann man eine Funktion "stetisch forsetzen".
+
+==Achtung==, z.B. $f(x)=\frac{1}{x}$ ist nicht stetisch fortsetzbar. Auch $f(x)=\ln(x^2)$ **nicht**, da der gesuchte Wert **nicht endlich** ist. 
+
+![[Pasted image 20260413180021.png]]
 
 ## Ableitung
 
