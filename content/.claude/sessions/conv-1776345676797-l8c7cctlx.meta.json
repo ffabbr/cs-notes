@@ -1,0 +1,20 @@
+{
+  "id": "conv-1776345676797-l8c7cctlx",
+  "title": "Consolidate file content into callout",
+  "titleGenerationStatus": "success",
+  "createdAt": 1776345676798,
+  "updatedAt": 1776349873856,
+  "lastResponseAt": 1776345688871,
+  "sessionId": "5feab271-0429-4c26-a610-b1124262f8a2",
+  "sdkSessionId": "5feab271-0429-4c26-a610-b1124262f8a2",
+  "currentNote": "2nd Semester/AuW/Notes/Wahrscheinlichkeit/16 DP.md",
+  "usage": {
+    "model": "sonnet",
+    "inputTokens": 1,
+    "cacheCreationInputTokens": 631,
+    "cacheReadInputTokens": 14490,
+    "contextWindow": 200000,
+    "contextTokens": 15122,
+    "percentage": 8
+  }
+}

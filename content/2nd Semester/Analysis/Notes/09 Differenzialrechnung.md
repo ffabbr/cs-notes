@@ -1,17 +1,45 @@
+## Differenzenquotient
 
-## Ableitung
+![[Bildschirmfoto 2026-04-15 um 13.49.21.png]]
 
-Funktion an Stelle $x$ differenzierbar $\implies$ an Stelle $x$ stetig
+
+## Ableitung (Differentialquotient)
+
+- momentane Anderungsrate
+- Steigung der Tangente
+
+- Funktion an Stelle $x$ differenzierbar $\implies$ an Stelle $x$ stetig
+
+**Keine Ableitung möglich an**
+- Definitionslücken
+- Sprungstellen/nicht stetig
+- Knickstellen
 
 ### Einseitige Ableitungen
 
 ![[Bildschirmfoto 2026-04-13 um 00.16.35.png]]
 
+| **Funktion f(x)** | **Ableitung f′(x)**         | **Erklärung**                                    |
+| ----------------- | --------------------------- | ------------------------------------------------ |
+| $e^x$             | $e^x$                       | Die Ableitung von $x$ ist 1, also $e^x \cdot 1$. |
+| $e^{5x}$          | $5e^{5x}$                   | Die Ableitung von $5x$ ist 5.                    |
+| $e^{x^2}$         | $2x \cdot e^{x^2}$          | Die Ableitung von $x^2$ ist $2x$.                |
+| $e^{\sin(x)}$     | $\cos(x) \cdot e^{\sin(x)}$ | Die Ableitung von $\sin(x)$ ist $\cos(x)$.       |
+
+
 ### Mehrfache Ableitungen
 
 Die Menge aller $n$-fach stetig differenzierbarer Funktionen auf $D$bezeichnen wir mit $C^n(D)$.
 
-**Glatte Funktionen:** Eine glatte Funktion ist eine Funktion, die man unendlich oft ableiten kann. $C^\infty(D) := \bigcap_{n=0}^\infty C^n(D)$
+**==Glatte Funktionen==:** Eine glatte Funktion ist eine Funktion, die man unendlich oft ableiten kann. $C^\infty(D) := \bigcap_{n=0}^\infty C^n(D)$
+
+### Ableitungsregeln
+
+![[Bildschirmfoto 2026-04-15 um 13.55.07.png]]
+
+Ausserdem: 
+
+
 
 ### Rechenregeln
 

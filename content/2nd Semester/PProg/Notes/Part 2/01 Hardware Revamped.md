@@ -13,7 +13,7 @@
 
 ## Java Memory Model (JMM)
 
-Legt valide und nicht valide Ausführungsreihenfolgen fest.
+*Welche Garantien über die Ausführungsreihenfolge habe ich?* 
 
 | Abbreviation | Full Term                 |
 | :----------- | :------------------------ |
@@ -28,19 +28,14 @@ Your code runs in [[#Program Order]] when seen a single thread in isolation. Bec
 
 ### Program Order
 
-Order of statements exactly as they are written in the source code. How things happen in isolation. Single thread in isolation is always correct in program order. 
-
+The order of statement execution on a singal thread. The JMM can re-order though, this is about the order of execution.
 **Total order on one thread, but not across threads** (partial order on thread==s==). 
 
-### Synchronization Actions and Order
+### Synchronizes-with
 
-Synchronization Actions (SA) form the Synchronization Order (SO). 
-#### Synchronization Order
+Two threads "touch" the same point on that master timeline through a Synchronization Action (like reading and writing the same `volatile` variable), creating a **handshake**.
 
-Total, global order of all [[#Synchronization Actions]], to prevent CPU reordering from breaking the program.
-
-- **Total Order:** Every single thread in the application agrees on the exact sequence of these specific actions.
-- **Consistency:** If you look at the SO, a `volatile` read of variable `X` will always see the value written by the most recent `volatile` write to `X` in that order.
+A write to a `volatile` variable `V` _synchronizes-with_ every subsequent read of `volatile` variable `V` by any thread.
 
 #### Synchronization Actions
 
@@ -51,15 +46,16 @@ Total, global order of all [[#Synchronization Actions]], to prevent CPU reorderi
 - First/last action of a thread (synthetic)
 - First/last action, starting, or terminating a thread
 
-### Synchronizes-with
+### Synchronization Order
 
-Two threads "touch" the same point on that master timeline (like reading and writing the same `volatile` variable), creating a **handshake**.
+Global order of all [[#Synchronization Actions]].
 
-A write to a `volatile` variable `V` _synchronizes-with_ every subsequent read of `volatile` variable `V` by any thread.
+- **Total Order:** every thread in the application agrees on this order
+- **Consistency:** If you look at the SO, ==read/write of a `volatile` var will make sure all variables that were updated before this statement are up to date.== 
 
 ### Happens-Before
 
-- combining Program Order and Synchronizes-With rules
+- transitive closure of program order and synchronizes-with order (rote Linie durch den ganzen code)
 - everything Thread A did before the handshake is guaranteed to be visible to Thread B.
 
 **HB Consistent**

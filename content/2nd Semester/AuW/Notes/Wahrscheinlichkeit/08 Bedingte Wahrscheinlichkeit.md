@@ -64,12 +64,11 @@ $$
 \Pr[B] = \sum_{i=1}^{n} \Pr[B|A_i] \cdot \Pr[A_i]=\sum_{i=1}^{n} \Pr[B \cap A_i]
 $$
 
-**Beweis:** 
- 1. $B$ in nicht-überlappende Stücke aufteilen $B = (B \cap A_1) \cup \dots \cup (B \cap A_n)$.
-2. Da sich diese Stücke nicht überlappen, ist die Gesamtwahrscheinlichkeit von $B$ einfach die Summe der Wahrscheinlichkeiten dieser Stücke: $\Pr[B] = \sum \Pr[B \cap A_i]$.
-3. Umformen: Die Definition der bedingten Wahrscheinlichkeit besagt, dass $\Pr[B \cap A_i] = \Pr[B|A_i] \cdot \Pr[A_i]$ ist. Setzt man dies in die Summe ein, erhält man die finale Formel.
-
-![[Bildschirmfoto 2026-03-23 um 11.45.19.png]]
+> [!example]- Proof
+> **Beweis:** 
+> 1. $B$ in nicht-überlappende Stücke aufteilen $B = (B \cap A_1) \cup \dots \cup (B \cap A_n)$.
+> 2. Da sich diese Stücke nicht überlappen, ist die Gesamtwahrscheinlichkeit von $B$ einfach die Summe der Wahrscheinlichkeiten dieser Stücke: $\Pr[B] = \sum \Pr[B \cap A_i]$.
+> 3. Umformen: Die Definition der bedingten Wahrscheinlichkeit besagt, dass $\Pr[B \cap A_i] = \Pr[B|A_i] \cdot \Pr[A_i]$ ist. Setzt man dies in die Summe ein, erhält man die finale Formel.
 
 ## Satz von Bayes
 
@@ -79,12 +78,41 @@ $$
 \text{Pr}[A_i|B] = \frac{\text{Pr}[B|A_i] \cdot \text{Pr}[A_i]}{\sum_{j=1}^{n} \text{Pr}[B|A_j] \cdot \text{Pr}[A_j]} = \frac{\Pr(B \cap A_i)} {\sum_{j=1}^{n} \Pr(B \cap A_j)}
 $$
 
-**Beweis**: siehe Bedingte Wahrscheinlichkeit und Satz der totalen Wahrscheinlichkeit
-
-- $\Pr[B] = \sum_{i=1}^{n} \Pr[B|A_i] \cdot \Pr[A_i]$  
-- $\Pr[A|B] := \frac{Pr[A \cap B]}{Pr[B]}$.
+> [!example]- Proof
+> **Beweis**: siehe Bedingte Wahrscheinlichkeit und Satz der totalen Wahrscheinlichkeit
+> 
+> - $\Pr[B] = \sum_{i=1}^{n} \Pr[B|A_i] \cdot \Pr[A_i]$  
+> - $\Pr[A|B] := \frac{Pr[A \cap B]}{Pr[B]}$.
 
 Hat man ein Gesundheitsexperiment und möchte auf falsch positive, etc. überprüfen, hat man oben den "richtigen Weg", also krank und positiv, unten dann alle möglichen Wege die der Test positiv sein könnte. 
 
 ![[2nd Semester/AuW/Slides/08 Slides.pdf#page=5]]
 
+### Bedingte Zufallsvariable
+
+$$
+Pr[ (X|A) = \alpha ] := Pr[ X = \alpha \mid A ]
+$$
+
+$$
+Pr[X ≤ x | A] = \frac{Pr[\{\omega \in A \mid X(\omega) \leq x\}]}{Pr[A]}
+$$
+
+
+Bedingter Erwartungswert: 
+$$
+E[X|A] = \sum_{\alpha \in W_x} \alpha \cdot Pr[X=\alpha | A]
+$$
+
+**Gesetz des totalen Erwartungswerts**
+
+X Zufallsvariable, $A_{i}$ disjunkt mit $A_{1} \cup \dots \cup A_{n}=\Omega$ und Wahrscheinlichkeiten $> 0$.
+$$
+\mathbb{E}[X] = \sum_{i=1}^{n} \mathbb{E}[X|A_i] \cdot \Pr[A_i]
+$$
+
+> [!example]- Proof
+> 
+> Beweis mit dem [[08 Bedingte Wahrscheinlichkeit#Satz d. totalen Wahrscheinlichkeit|Satz der totalen Wslkt]] ($\Pr[B] = \sum_{i=1}^{n} \Pr[B|A_i] \cdot \Pr[A_i]$)
+> 
+> ![[Bildschirmfoto 2026-04-15 um 14.44.32.png]]

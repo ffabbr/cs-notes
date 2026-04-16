@@ -55,17 +55,18 @@ $A$, $B$ und $C$ unabhängig.
 - $A \cap B$ und $C$ unabhängig
 - $A \cup B$ und $C$ unabhängig
 
-Beweis: 
-
-(1) 
-$\Pr[(A \cap B) \cap C] = \underbrace{\Pr[A] \cdot \Pr[B]}_{\Pr[A \cap B]} \cdot \Pr[C] = \Pr[A \cap B] \cdot \Pr[C]$
-
-(2)
-$$
+> [!example]- Proof
+> Beweis: 
+> 
+> (1) 
+> $\Pr[(A \cap B) \cap C] = \underbrace{\Pr[A] \cdot \Pr[B]}_{\Pr[A \cap B]} \cdot \Pr[C] = \Pr[A \cap B] \cdot \Pr[C]$
+> 
+> (2)
+> $$
    \begin{align*}
 \Pr[(A \cup B) \cap C] &= \Pr[(A \cap C) \cup (B \cap C)] && \\
 &= \Pr[A \cap C] + \Pr[B \cap C] - \Pr[A \cap B \cap C] && \text{(Siebformel)} \\
 &= \Pr[C] \cdot (\Pr[A] + \Pr[B] - \Pr[A \cap B]) && \text{(Unabhängigkeit von } A, B, C\text{)} \\
 &= \Pr[C] \cdot \Pr[A \cup B] && \text{(Siebformel)} \quad \blacksquare
 \end{align*}
-   $$
+$$

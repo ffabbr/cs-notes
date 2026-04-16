@@ -1,0 +1,20 @@
+{
+  "id": "conv-1776349897598-7culekixg",
+  "title": "Convert markdown headers to h3",
+  "titleGenerationStatus": "success",
+  "createdAt": 1776349897598,
+  "updatedAt": 1776349926748,
+  "lastResponseAt": 1776349926748,
+  "sessionId": "7c013c9f-a771-4501-b985-f0216de56e5e",
+  "sdkSessionId": "7c013c9f-a771-4501-b985-f0216de56e5e",
+  "currentNote": "2nd Semester/AuW/Notes/Wahrscheinlichkeit/13 Wahrscheinlichkeitsverteilungen.md",
+  "usage": {
+    "model": "sonnet",
+    "inputTokens": 1,
+    "cacheCreationInputTokens": 271,
+    "cacheReadInputTokens": 17951,
+    "contextWindow": 200000,
+    "contextTokens": 18223,
+    "percentage": 9
+  }
+}

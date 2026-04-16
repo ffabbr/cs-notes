@@ -1,29 +1,21 @@
+
+1. [[#Zufallsvariable]]
+2. [[#Erwartungswert]]
+3. [[#Varianz]]
+
 ## Zufallsvariable
 
-Eine Zufallsvariable ist eine mathematische Funktion, die den Ausgängen eines Zufallsexperiments konkrete Zahlenwerte zuordnet. 
-
-$$
-X: \Omega \to \mathbb{R}
-$$
-
-$$
-X(\omega) := a_1 \cdot X_1(\omega) + a_2 \cdot X_2(\omega) + \dots + a_n \cdot X_n(\omega) + b
-$$
-
-- **Wertebereich**: Menge aller Werte, die X annehmen kann.
-
+Weist Versuchsausgängen eine Zahl zu. z.B. Anzahl Kopf bei Münzwurf. 
 
 ---
 
 ## Erwartungswert
 
-$\mu = \mathbb{E}[X]$
+wahrscheinlichkeits-gewichteter Durchschnitt basically
 
-Der Erwartungswert ist ==linear==.
-
-- Werfe Münze 3 mal, Anzahl Kopf: $\mathbb{E}[x] = \frac{1}{2}\cdot 3$
-- Summe muss absolut konvergieren
-- Indikatorvariable $X_{A}$ von einem Ereignis $A$: $X_A(\omega) := \begin{cases} 1 & \text{falls } \omega \in A \\ 0 & \text{sonst.} \end{cases}$
+- $E[X] + E[Y] = E[X+Y]$
+- $\lambda E[X] = E[\lambda X]$
+- $E[x+b] = E[x] + E[b] = E[x] + b$
 
 ### Formeln
 
@@ -38,10 +30,15 @@ $$
 $$
 \mathbb{E}[X] := \sum_{\alpha \in W_X} \alpha \cdot \Pr[X = \alpha]
 $$
+Bedingt: 
+$$
+E[X|A] = \sum_{\alpha \in W_x} \alpha \cdot Pr[X=\alpha | A]
+$$
 
-**Beweis der Äquivalenz**: 
-
-![[Bildschirmfoto 2026-03-27 um 15.07.07.png]]
+> [!example]- Proof
+> **Beweis der Äquivalenz**: 
+> 
+> ![[Bildschirmfoto 2026-03-27 um 15.07.07.png]]
 
 > [!example]- Vergleich Formel 1 und 2
 > Zweifacher Münzwurf
@@ -65,7 +62,7 @@ $$
 > 
 > $$\mathbb{E}[X] = 0 \cdot \frac{1}{4} + 1 \cdot \frac{2}{4} + 2 \cdot \frac{1}{4} = 1$$
 
-##### Formel 2 mit Indikatorvariable
+#### Formel 2 mit Indikatorvariable
 
 $$
 \mathbb{E}[X_A] = \Pr[A] = 0 \cdot \Pr[X_A = 0] + 1 \cdot \Pr[X_A = 1]
@@ -79,11 +76,10 @@ $$
 \mathbb{E}[X] = \sum_{i=1}^{\infty} \Pr[X \ge i]
 $$
 
-Wird meist genutzt, wenn "mindestens" einfacher als genauen Wert zu bestimmen, aka Gegenwahrscheinlichkeit. Remember, $\Pr[X \geq i] = 1 - \Pr[X \leq i-1]$
+"mindestens" einfacher als genauen Wert zu bestimmen, aka Gegenwahrscheinlichkeit. Remember, $\Pr[X \geq i] = 1 - \Pr[X \leq i-1]$
 
-![[Bildschirmfoto 2026-03-27 um 15.23.51.png|Beweis]]
-
-> [!info]+ Beweis Detail
+> [!info]- Beweis
+> [[Bildschirmfoto 2026-03-27 um 15.23.51.png|Beweis]]
 > Wir beginnen mit der klassischen Definition von dem Erwartungswert. 
 > 1. Orange: Statt $\Pr[X=i]$  mal $i$ zurechnen, notieren wir es als $i$ mal addiert
 > 2. Rot: Wir schreiben die Summe aller Paare $(i,j)$ mit $j \leq i$ um
@@ -94,16 +90,18 @@ Wird meist genutzt, wenn "mindestens" einfacher als genauen Wert zu bestimmen, a
 ![[Bildschirmfoto 2026-03-27 um 16.07.06.png]]
 
 
+![[08 Bedingte Wahrscheinlichkeit#Bedingte Zufallsvariable]]
 
 ## Varianz
 
 Quadratische Abweichung einer Zufallsvariable vom Erwartungswert. $\mu = \mathbb{E}[X]$. Die Standardabweichung ist die Wurzel der Varianz $\sigma = \sqrt{V(X)}$.
 
 $$
-\sigma^2 = \mathbb{E}\left[(X - \mu)^2\right]
-$$
-$$
 \text{Var}[X] = \mathbb{E}[X^2] - (\mathbb{E}[X])^2
+$$
+
+$$
+\text{Var}[X] = \mathbb{E}\left[(X - \mathbb{E}[X])^2\right]
 $$
 
 > [!info]- Herleitung
@@ -118,8 +116,10 @@ $$
 > \end{align}
 > $$
 
-Zufallsvariable X und a, $b \in \mathbb{R}$. 
-$\text{Var}[a \cdot X + b]$ ist unabhängig von $b$, und $a^2$ multipliziert sich. 
+
+- $\text{Var}[a \cdot X + b]$ ist unabhängig von $b$
+- $\text{Var}[a \cdot X] = a^2 \cdot \text{Var}[X]$
+- $\text{Var}[X + Y] = \text{Var}[X] + \text{Var}[Y]$  ==wenn unabhängig==
 
 ## Momente
 

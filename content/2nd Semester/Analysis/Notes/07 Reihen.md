@@ -216,9 +216,15 @@ $$
 - $c$ Koeffizienten
 - $x$ Argument
 
+$$
+e^x = \sum_{n=0}^{\infty} \frac{x^n}{n!}
+$$
+
 ==Achtung==, wenn z.B. hoch 2k, dann substituiere 
 
 Innerhalb des ==Konvergenzintervalls== konvergiert die Folge, ausserhalb divergiert sie. Die **==Randpunkte==** des Konvergenzintervalls muss man händisch prüfen. Achtung, z.B. multiple choice "Reihe konvergiert absolut" in diesem Intervall, konvergiert es sicher absolut an den Rändern? #exam  
+
+
 
 ![[Bildschirmfoto 2026-03-27 um 14.32.48.png]]
 
