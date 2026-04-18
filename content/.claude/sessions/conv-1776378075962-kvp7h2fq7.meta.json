@@ -1,0 +1,20 @@
+{
+  "id": "conv-1776378075962-kvp7h2fq7",
+  "title": "Convert lines to h5 titles",
+  "titleGenerationStatus": "success",
+  "createdAt": 1776378075963,
+  "updatedAt": 1776461165365,
+  "lastResponseAt": 1776378099640,
+  "sessionId": "dc10aa5a-6d1f-4d13-abed-1dfc73002206",
+  "sdkSessionId": "dc10aa5a-6d1f-4d13-abed-1dfc73002206",
+  "currentNote": "Todo.md",
+  "usage": {
+    "model": "sonnet",
+    "inputTokens": 1,
+    "cacheCreationInputTokens": 422,
+    "cacheReadInputTokens": 15736,
+    "contextWindow": 200000,
+    "contextTokens": 16159,
+    "percentage": 8
+  }
+}

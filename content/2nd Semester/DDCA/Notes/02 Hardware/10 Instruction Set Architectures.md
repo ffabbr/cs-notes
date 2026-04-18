@@ -106,11 +106,6 @@ The ISA is the connection of software and hardware. It specifies the memoriy org
 2. **Operands**: who does it
 ## Opcodes
 
-Use a large or small set of opcodes, f.ex. an operation for $(A\cdot B) + C$, but many operations mean complex hardware. So tradeoffs between 
-
-- Hardware vs Software complexity
-- Latency
-
 **3 Types of Instructions**
 
 1. operate instructions (in the ALU)
@@ -138,26 +133,9 @@ Example Opcode for ADD: 0001. There are 15 in total.
 - one or several data types supported
 - LC-3 only supports 2's complement integers
 
+> [!example] Semantic Gap
+> 
 **"Semantic gap"**: ==How close are data types to high level language?== With **complex** instructions/data types we have a **small** semantic gap. 
-
-> [!Note] Number of Datatypes
-> **More Datatypes**
-> - better mapping of high-level programming to hardware
-> - hardware directly operates on data types of programming languages
-> - results in smaller number of instructions and code size
-> 
-> **But**
-> - more work for microarchitect
-
-> [!example] Complexity of Datatypes
-> 
-> **Complex Instructions/Datatypes**
-> - smaller code size, better memory uzilication, more efficient
-> - simpler compiler
-> 
-> **But**
-> - more work for the compiler at once 
-> - more complex hardware
 
 ### LC-3 Data Types
 
@@ -179,15 +157,6 @@ Example Opcode for ADD: 0001. There are 15 in total.
 → specify where an **operand** is located
 
 The **Semantic Gap** also applies here.
-
-> [!Note] Number of Addressing Modes
-> **More Addressing Modes**
-> - better mapping of high-level programming to hardware
-> - results in smaller number of instructions and code size
-> 
-> **But**
-> - more work for microarchitect
-> - more options for the compiler what to use (compiler complexity)
 
 ### LC-3 Addressing Modes
 
@@ -272,7 +241,6 @@ For comparison, at LD/ST, we need to first calculate the address and THEN go to 
 
 So LEA: `DR <- PC + sign-extended(PCoffset9)`
 
-
 ### MIPS Data Movement
 
 Instructions are exactly 32 bits long, so you cannot fit a full 32-bit constant inside a single instruction. In an I-type instruction (like `addi`), the **immediate** field is only 16 bits. If you want to load the value `0x6d5e4f3c`, you can't do it in one go because that value is 32 bits wide.
@@ -293,7 +261,7 @@ We "build" the number in two 16-bit halves:
 
 ### Conditions
 
-### LC-3 Conditions
+#### LC-3 Conditions
 
 **Branch if Zero**
 
@@ -304,7 +272,7 @@ Condition codes are separate single bit hardware registers. When a value is writ
 - Z set, N and P cleared: **value is 0**
 - P set, N and Z cleared: value **positive**
 
-### MIPS Conditions
+#### MIPS Conditions
 
 The comparison happens in the branch instruction itself. So instead of reading of stored bits as in LC-3, we perform the comparison when requested. For example, beq (branch if rs and rt are equal)
 
@@ -317,6 +285,8 @@ beq	$s0, $s1, offset
 ```
 
 
+---
 
+## Indirection of ISA
 
-
+We can change ISA, meaning translate between ISAs through either Software or Hardware (f.ex. Apple's Rosetta 2 Intel → ARM is done with software)

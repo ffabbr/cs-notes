@@ -10,12 +10,110 @@ draft: "true"
 
 
 
+##### Elementare Funktionen PDF durchgehen (Analysis)
 
 
 
 
 
-DDCA Vorlesungen
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+##### Stetigkeit Aufgabe vom AB 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#### DDCA
+##### DDCA PVW 
+##### ISA/Microprocessor üben
+
+
+
+#### AuW
+
+
+
+
+
+
+
+
+
+
+
+
+##### AuW Aufgaben
+
+
+
+
+
+
+
 
 
 

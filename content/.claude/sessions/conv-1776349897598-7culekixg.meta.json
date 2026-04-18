@@ -3,11 +3,11 @@
   "title": "Convert markdown headers to h3",
   "titleGenerationStatus": "success",
   "createdAt": 1776349897598,
-  "updatedAt": 1776349926748,
+  "updatedAt": 1776356853959,
   "lastResponseAt": 1776349926748,
   "sessionId": "7c013c9f-a771-4501-b985-f0216de56e5e",
   "sdkSessionId": "7c013c9f-a771-4501-b985-f0216de56e5e",
-  "currentNote": "2nd Semester/AuW/Notes/Wahrscheinlichkeit/13 Wahrscheinlichkeitsverteilungen.md",
+  "currentNote": "2nd Semester/AuW/Notes/Wahrscheinlichkeit/13 Verteilungen.md",
   "usage": {
     "model": "sonnet",
     "inputTokens": 1,

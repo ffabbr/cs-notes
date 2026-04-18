@@ -55,7 +55,7 @@ $f$: Wahrscheinlichkeit, dass $\alpha = Z$, und $Z=X+Y$. Wir summieren über all
 > 4. Umwandeln zurück in Funktionsschreibweise $f_X(\beta)$ und $f_Y(\alpha - \beta)$. 
 
 **Beispiel**
-X, Y unabhängig. Wenn $X \sim \text{Po}(\lambda)$ ([[13 Wahrscheinlichkeitsverteilungen#Poisson-Verteilung|Poisson-Verteilung]]) und $Y \sim \text{Po}(\mu)$, dann gilt $X + Y \sim \text{Po}(\lambda + \mu)$ 
+X, Y unabhängig. Wenn $X \sim \text{Po}(\lambda)$ ([[13 Verteilungen#Poisson-Verteilung|Poisson-Verteilung]]) und $Y \sim \text{Po}(\mu)$, dann gilt $X + Y \sim \text{Po}(\lambda + \mu)$ 
 
 ## Rechenregeln bei mehreren Zufallsvariablen
 
