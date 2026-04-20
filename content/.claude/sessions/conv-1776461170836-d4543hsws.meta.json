@@ -3,11 +3,10 @@
   "title": "Combine items in giant callout",
   "titleGenerationStatus": "success",
   "createdAt": 1776461170836,
-  "updatedAt": 1776461183965,
+  "updatedAt": 1776511844653,
   "lastResponseAt": 1776461183965,
   "sessionId": "42823fd0-2b4e-4bb3-8f14-d9f02c382a51",
   "sdkSessionId": "42823fd0-2b4e-4bb3-8f14-d9f02c382a51",
-  "currentNote": "2nd Semester/DDCA/Notes/03 Execution/13 Single-Cycle-Microarchitecture.md",
   "usage": {
     "model": "sonnet",
     "inputTokens": 1,

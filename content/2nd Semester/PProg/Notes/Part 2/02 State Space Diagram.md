@@ -10,10 +10,10 @@
 
 F.ex. state p4 means the next step is p4. 
 
-**Mutual exclusion**: gibt keinen state mit p3 und q3
-**Keinen Deadlock**: gibt keinen state ohne ausgehendem Pfeil
-**Keinen Livelock**: gibt keinen unendlichen Zyklus, der die Critical Section auslässt 
-**Kein Dead/Livelock**: gibt von jeder Node Pfad zu critical section
-**Freedom from individual starvation**: jeder thread der die critical section haben möchte, bekommt sie irgendwann
+- **Mutual exclusion**: gibt keinen state mit p3 und q3
+- **Keinen Deadlock**: gibt keinen state ohne ausgehendem Pfeil
+- **Keinen Livelock**: gibt keinen unendlichen Zyklus, der die Critical Section auslässt 
+- **Kein Dead/Livelock**: gibt von jeder Node Pfad zu critical section
+- **Freedom from individual starvation**: jeder thread der die critical section haben möchte, bekommt sie irgendwann
 
 ![[Bildschirmfoto 2026-04-15 um 17.50.31.png]]

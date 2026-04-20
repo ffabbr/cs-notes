@@ -1,6 +1,6 @@
 
-→ learn for simplification
+Logic simplification
 
-nicht relevant für Prüfung und co.
-
-![[2nd Semester/DDCA/Slides/06 Slides.pdf#page=50]]
+<video controls width="600">
+  <source src="https://v.cap.so/2fp25kjwx4307z4/95bqnzvj3wc9r2n/result.mp4" type="video/mp4">
+</video>

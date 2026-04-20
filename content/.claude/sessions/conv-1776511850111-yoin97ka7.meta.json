@@ -1,0 +1,20 @@
+{
+  "id": "conv-1776511850111-yoin97ka7",
+  "title": "Remove newline characters",
+  "titleGenerationStatus": "success",
+  "createdAt": 1776511850111,
+  "updatedAt": 1776619535994,
+  "lastResponseAt": 1776619531764,
+  "sessionId": "dbc6fdee-cc57-4cfd-bf67-dac2beea3a59",
+  "sdkSessionId": "dbc6fdee-cc57-4cfd-bf67-dac2beea3a59",
+  "currentNote": "Todo.md",
+  "usage": {
+    "model": "sonnet",
+    "inputTokens": 1,
+    "cacheCreationInputTokens": 411,
+    "cacheReadInputTokens": 15428,
+    "contextWindow": 200000,
+    "contextTokens": 15840,
+    "percentage": 8
+  }
+}

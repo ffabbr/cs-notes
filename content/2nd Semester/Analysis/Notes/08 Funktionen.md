@@ -99,13 +99,6 @@ Eine Funktion ist stetig, wenn an jedem Punkt stetig, aka keinen Sprung. Vorstel
 
 ==Ich darf annehmen, dass Polynome, sin(x), log, etc. stetisch sind.== 
 
-Stetigkeit zeigen: 
-
-- [[#Definition]]
-- [[#Links- und rechtsseitiger Limes]]
-- [[#Folgenstetigkeit]]
-
-
 > [!info] Rechenregeln Stetigkeit
 > Wir gehen von zwei stetigen Funktionen $f, g : D \subset \mathbb{R} \to \mathbb{R}$ aus. Dann gilt:
 > - $f + g$ ist stetig
@@ -119,6 +112,12 @@ Stetigkeit zeigen:
 >   $$
 > - Umkehrfunktion einer stetigen Funktion ist auch stetig
 
+
+Stetigkeit zeigen: 
+
+- [[#Definition]]
+- [[#Links- und rechtsseitiger Limes]]
+- [[#Folgenstetigkeit]]
 
 ### Definition
 

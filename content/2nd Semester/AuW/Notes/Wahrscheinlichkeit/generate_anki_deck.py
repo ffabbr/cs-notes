@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import csv
+import re
 from pathlib import Path
 
 
@@ -16,8 +17,27 @@ TSV_PATH = OUT_DIR / "AuW_Wahrscheinlichkeit_Anki.tsv"
 APKG_PATH = OUT_DIR / "AuW_Wahrscheinlichkeit_Anki.apkg"
 
 
+def convert_tex_delimiters(text: str) -> str:
+    text = re.sub(
+        r"(?<!\\)\$\$(.+?)(?<!\\)\$\$",
+        lambda match: r"\[" + match.group(1).strip() + r"\]",
+        text,
+        flags=re.DOTALL,
+    )
+    return re.sub(
+        r"(?<!\\)\$(.+?)(?<!\\)\$",
+        lambda match: r"\(" + match.group(1) + r"\)",
+        text,
+        flags=re.DOTALL,
+    )
+
+
 def card(front: str, back: str, tags: str) -> dict[str, str]:
-    return {"front": front.strip(), "back": back.strip(), "tags": tags.strip()}
+    return {
+        "front": convert_tex_delimiters(front.strip()),
+        "back": convert_tex_delimiters(back.strip()),
+        "tags": tags.strip(),
+    }
 
 
 CARDS = [

@@ -26,11 +26,11 @@ Exceptions: internal cause (f.ex. divide by 0)
 
 ## Optimizations
 
-1. Pipelining
-2. Fine-Grained Multithreading
-3. Out of order execution
-4. Dataflow Model
-5. Superscalar Execution
+1. [[#Pipelining]]
+2. [[#Fine Grained Multithreading]]
+3. [[#Out of order execution]]
+4. [[#Dataflow Model]]
+5. [[#Superscalar Execution]]
 
 `Execution time = #instructions x average CPI x #clock cycle time`
 
@@ -38,8 +38,6 @@ Exceptions: internal cause (f.ex. divide by 0)
 
 - Think PProg [[06 Pipelining]]. 
 - Divide into stages (Fetch, Decode, Execute, Writeback), each stage different hardware
-
-
 
 **Dependency types: 
 - **==Read after write==**

@@ -3,128 +3,24 @@ cssclasses:
 draft: "true"
 ---
 
+- WG absagen 
 
+- PProg Vorlesung
+- EProg lernen 
 
+- AuW Aufgaben Josia und Peer Grading
 
+---
 
+Dienstag
 
+- Code Expert
+- AuW Vorlesung
+- Analysis Übung
 
+Mittwoch
 
-##### Elementare Funktionen PDF durchgehen (Analysis)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-##### Stetigkeit Aufgabe vom AB 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-#### DDCA
-##### DDCA PVW 
-##### ISA/Microprocessor üben
-
-
-
-#### AuW
-
-
-
-
-
-
-
-
-
-
-
-
-##### AuW Aufgaben
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+- PProg Sheet
+- AuW Aufgabe
 
 
