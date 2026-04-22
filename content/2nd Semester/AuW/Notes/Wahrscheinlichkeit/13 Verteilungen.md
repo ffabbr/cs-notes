@@ -9,11 +9,10 @@
 $$
 f_{X,Y} (\alpha, \beta)=\Pr[X=\alpha, Y=\beta]
 $$
-Aus gemeinsamen Dichte kann man Randdichte berechnen. 
 
 **Dichte von X (Randdichte)**
 $$
-f_{X}(\alpha) = \sum_{\beta \in W_{y}} f_{X,Y}(\alpha, \beta) = \sum \Pr[X=\alpha, Y=\beta]=\Pr[X=\alpha]
+f_{X}(\alpha) = \sum_{\beta \in W_{y}} f_{X,Y}(\alpha, \beta) = \sum_{\beta \in W_{y}} \Pr[X=\alpha, Y=\beta]=\Pr[X=\alpha]
 $$
   Um Wslkt herauszufinden, dass es sonnig ist ($\Pr[X=\text{Sonnig}]$), müssen wir alle möglichen Kombinationen zusammenzählen, in denen die Sonne vorkommt. Man kann die Dichte einer Zufallsvariable aus der gemeinsamen Dichte ausrechnen.
 

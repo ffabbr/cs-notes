@@ -2,6 +2,7 @@
 
 - **ungerade**: $\forall x \in \mathbb{R} f(-x) = -f(x)$
 - **gerade**: $\forall x \in \mathbb{R} f(-x) = f(x)$
+- $\sin^2 + \cos^2=1$ 
 
 - **Injektiv**: nie 2 inputs zu gleichem output
 - **Surjektiv**: jeder output hat einen input
@@ -178,6 +179,21 @@ Wenn man einen **==endlichen==** Wert für eine Stelle finden kann, die nicht de
 ==Achtung==, z.B. $f(x)=\frac{1}{x}$ ist nicht stetisch fortsetzbar. Auch $f(x)=\ln(x^2)$ **nicht**, da der gesuchte Wert **nicht endlich** ist. 
 
 ![[Pasted image 20260413180021.png]]
+
+---
+
+## Extremwertsatz
+
+Funktion 
+
+- stetig
+- Definitionsbereich ist kompaktes Intervall (kann als $[a,b]$ mit $a,b \in \mathbb{R}$ schreiben)
+
+hat minimum und maximum. 
+
+Wenn $(a,b)$ dann können wir nur unendlich nah an Max und Min ran.
+
+---
 
 ## Ableitung
 

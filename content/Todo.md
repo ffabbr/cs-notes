@@ -3,24 +3,9 @@ cssclasses:
 draft: "true"
 ---
 
-- WG absagen 
+- AuW Blatt (c) fertig und abgeben, Vorlesung letzter Donnerstag anschauen
 
-- PProg Vorlesung
-- EProg lernen 
-
-- AuW Aufgaben Josia und Peer Grading
-
----
-
-Dienstag
-
-- Code Expert
-- AuW Vorlesung
-- Analysis Übung
-
-Mittwoch
-
-- PProg Sheet
-- AuW Aufgabe
-
+- Analysis Ableitung aus der Übung
+- DDCA Prüfungsaufgaben
+- AuW Code Expert üben
 

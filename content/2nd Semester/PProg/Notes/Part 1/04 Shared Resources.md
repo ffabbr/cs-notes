@@ -2,15 +2,15 @@
 
 ## Terminology and Introduction
 
-| **Begriff**          | **Beschreibung**                                                                                                                                  |
-| -------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Data Race**        | Ein Thread schreibt, während ein anderer Thread gleichzeitig denselben Ort liest oder beschreibt.                                                 |
-| **Deadlock**         | Mehrere Threads warten darauf, dass der jeweils andere eine Ressource freigibt.                                                                   |
-| **Livelock**         | In Livelocks the system makes no progress, although the threads execute statements/use CPU time. In deadlocks, no statements are executed.        |
-| **Bad Interleaving** | Die zeitliche Abfolge der Schritte verschiedener Threads führt zu falschem Endergebnis, selbst wenn die einzelnen Schritte an sich korrekt sind.  |
-| **Critical Section** | Ein sensibler „Einer-nach-dem-Anderen“-Bereich im Code, in dem auf gemeinsam genutzte Daten zugegriffen wird.                                     |
-| **Mutual Exclusion** | Ein 2. Thread kann keinen kritischen Abschnitt betreten, bevor der aktuelle Thread ihn verlassen hat. Synchronize blocks create mutual exclusion. |
-| **Atomicity**        | Eine Gruppe von Operationen, die unteilbar ausgeführt werden. Kein anderer Thread kann die Daten in einem halbfertigen Zustand sehen.             |
+| **Begriff**          | **Beschreibung**                                                                                                                                                                                       |
+| -------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| **Data Race**        | Ein Thread schreibt, während ein anderer Thread gleichzeitig denselben Ort liest oder beschreibt.                                                                                                      |
+| **Deadlock**         | Mehrere Threads warten darauf, dass der jeweils andere eine Ressource freigibt. Zyklische Abhängigkeit ($\infty$ wenn aufgemalt). Directed Graph describing relation or Threads and Locks has a cycle. |
+| **Livelock**         | In Livelocks the system makes no progress, although the threads execute statements/use CPU time. In deadlocks, no statements are executed.                                                             |
+| **Bad Interleaving** | Die zeitliche Abfolge der Schritte verschiedener Threads führt zu falschem Endergebnis, selbst wenn die einzelnen Schritte an sich korrekt sind.                                                       |
+| **Critical Section** | Ein sensibler „Einer-nach-dem-Anderen“-Bereich im Code, in dem auf gemeinsam genutzte Daten zugegriffen wird.                                                                                          |
+| **Mutual Exclusion** | Ein 2. Thread kann keinen kritischen Abschnitt betreten, bevor der aktuelle Thread ihn verlassen hat. Synchronize blocks create mutual exclusion.                                                      |
+| **Atomicity**        | Eine Gruppe von Operationen, die unteilbar ausgeführt werden. Kein anderer Thread kann die Daten in einem halbfertigen Zustand sehen.                                                                  |
 
 ## synchronized
 
