@@ -8,3 +8,5 @@
 
 $\cos(-\varphi)=\cos(\varphi)$  
 $\sin(-\varphi)=-\sin(\varphi)$
+
+![[Pasted image 20260427162909.png]]

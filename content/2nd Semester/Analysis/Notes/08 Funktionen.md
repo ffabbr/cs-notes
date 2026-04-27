@@ -101,7 +101,7 @@ Eine Funktion ist stetig, wenn an jedem Punkt stetig, aka keinen Sprung. Vorstel
 ==Ich darf annehmen, dass Polynome, sin(x), log, etc. stetisch sind.== 
 
 > [!info] Rechenregeln Stetigkeit
-> Wir gehen von zwei stetigen Funktionen $f, g : D \subset \mathbb{R} \to \mathbb{R}$ aus. Dann gilt:
+> $f, g : D \subset \mathbb{R} \to \mathbb{R}$ stetig. Es gilt:
 > - $f + g$ ist stetig
 > - $f - g$ ist stetig
 > - $c \cdot f$, respektive $c \cdot g$, ist für jede beliebige Konstante $c \in \mathbb{R}$ stetig

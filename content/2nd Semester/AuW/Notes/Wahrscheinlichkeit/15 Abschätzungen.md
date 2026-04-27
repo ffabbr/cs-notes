@@ -37,3 +37,4 @@ Für $X_{i}$ unabhängig und **Bernoulli-Verteilt** und $X= \sum X_{i}$
 ![[Bildschirmfoto 2026-04-16 um 17.25.42.png]]
 ![[Bildschirmfoto 2026-04-16 um 20.35.24.png]]
 
+![[Bildschirmfoto 2026-04-23 um 12.40.50.png]]

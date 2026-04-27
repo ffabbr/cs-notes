@@ -24,7 +24,9 @@ $$
 $$
 
 Spezialfall, $n=1$
-$h(x) = f(x) \cdot g(x) \implies h'(x) = f'(x)g(x) + f(x)g'(x)$
+$$
+h(x) = f(x) \cdot g(x) \implies h'(x) = f'(x)g(x) + f(x)g'(x)
+$$
 
 **Kettenregel**
 $$
@@ -36,7 +38,6 @@ $$
 $$
 \left(\frac{f}{g}\right)'(x) = \frac{f'(x)g(x) - f(x)g'(x)}{g(x)^2}
 $$
-($g(x_{0}) \neq 0$)
 
 **Ableitung der Umkehrfunktion**
 
@@ -46,21 +47,35 @@ $$
 \left(f^{-1}\right)'(y_0) = \frac{1}{f'(x_0)}
 $$
 
-**Quadratwurzel**
-
-$$(\sqrt{x})'=\frac{1}{2\sqrt{x}}$$
-
-| **Funktionstyp**         | **Funktion f(x)** | **Ableitung f′(x)**                   |
-| ------------------------ | ----------------- | ------------------------------------- |
-| Potenzfunktion           | $a \cdot x^p$     | $a \cdot p \cdot x^{p-1}$             |
-| Natürliche Exponentialf. | $e^{u(x)}$        | $u'(x) \cdot e^{u(x)}$                |
-| Allgemeine Exponentialf. | $a^x$             | $\ln(a) \cdot a^x$                    |
-| Logarithmusfunktion      | $\ln(x)$          | $\frac{1}{x}$                         |
-| Sinus                    | $\sin(x)$         | $\cos(x)$                             |
-| Kosinus                  | $\cos(x)$         | $-\sin(x)$                            |
-| Tangens                  | $\tan(x)$         | $\frac{1}{\cos^2(x)} = 1 + \tan^2(x)$ |
-| x hoch x                 | $x^x$             | $x^x(\ln(x) + 1)$                     |
-
+| **Funktion f(x)**          | **Ableitung f′(x)**                   |
+| -------------------------- | ------------------------------------- |
+| $a \cdot x^p$              | $a \cdot p \cdot x^{p-1}$             |
+| $x^n$                      | $n \cdot x^{n-1}$                     |
+| $e^{u(x)}$                 | $u'(x)\cdot e^{u(x)}$                 |
+| $e^x$                      | $e^x$                                 |
+| $a^x$                      | $\ln(a)\cdot a^x$                     |
+| $mx + b$                   | $m$                                   |
+| $\ln(x)$                   | $\frac{1}{x}$                         |
+| $\log_a(x)$                | $\frac{1}{x\ln(a)}$                   |
+| $\sin(x)$                  | $\cos(x)$                             |
+| $\cos(x)$                  | $-\sin(x)$                            |
+| $\tan(x)$                  | $\frac{1}{\cos^2(x)} = 1+\tan^2(x)$   |
+| $\cot(x)$                  | $-\frac{1}{\sin^2(x)}$                |
+| $\sinh(x)$                 | $\cosh(x)$                            |
+| $\cosh(x)$                 | $\sinh(x)$                            |
+| $\tanh(x)$                 | $\frac{1}{\cosh^2(x)} = 1-\tanh^2(x)$ |
+| $\coth(x)$                 | $1+\coth^2(x)$                        |
+| $\arcsin(x)$               | $\frac{1}{\sqrt{1-x^2}}$              |
+| $\arccos(x)$               | $-\frac{1}{\sqrt{1-x^2}}$             |
+| $\arctan(x)$               | $\frac{1}{1+x^2}$                     |
+| $\text{arccot}(x)$         | $-\frac{1}{1+x^2}$                    |
+| $\operatorname{arsinh}(x)$ | $\frac{1}{\sqrt{1+x^2}}$              |
+| $\operatorname{arcosh}(x)$ | $\frac{1}{\sqrt{x^2-1}}$              |
+| $\operatorname{artanh}(x)$ | $\frac{1}{1-x^2}$                     |
+| $x^x$                      | $x^x(\ln(x)+1)$                       |
+| $\sqrt{x}$                 | $\frac{1}{2\sqrt{x}}$                 |
+| $r \cdot g(x)$             | $r \cdot g'(x)$                       |
+| $\frac{1}{x}$              | $-\frac{1}{x^2}$                      |
 
 ### Mehrfache Ableitungen
 
@@ -79,16 +94,46 @@ Wenn es eine lokale Extremstelle $x_{0}$ gibt, so ist sie entweder
 2. an einem Knick ($f$ ist an $x_{0}$ nicht differenzierbar)
 3. an waagrechten Stelle ($f'(x_{0})=0$)
 
-### Satz von Rolle
-
-Funktion im Intervall $[a,b]$ **stetig** und **differenzierbar**. Wenn $f(a) = f(b)$, dann gibt es eine Stelle $x \in (a,b)$ mit $f(x)=0$. 
-
 ### Mittelwertsatz
 
-Funktion im Intervall $[a,b]$ **stetig** und **differenzierbar**. Es gibt eine Stelle $x$, an der der Wert der Ableitung genau der Differenzenquotient (Durchschnitt) ist.
+$f:[a,b] \to \mathbb{R}$ auf $[a,b]$ **stetig** und auf $(a,b)$ **differenzierbar**. 
+Es gibt eine Stelle $x$, an der der Wert der Ableitung genau der Differenzenquotient (Durchschnitt) ist.
 
 $$
 f'(x) = \frac{f(b) - f(a)}{b - a}
 $$
 
+![[Bildschirmfoto 2026-04-27 um 16.58.23.png]]
 
+### Satz von Rolle
+
+Funktion im Intervall $[a,b]$ **stetig** und **differenzierbar**. Wenn $f(a) = f(b)$, dann gibt es eine Stelle $x \in (a,b)$ mit $f(x)=0$. 
+
+Spezialfall vom Mittelwertsatz mit $f(a)=f(b)$, somit $f(a)-f(b)=0$ und $f'(x)=0$.
+
+![[Bildschirmfoto 2026-04-27 um 17.02.00.png]]
+
+
+---
+
+
+![[Bildschirmfoto 2026-04-23 um 12.53.17.png]]![[Bildschirmfoto 2026-04-23 um 13.19.47.png]]
+![[Bildschirmfoto 2026-04-26 um 16.08.08.png]]
+
+---
+
+## Bernoulli-l’Hospital
+
+![[Bildschirmfoto 2026-04-23 um 14.08.58.png]]
+Es kann z.B. $\frac{\infty}{-\infty}$ sein, es geht nur um den Betrag. 
+
+Beispiel: 
+$$
+\lim_{ x \to \infty } x\cdot\ln(x)=\lim_{ x \to \infty } \frac{\ln(x)}{1/x}=\lim_{ x \to \infty } \frac{1/x}{1/x^2}=0
+$$
+
+## Krümmung
+
+Die Verknüpfung 2 konvexer Funktionen, wobei die äussere monoton wachsend ist, ist wieder konvex.
+
+![[Bildschirmfoto 2026-04-27 um 17.47.50.png]]

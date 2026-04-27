@@ -26,6 +26,9 @@
 
 Your code runs in [[#Program Order]] when seen a single thread in isolation. Because the CPU reorders things, [[#Synchronization Actions]] create a [[#Synchronization Order]]. When threads interact with these actions, they create a [[#Synchronizes-with]] handshake. This handshake establishes a [[#Happens-Before]] relationship, which is the only way to guarantee that Thread B actually sees what Thread A just did.
 
+> [!warning]
+> Rescheduling on a single Thread can only happen in a way that the programmer doesn't notice. 
+
 ### Program Order
 
 The order of statement execution on a singal thread. The JMM can re-order though, this is about the order of execution.

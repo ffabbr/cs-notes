@@ -28,6 +28,7 @@
 - $\log_a\!\left(\tfrac{b}{c}\right) = \log_a(b) - \log_a(c)$
 - $\log_a(b^n) = n \cdot \log_a(b)$
 - Basiswechsel: $\log_a(b) = \tfrac{\ln(b)}{\ln(a)}$
+- $\ln\left(\frac{a}{b}\right) = \ln\left(\left(\frac{b}{a}\right)^{-1}\right) = -\ln\left(\frac{b}{a}\right)$
 
 ---
 
@@ -39,6 +40,7 @@
 - $\ln(e^x) = x$
 - $e^{a+b} = e^a \cdot e^b$
 - $e^{-x} = \tfrac{1}{e^x}$
+- $\ln\left(\frac{a}{b}\right) = \ln\left(\left(\frac{b}{a}\right)^{-1}\right) = -\ln\left(\frac{b}{a}\right)$
 
 ---
 
