@@ -1,0 +1,7 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(cd \"/Users/fabian/Library/Mobile Documents/iCloud~md~obsidian/Documents/Computer Science\" && python3 -c \"\nwith open\\('2nd Semester/AuW/Notes/Wahrscheinlichkeit/19 Primzahlen.md', 'r'\\) as f:\n    content = f.read\\(\\)\n\n# The file now starts with two blank lines, then > [!note], > \\\\`\\\\`\\\\`java, then code lines, then \\\\`\\\\`\\\\`\n# We need to prefix code lines and closing \\\\`\\\\`\\\\` with '> '\nlines = content.split\\('\\\\n'\\)\nresult = []\nin_callout = False\nfor line in lines:\n    if line == '> [!note]':\n        in_callout = True\n        result.append\\(line\\)\n    elif in_callout and line.startswith\\('> \\\\`\\\\`\\\\`java'\\):\n        result.append\\(line\\)  # already prefixed\n    elif in_callout and not line.startswith\\('> '\\):\n        result.append\\('> ' + line if line else '>'\\)\n    else:\n        result.append\\(line\\)\n\nprint\\('\\\\n'.join\\(result\\)\\)\n\" | head -20)"
+    ]
+  }
+}

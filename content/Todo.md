@@ -4,11 +4,7 @@ draft: "true"
 ---
 
 
-- AuW lernen
-	- Josia Dokument durchgehen
-	- AuW Notizen
-	- Peer Grading
-	- Code Expert
+PProg Dienstag
+AuW Dienstag
 
-Analysis Vorlesung Montag
-PProg Aufgaben
+DDCA Lab Report

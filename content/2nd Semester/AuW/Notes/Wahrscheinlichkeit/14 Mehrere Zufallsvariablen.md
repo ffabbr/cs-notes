@@ -72,7 +72,7 @@ X, Y unabhängig. Wenn $X \sim \text{Po}(\lambda)$ ([[13 Verteilungen#Poisson-Ve
 > 
 > **Additivität der Varianz wenn Unabhängigkeit**
 > 
-> Nutze Formel $\text{Var}[X] = \mathbb{E}[X^2] - (\mathbb{E}[X])^2$ (siehe [[10 Zufallsvariable, Erwartungswert#Varianz|Varianz]]) wiederholt
+> Nutze Formel $\text{Var}[X] = \mathbb{E}[X^2] - (\mathbb{E}[X])^2$ (siehe [[10 Zufallsvariable, Erwartungswert, Varianz#Varianz|Varianz]]) wiederholt
 > 
 > ![[Bildschirmfoto 2026-04-12 um 11.41.15.png]]
 

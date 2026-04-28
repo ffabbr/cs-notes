@@ -20,7 +20,7 @@ $$
 > [!info]-
 > Wir haben $X$ ausgewählte Knoten, $Y$ Kanten verletzen die Eigenschaft der stabilen Menge. Im schlechtesten Fall müssen wir für jede dieser $Y$ Konfliktkanten genau einen Knoten aus unserer bisherigen Menge entfernen. Ziehen wir also für jeden Konflikt ($Y$) einen Knoten ab, haben wir eine untere Schranke für die Größe der Menge $S$.
 
-[[10 Zufallsvariable, Erwartungswert#Linearität des Erwartungswerts|Linearität des Erwartungswertes]]  
+[[10 Zufallsvariable, Erwartungswert, Varianz#Linearität des Erwartungswerts|Linearität des Erwartungswertes]]  
 
 $$
 \mathbb{E}[|S|] \ge \mathbb{E}[X] - \mathbb{E}[Y]
@@ -28,7 +28,7 @@ $$
 
 ### Berechnung von $\mathbb{E}[X]$: 
 
-[[10 Zufallsvariable, Erwartungswert#Formel 2 mit Indikatorvariable|Indikatorvariable]]
+[[10 Zufallsvariable, Erwartungswert, Varianz#Formel 2 mit Indikatorvariable|Indikatorvariable]]
 
 Da jeder Knoten mit Wahrscheinlichkeit $p$ gewählt wird, ist der Erwartungswert für einen einzelnen Knoten: $\mathbb{E}[X_v] = p$.
 
@@ -40,7 +40,7 @@ $$
 
 ### Berechnung von $\mathbb{E}[Y]$: 
 
-[[10 Zufallsvariable, Erwartungswert#Formel 2 mit Indikatorvariable|Indikatorvariable]]
+[[10 Zufallsvariable, Erwartungswert, Varianz#Formel 2 mit Indikatorvariable|Indikatorvariable]]
 
 Sei $Y_e$ eine Indikatorvariable, die $1$ ist, wenn die Kante $e = \{u, v\}$ ein Konflikt ist (also wenn sowohl $u$ als auch $v$ gewählt wurden).
 

@@ -1,0 +1,20 @@
+{
+  "id": "conv-1777411771444-fv70n7o5t",
+  "title": "Format Taylor approximation callout",
+  "titleGenerationStatus": "success",
+  "createdAt": 1777411771444,
+  "updatedAt": 1777411785033,
+  "lastResponseAt": 1777411785033,
+  "sessionId": "f21481f0-be0e-4398-ad40-ae2c4570103c",
+  "sdkSessionId": "f21481f0-be0e-4398-ad40-ae2c4570103c",
+  "currentNote": "2nd Semester/Analysis/Notes/10 Taylor.md",
+  "usage": {
+    "model": "sonnet",
+    "inputTokens": 1,
+    "cacheCreationInputTokens": 906,
+    "cacheReadInputTokens": 14887,
+    "contextWindow": 200000,
+    "contextTokens": 15794,
+    "percentage": 8
+  }
+}
