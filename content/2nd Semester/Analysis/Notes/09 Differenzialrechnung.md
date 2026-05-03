@@ -136,5 +136,7 @@ $$
 
 Die Verknüpfung 2 konvexer Funktionen, wobei die äussere monoton wachsend ist, ist wieder konvex.
 
+Konvex: lokales minimum ist auch globales minimum 
+
 ![[Bildschirmfoto 2026-04-27 um 17.47.50.png]]
 

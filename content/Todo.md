@@ -2,9 +2,8 @@
 cssclasses:
 draft: "true"
 ---
+2. AuW Josia und Skript lernen
 
+3. DDCA Vorlesungen
 
-PProg Dienstag
-AuW Dienstag
-
-DDCA Lab Report
+4. Startup & WWDC (Bikepacking)

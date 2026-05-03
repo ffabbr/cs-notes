@@ -1,0 +1,20 @@
+{
+  "id": "conv-1777558329885-aakm8zbp7",
+  "title": "Check accuracy",
+  "titleGenerationStatus": "success",
+  "createdAt": 1777558329885,
+  "updatedAt": 1777558380227,
+  "lastResponseAt": 1777558380227,
+  "sessionId": "023e0a4d-e47f-4f40-a051-eb7b80d8f5e2",
+  "sdkSessionId": "023e0a4d-e47f-4f40-a051-eb7b80d8f5e2",
+  "currentNote": "2nd Semester/AuW/Notes/Wahrscheinlichkeit/17 Target Shooting.md",
+  "usage": {
+    "model": "sonnet",
+    "inputTokens": 1,
+    "cacheCreationInputTokens": 329,
+    "cacheReadInputTokens": 14924,
+    "contextWindow": 200000,
+    "contextTokens": 15254,
+    "percentage": 8
+  }
+}

@@ -1,34 +1,14 @@
 
-- locks haben entweder 0 oder 1 Thread in der CS
-- Semaphoren haben bis zu `s` Threads in der CS
+Semaphoren erlauben mehreren Threads Zugriff bis zu einer festen Grenze. Sie funktionieren wie ein Zähler für verfügbare Plätze.
+
+Locks haben entweder 0 oder 1 Thread in der CS. Semaphoren haben bis zu `s` Threads in der CS.
+
+Vgl. Parkhaus mit Kapazität s
+
 - `acquire(S)` to `dec(S)` counter
 - `release(S)` to `inc(S)` counter
-- `release(S)` so oft aufrufen bis `s` richtige Zahl
 
-**acquire(S)** *(atomic)*
-
-```java
-{ if S > 0 then
-    dec(S)
-  else
-    put(Q_s, self)
-    block(self)
-  end }
-```
-
-**release(S)** *(atomic)*
-
-```java
-{ if Q_s == Ø then
-    inc(S)
-  else
-    get(Q_s, p)
-    unblock(p)
-  end }
-```
-
-
-Beispiel: 
+## Beispiel
 
 1. Thread A führt aus
 2. Thread A macht `release(S)`, also erhöht sich der counter
@@ -38,13 +18,25 @@ Beispiel:
 ![[Bildschirmfoto 2026-04-27 um 10.57.34.png]]
 
 
-## Phases
-
-![[Bildschirmfoto 2026-04-27 um 11.39.23.png]]
-
-
-## Barrier
-
-Alle Threads kommen zum rendezvous Punkt, und erst dann laufen sie weiter. 
-**Turnstile**: acquire, dann gleich release. Schritt für Schritt "releasen sich die Threads nacheinander".
-
+```java
+public class MySemaphore {  
+    private int count;  
+    public MySemaphore(int maxCount) {  
+        count = maxCount;  
+    }  
+  
+    public void acquire() throws InterruptedException {  
+        synchronized (this) {  
+            while (count == 0) this.wait();  
+            count--;  
+        }  
+    }  
+  
+    public void release() {  
+        synchronized (this) {  
+            count++;  
+            this.notify();  
+        }  
+    }  
+}
+```

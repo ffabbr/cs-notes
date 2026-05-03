@@ -18,7 +18,7 @@
 
 **4. Memory Access**
 - If needed, exchange data between CPU and memory
-- pre-fetching, caching, etc.
+- pre-fetching, [[05 Hardware#Caching|caching]], etc.
 
 **5. Writeback**
 - Save the final result of the execution
@@ -29,7 +29,7 @@
 
 **Throughput** = number of instructions that exit the pipeline per time unit. higher is better
 
-→ EINHEITEN angeben #exam 
+→ EINHEITEN angeben 
 
 - For a specific number of instances n: $\text{Throughput} = \frac{n}{\text{total time}}$ oder $\frac{\text{total time}}{n}$
 - For infinite pipeline (per execution unit)

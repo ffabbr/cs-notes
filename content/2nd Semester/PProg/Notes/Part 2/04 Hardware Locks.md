@@ -23,4 +23,4 @@ Time per thread rises with number of threads
 - **Solution**: add flag, read flag if lock is free (fast)
 - only if free, start TAS, else go to sleep (backoff)
 
-![[Bildschirmfoto 2026-04-21 um 13.48.34.png]]
+![[Bildschirmfoto 2026-04-21 um 13.48.34.png]]![[Bildschirmfoto 2026-04-29 um 16.38.03.png]]

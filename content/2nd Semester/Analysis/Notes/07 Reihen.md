@@ -60,6 +60,10 @@ $$
 
 oder (einfachere) Formel ==ab 0== verwenden $\sum_{n=0}^{\infty} a\cdot q^n = a\cdot \frac{1}{1-q}$ und wenn z.B. ab 2, dann für 0, 1 abziehen. 
 
+$$
+ \text{Summe} = \frac{\text{Startwert}}{1 - q} 
+ $$
+
 ### Teleskope Reihe
 
 Aufteilung finden, Beispiel
@@ -111,7 +115,6 @@ $$
 **Bedingt konvergent**: 
 - Reihe konvergiert
 - $\sum_{n=0}^{\infty} |a_n|$ geht gegen unendlich (sie **divergiert ==nicht== absolut**).
-
 
 ## Riemannscher Umordnungssatz 
 
@@ -168,6 +171,9 @@ Reihe konvergiert gegen endlichen Grenzwert.
 $$
 \sum_{n=0}^{2m+1} (-1)^n a_n \le \sum_{n=0}^{\infty} (-1)^n a_n \le \sum_{n=0}^{2m} (-1)^n a_n, \quad \forall m \in \mathbb{N}_0. 
 $$
+
+> [!success]
+> Bei Abschätzungen ist der Fehler immer strikt kleiner als der Betrag des ersten weggelassenen Gliedes
 
 ![[Bildschirmfoto 2026-03-24 um 18.02.29.png]]
 

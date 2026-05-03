@@ -65,7 +65,7 @@ Von-Neumann-Architektur
 
 - [[#Vectorization]]
 - [[#ILP]]
-- [[#Pipelining]] 
+- [[06 Pipelining]] 
 
 ### Vectorization
 

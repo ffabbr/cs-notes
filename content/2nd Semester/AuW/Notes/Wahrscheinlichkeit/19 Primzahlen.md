@@ -21,6 +21,8 @@ Wähle random a, falls p prim, dann $a^{p-1} \equiv_{p} 1$, also return prime, s
 
 ## Miller-Rabin
 
+Wir finden heraus ob $n$ eine Primzahl ist in $O((\log n)^3)$.
+
 - wenn n prim, ist $\{0, \dots, n-1\}$ ein Körper
 - Polynom vom Grad 2 hat höchstens 2 Nullstellen in einem Körper
 - $x^2=1$ hat nur Nullstellen $x_{1}=1, x_{2}=-1 \equiv_{n} n-1$

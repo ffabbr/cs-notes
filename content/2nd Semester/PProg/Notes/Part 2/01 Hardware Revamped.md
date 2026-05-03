@@ -45,7 +45,7 @@ A write to a `volatile` variable `V` _synchronizes-with_ every subsequent read o
 **Critical actions that need a fixed order.**
 
 - Read/write of **volatile variable**
-- Lock/Unlock monitor (what is a monitor?)
+- Lock/Unlock [[09 Monitors|monitor]] (what is a monitor?)
 - First/last action of a thread (synthetic)
 - First/last action, starting, or terminating a thread
 

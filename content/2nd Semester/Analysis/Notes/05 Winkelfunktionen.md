@@ -10,3 +10,27 @@ $\cos(-\varphi)=\cos(\varphi)$
 $\sin(-\varphi)=-\sin(\varphi)$
 
 ![[Pasted image 20260427162909.png]]
+
+## Additionstheoreme
+
+$$
+ \tan(x + y) = \frac{\tan(x) + \tan(y)}{1 - \tan(x)\cdot \tan(y)} 
+ $$
+$$
+ \tan(x - y) = \frac{\tan(x) - \tan(y)}{1 + \tan(x)\cdot \tan(y)} 
+ $$
+
+$$
+ \sin(x + y) = \sin(x)\cos(y) + \cos(x)\sin(y) 
+ $$
+$$
+ \sin(x - y) = \sin(x)\cos(y) - \cos(x)\sin(y) 
+ $$
+
+$$
+ \cos(x + y) = \cos(x)\cos(y) - \sin(x)\sin(y) 
+ $$
+$$
+ \cos(x - y) = \cos(x)\cos(y) + \sin(x)\sin(y) 
+ $$
+

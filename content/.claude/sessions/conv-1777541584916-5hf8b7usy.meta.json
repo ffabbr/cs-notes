@@ -1,0 +1,20 @@
+{
+  "id": "conv-1777541584916-5hf8b7usy",
+  "title": "Document Java signal behavior patterns",
+  "titleGenerationStatus": "success",
+  "createdAt": 1777541584917,
+  "updatedAt": 1777558326921,
+  "lastResponseAt": 1777541603281,
+  "sessionId": "0747fbc0-00fa-487c-a576-97cdae0acce7",
+  "sdkSessionId": "0747fbc0-00fa-487c-a576-97cdae0acce7",
+  "currentNote": "2nd Semester/PProg/Notes/Part 2/09 Monitors.md",
+  "usage": {
+    "model": "sonnet",
+    "inputTokens": 1,
+    "cacheCreationInputTokens": 478,
+    "cacheReadInputTokens": 15142,
+    "contextWindow": 200000,
+    "contextTokens": 15621,
+    "percentage": 8
+  }
+}

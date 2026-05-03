@@ -3,7 +3,7 @@
 
 ## Introduction
 
-- a program using fork/join can be seen as a DAG
+- a program using [[08 Arbeitsaufteilung#Framework: Fork Join|fork/join]] can be seen as a DAG
 - Vertixes: units of work
 - Edges: dependencies (source must finish before destination starts)
 
@@ -34,7 +34,7 @@ $T_{p}$: execution time on P worker threads. This does not necessarily mean phys
 
 To determine how much a program can potentially speed up by running in parallel, the model relies on two critical metrics derived from the DAG. 
 
-Speedup: 
+[[07 Scalability#Speedup|Speedup]]: 
 $$
 S_{p} = \frac{T_{1}}{T_{p}}
 $$
@@ -106,7 +106,7 @@ Summing an Array:
 ## Patterns
 
 Reduction always achieve $O(\log n)$
-Map achieves $O(\log n)$ with Divide & Conquer
+Map achieves $O(\log n)$ with [[08 Arbeitsaufteilung#Divide and Conquer|Divide & Conquer]]
 ### Reduction
 
 The dimension (size) of the output is smaller than of the input. We get the output by applying an **associative operator** on all Input entries. 

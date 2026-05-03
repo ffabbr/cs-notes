@@ -9,7 +9,7 @@ Here you can find my lecure notes from my studies. If you're thinking about stud
 
 Otherwise, dive right in:
 
-- [[1st Semester/]]
-- [[2nd Semester/]]
+- [[1st Semester/index|1st Semester]] 
+- [[2nd Semester/index|2nd Semester]]
 
 
