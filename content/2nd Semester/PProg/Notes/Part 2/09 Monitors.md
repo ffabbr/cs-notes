@@ -50,9 +50,10 @@ Jedes Java objekt hat `.wait()`, also hat man die wait, notify und notifyAll met
 - `.signal()`
 - `.signalAll()`
 
-### PC with Lock
+### PC with Lock (Monitors)
 
 F.ex. in Producer / Consumer we have notFull and notEmpty conditions. Wir verwenden nicht mehr intrinsic lock, also kein synchronized sondern muss manuell `lock.lock()` mit `try { } finally { unlock }`
 
 ![[Bildschirmfoto 2026-04-29 um 15.26.21.png]]
 
+---

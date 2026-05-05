@@ -1,0 +1,20 @@
+{
+  "id": "conv-1777905794535-8m0ag7zqw",
+  "title": "Find e^x Taylor series mentions",
+  "titleGenerationStatus": "success",
+  "createdAt": 1777905794536,
+  "updatedAt": 1777905801908,
+  "lastResponseAt": 1777905801591,
+  "sessionId": "3be354b1-1c44-4a77-a5e0-45910f9f6ac7",
+  "sdkSessionId": "3be354b1-1c44-4a77-a5e0-45910f9f6ac7",
+  "currentNote": "2nd Semester/Analysis/Notes/07 Reihen.md",
+  "usage": {
+    "model": "sonnet",
+    "inputTokens": 1,
+    "cacheCreationInputTokens": 3028,
+    "cacheReadInputTokens": 13955,
+    "contextWindow": 200000,
+    "contextTokens": 16984,
+    "percentage": 8
+  }
+}

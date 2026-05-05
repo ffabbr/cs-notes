@@ -4,7 +4,7 @@ Barrieren lassen Threads warten, bis alle an einem gemeinsamen Punkt angekommen 
 ![[Bildschirmfoto 2026-04-27 um 11.39.23.png]]
 ![[Bildschirmfoto 2026-04-29 um 15.49.05.png]]
 
-Alle Threads kommen zum rendezvous Punkt, und erst dann laufen sie weiter. 
+Alle Threads kommen zum rendezvous Punkt der Semaphore, und erst dann laufen sie weiter. 
 
 **Turnstile**
 

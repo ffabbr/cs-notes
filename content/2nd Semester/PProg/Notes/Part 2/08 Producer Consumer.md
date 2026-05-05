@@ -25,4 +25,18 @@ ein gemeinsamer Lock schützt den Puffer, damit nur ein Thread gleichzeitig `buf
 
 2 **Conditions**: Producer warten auf `notFull`, wenn der Puffer voll ist, und Consumer warten auf `notEmpty`, wenn der Puffer leer ist.
 
-![[09 Monitors#PC with Lock]]
+![[09 Monitors#PC with Lock (Monitors)]] 
+
+
+## PC with Sleeping Barber
+
+- Will nicht notFull und notEmpty nicht senden obwohl keine threads warten
+- Idee Barber checks waiting room, sleeps. Client either enqueues or wakes barber. Achtung, wenn barber und client gleichzeitig schauen deadlock
+
+Lösung
+
+- add counters for clients and barbers. 
+- m <= 0: buffer full, -m clients waiting
+- n <= 0, buffer empty, -n barbers waiting
+
+![[Bildschirmfoto 2026-05-04 um 10.38.49.png]]

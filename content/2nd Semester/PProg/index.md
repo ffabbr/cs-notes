@@ -26,3 +26,7 @@ my lecture notes:
 	- [[2nd Semester/PProg/Notes/Part 2/07 Barrier.md|07 Barrier]]
 	- [[2nd Semester/PProg/Notes/Part 2/08 Producer Consumer.md|08 Producer Consumer]]
 	- [[2nd Semester/PProg/Notes/Part 2/09 Monitors.md|09 Monitors]]
+	- [[10 Reader Writer Locks]]
+	- [[11 Lock Granularity]]
+
+
