@@ -20,7 +20,31 @@ Beware in implementation
 
 With [[09 Monitors|Monitor]]:
 
-*reusable*
+*reusable with a double-door setup*
+
+```java
+synchronized void await() throws InterruptedException {
+    while (draining) {
+        wait();
+    }
+    ++i;
+    while (i < n && !draining) {
+        wait();
+    }
+    if (i-- == n) {
+        draining = true;
+        notifyAll();
+    }
+    if (i == 0) {
+        draining = false;
+        notifyAll();
+    }
+}
+```
+
+---
+
+*reusable, worse*
 
 ```java
 public class Barrier {
@@ -49,6 +73,9 @@ public class Barrier {
     }
 }
 ```
+
+
+---
 
 *not reusable*
 ```java

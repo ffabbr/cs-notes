@@ -1,64 +1,61 @@
-single instruction multiple data
+Single Instruction Multiple Data — same operation applied concurrently to different pieces of data (e.g. dot product of vectors).
 
-[[21 Dataflow|Dataflow]]: concurrency because different operations in parallel
-SIMD: concurrency because same operation concurrently applied to different pieces of data (f.ex. dot product of vectors)
+Contrast with [[21 Dataflow|Dataflow]]: concurrency comes from different operations running in parallel, whereas SIMD parallelizes the *same* operation across data.
 
-## Vector processor
+e.g. summing 2 arrays: fully parallelizable, so the programmer or compiler generates a SIMD instruction → forms a vector instruction → executes on a SIMD processor.
 
-SIMD/Vector machines do performance improvement by vectorizability. Check [[07 Scalability#Amdahl's Law|Amdahl's Law]] 
+---
 
-A vector processor is one whose instructions operate on vectors rather than scalar (single data) values
+## Vector Processor
 
-Advantages: 
-- no dependencies within a vector
-- regular memory access pattern
-- high workload per instruction
+A vector processor is one whose instructions operate on vectors rather than scalar values. Same operation in the same space, different operations at different times.
 
-Disadvantages: 
-- parallelism needs to be regular to function properly
-- memory becomes a bottleneck
+> [!warning] Performance ceiling
+> SIMD/Vector performance improvement is limited by the vectorizability of the code. Check [[07 Scalability#Amdahl's Law|Amdahl's Law]] (!!)
 
-### Memory banking
+**Advantages:**
+- No dependencies within a vector
+- Regular memory access pattern
+- High workload per instruction
 
-Problem: Memory speed can't keep up with CPU
-Solution: Memory banking
+**Disadvantages:**
+- Parallelism needs to be regular to function properly
+- Memory becomes a bottleneck
 
-- divide Memory into independent banks (they share address and data bus)
-- each bank has its own MAR (memory address register) and MDR (memory data register)
-- result: we can fetch from memory in parallel (N concurrent accesses if they go to N different banks)
+A loop is vectorizable if its iterations are independent from one another.
 
-The CPU gives the memory the base (starting address in memory) and a stride (distance between the elements to be fetched). So `Next address = Previous address + Stride`
+### Memory Banking
 
-For maximum throughput (1 element per cycle) we need
+**Problem:** Memory speed can't keep up with the CPU.  
+**Solution:** Divide memory into independent banks (sharing address and data bus), each with its own MAR and MDR → enables N concurrent accesses if they go to N different banks.
+
+The CPU provides a **base** (starting address) and a **stride** (distance between elements): `next address = previous address + stride`
+
+For maximum throughput (1 element per cycle):
 - stride = 1
 - consecutive elements on different banks
-- number of banks >= bank latency
+- number of banks ≥ bank latency
 
-Loop vectorizable if iterations independent from one another
+### Stride & Bank Conflicts
+
+Stride = 1 is optimal. For stride > 1, stride **coprime to the number of banks** ensures every bank is hit before cycling back.
+
+Memory interleaving assigns addresses to banks via modulo. With 16 banks:
+- stride = 3 → banks 0, 3, 6, 9, 12, 15, 2, 5, 8, 11, 14, 1, 4, 7, 10, 13
+- stride = 4 → banks 0, 4, 8, 12 (conflict!)
+
+> [!tip] Recall $\mathbb{Z}_7^* = \{1,2,3,4,5,6\}$
+
+Avoiding bank conflicts:
+- More banks
+- More ports per bank
+- Better data layout
+
+---
 
 ## Masked Instructions
 
-At times we only want to compute part of the vector. The mask tells us which part. 
+Sometimes only part of a vector needs to be computed — the **mask** specifies which elements.
 
-Simple Implementation: execute everything, but don't write back where mask = 0
-
-Advanced Implementation: check mask and only calculate where needed
-
-## Stride number
-
-As mentioned, stride = 1 is optimal, as guaranteed that each bank will be used. At times though, we have operations with stride > 1. 
-
-Then, stride coprime to bank amount means every bank will be hit before looping back to the beginning. 
-
-Memory interleaving uses mod to assign addresses to banks. 
-
-So with 16 memory banks 
-- stide=3: banks 0, 3, 6, 9, 12, 15, 2, 5, 8, 11, 14, 1, 4, 7, 10, 13
-- stride=4: banks 0, 4, 8, 12
-
-Remember $\mathbb{Z}_7^*=\{1,2,3,4,5,6\}$ 
-
-Avoiding bank conflicts: 
-- more banks
-- more ports per bank
-- better data layout
+- **Simple:** execute everything, don't write back where mask = 0
+- **Advanced:** check mask first and only compute where needed

@@ -33,6 +33,7 @@ my lecture notes:
 		- [[21 Dataflow]]
 		- [[22 VLIW and Systolic Array]]
 		- [[23 SIMD]]
-- [[DDCA Open]]
+	- **05 Hardware**
+		- [[24 GPU]]
 
 %% End Waypoint %%

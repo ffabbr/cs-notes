@@ -94,6 +94,8 @@ $$f|_{D'} : D' \to \mathbb{R} \text{ mit } f|_{D'}(x) = f(x) \forall x \in D'$$
 **konvex**: linksgekrümmt
 **konkav**: rechtsgekrümmt
 
+siehe [[09 Differenzialrechnung#Krümmung]]
+
 ## Stetigkeit
 
 Eine Funktion ist stetig, wenn an jedem Punkt stetig, aka keinen Sprung. Vorstellung Zoom: Hab ich z.B. einen Spitz, dann kann ich beliebig nahe ran-zoomen und komme dem Spitz immer näher, somit stetig. 

@@ -6,22 +6,25 @@ synchronized add, remove, contains methods
 
 ## Fine grained locking
 
-- jedes listenelement hat ein eigenes lock
-- handover lock when traversing, always only lock 2 nodes at ta time
+jedes listenelement hat ein eigenes lock
+### Starter (Hand over hand locking)
+
+- hand over hand: threads locks können sich nicht überholen, also statt vorzulaufen bis zu vorgänger von delete und dann 2 nodes zu locken (problem ist dass race condition beim lock acquiren, aber davor speichern wir state). hier ist die lösung hand over hand, also wir laufen mit 2 locks die nodes ab und checken jedes mal ob das nächste element schon das gesuchte element ist. so haben wir die locks die wir brauchen safe, und es kann kein anderer thread uns überholen.
+- handover lock when traversing, always only lock 2 nodes at the time
 - lock both read and write node, so for f.ex. `remove(c)` we need to lock b and c, as we move the pointer from b to d instead of b to c
 
 ![[Bildschirmfoto 2026-05-04 um 11.38.30.png]]
 
 Problems: 
 - many lock/unlock because of traversal
-- locks can't overtake
+- locks can't overtake in the sense of making changes further to the right
 
-## Optimistic synchronization locking
+### Optimistic synchronization locking
 
-get to node without locking, check all is okay (to make sure in the meantime another thread hasn't changed something), then lock only affected notes
+get to node without locking, **validate** all is okay (to make sure in the meantime, so after reading states and before having both locks, another thread hasn't changed something), then lock only affected notes
 
 - lock
-- validate: rescan, traverse from the start to check if the connection up to the element after b is still reachable (connected)
+- validate: rescan: traverse from the start to check if the connection up to ==the element after b== is still reachable (connected). Element after b is to check that 1) b ist still reachable and hasn't been deleted, and 2) b.next hasn't changed (f.ex. another thread hasn't deleted b.next, this is important for f.ex. adding)
 
 ```java
 private Boolean validate(Node pred, Node curr) {
@@ -39,15 +42,15 @@ Problems:
 - need to traverse list multiple times
 - not starvation free
 
-## Lazy synchronization locking
+### Lazy synchronization locking
 
 - like optimistic, but
-- add deleted flag 
+- add deleted flag instead of actually directly deleting 
 - lazy delete nodes flagged as to be deleted when f.ex. traversing
 
 delete c
 - lock b and c
-- check if b or c marked
+- check if b or c got marked and if the next pointer still stands (for add(c), this is our new validate instead of iterating from the start)
 - if not marked, mark c (flag) and then delete c (update pointer)
 
 contains
@@ -59,7 +62,7 @@ contains
 ![[Bildschirmfoto 2026-05-05 um 10.38.33.png]]
 
 
-## Skip lists
+### Skip lists (ev. nicht prüfungsrelevant)
 
 las vegas 
 
