@@ -45,6 +45,8 @@ $$
 \underbrace{\sum_{n=0}^{\infty} a_n}_{\text{Gesamt}} = \underbrace{\sum_{n=0}^{N-1} a_n}_{\text{Endlicher Anfang}} + \underbrace{\sum_{n=N}^{\infty} a_n}_{\text{Unendlicher Rest}}
 $$
 
+### Multiplikation von Reihen
+
 ## Grenzwert berechnen
 
 Es gibt nur 2 Reihen, bei denen wir das können. Die geometrische Reihe und die teleskope Reihe. Also wenn etwas keine geometrische Reihe ist, dann muss es durch Teleskopieren lösbar sein. 

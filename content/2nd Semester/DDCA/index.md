@@ -20,6 +20,7 @@ my lecture notes:
 		- [[11 ISA Tradeoffs]]
 		- [[12 Microarchitecture]]
 		- [[13 Program Execution]]
+		- [[14 MIPS Assembly Coding]]
 	- **03 Performance**
 		- [[13 Performance Analysis]]
 		- [[14 Execution Optimizations]]
@@ -35,5 +36,6 @@ my lecture notes:
 		- [[23 SIMD]]
 	- **05 Hardware**
 		- [[24 GPU]]
+		- [[25 Memory]]
 
 %% End Waypoint %%

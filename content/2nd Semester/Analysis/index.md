@@ -15,7 +15,8 @@ my lecture notes:
 	- [[08 Funktionen]]
 	- [[09 Differenzialrechnung]]
 	- [[10 Taylor]]
-	- [[11 Integral]]
+	- [[11 Differentialgleichungen]]
+	- [[12 Integral]]
 - **Summaries**
 
 
