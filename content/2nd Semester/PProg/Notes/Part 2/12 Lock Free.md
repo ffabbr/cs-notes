@@ -20,7 +20,7 @@ do {
 
 ## Execution Timelines
 
-<iframe src="media/execution.html" width="100%" height="600"></iframe>
+<iframe src="https://cs.rohlik.net/2nd-Semester/PProg/Notes/Part-2/media/execution" width="100%" height="600"></iframe>
 
 
 ## Quiescent consistency
