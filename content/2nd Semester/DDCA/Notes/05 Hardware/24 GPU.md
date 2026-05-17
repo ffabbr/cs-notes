@@ -1,43 +1,26 @@
 
-## Overview
-
-- Instruction pipeline is like a [[23 SIMD|SIMD]] pipeline
-- Programming is done using threads, not SIMD instructions
+A GPU is a [[23 SIMD|SIMD]] machine under the hood but is programmed with Threads.
 
 ---
 
 ## Programming Model vs. Execution Model
 
-- **Programming model:** Sequential (von Neumann), Data Parallel (SIMD), Dataflow, Multi-threaded, …
-- **Execution model (hardware):** out-of-order, vector-processor, array processor, dataflow processor, multiprocessor, …
+**Programming model** 
+mental picture of the programmer, Sequential (von Neumann), Data Parallel (SIMD), Dataflow, Multi-threaded, …
 
-> [!important]
-> The execution model can be different from the programming model.
-
----
-
-## Key Paradigms
-
-- **SPMD** (Single Program Multiple Data) — e.g. adding two arrays `C = A + B` on a MIMD machine with 1 thread per entry
-- **SIMT** (Single Instruction Multiple Threads) — multiple instruction streams of scalar instructions; each thread is independent → behaves like MIMD
+**Execution model:**
+actual hardware actions, out-of-order, vector-processor, array processor, dataflow processor, multiprocessor, …
 
 ---
 
-## GPU Architecture: SIMD Hardware, Thread Programming
+**SPMD** Programming model (Single Program Multiple Data)
+Das gleiche Programm wird auf mehreren Threads ausgeführt mit jeweils unterschiedlichen Daten
 
-> [!note]
-> A GPU is a **SIMD machine** under the hood, but it is **programmed with threads**.
-
-- Each thread has its own context and executes the same code on a different piece of data
-- The hardware groups threads executing the same instruction into a **warp** → a warp is essentially a SIMD operation formed by hardware
-
-### Warp
-
-- Set of threads with the same instruction on different data elements
-- **Not exposed to programmers** — handled entirely by hardware
+**SIMT** Execution model (Single Instruction Multiple Threads)
+Wir der SPMD Befehl ausgeführt wird, not visible by programmer; GPU erstellt ==Warp== (32 Threads, die den Befehl auf unterschiedlichen Daten ausführen); Divergenz: es können nicht ein Teil der Threads im Warp die `if` branch und ein anderer Teil die `else` branch ausführen, also nacheinander
 
 ### Fine-Grained Multi-Threading (FGMT)
 
-- One instruction per thread in the pipeline at a time
-- Warp execution is interleaved to hide latencies
-- Enables a simple pipeline with long latency tolerance
+Der Prozessor kann in jedem Taktzyklus schnell zwischen Warps/Threads wechseln. 
+
+Weil die GPU durch das schnelle Wechseln (FGMT) immer einen anderen Warp findet, der gerade arbeitsbereit ist, kann sie Latenzen einfach tolerieren.

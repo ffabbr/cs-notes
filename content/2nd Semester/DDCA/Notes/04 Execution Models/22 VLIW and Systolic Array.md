@@ -5,7 +5,7 @@ Very long instruction word
 
 [[19 Superscalar Execution|Superscalar]]: Hardware fetches instructions and checks dependencies
 
-**VLIW**: Software bundles independent instructions to be fetched and executed concurrently in a single VLIW instruction. Hardware no need for dependence checking. 
+**VLIW**: ==Compiler== bundles independent instructions to be fetched and executed concurrently in a single VLIW instruction. Hardware no dependence checking. 
 
 Simpler hardware (no scheduling or dependency check needed), but compiler more complex with possible NOPs.
 
@@ -20,7 +20,7 @@ Superblock Formation: we separate the common path from the rarely used path by d
 
 ## Systolic Array 
 
-- execution model different from [[09 Von Neumann|von neumann]], [[21 Dataflow|dataflow]]
+- execution model different from [[09 Von Neumann|von neumann]], [[21 Dataflow|dataflow]], [[17 Out of order execution|Out of order execution]] 
 - separate task to many PE (processing elements). A piece of data that is taken from memory is done some processing with by PE1, then passed on to PE2 for further processing, and so on. But by the time that this data reaches PE2, PE1 can already start fetching and processing the next memory element, finally, it is stored back to memory. In [[15 Pipelining|pipelining]] we pipeline instructions, here we are working with individual PEs. 
 
 - The PEs and this pipeline can be specialized

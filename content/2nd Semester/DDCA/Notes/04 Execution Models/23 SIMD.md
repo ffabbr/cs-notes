@@ -27,7 +27,7 @@ A loop is vectorizable if its iterations are independent from one another.
 ### Memory Banking
 
 **Problem:** Memory speed can't keep up with the CPU.  
-**Solution:** Divide memory into independent banks (sharing address and data bus), each with its own MAR and MDR → enables N concurrent accesses if they go to N different banks.
+**Solution:** Divide memory into independent banks (sharing address and data bus), each with its own [[09 Von Neumann|MAR and MDR]] → enables N concurrent accesses if they go to N different banks.
 
 The CPU provides a **base** (starting address) and a **stride** (distance between elements): `next address = previous address + stride`
 

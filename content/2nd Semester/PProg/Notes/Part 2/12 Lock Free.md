@@ -17,6 +17,12 @@ do {
 } 
 ```
 
+
+## Execution Timelines
+
+<iframe src="media/execution.html" width="100%" height="600"></iframe>
+
+
 ## Quiescent consistency
 
 start: invocation
@@ -42,6 +48,7 @@ Instead of a line where things happen, it (the return/chagne of state) happens a
 **ABA problem**: CAS suggests that no other thread has written between (a) and (c), but might be deceptive when changed and changed back again by another thread where the value now is the same but changes have been made (?)
 
 **Muster bei Lock Free**: speicher geteilte variable in lokaler variable, am ende überprüfe ob sich geteilte variable geändert hat mit `do {} while (!top.compareAndSet(head, next))` 
+
 ## Stack mit Lock Free
 
 ```java
