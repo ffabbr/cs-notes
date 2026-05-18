@@ -29,7 +29,7 @@ end: return
 ### Quiescent consistency
 
 1. non-overlapping operations have sequential effect
-2. for overlapping operations we cannot say something (could even swap within Thread)
+2. for overlapping operations we cannot say something (could even swap within thread)
 
 ### Sequential consistency
 
@@ -41,7 +41,11 @@ aka Threads can interleave anyways, but within Thread order is set; we suppose w
 
 Linearisierbar $\implies$ Sequential consistency
 
-Instead of a line where things happen, the change of state happens at a POINT between invocation and return. 
+$\to_{G} \subset \to_{S}$: 
+- $\to_{G}$  G ist eine unvollständige Festlegung der Reihenfolge
+- $\to_{S}$  G schränkt somit ein, wie S sein kann, S ist eine vollständige Reihenfolge
+
+Instead of a line where things happen, the change of state happens at a POINT between invocation and return. Das ist unser G. 
 
 Linearisierbar: für alle Möglichkeiten von diesen Punkten (Strichen) ist es korrekt. Wir können nicht verschieben wie bei sequential consistency 
 
@@ -49,11 +53,11 @@ H ist linearisierbar, wenn es zu G erweitern kann indem man
 - appending responses to pending invocations that took effect (even though the program hasn't terminated but we see in other values that it has had effect already, so we set an ending-point)
 - discarding invocations that did not take effect (when we have no return and also no indicator that it returned already, remove entirely)
 
-$\to_{G} \subset \to_{S}$: 
-- $\to_{G}$  G ist eine unvollständige Festlegung der Reihenfolge
-- $\to_{S}$  G schränkt somit ein, wie S sein kann, S ist eine vollständige Reihenfolge
-
 Korrektheits-Beweise mit Linearisierbarkeit, dann darf es nur einen Linearisierungspunkt pro Pfad geben. 
+
+
+<iframe src="https://cs.rohlik.net/static/consistency.html" style="border-radius: 10px" width="100%" height="500"></iframe>
+
 
 ### ABA Problem
 

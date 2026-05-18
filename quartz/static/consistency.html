@@ -1,0 +1,933 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Quiescent vs Sequential Consistency</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg:        #f7f6f2;
+    --thread:    #e2dfd6;
+    --text:      #1e1d1a;
+    --text-sec:  #7a7870;
+    --dash:      #b8b5ab;
+    --col-t1:    #4a72b0;
+    --col-t2:    #b05a52;
+    --col-t3:    #5a9070;
+    --good:      #5a9070;
+    --bad:       #b05a52;
+    --panel:     #efece5;
+    --font: "SF Pro Text", "Helvetica Neue", "Segoe UI", system-ui, sans-serif;
+    --mono: "SF Mono", "Menlo", "Consolas", monospace;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg:        #151412;
+      --thread:    #302e2a;
+      --text:      #d0cdc2;
+      --text-sec:  #8a8880;
+      --dash:      #403e3a;
+      --col-t1:    #7090c4;
+      --col-t2:    #d07a72;
+      --col-t3:    #80b094;
+      --good:      #80b094;
+      --bad:       #d07a72;
+      --panel:     #1f1e1c;
+    }
+  }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 32px 24px;
+  }
+
+  .wrap { max-width: 920px; width: 100%; }
+
+  h1 {
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--text-sec);
+    text-align: center;
+    margin-bottom: 18px;
+    letter-spacing: 0.02em;
+  }
+
+  svg {
+    display: block;
+    width: 100%;
+    height: auto;
+    user-select: none;
+    -webkit-user-select: none;
+    cursor: crosshair;
+  }
+
+  svg text { font-family: var(--font); }
+
+  g[data-id] {
+    transform-box: fill-box;
+    transform-origin: center;
+    transition: opacity 0.16s ease, transform 0.16s ease;
+  }
+  g[data-id].entering { opacity: 0; transform: scale(0.9); }
+  g[data-id].leaving  { opacity: 0; transform: scale(0.9); }
+
+  .op-body { cursor: grab; }
+  .op-body.dragging { cursor: grabbing; }
+  .op-end { cursor: ew-resize; }
+  .op-label { cursor: pointer; font-family: var(--mono); font-size: 11px; font-weight: 500; }
+  .add-btn { cursor: pointer; transition: opacity 0.15s ease; }
+  .add-btn:hover circle { fill: var(--text-sec); }
+  .add-btn:hover text { fill: var(--bg); }
+  .add-btn.disabled { cursor: not-allowed; opacity: 0.35; }
+  .add-btn.disabled:hover circle { fill: var(--thread); }
+  .add-btn.disabled:hover text  { fill: var(--text-sec); }
+  .del-hint { font-size: 9.5px; fill: var(--text-sec); }
+
+  .status {
+    margin-top: 18px;
+    margin-left: 6.5%;
+    margin-right: 7.6%;
+    background: var(--panel);
+    border-radius: 10px;
+    padding: 16px 20px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 14px 24px;
+  }
+
+  .status-row {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .status-row .label {
+    font-size: 12px;
+    color: var(--text-sec);
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+  }
+
+  .status-row .verdict {
+    font-size: 14px;
+    font-weight: 500;
+  }
+
+  .status-row .verdict.yes { color: var(--good); }
+  .status-row .verdict.no  { color: var(--bad);  }
+
+  .status-row .detail {
+    font-size: 11.5px;
+    color: var(--text-sec);
+    font-family: var(--mono);
+    margin-top: 2px;
+    word-break: break-word;
+  }
+
+  .wrap { position: relative; }
+
+  .ctx-menu {
+    position: absolute;
+    background: var(--bg);
+    border: 1px solid var(--dash);
+    border-radius: 6px;
+    padding: 4px;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.18);
+    z-index: 10;
+    font-family: var(--mono);
+    font-size: 12px;
+    min-width: 96px;
+    opacity: 0;
+    transform: scale(0.98);
+    transform-origin: top left;
+    pointer-events: none;
+    transition: opacity 0.1s ease, transform 0.1s ease;
+  }
+  .ctx-menu.open {
+    opacity: 1;
+    transform: scale(1);
+    pointer-events: auto;
+  }
+  .ctx-menu button {
+    display: block;
+    width: 100%;
+    text-align: left;
+    background: transparent;
+    border: 0;
+    color: var(--text);
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    font: inherit;
+    transition: background 0.12s ease;
+  }
+  .ctx-menu button:hover { background: var(--panel); }
+  .ctx-menu .sep { height: 1px; background: var(--dash); margin: 4px 2px; }
+
+  .interleavings {
+    margin-top: 16px;
+    margin-left: 6.5%;
+    margin-right: 7.6%;
+    font-family: var(--mono);
+    font-size: 11.5px;
+    color: var(--text-sec);
+    max-height: 300px;
+    overflow-y: auto;
+    display: none;
+  }
+  .interleavings.open { display: block; }
+  .interleavings .head {
+    font-family: var(--font);
+    font-size: 11px;
+    color: var(--text-sec);
+    margin-bottom: 6px;
+    opacity: 0.7;
+  }
+  .interleavings .row {
+    padding: 2px 0;
+    display: flex;
+    gap: 10px;
+    align-items: baseline;
+    line-height: 1.45;
+  }
+  .interleavings .ord  { flex: 1; word-break: break-word; }
+  .interleavings .tags { flex-shrink: 0; letter-spacing: 0.08em; font-family: var(--font); font-size: 10.5px; font-weight: 500; }
+  .interleavings .tag.Q { color: var(--col-t3); }
+  .interleavings .tag.S { color: var(--col-t1); }
+  .interleavings .tag.L { color: var(--col-t2); }
+  .interleavings .tag.off { color: var(--dash); }
+  .interleavings .empty { opacity: 0.6; }
+
+  .legend {
+    margin-top: 14px;
+    font-size: 11.5px;
+    color: var(--text-sec);
+    text-align: center;
+    line-height: 1.55;
+  }
+
+  .legend code {
+    font-family: var(--mono);
+    background: var(--panel);
+    padding: 1px 5px;
+    border-radius: 3px;
+    font-size: 11px;
+  }
+
+  .defs {
+    margin-top: 14px;
+    font-size: 12px;
+    color: var(--text-sec);
+    line-height: 1.55;
+    background: var(--panel);
+    border-radius: 10px;
+    padding: 14px 18px;
+  }
+  .defs b { color: var(--text); font-weight: 500; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <svg id="diagram" viewBox="0 0 920 320" xmlns="http://www.w3.org/2000/svg">
+    <!-- thread lines -->
+    <line x1="60" y1="80"  x2="850" y2="80"  stroke="var(--thread)" stroke-width="1"/>
+    <line x1="60" y1="170" x2="850" y2="170" stroke="var(--thread)" stroke-width="1"/>
+    <line x1="60" y1="260" x2="850" y2="260" stroke="var(--thread)" stroke-width="1"/>
+
+    <!-- thread labels -->
+    <text x="46" y="80"  font-size="11" fill="var(--text-sec)" text-anchor="end" dominant-baseline="middle">t1</text>
+    <text x="46" y="170" font-size="11" fill="var(--text-sec)" text-anchor="end" dominant-baseline="middle">t2</text>
+    <text x="46" y="260" font-size="11" fill="var(--text-sec)" text-anchor="end" dominant-baseline="middle">t3</text>
+
+    <!-- add buttons -->
+    <g class="add-btn" data-thread="0" transform="translate(875,80)">
+      <circle r="11" fill="var(--thread)"/>
+      <text font-size="14" font-weight="500" fill="var(--text-sec)" text-anchor="middle" dominant-baseline="central">+</text>
+    </g>
+    <g class="add-btn" data-thread="1" transform="translate(875,170)">
+      <circle r="11" fill="var(--thread)"/>
+      <text font-size="14" font-weight="500" fill="var(--text-sec)" text-anchor="middle" dominant-baseline="central">+</text>
+    </g>
+    <g class="add-btn" data-thread="2" transform="translate(875,260)">
+      <circle r="11" fill="var(--thread)"/>
+      <text font-size="14" font-weight="500" fill="var(--text-sec)" text-anchor="middle" dominant-baseline="central">+</text>
+    </g>
+
+    <rect id="selection-rect" x="0" y="50" width="0" height="240"
+          fill="rgba(60,160,90,0.10)" stroke="var(--text-sec)" stroke-width="0.6"
+          stroke-dasharray="3,3" opacity="0" pointer-events="none"/>
+
+    <g id="ops-layer"></g>
+
+    <line id="hover-line" x1="0" y1="50" x2="0" y2="290"
+          stroke="var(--text-sec)" stroke-width="1" opacity="0" pointer-events="none"/>
+    <circle id="hover-top" cx="0" cy="50"  r="2.5"
+            fill="var(--text-sec)" opacity="0" pointer-events="none"/>
+    <circle id="hover-bot" cx="0" cy="290" r="2.5"
+            fill="var(--text-sec)" opacity="0" pointer-events="none"/>
+  </svg>
+
+  <div id="ctx-menu" class="ctx-menu"></div>
+
+  <div id="interleavings" class="interleavings"></div>
+
+  <div class="legend">
+    Right-click an op to change or delete it.
+  </div>
+
+  <div class="status">
+    <div class="status-row">
+      <div class="label">Quiescent consistency</div>
+      <div class="verdict" id="qc-verdict">—</div>
+    </div>
+    <div class="status-row">
+      <div class="label">Sequential consistency</div>
+      <div class="verdict" id="sc-verdict">—</div>
+    </div>
+    <div class="status-row">
+      <div class="label">Linearizability</div>
+      <div class="verdict" id="lin-verdict">—</div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+const svg       = document.getElementById('diagram');
+const opsLayer  = document.getElementById('ops-layer');
+const W = 920;
+const PLOT_L = 60, PLOT_R = 850;
+const THREAD_Y = [80, 170, 260];
+const THREAD_COLOR = ['var(--col-t1)', 'var(--col-t2)', 'var(--col-t3)'];
+
+const TYPE_CYCLE = [
+  {type:'enq', value:0}, {type:'enq', value:1}, {type:'enq', value:2},
+  {type:'deq', value:0}, {type:'deq', value:1}, {type:'deq', value:2},
+  {type:'deq', value:'E'},
+];
+function cycleIdx(op) {
+  return TYPE_CYCLE.findIndex(t => t.type === op.type && t.value === op.value);
+}
+function labelText(op) {
+  if (op.type === 'enq') return `enq(${op.value})`;
+  return op.value === 'E' ? 'deq→∅' : `deq→${op.value}`;
+}
+
+let nextId = 1;
+let ops = [
+  {id: nextId++, thread: 0, x1: 100, x2: 200, type: 'enq', value: 1},
+  {id: nextId++, thread: 1, x1: 170, x2: 280, type: 'enq', value: 2},
+  {id: nextId++, thread: 2, x1: 350, x2: 450, type: 'deq', value: 1},
+];
+
+const SVG_H = 320;
+function svgPoint(evt) {
+  const rect = svg.getBoundingClientRect();
+  return {
+    x: (evt.clientX - rect.left) / rect.width  * W,
+    y: (evt.clientY - rect.top)  / rect.height * SVG_H,
+  };
+}
+
+function threadFromY(y) {
+  // midpoints between THREAD_Y rows
+  if (y < (THREAD_Y[0] + THREAD_Y[1]) / 2) return 0;
+  if (y < (THREAD_Y[1] + THREAD_Y[2]) / 2) return 1;
+  return 2;
+}
+
+function updateOpVisual(op) {
+  const g = opsLayer.querySelector(`g[data-id="${op.id}"]`);
+  if (!g) return;
+  const [line, c1, c2, label] = g.children;
+  const y = THREAD_Y[op.thread];
+  const color = THREAD_COLOR[op.thread];
+  line.setAttribute('x1', op.x1); line.setAttribute('x2', op.x2);
+  line.setAttribute('y1', y);     line.setAttribute('y2', y);
+  line.setAttribute('stroke', color);
+  c1.setAttribute('cx', op.x1); c1.setAttribute('cy', y); c1.setAttribute('fill', color);
+  c2.setAttribute('cx', op.x2); c2.setAttribute('cy', y); c2.setAttribute('fill', color);
+  label.setAttribute('x', (op.x1 + op.x2) / 2);
+  label.setAttribute('y', y - 12);
+  label.setAttribute('fill', color);
+  label.textContent = labelText(op);
+}
+
+function createOpElement(op) {
+  const y = THREAD_Y[op.thread];
+  const color = THREAD_COLOR[op.thread];
+  const g = document.createElementNS('http://www.w3.org/2000/svg', 'g');
+  g.dataset.id = op.id;
+
+  const line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+  line.setAttribute('x1', op.x1); line.setAttribute('y1', y);
+  line.setAttribute('x2', op.x2); line.setAttribute('y2', y);
+  line.setAttribute('stroke', color);
+  line.setAttribute('stroke-width', '2.6');
+  line.setAttribute('stroke-linecap', 'round');
+  line.setAttribute('class', 'op-body');
+  g.appendChild(line);
+
+  const c1 = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+  c1.setAttribute('cx', op.x1); c1.setAttribute('cy', y); c1.setAttribute('r', '5.5');
+  c1.setAttribute('fill', color); c1.setAttribute('class', 'op-end');
+  c1.dataset.end = 'left';
+  g.appendChild(c1);
+
+  const c2 = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+  c2.setAttribute('cx', op.x2); c2.setAttribute('cy', y); c2.setAttribute('r', '5.5');
+  c2.setAttribute('fill', color); c2.setAttribute('class', 'op-end');
+  c2.dataset.end = 'right';
+  g.appendChild(c2);
+
+  const label = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+  label.setAttribute('x', (op.x1 + op.x2) / 2);
+  label.setAttribute('y', y - 12);
+  label.setAttribute('text-anchor', 'middle');
+  label.setAttribute('fill', color);
+  label.setAttribute('class', 'op-label');
+  label.textContent = labelText(op);
+  g.appendChild(label);
+
+  attachDrag(g, op);
+  return g;
+}
+
+function render() {
+  const existing = new Map();
+  for (const g of opsLayer.querySelectorAll('g[data-id]')) {
+    if (!g.classList.contains('leaving')) existing.set(+g.dataset.id, g);
+  }
+  const currentIds = new Set(ops.map(o => o.id));
+
+  // Animate out removed ops
+  for (const [id, g] of existing) {
+    if (!currentIds.has(id)) {
+      g.classList.add('leaving');
+      g.style.pointerEvents = 'none';
+      setTimeout(() => g.remove(), 180);
+    }
+  }
+
+  // Add new ops with entering animation; update existing in place
+  for (const op of ops) {
+    let g = existing.get(op.id);
+    if (!g) {
+      g = createOpElement(op);
+      g.classList.add('entering');
+      opsLayer.appendChild(g);
+      // force layout, then remove class so transition runs
+      requestAnimationFrame(() => requestAnimationFrame(() => g.classList.remove('entering')));
+    } else {
+      updateOpVisual(op);
+    }
+  }
+  evaluate();
+  updateAddButtons();
+}
+
+function attachDrag(g, op) {
+  const body  = g.querySelector('.op-body');
+  const label = g.querySelector('.op-label');
+  const ends  = g.querySelectorAll('.op-end');
+
+  let mode = null, startX = 0, orig = null;
+
+  const onDown = (kind) => (e) => {
+    e.preventDefault();
+    mode = kind;
+    startX = svgPoint(e).x;
+    orig = { x1: op.x1, x2: op.x2 };
+    body.classList.add('dragging');
+    window.addEventListener('mousemove', onMove);
+    window.addEventListener('mouseup', onUp);
+  };
+
+  const onMove = (e) => {
+    const dx = svgPoint(e).x - startX;
+    if (mode === 'move') {
+      const w = orig.x2 - orig.x1;
+      let nx1 = orig.x1 + dx;
+      nx1 = Math.max(PLOT_L, Math.min(PLOT_R - w, nx1));
+      op.x1 = nx1; op.x2 = nx1 + w;
+      op.thread = threadFromY(svgPoint(e).y);
+    } else if (mode === 'left') {
+      op.x1 = Math.max(PLOT_L, Math.min(orig.x2 - 14, orig.x1 + dx));
+    } else if (mode === 'right') {
+      op.x2 = Math.min(PLOT_R, Math.max(orig.x1 + 14, orig.x2 + dx));
+    }
+    updateOpVisual(op);
+    evaluate();
+    if (mode === 'move') updateAddButtons();
+  };
+
+  const onUp = () => {
+    mode = null;
+    body.classList.remove('dragging');
+    window.removeEventListener('mousemove', onMove);
+    window.removeEventListener('mouseup', onUp);
+  };
+
+  body.addEventListener('mousedown', onDown('move'));
+  ends[0].addEventListener('mousedown', onDown('left'));
+  ends[1].addEventListener('mousedown', onDown('right'));
+
+  g.addEventListener('contextmenu', (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    openMenu(op, e.clientX, e.clientY);
+  });
+}
+
+const ctxMenu = document.getElementById('ctx-menu');
+
+function openMenu(op, clientX, clientY) {
+  const wrap = document.querySelector('.wrap');
+  const wrapRect = wrap.getBoundingClientRect();
+  ctxMenu.classList.remove('open');
+  ctxMenu.innerHTML = '';
+  const stagger = () => {};
+  TYPE_CYCLE.forEach((entry, i) => {
+    if (i === 3) {
+      const sep = document.createElement('div');
+      sep.className = 'sep';
+      ctxMenu.appendChild(sep);
+    }
+    const btn = document.createElement('button');
+    btn.textContent = labelText(entry);
+    const active = entry.type === op.type && entry.value === op.value;
+    if (active) btn.style.fontWeight = '600';
+    stagger(btn);
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      op.type = entry.type; op.value = entry.value;
+      closeMenu();
+      render();
+    });
+    ctxMenu.appendChild(btn);
+  });
+  const sep2 = document.createElement('div');
+  sep2.className = 'sep';
+  ctxMenu.appendChild(sep2);
+  const del = document.createElement('button');
+  del.textContent = 'delete';
+  del.style.color = 'var(--bad)';
+  stagger(del);
+  del.addEventListener('click', (e) => {
+    e.stopPropagation();
+    ops = ops.filter(o => o.id !== op.id);
+    closeMenu();
+    render();
+  });
+  ctxMenu.appendChild(del);
+  // measure (menu has dimensions even without .open since it's opacity-based)
+  const mw = ctxMenu.offsetWidth, mh = ctxMenu.offsetHeight;
+  let x = clientX - wrapRect.left + 6;
+  let y = clientY - wrapRect.top + 6;
+  if (x + mw > wrapRect.width)  x = wrapRect.width  - mw - 4;
+  if (y + mh > wrapRect.height) y = wrapRect.height - mh - 4;
+  ctxMenu.style.left = x + 'px';
+  ctxMenu.style.top  = y + 'px';
+  requestAnimationFrame(() => ctxMenu.classList.add('open'));
+}
+
+function closeMenu() { ctxMenu.classList.remove('open'); }
+
+document.addEventListener('mousedown', (e) => {
+  if (!ctxMenu.contains(e.target)) closeMenu();
+});
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') closeMenu();
+});
+
+const MAX_PER_THREAD = 4;
+
+function updateAddButtons() {
+  document.querySelectorAll('.add-btn').forEach(btn => {
+    const t = +btn.dataset.thread;
+    const full = ops.filter(o => o.thread === t).length >= MAX_PER_THREAD;
+    btn.classList.toggle('disabled', full);
+  });
+}
+
+document.querySelectorAll('.add-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    if (btn.classList.contains('disabled')) return;
+    const t = +btn.dataset.thread;
+    if (ops.filter(o => o.thread === t).length >= MAX_PER_THREAD) return;
+    const threadOps = ops.filter(o => o.thread === t);
+    const rightmost = threadOps.reduce((m, o) => Math.max(m, o.x2), PLOT_L + 20);
+    let x1 = rightmost + 20;
+    if (x1 + 90 > PLOT_R) x1 = PLOT_L + 20;
+    ops.push({ id: nextId++, thread: t, x1, x2: x1 + 90, type: 'enq', value: 0 });
+    render();
+  });
+});
+
+// ---------- consistency checks ----------
+
+// Queue semantics. Returns {ok, queue} where queue is the new state if ok.
+function applyOp(queue, op) {
+  if (op.type === 'enq') return { ok: true, queue: [...queue, op.value] };
+  if (op.value === 'E') return { ok: queue.length === 0, queue };
+  if (queue.length === 0 || queue[0] !== op.value) return { ok: false, queue };
+  return { ok: true, queue: queue.slice(1) };
+}
+
+// Try every topological order respecting `mustPrecede` (Map id -> Set of ids).
+// Return a valid linearization or null.
+function findLinearization(opList, mustPrecede) {
+  function rec(remaining, queue) {
+    if (remaining.length === 0) return [];
+    for (const op of remaining) {
+      const preds = mustPrecede.get(op.id);
+      const blocked = remaining.some(o => o.id !== op.id && preds.has(o.id));
+      if (blocked) continue;
+      const r = applyOp(queue, op);
+      if (!r.ok) continue;
+      const rest = remaining.filter(o => o.id !== op.id);
+      const tail = rec(rest, r.queue);
+      if (tail !== null) return [op, ...tail];
+    }
+    return null;
+  }
+  return rec(opList.slice(), []);
+}
+
+// Produce one topological order respecting `mustPrecede` and mark the first
+// op whose queue-semantics fail. Used when no valid linearization exists.
+function findCounterexample(opList, mustPrecede) {
+  const remaining = opList.slice();
+  const order = [];
+  let queue = [];
+  let failedAt = -1;
+  let failedQueue = null;
+  while (remaining.length > 0) {
+    const available = remaining.filter(op => {
+      const preds = mustPrecede.get(op.id);
+      return !remaining.some(o => o.id !== op.id && preds.has(o.id));
+    });
+    if (available.length === 0) break;
+    // Prefer an op that succeeds at this step (postpone failure); else any.
+    const good = available.find(op => applyOp(queue, op).ok);
+    const chosen = good || available[0];
+    const r = applyOp(queue, chosen);
+    order.push(chosen);
+    if (!r.ok && failedAt === -1) {
+      failedAt = order.length - 1;
+      failedQueue = queue.slice();
+      // Optimistically advance: if deq on non-empty, pop the front anyway.
+      if (chosen.type === 'deq' && queue.length > 0) queue = queue.slice(1);
+    } else {
+      queue = r.queue;
+    }
+    remaining.splice(remaining.indexOf(chosen), 1);
+  }
+  return { order, failedAt, failedQueue };
+}
+
+function quiescentPartialOrder(opList) {
+  // A must precede B if A ends before B starts (any threads).
+  const m = new Map();
+  for (const o of opList) m.set(o.id, new Set());
+  for (const a of opList) for (const b of opList) {
+    if (a.id !== b.id && a.x2 < b.x1) m.get(b.id).add(a.id);
+  }
+  return m;
+}
+
+function linearizablePartialOrder(opList) {
+  // Program order + real-time non-overlap order (across all threads).
+  const m = new Map();
+  for (const o of opList) m.set(o.id, new Set());
+  for (const a of opList) for (const b of opList) {
+    if (a.id !== b.id && a.x2 < b.x1) m.get(b.id).add(a.id);
+  }
+  for (let t = 0; t < 3; t++) {
+    const thr = opList.filter(o => o.thread === t).sort((a,b) => a.x1 - b.x1);
+    for (let i = 0; i < thr.length; i++)
+      for (let j = i+1; j < thr.length; j++)
+        m.get(thr[j].id).add(thr[i].id);
+  }
+  return m;
+}
+
+function sequentialPartialOrder(opList) {
+  // Program order: within each thread, sort by start time; earlier op must precede later op.
+  const m = new Map();
+  for (const o of opList) m.set(o.id, new Set());
+  for (let t = 0; t < 3; t++) {
+    const thr = opList.filter(o => o.thread === t).sort((a,b) => a.x1 - b.x1);
+    for (let i = 0; i < thr.length; i++)
+      for (let j = i+1; j < thr.length; j++)
+        m.get(thr[j].id).add(thr[i].id);
+  }
+  return m;
+}
+
+function fmt(lin) {
+  return lin.map(o => `${labelText(o)}·t${o.thread+1}`).join(' → ');
+}
+
+function fmtCE(ce) {
+  return ce.order.map((o, i) => {
+    const tag = `${labelText(o)}·t${o.thread+1}`;
+    if (i === ce.failedAt) {
+      const q = ce.failedQueue.length ? `[${ce.failedQueue.join(',')}]` : '∅';
+      return `✗ ${tag} (queue was ${q})`;
+    }
+    return tag;
+  }).join(' → ');
+}
+
+function evaluate() {
+  const qcV = document.getElementById('qc-verdict');
+  const scV = document.getElementById('sc-verdict');
+  const linV = document.getElementById('lin-verdict');
+
+  if (ops.length === 0) {
+    for (const v of [qcV, scV, linV]) { v.textContent = '—'; v.className = 'verdict'; }
+    return;
+  }
+
+  const qcLin  = findLinearization(ops, quiescentPartialOrder(ops));
+  const scLin  = findLinearization(ops, sequentialPartialOrder(ops));
+  const linLin = findLinearization(ops, linearizablePartialOrder(ops));
+
+  const setRow = (vEl, lin) => {
+    vEl.textContent = lin ? '✓ holds' : '✗ violated';
+    vEl.className = 'verdict ' + (lin ? 'yes' : 'no');
+  };
+  setRow(qcV, qcLin);
+  setRow(scV, scLin);
+  setRow(linV, linLin);
+}
+
+// ---------- interleavings panel ----------
+const interEl = document.getElementById('interleavings');
+let interOpen = false;
+
+function permutations(arr) {
+  if (arr.length <= 1) return [arr];
+  const out = [];
+  for (let i = 0; i < arr.length; i++) {
+    const rest = arr.slice(0, i).concat(arr.slice(i + 1));
+    for (const p of permutations(rest)) out.push([arr[i], ...p]);
+  }
+  return out;
+}
+
+function respectsPartialOrder(perm, mustPrecede) {
+  const pos = new Map();
+  perm.forEach((op, i) => pos.set(op.id, i));
+  for (const op of perm) {
+    for (const predId of mustPrecede.get(op.id)) {
+      if (pos.get(predId) > pos.get(op.id)) return false;
+    }
+  }
+  return true;
+}
+
+function queueValid(perm) {
+  let q = [];
+  for (const op of perm) {
+    const r = applyOp(q, op);
+    if (!r.ok) return false;
+    q = r.queue;
+  }
+  return true;
+}
+
+function selectedOps() {
+  if (!selection) return ops;
+  const a = Math.min(selection.x1, selection.x2);
+  const b = Math.max(selection.x1, selection.x2);
+  return ops.filter(o => o.x1 >= a && o.x2 <= b);
+}
+
+function renderInterleavings() {
+  if (!interOpen) return;
+  interEl.innerHTML = '';
+  const scope = selectedOps();
+
+  if (scope.length === 0) {
+    const msg = document.createElement('div');
+    msg.className = 'row empty';
+    msg.textContent = selection ? 'no ops contained in selection' : 'no operations';
+    interEl.appendChild(msg);
+    return;
+  }
+  if (scope.length > 7) {
+    const msg = document.createElement('div');
+    msg.className = 'row empty';
+    msg.textContent = `too many ops to enumerate (${scope.length}! orderings)`;
+    interEl.appendChild(msg);
+    return;
+  }
+
+  const qcPo = quiescentPartialOrder(scope);
+  const scPo = sequentialPartialOrder(scope);
+  const allPerms = permutations(scope);
+  const rows = [];
+  let countQ = 0, countS = 0, countL = 0;
+  for (const perm of allPerms) {
+    if (!queueValid(perm)) continue;
+    const Q = respectsPartialOrder(perm, qcPo);
+    const S = respectsPartialOrder(perm, scPo);
+    const L = Q && S;
+    if (!Q && !S) continue;
+    if (Q) countQ++;
+    if (S) countS++;
+    if (L) countL++;
+    rows.push({ perm, Q, S, L });
+  }
+
+  if (rows.length === 0) {
+    const empty = document.createElement('div');
+    empty.className = 'row empty';
+    empty.textContent = 'no orderings satisfy any model';
+    interEl.appendChild(empty);
+    return;
+  }
+
+  // Sort: L first, then S-only, then Q-only.
+  rows.sort((a, b) => {
+    const sa = (a.L ? 0 : a.S ? 1 : 2);
+    const sb = (b.L ? 0 : b.S ? 1 : 2);
+    return sa - sb;
+  });
+
+  const MAX = 80;
+  for (const r of rows.slice(0, MAX)) {
+    const row = document.createElement('div');
+    row.className = 'row';
+    const ord = document.createElement('div');
+    ord.className = 'ord';
+    ord.textContent = fmt(r.perm);
+    const tags = document.createElement('div');
+    tags.className = 'tags';
+    const mk = (cls, ch) => {
+      const s = document.createElement('span');
+      s.className = 'tag ' + cls;
+      s.textContent = ch;
+      return s;
+    };
+    const active = [];
+    if (r.Q) active.push(mk('Q', 'Q'));
+    if (r.S) active.push(mk('S', 'S'));
+    if (r.L) active.push(mk('L', 'L'));
+    active.forEach((t, i) => {
+      if (i > 0) tags.appendChild(document.createTextNode(' '));
+      tags.appendChild(t);
+    });
+    row.appendChild(ord);
+    row.appendChild(tags);
+    interEl.appendChild(row);
+  }
+  if (rows.length > MAX) {
+    const more = document.createElement('div');
+    more.className = 'row empty';
+    more.textContent = `… and ${rows.length - MAX} more`;
+    interEl.appendChild(more);
+  }
+}
+
+function openInterleavings() {
+  interOpen = true;
+  interEl.classList.add('open');
+  renderInterleavings();
+}
+function closeInterleavings() {
+  interOpen = false;
+  interEl.classList.remove('open');
+}
+
+// drag in empty SVG space creates a time-range selection.
+// Interleavings panel lists orderings of ops contained in the selection.
+let selection = null; // {x1, x2}
+let selecting = false;
+const selRect = document.getElementById('selection-rect');
+
+function updateSelectionVisual() {
+  if (!selection) { selRect.setAttribute('opacity', '0'); return; }
+  const a = Math.min(selection.x1, selection.x2);
+  const b = Math.max(selection.x1, selection.x2);
+  selRect.setAttribute('x', a);
+  selRect.setAttribute('width', Math.max(0, b - a));
+  selRect.setAttribute('opacity', '1');
+}
+
+function clearSelection() {
+  selection = null;
+  updateSelectionVisual();
+  closeInterleavings();
+}
+
+svg.addEventListener('mousedown', (e) => {
+  const onOp  = e.target.closest('g[data-id]');
+  const onBtn = e.target.closest('.add-btn');
+  if (onOp || onBtn) return;
+  selecting = true;
+  const x = Math.max(PLOT_L, Math.min(PLOT_R, svgPoint(e).x));
+  selection = { x1: x, x2: x };
+  updateSelectionVisual();
+});
+
+window.addEventListener('mousemove', (e) => {
+  if (!selecting) return;
+  const x = Math.max(PLOT_L, Math.min(PLOT_R, svgPoint(e).x));
+  selection.x2 = x;
+  updateSelectionVisual();
+});
+
+window.addEventListener('mouseup', () => {
+  if (!selecting) return;
+  selecting = false;
+  if (!selection || Math.abs(selection.x2 - selection.x1) < 4) {
+    clearSelection();
+  } else {
+    openInterleavings();
+  }
+});
+
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') clearSelection();
+});
+
+// regenerate the panel whenever ops change
+const _origRender = render;
+render = function () { _origRender(); renderInterleavings(); };
+
+render();
+
+// hover cursor
+const hoverLine = document.getElementById('hover-line');
+const hoverTop  = document.getElementById('hover-top');
+const hoverBot  = document.getElementById('hover-bot');
+svg.addEventListener('mousemove', (e) => {
+  const x = Math.max(PLOT_L, Math.min(PLOT_R, svgPoint(e).x));
+  hoverLine.setAttribute('x1', x); hoverLine.setAttribute('x2', x);
+  hoverTop.setAttribute('cx', x);
+  hoverBot.setAttribute('cx', x);
+  hoverLine.setAttribute('opacity', '0.4');
+  hoverTop.setAttribute('opacity', '0.22');
+  hoverBot.setAttribute('opacity', '0.22');
+});
+svg.addEventListener('mouseleave', () => {
+  hoverLine.setAttribute('opacity', '0');
+  hoverTop.setAttribute('opacity', '0');
+  hoverBot.setAttribute('opacity', '0');
+});
+</script>
+</body>
+</html>
