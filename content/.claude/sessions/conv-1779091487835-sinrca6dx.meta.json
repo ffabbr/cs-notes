@@ -1,0 +1,20 @@
+{
+  "id": "conv-1779091487835-sinrca6dx",
+  "title": "Set all images to 583px width",
+  "titleGenerationStatus": "success",
+  "createdAt": 1779091487835,
+  "updatedAt": 1779091521162,
+  "lastResponseAt": 1779091507612,
+  "sessionId": "19632249-62c2-4db9-8619-d49805d7838a",
+  "sdkSessionId": "19632249-62c2-4db9-8619-d49805d7838a",
+  "currentNote": "2nd Semester/Analysis/Notes/12 Integral.md",
+  "usage": {
+    "model": "sonnet",
+    "inputTokens": 1,
+    "cacheCreationInputTokens": 618,
+    "cacheReadInputTokens": 17645,
+    "contextWindow": 200000,
+    "contextTokens": 18264,
+    "percentage": 9
+  }
+}

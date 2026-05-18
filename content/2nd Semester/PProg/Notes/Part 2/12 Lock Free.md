@@ -1,4 +1,4 @@
-## Introduction
+## Concepts of Lock Free
 
 - **Lock-free**: always deadlock-free, failure of one thread cannot cause failure of another thread. But we can have starvation
 - **Wait-freedom**: freedom of starvation. wait freedom => lock freedom
@@ -18,38 +18,83 @@ do {
 ```
 
 
-## Execution Timelines
-
-<iframe src="https://cs.rohlik.net/2nd-Semester/PProg/Notes/Part-2/media/execution" width="100%" height="600"></iframe>
-
-
-## Quiescent consistency
+### Execution Timelines
 
 start: invocation
 end: return
 
-non-overlapping operations have sequential effect
-for overlappint operations we cannot say something
-
-## Sequential consistency
+<iframe src="https://cs.rohlik.net/static/execution.html" style="border-radius: 10px" width="100%" height="500"></iframe>
 
 
+### Quiescent consistency
 
-instructions executed in order, write operation instantly visible
-we can't swap actions, but we can move actions on the timeline left and right
+1. non-overlapping operations have sequential effect
+2. for overlapping operations we cannot say something (could even swap within Thread)
 
-> !! learn quiescent consistency and sequential and see in the lines
+### Sequential consistency
 
+*can we move actions left and right (without swapping) to make it work*
 
-## Linearizability
+aka Threads can interleave anyways, but within Thread order is set; we suppose write operation instantly visible
 
-Instead of a line where things happen, it (the return/chagne of state) happens at a POINT between invocation and return. 
+### Linearizability
 
-**ABA problem**: CAS suggests that no other thread has written between (a) and (c), but might be deceptive when changed and changed back again by another thread where the value now is the same but changes have been made (?)
+Linearisierbar $\implies$ Sequential consistency
 
-**Muster bei Lock Free**: speicher geteilte variable in lokaler variable, am ende überprüfe ob sich geteilte variable geändert hat mit `do {} while (!top.compareAndSet(head, next))` 
+Instead of a line where things happen, the change of state happens at a POINT between invocation and return. 
 
-## Stack mit Lock Free
+Linearisierbar: für alle Möglichkeiten von diesen Punkten (Strichen) ist es korrekt. Wir können nicht verschieben wie bei sequential consistency 
+
+H ist linearisierbar, wenn es zu G erweitern kann indem man 
+- appending responses to pending invocations that took effect (even though the program hasn't terminated but we see in other values that it has had effect already, so we set an ending-point)
+- discarding invocations that did not take effect (when we have no return and also no indicator that it returned already, remove entirely)
+
+$\to_{G} \subset \to_{S}$: 
+- $\to_{G}$  G ist eine unvollständige Festlegung der Reihenfolge
+- $\to_{S}$  G schränkt somit ein, wie S sein kann, S ist eine vollständige Reihenfolge
+
+Korrektheits-Beweise mit Linearisierbarkeit, dann darf es nur einen Linearisierungspunkt pro Pfad geben. 
+
+### ABA Problem
+
+Beispiel Stack
+
+CAS suggests that no other thread has written between (a) and (c), but might be deceptive when changed and changed back again by another thread where the value now is the same but changes have been made. When an activity fails to recognize that a single memory location was modified temporarily by another activity and therefore assumes that the overall state has not changed.
+
+**Beispiel** (Gemini)
+Stell dir einen Stack vor: A → B → C
+
+Thread 1 will pop() machen:
+1. Liest head = A (speichert lokal)
+2. Liest next = B
+3. Wird unterbrochen... (wird schlafen gelegt)
+
+Thread 2 macht währenddessen:
+1. pop(A) → Stack: B → C
+2. pop(B) → Stack: C
+3. push(A) → Stack: A → C (A ist wieder oben!)
+
+Thread 1 wacht auf und macht CAS:
+- Prüft: "Ist head immer noch A?" → JA!
+- CAS gelingt → setzt top = B
+- Aber B existiert nicht mehr im Stack! Stack ist kaputt.
+
+Remedies: 
+- Pointer tagging (use bits as counter)
+- hazard pointers 
+
+## Lock-Free Programming
+
+**Muster bei Lock Free**: speicher geteilte variable in lokaler variable, am ende überprüfe ob sich geteilte variable geändert hat
+
+```java
+do {
+      head = top.get();        // 1. lies geteilte Variable lokal
+      newi.next = head;        // 2. bereite Änderung vor
+  } while (!top.compareAndSet(head, newi));  // 3. war niemand dazwischen? → fertig
+```
+
+### Stack mit Lock Free
 
 ```java
 public class ConcurrentStack {
@@ -84,19 +129,23 @@ public void push(Long item) {
 }
 ```
 
-## Performance
+### Performance
 
-slow
+slow, weil viele Threads `top` wollen
 add exponential backoff (remember [[04 Hardware Locks]])
 - threads fight for access to same resource slows down
 - solution: **go to sleep with random duration** → less try access at the same time
 - double waiting duration each time the resource is not free, reset when accessed
 
-## Linked list
+### Linked list
 
-We need double CAS (DCAS), meaning **2 flags**. Java has `AtomicMarkableReference<V>`, pointer with flag bits. with `getReference()` we get the actual pointer, `attemptMark` lets us mark flag with boolean, `compareAndSet`. 
+Beim Stack reichte ein CAS. Bei einer verketteten Liste müssen beim Löschen zwei Dinge gleichzeitig passieren:
+1. Den Node als "gelöscht" markieren
+2. Den Zeiger des Vorgängers umhängen
 
-Atomically swing reference or update flag, but remove in 2 steps (marker, redirect pointers).
+Ohne Atomarität kann ein anderer Thread zwischen diesen zwei Schritten einfügen
+
+`AtomicMarkableReference<V>`, pointer + flag bit. with `getReference()` we get the actual pointer, `attemptMark` lets us mark flag with boolean, `compareAndSet`. 
 
 Delete c: 
 
@@ -109,19 +158,11 @@ Issue: when deleting 2 subsequent nodes, both get marked but only one gets actua
 
 ![[Bildschirmfoto 2026-05-11 um 10.47.58.png]]![[Bildschirmfoto 2026-05-11 um 10.48.10.png]]![[Bildschirmfoto 2026-05-11 um 10.48.19.png]]
 
-## Queue
+### Queue
 
 - 2 pointer (head, tail)
 - dummy always-in Placeholder node am Anfang "null" Fall zu verhindern
 
 ![[Bildschirmfoto 2026-05-11 um 11.37.28.png]]![[Bildschirmfoto 2026-05-11 um 11.37.36.png]]
 
-## ABA Problem
 
-Beispiel Stack
-
-**ABA problem**: CAS suggests that no other thread has written between (a) and (c), but might be deceptive when changed and changed back again by another thread where the value now is the same but changes have been made. When an activity fails to recognize that a single memory location was modified temporarily by another activity and therefore assumes that the overall state has not changed.
-
-NodePool (stack of not active threads)
-
-https://moodle-app2.let.ethz.ch/pluginfile.php/2560071/mod_resource/content/1/PP-l23-LockFreeProg.pdf

@@ -1,0 +1,20 @@
+{
+  "id": "conv-1779091573310-i1cg5hkx6",
+  "title": "Digitalize images with LaTeX notation",
+  "titleGenerationStatus": "success",
+  "createdAt": 1779091573310,
+  "updatedAt": 1779093587008,
+  "lastResponseAt": 1779093587008,
+  "sessionId": "28b700a1-cc41-4a14-9c34-fbd98df7315b",
+  "sdkSessionId": "28b700a1-cc41-4a14-9c34-fbd98df7315b",
+  "currentNote": "2nd Semester/Analysis/Notes/12 Integral.md",
+  "usage": {
+    "model": "sonnet",
+    "inputTokens": 1,
+    "cacheCreationInputTokens": 254,
+    "cacheReadInputTokens": 60074,
+    "contextWindow": 200000,
+    "contextTokens": 60329,
+    "percentage": 30
+  }
+}

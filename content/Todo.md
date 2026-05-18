@@ -2,12 +2,12 @@
 cssclasses:
 draft: "true"
 ---
-DDCA
-PProg
-AuW
-Analysis
+
+Analysis lernen für Miniquiz
+
+AuW Peergrading, Exercise Sheet, Code Expert
 
 ---
 
-Message Marc & co. 
 Book train ticket
+DDCA Lab Reports

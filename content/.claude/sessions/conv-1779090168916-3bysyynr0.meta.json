@@ -1,0 +1,19 @@
+{
+  "id": "conv-1779090168916-3bysyynr0",
+  "title": "mache alle bilder breite |583",
+  "titleGenerationStatus": "failed",
+  "createdAt": 1779090168916,
+  "updatedAt": 1779091486369,
+  "lastResponseAt": 1779090347653,
+  "sessionId": "e9abb9e9-3777-4373-bb43-5100542a9c16",
+  "sdkSessionId": "e9abb9e9-3777-4373-bb43-5100542a9c16",
+  "usage": {
+    "model": "sonnet",
+    "inputTokens": 0,
+    "cacheCreationInputTokens": 0,
+    "cacheReadInputTokens": 0,
+    "contextWindow": 200000,
+    "contextTokens": 0,
+    "percentage": 0
+  }
+}
