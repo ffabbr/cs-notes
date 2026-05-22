@@ -1,0 +1,20 @@
+{
+  "id": "conv-1779109089877-mjsvnnud9",
+  "title": "Search for power rule",
+  "titleGenerationStatus": "success",
+  "createdAt": 1779109089877,
+  "updatedAt": 1779284862149,
+  "lastResponseAt": 1779109117631,
+  "sessionId": "a6796c9f-dbc5-4d8f-a539-f5629b94f42d",
+  "sdkSessionId": "a6796c9f-dbc5-4d8f-a539-f5629b94f42d",
+  "currentNote": "2nd Semester/Analysis/Notes/12 Integral.md",
+  "usage": {
+    "model": "sonnet",
+    "inputTokens": 1,
+    "cacheCreationInputTokens": 1018,
+    "cacheReadInputTokens": 18928,
+    "contextWindow": 200000,
+    "contextTokens": 19947,
+    "percentage": 10
+  }
+}

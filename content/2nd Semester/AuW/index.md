@@ -32,6 +32,10 @@ my lecture notes:
 		- [[21 Duplikate]]
 		- [[22 Lange Pfade]]
 		- [[23 Flows]]
+		- [[24 Anwendungen von Flows]]
+		- [[25 Min-Cut Problem]]
+		- [[26 Probabalistic Cuts]]
+		- [[27 Smallest enclosing disk]]
 - [[Exam Tips]]
 
 %% End Waypoint %%

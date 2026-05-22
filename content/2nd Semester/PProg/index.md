@@ -30,5 +30,7 @@ my lecture notes:
 		- [[10 Reader Writer Locks]]
 		- [[11 Lock Granularity]]
 		- [[12 Lock Free]]
+		- [[13 Execution Timelines]]
+		- [[14 Consensus]]
 
 %% End Waypoint %%

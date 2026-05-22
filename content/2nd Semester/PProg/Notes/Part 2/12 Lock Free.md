@@ -3,10 +3,10 @@
 - **Lock-free**: always deadlock-free, failure of one thread cannot cause failure of another thread. But we can have starvation
 - **Wait-freedom**: freedom of starvation. wait freedom => lock freedom
 
-
 - readSomething() können wir einfach ohne locks machen
 - writeSomething() mit CAS
-  **Remember ==CAS==** (Compare and Swap): wenn wert im speicher gleich argument old, setze wert im speicher auf argument new. true means change was needed.
+
+**Remember ==CAS==** (Compare and Swap): wenn wert im speicher gleich argument old, setze wert im speicher auf argument new. true means change was needed.
 
 ```java
 do {
@@ -16,48 +16,6 @@ do {
 	!atomicReference.compareAndSet(oldObject, newObject)
 } 
 ```
-
-
-### Execution Timelines
-
-start: invocation
-end: return
-
-<iframe src="https://cs.rohlik.net/static/execution.html" style="border-radius: 10px" width="100%" height="500"></iframe>
-
-
-### Quiescent consistency
-
-1. non-overlapping operations have sequential effect
-2. for overlapping operations we cannot say something (could even swap within thread)
-
-### Sequential consistency
-
-*can we move actions left and right (without swapping) to make it work*
-
-aka Threads can interleave anyways, but within Thread order is set; we suppose write operation instantly visible
-
-### Linearizability
-
-Linearisierbar $\implies$ Sequential consistency
-
-$\to_{G} \subset \to_{S}$: 
-- $\to_{G}$  G ist eine unvollständige Festlegung der Reihenfolge
-- $\to_{S}$  G schränkt somit ein, wie S sein kann, S ist eine vollständige Reihenfolge
-
-Instead of a line where things happen, the change of state happens at a POINT between invocation and return. Das ist unser G. 
-
-Linearisierbar: für alle Möglichkeiten von diesen Punkten (Strichen) ist es korrekt. Wir können nicht verschieben wie bei sequential consistency 
-
-H ist linearisierbar, wenn es zu G erweitern kann indem man 
-- appending responses to pending invocations that took effect (even though the program hasn't terminated but we see in other values that it has had effect already, so we set an ending-point)
-- discarding invocations that did not take effect (when we have no return and also no indicator that it returned already, remove entirely)
-
-Korrektheits-Beweise mit Linearisierbarkeit, dann darf es nur einen Linearisierungspunkt pro Pfad geben. 
-
-
-<iframe src="https://cs.rohlik.net/static/consistency.html" style="border-radius: 10px" width="100%" height="500"></iframe>
-
 
 ### ABA Problem
 
@@ -86,6 +44,29 @@ Thread 1 wacht auf und macht CAS:
 Remedies: 
 - Pointer tagging (use bits as counter)
 - hazard pointers 
+
+
+---
+
+## Transactional Memory
+
+Transaktionen sind eigentlich ein Konzept aus Datenbanken. Es erlaubt mehreren Threads, auf gemeinsame Daten zuzugreifen, indem ein Teil des Codes als "atomic" festgelegt wird. 
+
+- Thread erstellt lokale Kopie der Daten und macht die Änderungen dort. Dann wird auf Konflikte überprüft, wenn keine Konflikte auftreten, werden die Änderungen atomar in den shared space geschrieben, sonst wird wiederholt
+- TM ist atomar, aber nicht mutex. Vorteil ist, es können z.B. mehrere threads gleichzeitig beginnen
+- Sobald eine eine Inkonsistenz zwischen lokaler Version und shared Version erkannt wird, wird abgebrochen (nicht einfach nicht committen)
+- TM can be implemented in Hardware or Software. 
+
+**Versionen**
+- Strong isolation: Garantiert Sicherheit, selbst wenn ein anderer Thread versucht, die Variable "normal" (ohne Transaktion) zu lesen oder zu schreiben
+- Weak isolation: not allowed
+
+**Nesting**
+Was passiert, wenn eine Transaktion innerhalb einer anderen gestartet wird?
+- Flat Nesting: Wenn die innere Transaktion scheitert, bricht die komplette (auch die äußere) Transaktion ab.
+- Closed Nesting: Die innere Transaktion kann abbrechen und es neu versuchen, ohne dass die äußere Transaktion abgebrochen werden muss.
+
+---
 
 ## Lock-Free Programming
 
