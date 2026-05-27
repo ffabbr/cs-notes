@@ -21,7 +21,7 @@ $$
 
 Bei diesen Funktionen dürfen wir annehmen, dass die Taylor Reihe gleich der Funktion ist. Andernfalls gilt nicht allgemein, dass wenn eine Taylorreihe konvergiert, dass sie gegen den Funktionswert konvergiert. Gegenbeispiel $e^{-\frac{1}{x}}$ ist nicht gleich ihrer Taylorreihe. 
 
-Tylorreihe existiert nur bei glatten Funktionen (unendlich ableitbar)
+Tylorreihe existiert nur bei ==glatten Funktionen (unendlich ableitbar)==. **NICHT** jede glatte Funktion konvergiert gegen ihre Taylorreihe. 
 
 ![[Bildschirmfoto 2026-05-02 um 16.17.46.png]]![[Bildschirmfoto 2026-05-02 um 16.17.52.png]]
 

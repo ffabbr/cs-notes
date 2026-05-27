@@ -18,6 +18,8 @@ aka Threads can interleave anyways, but within Thread order is set; we suppose w
 
 ## Linearizability
 
+*"can we find points in time where each operation takes effect to make it work?*
+
 Instead of a line where things happen, the change of state happens at a POINT between invocation and return. If there is a point for each action such that everything is correct, we say, it is linearizable. 
 
 - Linearisierbar $\implies$ Sequential consistency

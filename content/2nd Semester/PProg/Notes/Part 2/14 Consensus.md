@@ -37,8 +37,8 @@ We can create a normal consensus when we have a binary consensus:
 ```java
 int int_decide(int d) {
     values[id] = d; 
-    int win = binary_decide(id == 1) ? 1 : 0;
-    return values[win];
+    int index = binary_decide(id == 1) ? 1 : 0;
+    return values[index];
 }
 ```
 

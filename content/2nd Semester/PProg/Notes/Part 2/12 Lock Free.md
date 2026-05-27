@@ -45,27 +45,6 @@ Remedies:
 - Pointer tagging (use bits as counter)
 - hazard pointers 
 
-
----
-
-## Transactional Memory
-
-Transaktionen sind eigentlich ein Konzept aus Datenbanken. Es erlaubt mehreren Threads, auf gemeinsame Daten zuzugreifen, indem ein Teil des Codes als "atomic" festgelegt wird. 
-
-- Thread erstellt lokale Kopie der Daten und macht die Änderungen dort. Dann wird auf Konflikte überprüft, wenn keine Konflikte auftreten, werden die Änderungen atomar in den shared space geschrieben, sonst wird wiederholt
-- TM ist atomar, aber nicht mutex. Vorteil ist, es können z.B. mehrere threads gleichzeitig beginnen
-- Sobald eine eine Inkonsistenz zwischen lokaler Version und shared Version erkannt wird, wird abgebrochen (nicht einfach nicht committen)
-- TM can be implemented in Hardware or Software. 
-
-**Versionen**
-- Strong isolation: Garantiert Sicherheit, selbst wenn ein anderer Thread versucht, die Variable "normal" (ohne Transaktion) zu lesen oder zu schreiben
-- Weak isolation: not allowed
-
-**Nesting**
-Was passiert, wenn eine Transaktion innerhalb einer anderen gestartet wird?
-- Flat Nesting: Wenn die innere Transaktion scheitert, bricht die komplette (auch die äußere) Transaktion ab.
-- Closed Nesting: Die innere Transaktion kann abbrechen und es neu versuchen, ohne dass die äußere Transaktion abgebrochen werden muss.
-
 ---
 
 ## Lock-Free Programming

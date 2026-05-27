@@ -32,5 +32,6 @@ my lecture notes:
 		- [[12 Lock Free]]
 		- [[13 Execution Timelines]]
 		- [[14 Consensus]]
+		- [[15 Transactional Memory]]
 
 %% End Waypoint %%

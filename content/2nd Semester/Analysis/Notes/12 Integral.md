@@ -48,9 +48,16 @@ Für einen Term:
 
 ### Integration durch partielle Integration
 
-1. setze u (wird "leichter" beim Ableiten, oft $\ln(x)$) und v' (das andere)
+1. setze u (wird "leichter" beim Ableiten) und v' (das andere)
 2. berechne u' und v
 3. setze $u\cdot v - \int v\cdot u' dx$
+
+$u(x)$ Priority: 
+1. log, z.B. $\ln(x)$
+2. inverse trigonometric, z.B. $\arcsin(x)$
+3. Polynome
+4. trigonometric, z.B. $\sin(x)$
+5. exponential, z.B. $e^x, 2^x, \dots$ 
 
 ![[Bildschirmfoto 2026-05-19 um 15.14.26.png|444]]
 
@@ -58,9 +65,7 @@ Herleitung der regel der partiellen Integration: Produktregel vom Ableiten. Wir 
 $$
 \int \underbrace{g(x)}_{u} \cdot \underbrace{f'(x)}_{v'} \, dx = \underbrace{g(x)}_{u} \cdot \underbrace{f(x)}_{v} - \int \underbrace{f(x)}_{v} \cdot \underbrace{g'(x)}_{u'} \, dx
 $$ 
-
-
-#### Zirkuläres Beispiel
+##### Zirkuläres Beispiel
 
 ![[Bildschirmfoto 2026-05-19 um 15.15.17.png|444]]
 
