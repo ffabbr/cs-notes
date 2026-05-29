@@ -18,7 +18,6 @@ my lecture notes:
 		- [[08 Bedingte Wahrscheinlichkeit]]
 		- [[09 Unabhängigkeit]]
 		- [[10 Zufallsvariable, Erwartungswert, Varianz]]
-		- [[11 Kombinatorik]]
 		- [[12 Stabile Menge]]
 		- [[13 Verteilungen]]
 		- [[14 Mehrere Zufallsvariablen]]
@@ -34,8 +33,8 @@ my lecture notes:
 		- [[23 Flows]]
 		- [[24 Anwendungen von Flows]]
 		- [[25 Min-Cut Problem]]
-		- [[26 Probabalistic Cuts]]
-		- [[27 Smallest enclosing disk]]
+		- [[26 Smallest enclosing disk]]
+		- [[28 Konvexe Hülle]]
 - [[Exam Tips]]
 
 %% End Waypoint %%

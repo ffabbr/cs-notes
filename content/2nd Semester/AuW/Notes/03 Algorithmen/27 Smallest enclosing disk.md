@@ -1,3 +1,0 @@
-
-gegeben endliche Punktemenge
-

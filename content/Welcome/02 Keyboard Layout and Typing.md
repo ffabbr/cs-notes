@@ -19,6 +19,7 @@ To get the Windows (exam) layout on MacOS, do the following:
 	3. Move the two files from Downloads to this folder
 4. In the MacOS Settings set the new Keyboard layout. 
 
+*PS*: I made typing the capital Ö, Ä, Ü the same way they are on a german keyboard from Germany/Austria because I don't use the letters with the accents graves oftten anyways. 
 ## Touch typing
 
 Don't spend much time learning how to touch type, you'll learn automatically by typing a lot. If you're into computers you probably know how to type quickly already, ideally touch typing. If you're reading this months before starting your studies and have time on your hands, take a look at

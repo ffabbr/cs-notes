@@ -5,18 +5,19 @@
 - ordering is hard
 - can't combine thread safe operations
 - locks are pessimistic
-- synchronizations and locks are embedded in the code
+- synchronizations and locks are embedded in the code and not portable
 
-Solution: **atomic locks** (transactions)
+Solution:
 
 ## Transactional Memory
 
-**Transaktion "sieht konsistente Welt" in der gesamten Ausführungszeit**
-Das ist möglich durch 
+defined "atomic blocks"
 
-a. Thread erstellt lokale Kopie der Daten ("Snapshot"), macht die Änderungen dort, überprüft auf Konflikte und schreibt dann Änderungen atomar in den shared space, oder wiederholt
+**Ausführung passiert gleichzeitig, sieht für uns aber sequentiell aus.**
 
-b. track changes, when a Thread makes a change to a value that is being used by another, abort early 
+Mögliche Ansätze
+- Thread erstellt lokale Kopie der Daten ("Snapshot"), macht die Änderungen dort, überprüft auf Konflikte und schreibt dann Änderungen atomar in den shared space, oder wiederholt
+- track changes, when a Thread makes a change to a value that is being used by another, abort early 
 
 **Eigenschaften**
 - TM ist atomar, aber nicht mutex
@@ -26,16 +27,39 @@ b. track changes, when a Thread makes a change to a value that is being used by 
 - TM can be implemented in Hardware or Software. 
 
 **Strong vs weak isolation**
-- ==Strong isolation==: Garantiert Sicherheit, selbst wenn ein anderer Thread versucht, die Variable "normal" (ohne Transaktion) zu lesen oder zu schreiben
-- ==Weak isolation==: not allowed
+- ==Strong isolation==: Garantiert Sicherheit, selbst wenn ein anderer Thread versucht, die Variable "normal" (ohne Transaktion, also ohne `atomic` block) zu lesen oder zu schreiben
+- ==Weak isolation==: Shared state can **only** be read/modified in transactions (z.B. bei DiningPhilosophers muss ich auch bei put down forks atomic block haben)
 
 **Nesting**
 Was passiert, wenn eine Transaktion innerhalb einer anderen gestartet wird?
-- ==Flat Nesting==: Grunde nur eine einzige, große Transaktion. Wenn die innere Transaktion scheitert, bricht die komplette (auch die äußere) Transaktion ab.
+- ==Flat Nesting==: im Grunde nur eine einzige, große Transaktion. Wenn die innere Transaktion scheitert, bricht die komplette (auch die äußere) Transaktion ab.
 - ==Closed Nesting==: Die innere Transaktion kann abbrechen und es neu versuchen, ohne dass die äußere Transaktion abgebrochen werden muss.
 
 ## ScalaSTM
 
+- weak isolation
+- closed nesting
+
+**Bank account example**
+
+Callable() when with return value instead of Runnable()
+
+![[Bildschirmfoto 2026-05-27 um 16.36.21.png]]
+![[Bildschirmfoto 2026-05-27 um 16.36.29.png]]
+![[Bildschirmfoto 2026-05-27 um 16.37.50.png]]
+![[Bildschirmfoto 2026-05-27 um 16.38.11.png]]
+
+STM Retry: instead of aborting, retry: "wait bis es sich verändert", kein spin wait
+
+![[Bildschirmfoto 2026-05-27 um 16.39.25.png]]
+
+### Implementation of STM
+
+- global clock (incremented with compare and set)
+- each transaction reads latest value from clock, that's its "birthdate"
+- when a transaction commits, the clock is incremented
+- thread has "read set" (everything we have read from external) and "write set" (everything we have modified in local copy). each time check if needed Object is in write set already (local copy), if there, use. If not, get from external (check if timestamp of external value is younger as our transaction, if so, put into read set and continue. If not, abort.
+- If all works out and we commit, we need to store into actual data. If it was only one object, easy (compare and set), but if multiple objects, needs locks (re-check everything again, then put elements from writeset to global including udpated birthdate)
 
 ---
 
@@ -54,13 +78,13 @@ How to **SPMD** (Single Program, Multiple Data)
 
 ```java
 if (rank == 0) {
-    // Du bist der Chef (Master-Prozess): Verteile die Arbeit!
+    // (Master-Prozess) Verteile die Arbeit
 } else {
-    // Du bist ein Arbeiter (Worker-Prozess): Rechne die Daten durch!
+    // Du bist Worker-Prozess, rechne
 }
 ```
 
-Send: 
+**Send:** 
 
 ```java
 void Comm.Send(
@@ -74,5 +98,12 @@ void Comm.Send(
 ```
 
 
+**Receive:** equivalent function similar to `Comm.Send()`, but with `src` instead of `dest`
+
+
 **Synchronous Send**: send, then wait for recipient to actively receive
 **Asynchronous Send**: send, then directly continue, buffer needed
+
+**Blocking**: returns when buffer can be used again, but message transfer might not have been completed
+**Non-blocking**: return immediately
+

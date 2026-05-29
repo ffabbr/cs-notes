@@ -21,7 +21,7 @@ Wir weisen einem Netzwerk einen Fluss zu; geben jeder Kante $f(e)$
 
 Fluss ist ganzzahlig, wenn alle Flusswerte ($\neq$ Kapazitäten) ganzzahlig.
 
-## Schnitte
+## S-T Schnitt
 
 Partition von V in $(S,T)$
 - source ist in S, 
@@ -37,7 +37,7 @@ $val(f) \leq cap(S,T)$
 > [!Note]- Beweis
 > Intuitiv logisch, alles muss mal rüberfliessen. Mathematisch: $val(f) = \text{netoutflow}(s)$, aber da Flusserhaltung ist netoutflow für Knoten ausser s, t 0, somit $val(f) = \sum_{u \in S} \text{netoutflow}(u)$, also nur relevant wenn wir S verlassen oder nach S kommen, also $val(f) = \sum_{u \in S, v \in T} f(u,v) - \sum_{v \in T, u \in S} f(v,u)$. Es gilt immer $f(u,v) \leq c(u,v)$, also $val(f) \leq \sum_{u \in S, v \in T} c(u,v) - 0$, und $\sum_{u \in S, v \in T} c(u,v)$ ist die Definition von $cap(S,T)$
 
-### MaxFlow-Mincut
+## MaxFlow-Mincut
 
 - **MaxFlow**: maximaler Fluss
 - **Mincut**: Schnitt (Partition) mit kleinster Kapazität
@@ -76,14 +76,34 @@ Aussagen:
 - FALSCH: der Flusswert des Netzwerkes wird kleiner, wenn ich den Fluss an einer Kante reduziere. Gegenbeispiel: $s \to \text{Kreis} \to t$. 
 
 ---
-## Zuteilungsaufgaben mit Netzwerken
+## Flow-Aufgaben
 
-Nehmen an, wir teilen jedem A ein B zu. 
+### Zuteilung
+
+Wir teilen jedem A ein B zu. 
 
 - erstelle Knoten s, t, ein Knoten pro A und ein Knoten pro B
 - verbinde alle s mit allen aus A, und alle aus B mit t
 - verbinde die aus A, je nach Kompatibilität mit denen aus B
 
-Lässt es sich zuteilen? Ist maxFlow = Anzahl Elemente? 
+Lässt es sich zuteilen: Ist maxFlow = Anzahl Elemente? 
 
-![[Bildschirmfoto 2026-05-07 um 20.51.01.png]]
+[[Bildschirmfoto 2026-05-07 um 20.51.01.png|Beispiel]]
+
+### Gewinnmaximierung
+
+Projekte bringen Geld, benötigen aber Werkzeuge, die Geld kosten. 
+
+- verbinde s mit jedem Projekt, Kapazität = Gewinn des Projekts
+- verbinde Werkzeuge mit t, Kapazität = Kosten
+- Kante von Projekt zu Werkzeug (Kap $\infty$)
+- max. Gewinn: Summe der potenziellen Gewinne — minCuts
+
+### Knotenkapazitäten
+
+Wir transportieren Daten, aber jede Station (Knoten) hat ein Limit
+
+- erstelle 2 Knoten pro Station: Eingang und Ausgang, verbinde mit Kante mit cap von Limit
+- normal maxflow berechnen
+
+→ [[Bildschirmfoto 2026-05-28 um 21.00.14.png|Beispiel]]

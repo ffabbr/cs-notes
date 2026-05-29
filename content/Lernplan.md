@@ -5,8 +5,8 @@ cssclasses:
 ---
 
 - DDCA
-	- Assembly programming
-	- Verilog 
+	- Assembly programming mock exam tasks
+	- Verilog mock exam tasks
 	- Theorie
 	- Mockexams
 - AuW

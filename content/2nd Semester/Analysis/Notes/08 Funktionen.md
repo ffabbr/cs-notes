@@ -91,7 +91,7 @@ $$f|_{D'} : D' \to \mathbb{R} \text{ mit } f|_{D'}(x) = f(x) \forall x \in D'$$
 
 ## Krümmung
 
-**konvex**: linksgekrümmt
+**konvex**: linksgekrümmt (konv$e^x$)
 **konkav**: rechtsgekrümmt
 
 siehe [[09 Differenzialrechnung#Krümmung]]
