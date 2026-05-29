@@ -11,7 +11,7 @@ The exam takes place on Linux with either a Swiss or US Keyboard, so I recommend
 
 To get the Windows (exam) layout on MacOS, do the following: 
 
-1. Download [[SwissGermanWindows-2.keylayout]]
+1. Download [[SwissGermanWindows.keylayout]]
 2. Download [[SwissGermanWindows.icns]]
 3. Move both files to `~/Library/Keyboard Layouts/`
 	1. Open Finder
