@@ -1,4 +1,5 @@
 
+
 ## Netzwerk
 
 - gerichteter Graph $G?(V,A)$ 
@@ -107,3 +108,9 @@ Wir transportieren Daten, aber jede Station (Knoten) hat ein Limit
 - normal maxflow berechnen
 
 → [[Bildschirmfoto 2026-05-28 um 21.00.14.png|Beispiel]]
+
+
+---
+
+
+![[Bildschirmfoto 2026-05-30 um 13.59.09.png]]![[Bildschirmfoto 2026-05-30 um 13.59.20.png]]

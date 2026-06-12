@@ -37,5 +37,8 @@ my lecture notes:
 	- **05 Hardware**
 		- [[24 GPU]]
 		- [[25 Memory]]
+		- [[26 Cache]]
+		- [[27 Prefetching]]
+		- [[28 Virtual Memory]]
 
 %% End Waypoint %%

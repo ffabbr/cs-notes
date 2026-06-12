@@ -45,8 +45,12 @@ Für einen Term:
 - times $\frac{\text{ehemaliger koeffizient}}{\text{neuer exponent}}$
 - $+ \ C$ 
 
+1. [[#Integration durch partielle Integration]]
+2. [[#Integration durch Substitution]]
 
 ### Integration durch partielle Integration
+
+[[#Integration durch Substitution]]
 
 1. setze u (wird "leichter" beim Ableiten) und v' (das andere)
 2. berechne u' und v
@@ -71,12 +75,14 @@ $$
 
 ### Integration durch Substitution
 
+[[#Integration durch partielle Integration]]
+
 wir haben eine Funktion in einer Funktion (vgl. Kettenregel beim Ableiten)
 nützlich, wenn ein Teil der Ableitung wieder in der Funktion vorkommt
 
 1. **ersetze** innere Funktion mit u
-2. **berechne** $\frac{du}{dx}= u'$ (Ableitung), multipliziere mal $dx$ und forme weiter um, bis wir $dx= \dots$ haben, dann ersetze das $dx$ in der ursprünglichen Gleichung mit der neuen Äquivalenz
-3. **neue Gren**zen: setze alte Grenzen in $u(x)$ ein und ersetze
+2. **schreibe** $\frac{du}{dx}= u'$ (Ableitung), forme auf $dx= \dots$ um, dann ersetze das $dx$ in der ursprünglichen Gleichung mit der neuen Äquivalenz
+3. **neue Grenzen**: setze alte Grenzen in $u(x)$ ein und ersetze
 
 - **bestimmtes Integral**? jetzt normal berechnen, die neuen Grenzen in u einsetzen, etc.
 - **unbestimmtes Integral**? berechnen, am Ende wieder $u$ zurück-substituieren

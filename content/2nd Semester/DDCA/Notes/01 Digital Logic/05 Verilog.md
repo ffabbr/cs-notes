@@ -65,7 +65,7 @@ endcase
 The casez statement acts like a case statement except that it also recognizes `?` as don’t care.
 
 ```verilog
-case (address)
+casez (address)
     4'b1???: data_out = bus_a;
     4'b01??: data_out = bus_b;
     4'b001?: data_out = bus_c;
@@ -180,19 +180,19 @@ Vgl.
 
 ## Precendence of Operation
 
-|**Precedence**|**Operator**|**Description**|
-|---|---|---|
-|**Highest**|`~`|NOT|
-||`*`, `/`, `%`|mult, div, mod|
-||`+`, `-`|add, sub|
-||`<<`, `>>`|shift|
-||`<<<`, `>>>`|arithmetic shift|
-||`<`, `<=`, `>`, `>=`|comparison|
-||`==`, `!=`|equal, not equal|
-||`&`, `~&`|AND, NAND|
-||`^`, `~^`|XOR, XNOR|
-||`|`,` ~|
-|**Lowest**|`?:`|ternary operator|
+| **Precedence** | **Operator**         | **Description**  |
+| -------------- | -------------------- | ---------------- |
+| **Highest**    | `~`                  | NOT              |
+|                | `*`, `/`, `%`        | mult, div, mod   |
+|                | `+`, `-`             | add, sub         |
+|                | `<<`, `>>`           | shift            |
+|                | `<<<`, `>>>`         | arithmetic shift |
+|                | `<`, `<=`, `>`, `>=` | comparison       |
+|                | `==`, `!=`           | equal, not equal |
+|                | `&`, `~&`            | AND, NAND        |
+|                | `^`, `~^`            | XOR, XNOR        |
+|                | `                    | `,` ~            |
+| **Lowest**     | `?:`                 | ternary operator |
 
 
 
@@ -288,6 +288,8 @@ Immer wenn was passiert, mach ma was.
 > [!warning]
 > - Any variable that is assigned a value inside an `always` block MUST be declared as a `reg`, NOT a  `wire` . See [[#Reg vs wire]]
 > - Do NOT put an `assign` statement in an always block
+> - if `always @(*)`, use =
+> - if `@(posedge clk)`, use <=
 
 ```verilog
 always @ (sensitivity list)

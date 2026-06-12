@@ -1,4 +1,8 @@
 
+Are you looking for → [[13 Performance Analysis]]? 
+
+---
+
 > [!abstract] Circuit Design Attributes
 > - Area
 > - *Speed*
@@ -23,9 +27,6 @@
 - voltage
 
 ## Types of Delay
-
-
-
 
 ## Longest, Shortest Delay Path
 

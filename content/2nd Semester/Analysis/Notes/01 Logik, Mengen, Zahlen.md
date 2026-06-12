@@ -19,7 +19,8 @@
 ## Intervalle
 
 - **Intervall offen** $(a,b)$
-- **Intervall abgeschlossen** $[a,b]$
+- **Intervall abgeschlossen** $[a,b]$ oder $[a, \infty), (-\infty, \infty), \text{etc.}$. 
+  das komplement einer offenen menge ist abgeschlossen
 - **Intervall halboffen**
 
 - **Intervall beschränkt**: a, b endlich

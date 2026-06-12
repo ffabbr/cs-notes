@@ -108,7 +108,13 @@ $$
 
 Die Verknüpfung 2 konvexer Funktionen, wobei die äussere monoton wachsend ist, ist wieder konvex.
 
-Konvex: lokales minimum ist auch globales minimum 
+Konvex: lokales minimum ist auch globales minimum. 
+
+**Wendepunkt**: Krümmung ändert sich
+- Vorzeichenwechsel von $f''$ bei $x_0$ $\Rightarrow$ Wendepunkt
+- und $f'''(x_0)\neq 0$ $\Rightarrow$ Wendepunkt
+
+**Sattelpunkt**: $f'(x)=0$, $f''(x)=0$ und **$f'''(x)\neq 0$
 
 ![[Bildschirmfoto 2026-04-27 um 17.47.50.png]]
 

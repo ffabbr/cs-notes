@@ -10,9 +10,11 @@ The system is translating virtual memory addresses to physical.
 
 **Memory Hierarchy**: 
 1. CPU Register (Flip-Flop)
-2. L1 Cache, L2 Cache (SRAM)
-3. DRAM
-4. Storage (SSD/HDD)
+2. L1 Cache
+3. L2 Cache
+4. L3 Cache
+5. DRAM
+6. Storage (SSD/HDD)
 
 ---
 
@@ -55,48 +57,11 @@ One's past is a very good predictor of their near future
 
 ---
 
-## Caching
+## Cache
 
-Caching is about memoizing used data (which works due to locality). We store data in addresses adjacent to recently accessed one in fast memory. 
+→ [[26 Cache]]
 
-**We divide memory into blocks**. The Cache contains *block lines/cache line*, which has place for one memory block.
-
-Off-topic: a **Scratchpad** is like a Cache but managed by the programmer, not the hardware.
-
-
-> [!success] 
-> When CPU requests Data, it first checks Cache:
-> - HIT: data is in cache
-> - MISS: data is not in cache, bring block from main storage
-
-
-The CPU sends data request and we quickly check the Cache. The data request contains
-
-- tag of block
-- index of block
-- byte within block
-
-Ablauf
-
-1. go to position of index in tag store table
-2. check if tag of request $=$ tag in tag store at index
-3. yes? get block values from data store
-4. use MUX to get requested byte of the found block
-
-**Problem**: if 2 things randomly get the same index, they both use the same cache location and overwrite themselves
-
-![[Bildschirmfoto 2026-05-15 um 15.55.32.png]]
-
-**Solution**: Memory arrays
-
-- Der Index zeigt auf ein Set mit N Zeilen (statt auf eine Zeile direkt)
-- CPU schaut, welche der Zeilen in dem gegebenen Set frei ist und nutzt diese Zeile
-- erst wenn alle Zeilen in dem Set belegt sind, muss eine Zeile überschrieben werden
-
-
-![[Bildschirmfoto 2026-05-17 um 10.59.06.png]]
-
-
+---
 
 ## The DRAM Subsystem
 
@@ -140,3 +105,37 @@ $T_i \approx t_i$ desirable
 > 
 > - speichert 0, 1 durch magnetischen Spin von Elektronen
 > - braucht keinen Strom
+
+
+---
+
+## Other optimizations
+
+### Resource Sharing
+
+Allow a hardware resource be used by multiple contexts
+
+Advantages: 
+- improves throughput
+- reduces communication latency
+- compatible with shared memory programming model
+
+Disadvantages: 
+- can reduce performance
+- eliminates performance isolation → inconsistent performance
+
+### Shared Caches between cores
+
+Advantages: 
+- high effective capacity
+- dynamic pertitioning
+- easier to maintain coherence
+
+Disadvantages: 
+- slower access
+- conflict misses due to other cores' accesses
+- unfair cache sharing 
+
+### Cache Partitioning
+
+Because Shared Cache might be unfair shared, partitioning solves this

@@ -52,15 +52,34 @@ Es gilt:
 
 ## Local Repair
 
-$O(n \log n)$
+Statt Kreis zu suchen, suchen wir **unteren** Teilpolygonzug: x-monoton wachsend, keine Punkte darunter, und **oberen** Teilpolygonzug: x-monoton fallend und keine Punkte darüber
 
 1. sortiere Punkte nach x-Achse ($\mathcal{O}(n \log n)$), erster und letzter Punkt sind garantiert Eckpunkte
-2. Statt Kreis zu suchen, suchen wir 
-	1. **unteren** Teilpolygonzug: x-monoton wachsend, keine Punkte darunter
-	2. **oberen** Teilpolygonzug: x-monoton fallend und keine Punkte darüber
-3. Verbessern (Backtracking): 
-	1. analysiere immer die letzten 3 Knoten, wenn wir je eine Rechtskurve machen (aka wenn wir Knoten 1 und 3 verbinden ist Knoten 2 links von der Verbindung, also det > 0), haben wir einen indent 
-	2. wenn indent, entferne Knoten vom Indent
+2. Iteriere über alle Knoten, zuerst von links nach rechts (unten), dann von rechts nach links (oben) und verbessere mit Backtracking:
+	1. Suppose Knoten 1,2,3,4,5 sind in der Reihenfolge bzgl. x-Achse. Unser Teilpolygonzug unten ist bisher 1,2,3,4. Wir wollen 5 hinzufügen. Ziehe Verbindungslinie von Knoten 3 zu 5. 
+	2. Liegt 4 jetzt links von dieser Linie, hätten wir eine Rechtskurve (aka indent), wenn wir 3 im unteren Polygonzug haben. Wir wollen keinen indent, also skippe Knoten 4, und Backtracking:
+		1. wenn wir Knoten 2 und 5 Verbinden, liegt Knoten 3 links oder rechts von der Verbindungslinie → repeat solange bis nicht mehr links
 
-**Laufzeit**
-- $O(n)$ bei sortierter Eingabe
+**Runtime**
+- $O(n \log n)$
+- $O(n)$ wenn sortiert, da wir $2(n-1)-h \leq O(n)$ lokale Verbesserungen machen (Anzahl Ecken am Anfang – Anzahl Ecken am Ende). Pro Punkt 2 erfolgreiche Tests (für oben und unten), daher auch $\leq O(n)$.
+
+![[Bildschirmfoto 2026-05-30 um 12.02.28.png]]
+
+
+## Sortieren mit Convex Hull
+
+Ecken von $\text{conv(P)}=$ Sortierung des Arrays
+
+Wir wollen ein Array sortieren: 
+
+Pro Wert $a_{i}$, erstelle Punkt $(a_{i}, a_{i}^2)$. 
+$\implies$ die Punkte liegen automatisch auf einer Parabel
+$\implies$ Parabel ist konvex
+$\implies$ jeder Punkt ist Teil der konvexen Hülle
+$\implies$ der $\text{conv(P)}$ Algorithmus listet gegen den Uhrzeigersinn, also genau sortiert
+
+Runtime: $O(n)$
+- Punkte erstellen $O(n)$
+- Convex Hull $O(n)$
+- Ablesen $O(n)$

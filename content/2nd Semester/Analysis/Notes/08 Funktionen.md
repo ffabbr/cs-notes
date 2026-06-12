@@ -98,7 +98,7 @@ siehe [[09 Differenzialrechnung#Krümmung]]
 
 ## Stetigkeit
 
-Eine Funktion ist stetig, wenn an jedem Punkt stetig, aka keinen Sprung. Vorstellung Zoom: Hab ich z.B. einen Spitz, dann kann ich beliebig nahe ran-zoomen und komme dem Spitz immer näher, somit stetig. 
+Eine Funktion ist stetig, wenn an jedem Punkt stetig, aka kein Sprung. Vorstellung Zoom: Hab ich z.B. einen Spitz, dann kann ich beliebig nahe ran-zoomen und komme dem Spitz immer näher, somit stetig. 
 
 ==Ich darf annehmen, dass Polynome, sin(x), log, etc. stetisch sind.== 
 

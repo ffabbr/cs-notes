@@ -11,7 +11,7 @@ Solution:
 
 ## Transactional Memory
 
-defined "atomic blocks"
+defined "atomic blocks" and not bother about the HOW
 
 **Ausführung passiert gleichzeitig, sieht für uns aber sequentiell aus.**
 
@@ -34,6 +34,8 @@ Mögliche Ansätze
 Was passiert, wenn eine Transaktion innerhalb einer anderen gestartet wird?
 - ==Flat Nesting==: im Grunde nur eine einzige, große Transaktion. Wenn die innere Transaktion scheitert, bricht die komplette (auch die äußere) Transaktion ab.
 - ==Closed Nesting==: Die innere Transaktion kann abbrechen und es neu versuchen, ohne dass die äußere Transaktion abgebrochen werden muss.
+
+![[Bildschirmfoto 2026-06-04 um 11.32.23.png]]
 
 ## ScalaSTM
 
@@ -61,18 +63,21 @@ STM Retry: instead of aborting, retry: "wait bis es sich verändert", kein spin 
 - thread has "read set" (everything we have read from external) and "write set" (everything we have modified in local copy). each time check if needed Object is in write set already (local copy), if there, use. If not, get from external (check if timestamp of external value is younger as our transaction, if so, put into read set and continue. If not, abort.
 - If all works out and we commit, we need to store into actual data. If it was only one object, easy (compare and set), but if multiple objects, needs locks (re-check everything again, then put elements from writeset to global including udpated birthdate)
 
+
 ---
 
 ## Message Passing
 
-What if we avoid sharing state?
-Each thread/task has its own private state, they cooperate via message passing
+What if we avoid sharing state by using distributed memory?
+Each thread/task has its own private state, they cooperate via message passing.
 
 *Message Passing Interface* for communication: 
 
 - a communicator is a set of threads that can talk about a task
 - a thread can be part of multiple communicators
 - each thread has a rank (id) within each communicator
+
+![[Bildschirmfoto 2026-06-04 um 11.33.52.png]]
 
 How to **SPMD** (Single Program, Multiple Data)
 
@@ -107,3 +112,4 @@ void Comm.Send(
 **Blocking**: returns when buffer can be used again, but message transfer might not have been completed
 **Non-blocking**: return immediately
 
+![[Bildschirmfoto 2026-06-04 um 11.35.03.png]]
