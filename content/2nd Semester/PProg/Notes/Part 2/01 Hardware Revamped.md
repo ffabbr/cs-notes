@@ -36,7 +36,7 @@ The order of statement execution on a singal thread. The JMM can re-order though
 
 ### Synchronizes-with
 
-Two threads "touch" the same point on that master timeline through a Synchronization Action (like reading and writing the same `volatile` variable), creating a **handshake**.
+Two threads "touch" the same point on that master timeline through a [[#Synchronization Actions|Synchronization Action]] (like reading and writing the same `volatile` variable), creating a **handshake**.
 
 A write to a `volatile` variable `V` _synchronizes-with_ every subsequent read of `volatile` variable `V` by any thread.
 

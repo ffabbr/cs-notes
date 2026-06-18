@@ -17,9 +17,6 @@
 	- `thread.join()` is unaffected
 	- main thread may not be aware
 
-![[2nd Semester/PProg/Slides/01 Slides.pdf#page=58|01 Slides]]
-
-
 ## Interrupt Threads
 
 Threads können sich immer nur selbst interrupten. Aber möglich ist ein Interrupt flag, dass der andere Thread lesen und reagieren kann. 

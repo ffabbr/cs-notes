@@ -9,7 +9,7 @@
 
 **Dependencies can be dealt with through the Hardware or Software.** 
 
-*Hardware interlocking*: Given a timeline, a raw dependency can be seen by having the execute of R2 stalled to start only after the writeback of R1 though "-" at given "wait" cycles
+*Hardware interlocking*: Given a timeline, a raw dependency can be seen by having the execute of R2 stalled to start only after the writeback of R1 through "-" at given "wait" cycles
 
 *Software interlocking*: nop (no operation) buffer tasks with the full f.ex. F,D,E,M,W are put in the timeline, to push the fetch of the 2nd op back to then have E after W of 1st. 
 

@@ -1,4 +1,4 @@
-
+	
 - some data dependencies can be solved with **register renaming** using a [[15 Pipelining#Reorder buffer|reorder buffer]]
 - we can also re-order instructions such that f.ex. instructions with independent values execute before the dependent instruction using reservation stations (assign tags to registers and execute instruction once concrete values are assigned to these tags)
 

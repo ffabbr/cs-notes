@@ -2,14 +2,12 @@
 cssclasses:
 draft: "true"
 ---
+**Heute**
 
-AuW Introduction
-PProg Introduction 
-
----
-
-Analysis Komplexe Zahlen, Folgen und Reihen
-
-DDCA Rest of FS21, starting Pipelining, Tomasulo's, GPUs and SIMD, Branch Prediction, Caches, Prefetching, Systolic Arrays
+PProg Notizen -> Prüfung 
+Analysis Komplexe Zahlen
 
 ---
+
+- Mittwoch, Donnerstag: AuW
+- Freitag, Samstag: DDCA FS21: SIMD, Branch Prediction, Caches, Prefetching, Systolic Arrays

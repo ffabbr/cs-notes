@@ -20,7 +20,7 @@ Fetch and execute order:
 **Dataflow graph**
 
 - write down all instructions with their registers with correct order, meaning f.ex. extract/reverse-engineer them from the [[17 Out of order execution#Tomasulo's Algorithm|Tomasulo]] charts (RAT, Register Alias Table; RS, Reservation station) with the tags
-- when a value in the RS doesn't appear in the original RAT, it has been written in the meantime. look at what that instruction could have been
+- **==when a value in the RS doesn't appear in the original RAT, it has been written in the meantime. look at what that instruction could have been==**
 - look at dependencies, then draw graph 
 
 ![[Bildschirmfoto 2026-04-16 um 18.51.51.png|Dataflow Graph for factorial]]

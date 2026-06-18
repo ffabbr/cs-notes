@@ -1,5 +1,4 @@
 
-`Execution time = #instructions x average CPI x #clock cycle time`
 
 *CPI=cycles per instruction*
 
