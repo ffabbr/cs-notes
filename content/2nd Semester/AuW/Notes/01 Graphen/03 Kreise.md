@@ -36,7 +36,7 @@ $O(|E|)$
 > Kreis mit allen Knoten genau einmal
 
 - Ist ein [[04 NP, TSP|P/NP Problem]] 
-- Anzahl Hamiltonkreise: $\frac{1}{2} (n-1)!$ 
+- Anzahl Hamiltonkreise in vollständigem Graphen: $\frac{1}{2} (n-1)!$ 
 - Ein $n \times m$ Gitter hat einen Hamiltonkreis $\iff$ $n\cdot m$ gerade 
 - Bipartiter Graph $A \cup B$, mit $|A| \neq |B|$, hat ==keinen== Hamiltonkreis
 

@@ -27,7 +27,7 @@ synchronized void await() throws InterruptedException {
     while (draining) {
         wait();
     }
-    ++i;
+    i++;
     while (i < n && !draining) {
         wait();
     }

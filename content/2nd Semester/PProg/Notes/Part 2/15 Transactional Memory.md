@@ -46,14 +46,14 @@ Was passiert, wenn eine Transaktion innerhalb einer anderen gestartet wird?
 
 Callable() when with return value instead of Runnable()
 
-![[Bildschirmfoto 2026-05-27 um 16.36.21.png]]
-![[Bildschirmfoto 2026-05-27 um 16.36.29.png]]
-![[Bildschirmfoto 2026-05-27 um 16.37.50.png]]
-![[Bildschirmfoto 2026-05-27 um 16.38.11.png]]
+![[Bildschirmfoto 2026-05-27 um 16.36.21.png|350]]
+![[Bildschirmfoto 2026-05-27 um 16.36.29.png|350]]
+![[Bildschirmfoto 2026-05-27 um 16.37.50.png|350]]
+![[Bildschirmfoto 2026-05-27 um 16.38.11.png|350]]
 
 STM Retry: instead of aborting, retry: "wait bis es sich verändert", kein spin wait
 
-![[Bildschirmfoto 2026-05-27 um 16.39.25.png]]
+![[Bildschirmfoto 2026-05-27 um 16.39.25.png|350]]
 
 ### Implementation of STM
 
@@ -77,7 +77,7 @@ Each thread/task has its own private state, they cooperate via message passing.
 - a thread can be part of multiple communicators
 - each thread has a rank (id) within each communicator
 
-![[Bildschirmfoto 2026-06-04 um 11.33.52.png]]
+![[Bildschirmfoto 2026-06-04 um 11.33.52.png|400]]
 
 How to **SPMD** (Single Program, Multiple Data)
 
@@ -112,4 +112,4 @@ void Comm.Send(
 **Blocking**: returns when buffer can be used again, but message transfer might not have been completed
 **Non-blocking**: return immediately
 
-![[Bildschirmfoto 2026-06-04 um 11.35.03.png]]
+![[Bildschirmfoto 2026-06-04 um 11.35.03.png|400]]

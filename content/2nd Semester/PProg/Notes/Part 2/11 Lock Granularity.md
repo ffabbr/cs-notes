@@ -10,7 +10,6 @@ jedes listenelement hat ein eigenes lock
 ### Starter (Hand over hand locking)
 
 - hand over hand: threads locks können sich nicht überholen, also statt vorzulaufen bis zu vorgänger von delete und dann 2 nodes zu locken (problem ist dass race condition beim lock acquiren, aber davor speichern wir state). hier ist die lösung hand over hand, also wir laufen mit 2 locks die nodes ab und checken jedes mal ob das nächste element schon das gesuchte element ist. so haben wir die locks die wir brauchen safe, und es kann kein anderer thread uns überholen.
-- handover lock when traversing, always only lock 2 nodes at the time
 - lock both read and write node, so for f.ex. `remove(c)` we need to lock b and c, as we move the pointer from b to d instead of b to c
 
 Problems: 

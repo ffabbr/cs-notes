@@ -12,7 +12,7 @@
 do {
 	
 } while { 
-	// if we have meen interleaved, try again
+	// if we have been interleaved, try again
 	!atomicReference.compareAndSet(oldObject, newObject)
 } 
 ```
@@ -22,24 +22,6 @@ do {
 Beispiel Stack
 
 CAS suggests that no other thread has written between (a) and (c), but might be deceptive when changed and changed back again by another thread where the value now is the same but changes have been made. When an activity fails to recognize that a single memory location was modified temporarily by another activity and therefore assumes that the overall state has not changed.
-
-**Beispiel** (Gemini)
-Stell dir einen Stack vor: A → B → C
-
-Thread 1 will pop() machen:
-1. Liest head = A (speichert lokal)
-2. Liest next = B
-3. Wird unterbrochen... (wird schlafen gelegt)
-
-Thread 2 macht währenddessen:
-1. pop(A) → Stack: B → C
-2. pop(B) → Stack: C
-3. push(A) → Stack: A → C (A ist wieder oben!)
-
-Thread 1 wacht auf und macht CAS:
-- Prüft: "Ist head immer noch A?" → JA!
-- CAS gelingt → setzt top = B
-- Aber B existiert nicht mehr im Stack! Stack ist kaputt.
 
 Remedies: 
 - Pointer tagging (use bits as counter)

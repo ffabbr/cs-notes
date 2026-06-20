@@ -30,7 +30,7 @@ ein gemeinsamer Lock schützt den Puffer, damit nur ein Thread gleichzeitig `buf
 
 ## PC with Sleeping Barber
 
-- Will nicht notFull und notEmpty nicht senden obwohl keine threads warten
+- Will nicht notFull und notEmpty senden obwohl keine threads warten
 - Idee Barber checks waiting room, sleeps. Client either enqueues or wakes barber. Achtung, wenn barber und client gleichzeitig schauen deadlock
 
 Lösung

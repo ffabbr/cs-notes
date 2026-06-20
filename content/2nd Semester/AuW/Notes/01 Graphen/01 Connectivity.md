@@ -12,9 +12,9 @@ Ein Graph ist zusammenhängend, wenn es für alle $u, v \in V$ einen Pfad von u 
 
 ## k-Zusammenhang
 
-### Knoten-Connectivity
+### (Knoten-)Connectivity
 
-G ist k-Knoten-zusammenhängend $\iff$ egal welche k-1 Knoten man entfernt, der Graph bleibt zusammenhängend
+G ist k-(Knoten-)zusammenhängend $\iff$ egal welche k-1 Knoten man entfernt, der Graph bleibt zusammenhängend
 
 > [!faq]- Formal
 > Man muss mindestens k Knoten löschen, um den Zusammenhang (entweder des Graphens oder nur zwischen u → v) zu zerstören. 
@@ -34,8 +34,7 @@ G ist k-Kanten-zusammenhängend $\iff$ egal welche k-1 Kanten man entfernt, der 
 > [!success] Es gilt immer
 > (**Knoten**-)Zusammenhang $\leq$ **Kanten**-Zusammenhang $\leq$ min. **Grad**
 
-![[Bildschirmfoto 2026-02-25 um 15.38.13.png]]
-
+→ [[Bildschirmfoto 2026-02-25 um 15.38.13.png|Beispiele]]
 
 ---
 
@@ -77,7 +76,7 @@ G ist k-zusammenhängend $\iff \forall u,v \in V, u \neq v$, gibt es k kantendis
 
 ## Blöcke
 
-> Blocks are basically units that contain all ==**edges**== which are in a cycle with one another (or also just a single edge).
+> Blocks are units that contain all ==**edges**== which are in a cycle with one another (or also just a single edge).
 
 Äquivalenzklassen der Äquivalenzrelation auf ==Kanten== 
 $$e \sim f :\Longleftrightarrow 
@@ -100,7 +99,5 @@ Wenn sich zwei Blöcke schneiden, dann schneiden sie sich an einem Artikulations
 
 > [!info]
 > Building the block partitioning in time $O(|E|)$ requires **finding Cut Vertices and -Edges** in $O(|E|)$ time: → [[02 Tarjan]]
-
-![[Bildschirmfoto 2026-03-10 um 09.03.45.png]]
 
 

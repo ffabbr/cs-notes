@@ -37,8 +37,6 @@ Wir können das wait set unterteilen, um nur z.B. eine bestimmte Kategorie von T
 
 Wenn wir manuell ein lock erstellt haben, können wir die conditions verwenden um Gruppierungen zu erstellen. Es ist immer noch nur ==ein Lock==, aber Gruppierungen in der waiting queue. 
 
-Mehr flexibilität haben wir mit reentrant locks. `final Lock lock = new ReentrantLock();`
-
 ```java
 final Lock lock = new ReentrantLock();
 Condition notFull = lock.newCondition();
