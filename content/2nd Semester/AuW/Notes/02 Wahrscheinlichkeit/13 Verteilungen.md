@@ -71,8 +71,7 @@ $$
 \begin{align}
 \sum_{i=1}^{n} \Pr[X=i]
  & = \sum_{i=1}^{n} p \cdot (1-p)^{i-1} \\
- & = p \cdot \sum_{k=0}^{n-1} (1-p)^{k} \\
- & = 1 - (1-p)^n 
+ & = 
 \end{align}
 $$
 

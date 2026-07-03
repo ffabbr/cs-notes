@@ -8,9 +8,9 @@
 - **Surjektiv**: jeder output hat einen input
 - **Bijektiv**: injektiv und surjektiv, 1 to 1 
 	
-- Jede streng monotone Funktion ist injektiv.
-- Falls bijkeitv, existiert eine Umkehrfunktion. 
-- Wenn $f$ streng monoton ist, ist auch die Umkehrfunktion $f^{-1}$ streng monoton
+- streng monotone $\implies$ injektiv.
+- bijkeitv $\implies \exists$ Umkehrfunktion. 
+- $f$ streng monoton $\implies$ Umkehrfunktion $f^{-1}$ streng monoton
 
 ==Achtung==, multiple choice, bspw. "ist das eine injektive Funktion" → überprüfen, ob überhaupt eine Funktion #exam 
 
@@ -38,6 +38,13 @@ $$
 
 - **Grenzwerte im Unendlichen**: $x \to -\infty$ oder $x \to \infty$ hat Grenzwerte
 - **Uneigentlicher Grenzwert**: der Grenzwert ist $\infty$ oder $- \infty$, eigentlich divergiert also
+
+$$
+\lim_{x \to 0} \frac{\sin(x)}{x} = 1, \qquad \lim_{x \to 0} \frac{1 - \cos(x)}{x^2} = \frac{1}{2}, \qquad \lim_{x \to 0} \frac{e^x - 1}{x} = 1
+$$
+$$
+\lim_{x \to 0} \frac{\ln(1+x)}{x} = 1, \qquad \lim_{x \to \infty} \left(1 + \frac{1}{x}\right)^x = e
+$$
 
 ### Folgenkriterium für Grenzwerte 
 
@@ -100,7 +107,7 @@ siehe [[09 Differenzialrechnung#Krümmung]]
 
 Eine Funktion ist stetig, wenn an jedem Punkt stetig, aka kein Sprung. Vorstellung Zoom: Hab ich z.B. einen Spitz, dann kann ich beliebig nahe ran-zoomen und komme dem Spitz immer näher, somit stetig. 
 
-==Ich darf annehmen, dass Polynome, sin(x), log, etc. stetisch sind.== 
+==darf annehmen, dass Polynome, sin(x), log, etc. stetisch sind.== 
 
 > [!info] Rechenregeln Stetigkeit
 > $f, g : D \subset \mathbb{R} \to \mathbb{R}$ stetig. Es gilt:

@@ -1,11 +1,11 @@
 
 Separate Namespace of Physical Memory to avoid different programs overwriting themselves. 
 
-Virtual Memory: there is a system that sets the namespace (physical memory location), but the programmer still says f.ex. "position 1" but that's a different position 1 than if another program uses "position 1". The programmer sees virtual memory, the system maps virtual memory addresses to physical memory. 
+**Virtual Memory**: there is a system that sets the namespace (physical memory location), but the programmer still says f.ex. "position 1" but that's a different position 1 than if another program uses "position 1". The programmer sees virtual memory, the system maps virtual memory addresses to physical memory. 
 
 ---
 
-Physical memory is limited in size. What if we don't have enough? 
+**Physical memory is limited in size. What if we don't have enough?** 
 
 Give the program the illusion of infinite physical memory. The programmer doesn't worry about managing physical memory. Hardware and software automatically manage the physical memory space (indirection and mapping).
 
@@ -31,7 +31,7 @@ Physical memory is a cache for pages stored on disk.
 
 ## Address Translation
 
-The address consists of a location+offset. 
+The address consists of a **location+offset**. 
 
 > [!warning] Offset
 > Don't translate the offset (it doesn't change), just the upper bits (position) from the VPN (in virtual address) to the PPN (in physical address)
@@ -42,13 +42,13 @@ The address consists of a location+offset.
 
 A table that translates the gives us the physical address from the virtual address. 
 
-What is the physical address of virtual address `0x5F20`? The lasst 12 bits are the offset, so `F20`. So the VPN is `5`, meaning we look at the 5th entry in the Page Table. If valid, we get the PPN (physical page number) here, to which we then append the offset. 
+What is the physical address of virtual address `0x5F20`? The last 12 bits are the offset, so `F20`. So the VPN is `5`, meaning we look at the 5th entry in the Page Table. If valid, we get the PPN (physical page number) here, to which we then append the offset. 
 
 Notice how in the image above the phyical memory is smaller than the virtual, and this works by mapping some things to the hard drive instead ("Swap memory")
 
 ---
 
-**Page table like this get's ==too large==.** But this table would get very big (f.ex. 52 Bit VPN, so table needs $2^{25}$ entries $\implies 2^{54}$ bytes = 16.000 Terabyte. ). 
+**Page table like this get's ==too large==.** But this table would get very big (f.ex. 52 Bit VPN, so table needs $2^{52}$ entries $\implies 2^{54}$ bytes = 16.000 Terabyte. ). 
 
 Solution: We use multiple page tables. We use a small extra page table that tells us the address of the right page table. When valid set to 0 we let that page table "free", meaning we free the space and use more efficiently. BUT an n-level page table, needs n page table accesses to find the PTE, so more complex/slower.
 
@@ -60,6 +60,17 @@ The VPN contains
 2-Level Page table: 
 
 ![[Bildschirmfoto 2026-05-31 um 20.08.56.png]]
+
+
+## Translation Lookaside Buffer (TLB)
+
+a cache for the virtual—physical address translation (cache the page table entries to speed up the address translation)
+
+**Hardware Page Table Walker (PTW)** Triggering an OS software exception for every single TLB miss is too slow. Solution: **PTW**. A dedicated hardware state machine that handles the page walk.
+
+* Automatically traverses the n-level page tables in physical memory without OS intervention
+* **If valid PTE found in RAM:** PTW loads it directly into the TLB. CPU resumes immediately.
+* **If PTE invalid or on disk:** PTW stops and triggers a **Page Fault** exception. The OS software finally takes over to fetch the data from the disk.
 
 ## Performing Address Translation 
 
@@ -77,7 +88,7 @@ In case of a fault
 2. fetch data from disk OR/AND find free space in physical memory 
 3. store the new mapping in the PT
 
-We don't want the CPU to be involved in transfering data from disk to memory (use DMA
+We don't want the CPU to be involved in transfering data from disk to memory (use DMA, direct memory access)
 
 ---
 

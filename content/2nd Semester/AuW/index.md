@@ -18,12 +18,12 @@ my lecture notes:
 		- [[08 Bedingte Wahrscheinlichkeit]]
 		- [[09 Unabhängigkeit]]
 		- [[10 Zufallsvariable, Erwartungswert, Varianz]]
-		- [[12 Stabile Menge]]
 		- [[13 Verteilungen]]
 		- [[14 Mehrere Zufallsvariablen]]
 		- [[15 Ungleichungen, Abschätzungen]]
 		- [[16 DP]]
 	- **03 Algorithmen**
+		- [[12 Stabile Menge]]
 		- [[17 Target Shooting]]
 		- [[18 Randomisierte Algorithmen]]
 		- [[19 Primzahlen]]

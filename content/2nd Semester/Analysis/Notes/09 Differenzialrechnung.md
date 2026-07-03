@@ -48,15 +48,16 @@ $$
 $$
 ### Tabelle
 
-![[13 Tabelle]]
+→ [[13 Tabelle]]
+
 ### Mehrfache Ableitungen
 
-Die Menge aller $n$-fach stetig differenzierbarer Funktionen auf $D$bezeichnen wir mit $C^n(D)$.
+Die Menge aller $n$-fach stetig differenzierbarer Funktionen auf $D$ bezeichnen wir mit $C^n(D)$. 
 
 **==Glatte Funktionen==:** Eine glatte Funktion ist eine Funktion, die man unendlich oft ableiten kann. $C^\infty(D) := \bigcap_{n=0}^\infty C^n(D)$
 
 
-### Extremstellen
+## Extremstellen
 
 ### Lokale Extremstellen
 
@@ -100,6 +101,7 @@ Spezialfall vom Mittelwertsatz mit $f(a)=f(b)$, somit $f(a)-f(b)=0$ und $f'(x)=0
 Es kann z.B. $\frac{\infty}{-\infty}$ sein, es geht nur um den Betrag. 
 
 Beispiel: 
+
 $$
 \lim_{ x \to \infty } x\cdot\ln(x)=\lim_{ x \to \infty } \frac{\ln(x)}{1/x}=\lim_{ x \to \infty } \frac{1/x}{1/x^2}=0
 $$

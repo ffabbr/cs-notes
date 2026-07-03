@@ -45,8 +45,6 @@ $$
 \underbrace{\sum_{n=0}^{\infty} a_n}_{\text{Gesamt}} = \underbrace{\sum_{n=0}^{N-1} a_n}_{\text{Endlicher Anfang}} + \underbrace{\sum_{n=N}^{\infty} a_n}_{\text{Unendlicher Rest}}
 $$
 
-### Multiplikation von Reihen
-
 ## Grenzwert berechnen
 
 Es gibt nur 2 Reihen, bei denen wir das können. Die geometrische Reihe und die teleskope Reihe. Also wenn etwas keine geometrische Reihe ist, dann muss es durch Teleskopieren lösbar sein. 
@@ -69,6 +67,7 @@ $$
 ### Teleskope Reihe
 
 Aufteilung finden, Beispiel
+
 $$
 \begin{align}
  & \frac{1}{n(n+1)} = \frac{A}{n} + \frac{B}{n+1} \\
@@ -76,12 +75,13 @@ $$
 \end{align}
 $$
 
-Jetzt finde Werte für A und B, sodass B und A respektive "verschwinden", durch ein Gleichungssystem. 
+Jetzt finde Werte für A und B, indem passendes für n eingesetzt wird, sodass B und A respektive "verschwinden", durch ein Gleichungssystem. 
 
 Hier: $n=0, n=-1$. Jetzt können wir in eine teleskope Summe umschreiben:
 $$
 \frac{1}{n(n+1)} = \frac{1}{n} - \frac{1}{n+1}
 $$
+
 ![[IMG_8452.jpg]]
 
 ## Beispiele
@@ -92,14 +92,6 @@ $$
 \sum_{k=1}^{\infty} \frac{1}{k^s}
 $$
 
-
-**Beispiel**
-
-Konvergiert für $s > 1$ und divergiert für $s \leq 1$:
-
-$$
-\sum_{k=1}^{\infty} \frac{1}{k^s} = \sum_{k=1}^{\infty} k^{-s}
-$$
 
 **Beispiel**
 

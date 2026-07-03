@@ -9,7 +9,7 @@ Transformiere Graphen in Netzwerk, indem
 
 ![[Bildschirmfoto 2026-05-21 um 15.07.22.png]]
 
-Knoten bekommt 1 Fluss, also kann nicht zu 2 Knoten nach unten verbunden werden, das wäre Fluss out 2 und dadurch nicht Flusserhaltung
+Kap der Kanten von s zu den Knoten aus U ist 1, da Flusserhaltung und Flusswerte ganzzahlig kann nur eine Kante weiterfliessen.
 
 ---
 

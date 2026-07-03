@@ -3,7 +3,6 @@
 
 ## Algorithmus
 
-
 Jeder Knoten $v$ entscheidet sich unabhängig mit Wahrscheinlichkeit $p$, Teil der Menge zu sein ($s_v = 1$). Mit Wahrscheinlichkeit $1-p$ wählt er sich nicht ($s_v = 0$).
 
 Wenn zwei Knoten, die durch eine Kante verbunden sind, _beide_ im ersten Schritt gewählt haben ($s_u = s_v = 1$), entferne einen Knoten aus der Menge, behalte den anderen.

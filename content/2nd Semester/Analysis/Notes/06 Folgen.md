@@ -156,7 +156,8 @@ Beispiel:
 
 $$
 \begin{aligned}
-\lim_{ n \to \infty } n(\sqrt{ n+1 } - \sqrt{ n })  & = \lim_{ n \to \infty } n \cdot \frac{n+1-n}{\sqrt{ n+1 } + \sqrt{ n }}  \\
+\lim_{ n \to \infty } n(\sqrt{ n+1 } - \sqrt{ n }) &= \lim_{n \to \infty} n \cdot \frac{(\sqrt{n+1} - \sqrt{n})(\sqrt{n+1} + \sqrt{n})}{\sqrt{n+1} + \sqrt{n}} \\
+& = \lim_{ n \to \infty } n \cdot \frac{n+1-n}{\sqrt{ n+1 } + \sqrt{ n }}  \\
  & = \lim_{ n \to \infty } \frac{n}{\sqrt{ n+1 } + \sqrt{ n }}  \\
  & = \lim_{ n \to \infty }  \frac{\cancel{\sqrt{ n }} \cdot \sqrt{ n }}{\cancel{\sqrt{ n }} \left( \sqrt{ 1+\frac{1}{n} } + 1 \right)}  \\
  & = \lim_{ n \to \infty } \frac{\sqrt{ n }}{2}  \\
@@ -225,12 +226,9 @@ $$\begin{align}
 - beschreiben das Verhalten der oberen/unteren Schranke
 - Jede beschränkte Folge hat lim sup und inf, auch, wenn keinen normalen Limes
 
-- Folge konvergiert $\implies \limsup = \liminf$
+- Folge konvergiert $\iff \limsup = \liminf$
 - $(\limsup = \liminf) \land \text{beschränkt} \implies \text{Folge konvergiert}$
 - $\limsup \neq \liminf \implies$ Folge divergent
-
-- `lim sup = lim inf`: gibt normalen limes, Folge **konvergent**
-- Nutzen, um Konvergenz zu zeigen 
 
 - Der Limes superior (inferior) ist der **grösste (kleinste) Häufungspunkt** 
 - Superior: $\lim_{n \to \infty} \sup \{ a_k \mid k \ge n \}$

@@ -11,8 +11,6 @@ $$\mathbb{C}=\{a+ib\mid a,b\in\mathbb{R}\}$$
 
 ### Grundrechenarten
 
-![[2nd Semester/Analysis/Slides/01 Slides.pdf#page=14]] 
-![[2nd Semester/Analysis/Slides/01 Slides.pdf#page=15]] 
 ![[2nd Semester/Analysis/Slides/01 Slides.pdf#page=17]] 
 
 ---

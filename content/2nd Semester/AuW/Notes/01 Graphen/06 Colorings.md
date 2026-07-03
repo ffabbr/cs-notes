@@ -123,7 +123,7 @@ Beweis nicht prüfungsrelevant.
 
 ---
 
-## 3-Färbung in linearer Zeit mit 4*sqrt(n)+1 Farben
+## 3-Färbung in linearer Zeit mit 4\*sqrt(n)+1 Farben
 
 Einen ==3-färbbaren Graphen== kann man in Zeit $O(|V| + |E|)$ mit $O(\sqrt{|V|})$ Farben färben.
 

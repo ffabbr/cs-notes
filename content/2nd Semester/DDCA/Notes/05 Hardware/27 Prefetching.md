@@ -25,7 +25,7 @@ Real systems use hybrid prefetchers (a combination of multiple). This makes it m
 
 ## Execution Based Prefetchers
 
-Pre-execute a pice of the program just to prefetch data
+Pre-execute a piece of the program just to prefetch data
 Thread-Based Pre-Exeuction (spin up separate side-threads)
 
 ---

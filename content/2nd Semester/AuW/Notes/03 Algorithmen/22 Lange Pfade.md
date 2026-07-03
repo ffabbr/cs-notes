@@ -5,14 +5,14 @@ Gibt es einen Pfad der Länge B (B Kanten, B+1 verschiedene Knoten) in dem Graph
 
 ## NP-Vollständigkeit
 
-Das Problem ist NP-Vollständig: G hat Hamiltonkreis $\iff$ G' hat Pfad Länge n.
-**Hamiltonkreis**: jeder Knoten des Graphen genau einmal, Anfang = Ende
+**Das Problem ist NP-Vollständig:** 
+G hat Hamiltonkreis $\iff$ G' hat Pfad Länge n.
 
 ![[Bildschirmfoto 2026-05-07 um 20.29.05.png]]![[Bildschirmfoto 2026-05-07 um 20.29.23.png]]
 
 ## Long Path Algorithmus
 ### Schritt 1: Color Coding
-
+ 
 - ==**färbe zufällig**==
 - finde bunte Pfade (alle Knoten unterschiedliche Farbe)
 - Farbfunktion: $\gamma(v)$

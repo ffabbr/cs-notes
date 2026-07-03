@@ -110,6 +110,8 @@ void Comm.Send(
 **Asynchronous Send**: send, then directly continue, buffer needed
 
 **Blocking**: returns when buffer can be used again, but message transfer might not have been completed
+
 **Non-blocking**: return immediately
+
 
 ![[Bildschirmfoto 2026-06-04 um 11.35.03.png|400]]

@@ -189,3 +189,4 @@ Ist wahr, weil knoten-disjunkt.
 Damit ein Pfad der Länge 1 (besteht nur aus einer Kante) bzgl. $M$ augmentierend ist, müssen beide Endknoten $u$ und $v$ **ungematcht** sein. Ein Matching ist inklusionsmaximal, wenn man keine weitere Kante aus dem Graphen hinzufügen kann, wenn es eine Kante gäbe, die man einfach zu $M$ hinzufügen könnte, müssten beide Endpunkte dieser Kante bisher ungematcht sein
 
 > Sei G ein Graph mit $|V| = 12$ und einem perfekten Matching. Der kürzeste augmentierende Pfad bzgl. M hat 5 Kanten. Welche Werte kann $|M|$ annehmen?
+

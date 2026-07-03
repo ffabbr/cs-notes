@@ -3,7 +3,7 @@
 - Versuche als Baum darstellen, multiplizieren oder addieren
 - Günstige durch Mögliche
 - bei [[08 Bedingte Wahrscheinlichkeit|bedingter Wahrscheinlichkeit]] eine Tabelle machen
-- $P(E_1 | E_2) = \frac{P(E_1 \wedge E_2)}{P(E_2)}$ -
+- $P(E_1 | E_2) = \frac{P(E_1 \wedge E_2)}{P(E_2)}$ 
 - $P(E_1 \wedge E_2) = P(E_1) \cdot P(E_2 | E_1)$
 - Einander ausschliessende Ereignisse (disjunkt): [[#Vereinigung von Ereignissen]]: $P(E_1 \vee E_2) = P(E_1) + P(E_2)$
 - Unabhängigkeit prüfen $P(E_1 \wedge E_2) = P(E_1) \cdot P(E_2)$
@@ -14,7 +14,7 @@
 
 Ein **diskreter Wahrscheinlichkeitsraum** hat eine ==Ergebnismenge== $\Omega$ von Elementareineignissen $\omega_{i}$ mit je einer Wahrscheinlichkeit $P[\omega_{i}]$. Alle Wahrscheinlichkeiten addieren sich zu 1 auf. 
 
-Ein **Ereignis** E, oder oft $A_{i}$ ist eine Teilmenge von der Ergebnismenge. Die Wahrscheinlichkeit ist die Summe aller Wahrscheinlichkeiten aller Elementarereignisse die Teil des Ereignisses sind. Vgl. Komplementärereignis $\overline{E} = \Omega \setminus E$. 
+Ein **Ereignis** E, oder oft $A_{i}$ ist eine Teilmenge von der Ergebnismenge. Die Wahrscheinlichkeit ist die Summe aller Wahrscheinlichkeiten aller Elementarereignisse die Teil des Ereignisses sind. vgl. Komplementärereignis $\overline{E} = \Omega \setminus E$. 
 
 $$
 \Pr[\overline{A} \cap B] = \Pr[B] - \Pr[A \cap B]
@@ -91,4 +91,4 @@ $$
 
 Wir mischen ein Deck von n Karten. 
 
-![[Bildschirmfoto 2026-03-23 um 10.26.23.png]]
+![[Bildschirmfoto 2026-03-23 um 10.26.23.png|597]]

@@ -59,7 +59,7 @@ $|A_{1} \cup A_{2}| = |A_{1}| + |A_{2}| - |A_{1} \cap A_{2}|$
 
 Jeder Graph mit 
 - $|V| \geq 3$ und 
-- $\delta(G)$ Minimalgrad $\geq \frac{|V|}{2}$
+- Minimalgrad $\geq \frac{|V|}{2}$
 
 hat einen Hamiltonkreis. 
 
@@ -104,7 +104,7 @@ $|N(v_{1}) \cap N^+(v_{j})| \geq 1$ (überschneiden sich)
 
 Dirak Beweis alternativ, Josia
 
-![[Bildschirmfoto 2026-03-05 um 00.27.00.png]]
-![[Bildschirmfoto 2026-03-05 um 00.28.34.png]]
-![[Bildschirmfoto 2026-03-05 um 00.28.47.png]]
-![[Bildschirmfoto 2026-03-05 um 00.27.33.png]]
+![[Dirak-1.png]]
+![[Dirak-2.png]]
+![[Dirak-3.png]]
+![[Dirak-4.png]]

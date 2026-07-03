@@ -6,7 +6,8 @@
 
 $O(n \log n + |\text{Duplikate}|)$
 
-Maximale Anzahl Duplikate bei n Elementen: $\sum_{i=1}^{n-1} i = \frac{n(n-1)}{2}$ 
+Maximale Anzahl Duplikate bei n Elementen: $\binom{n}{2}$ 
+
 ## Duplikate finden mit Hashfunktion
 
 - sortieren und vergleichen kann teuer sein bei grossen Elementen
@@ -48,8 +49,8 @@ Vertices sind die indizes des Arrays, und directed Edge zu dem Vertex dessen Wer
 
 Der Graph besteht aus 
 1. einem "Weg zum Kreis"
-2. einem Kreis. Der Graphhat einen Kreis, da 
-	1. keine Sachgassen, jede Node hat einen ausgehenden Pfeil
+2. einem Kreis. Der Graph hat einen Kreis, da 
+	1. keine Sackgassen, jede Node hat einen ausgehenden Pfeil
 	2. mindestens ein Wert kommt doppelt vor (siehe oben, Pigeonhole), also zeigen 2 Edges auf den selben Node => Kreis
 
 Igel und Hase laufen

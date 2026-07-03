@@ -38,10 +38,6 @@ Falls der minimale Kantenschnitt eine Kante nicht enthält, so **ändert das Kon
 
 ## Min-Cut Monte-Carlo Algorithmus 
 
-Runtime: $O(n^2)$:
-Kontrahieren $O(n)$, 
-Iterationen $O(n)$
-
 1. Kopiere Graph
 2. While (∃ mehr als 2 Knoten) 
 	1. wähle random Kante
@@ -50,6 +46,9 @@ Iterationen $O(n)$
 
 ![[Bildschirmfoto 2026-05-28 um 20.20.00.png]]
 
+A single iteration is $O(n^2)$, but only correct with probability of $\geq \frac{2}{n\cdot(n-1)}$. 
+
+Total runtime without Bootstrapping is $O(n^2\cdot \lambda n^2)$ 
 
 ## Bootstrapping
 
@@ -59,9 +58,10 @@ Umdo kleiner der Graph, desto wahrscheinlicher macht der Algorithmus einen Fehle
 
 
 ![[Bildschirmfoto 2026-05-28 um 20.36.15.png]]
+Runtime with bootstrapping: 
 
 $$
-O(n^2\cdot poly(\log n))
+O(n^2\cdot \log n)
 $$
 
 ![[Bildschirmfoto 2026-05-28 um 20.41.15.png]]

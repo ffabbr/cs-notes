@@ -20,7 +20,7 @@ A vector processor is one whose instructions operate on vectors rather than scal
 
 **Disadvantages:**
 - Parallelism needs to be regular to function properly
-- Memory becomes a bottleneck
+- Memory becomes a bottlenexck
 
 A loop is vectorizable if its iterations are independent from one another.
 
@@ -55,7 +55,7 @@ Avoiding bank conflicts:
 
 ## Masked Instructions
 
-Sometimes only part of a vector needs to be computed — the **mask** specifies which elements.
+Sometimes only part of a vector needs to be computed, the **mask** specifies which elements.
 
 - **Simple:** execute everything, don't write back where mask = 0
 - **Advanced:** check mask first and only compute where needed

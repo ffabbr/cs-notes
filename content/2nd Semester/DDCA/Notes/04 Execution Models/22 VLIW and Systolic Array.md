@@ -14,7 +14,7 @@ If any operation in a VLIW instruction stalls, all concurrent operations stall.
 ### Superblocks
 
 single entry, multiple exit (output)
-Superblock Formation: we separate the common path from the rarely used path by duplicating the lower nodes after the rarely used point
+Superblock Formation: we separate the common path from the rarely used path by duplicating the lower nodes after the rarely used point.
 
 ![[Bildschirmfoto 2026-05-03 um 19.47.34.png]]
 
@@ -27,4 +27,4 @@ Superblock Formation: we separate the common path from the rarely used path by d
 - but then they aren't generally applicable for all computations
 
 ![[Bildschirmfoto 2026-05-03 um 20.40.22.png]]
-- 
+

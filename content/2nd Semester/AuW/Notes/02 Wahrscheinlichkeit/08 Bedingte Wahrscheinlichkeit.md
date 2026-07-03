@@ -116,3 +116,5 @@ $$
 > Beweis mit dem [[08 Bedingte Wahrscheinlichkeit#Satz d. totalen Wahrscheinlichkeit|Satz der totalen Wslkt]] ($\Pr[B] = \sum_{i=1}^{n} \Pr[B|A_i] \cdot \Pr[A_i]$)
 > 
 > ![[Bildschirmfoto 2026-04-15 um 14.44.32.png]]
+
+

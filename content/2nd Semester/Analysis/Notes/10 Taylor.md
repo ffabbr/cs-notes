@@ -6,7 +6,6 @@ Einleitung
 - we get $P(x)=1+\left( -\frac{1}{2} \right)x^2$ 
 - wir sehen, dass der teil-term mit deg n, die n-te ableitung übereinstimmen lässt. bspw., der Teil mit $c_{2}x^2$ ist für die Übereinstimmung der 2. Abeleitung zuständig. Wir können in diesem Beispiel $c_{2}$ so ausrechnen, dass wir $P(x)$ 2 mal ableiten: $P''(x)=2\cdot 1\cdot c_{2}$, und da $\cos''(0)=-\cos(0)=-1$, wollen wir $2\cdot 1\cdot c_{2}=-1$, also $2!\cdot c_{2} = -1$, somit $c_{2}=\frac{-1}{2!}$. Hier kommt also die Fakultät her
 
-
 ## Taylorpolynom
 
 $$

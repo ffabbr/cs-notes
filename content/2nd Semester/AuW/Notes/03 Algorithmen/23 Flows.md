@@ -1,5 +1,3 @@
-
-
 ## Netzwerk
 
 - gerichteter Graph $G?(V,A)$ 
@@ -60,7 +58,7 @@ Kapazitäten **ganzzahlig**: $O(nmU)$, U = maximale Kapazität
 
 **Flord Fulkerson**
 - wenn Kapazitäten beliebig, ==terminiert ev. nicht==
-- wenn Kapazitäten aus $N_{0}$, terminiert, 
+- wenn Kapazitäten aus $\mathbb{N}_0$, terminiert, 
   Fluss um mindestens 1 verbessert pro Augmentierung
 
 ## Restnetzwerk
@@ -98,7 +96,7 @@ Projekte bringen Geld, benötigen aber Werkzeuge, die Geld kosten.
 - verbinde s mit jedem Projekt, Kapazität = Gewinn des Projekts
 - verbinde Werkzeuge mit t, Kapazität = Kosten
 - Kante von Projekt zu Werkzeug (Kap $\infty$)
-- max. Gewinn: Summe der potenziellen Gewinne — minCuts
+- max. Gewinn: Summe der potenziellen Gewinne — minCut
 
 ### Knotenkapazitäten
 

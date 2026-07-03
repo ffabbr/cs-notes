@@ -20,11 +20,11 @@
 
 - **Intervall offen** $(a,b)$
 - **Intervall abgeschlossen** $[a,b]$ oder $[a, \infty), (-\infty, \infty), \text{etc.}$. 
-  das komplement einer offenen menge ist abgeschlossen
-- **Intervall halboffen**
-
+  das Komplement einer offenen menge ist abgeschlossen
 - **Intervall beschränkt**: a, b endlich
 - **Intervall kompakt**: abgeschlossen und beschränkt
+
+- **Intervall halboffen**
 
 - eine obere (untere) Schranke einer Teilmenge X ist eine Zahl die grösser gleich (kleiner gleich) ist, als alle Zahlen in der Teilmenge. Gibt viele.
 

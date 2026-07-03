@@ -2,8 +2,7 @@
 cssclasses:
 draft: "true"
 ---
-
-- AuW
-- Analysis
-
-- DDCA FS21: SIMD, Branch Prediction, Caches, Prefetching, Systolic Arrays
+1. AuW Code Expert
+2. AuW Zettel lernen
+3. Analysis Deep Dive
+4. PProg mock exam missing pieces

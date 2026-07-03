@@ -1,7 +1,7 @@
 
 **Ideal Memory**: zero latency, infinite capacity, zero cost, infinite bandwidth, zero energy
 
-**Reality**: bigger ↔ slower, faster ↔ expensive, handwidth ↔ expensive, faster ↔ more energy efficient
+**Reality**: bigger ↔ slower, faster ↔ expensive, bandwidth ↔ expensive, faster ↔ more energy efficient
 
 **Virtual Memory**: what the programmer sees, assume infinite
 **Physical memory**: actual size
@@ -23,9 +23,9 @@ The system is translating virtual memory addresses to physical.
 ### SRAM (Static RAM)
 
 - speichern mit Transistoren (Flip-Flops)
-- stabil solange Stron fließt
+- stabil solange Strom fließt
 - sehr schnell 
-- geringe Dichte (viele Transistoren brauchen viel Platz)
+- geringe Dichte (brauchen viel Platz)
 - used for CPU Caches
 - teuer
 
@@ -95,8 +95,8 @@ $T_i \approx t_i$ desirable
 > Phase Change Memory
 > 
 > - Speichert Daten durch Ändern des Aggregatzustandes eines Materials durch Stromfluss
-> - braucht keinen Stron zum Halten der Daten oder Refresh
-> - hohe Datendchte
+> - braucht keinen Strom zum Halten der Daten oder Refresh
+> - hohe Datendichte
 > - langsamer, braucht mehr Energie
 > - Abnutzung des Materials
 > 

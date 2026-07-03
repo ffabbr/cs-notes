@@ -7,7 +7,7 @@ Introduction
 
 ## Euklid (n)
 
-Wähle random a, teste gcd(n,a), wenn $gcd(n,a)=1$, return prime, sonst nicht prime. 
+Wähle random a, teste gcd(n,a), wenn $gcd(n,a)=1$, return prime, sonst nicht prime
 
 - korrekt für Primzahlen
 - Korrekt mit Wahrscheinlichkeit $\geq 1-O\left( \frac{1}{\sqrt{ n }} \right)$ für NEIN (= nicht-Primzahlen)
@@ -355,3 +355,4 @@ Wir finden heraus ob $n$ eine Primzahl ist in $O((\log n)^3)$.
 > }
 > ```
 
+l

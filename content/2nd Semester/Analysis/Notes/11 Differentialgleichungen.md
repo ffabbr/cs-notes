@@ -5,13 +5,13 @@
 - **homogen**: $s(x)=0$ 
 	- gebe alle Terme die die Funktion beinhalten auf eine Seite, und alle Terme die Unabhängig von dieser Funktion sind auf die andere
 	- wenn die Seite mit unabhängigen Termen = 0, dann homogen
-- **linear**: gesuchte Funktion und alle Abelitungen kommen nur in der ersten Potenz vor und nicht miteinander multipliziert; Koeffizienten linear 
+- **linear**: gesuchte Funktion und alle Ableitungen kommen nur in der ersten Potenz vor und nicht miteinander multipliziert; Koeffizienten linear 
 	- $u^2(t)=\ln(t)$ hat $u(t)$ als Koeffizient, daher nicht linear
 	- $u^{(5)}(t)=\ln(t)$ ist linear
 	- $u^{(5)}(t) = \ln(u)$ ist nicht linear
 	- $u''(x)-e^{x}+e^{u}=0$ ist nicht linear, da $u$ im Exponenten
 	- $e^t u(t)$ ist linear
-- **Randwertproblem**: Informationen an unterschiedlichen Stellen gegeben
+- **Randwertproblem**: Informationen an unterschiedlichen Stellen 
 - **Anfangswertproblem**: Informationen an selben Stelle gegeben 
 ## homogen-lineare Gleichungen lösen
 
@@ -25,7 +25,7 @@ Wir raten Form der Lösung als
 $$
 u(x) = e^{\lambda x}
 $$
-Wir setzen ein mitden Ableitungen, klammern $e^{\lambda x}$ aus. Da $e^{\lambda x} >0$, muss $a_n \lambda^n + a_{n-1} \lambda^{n-1} + \dots + a_1 \lambda + a_0 = 0$. 
+Wir setzen ein, klammern $e^{\lambda x}$ aus. Da $e^{\lambda x} >0$, muss $a_n \lambda^n + a_{n-1} \lambda^{n-1} + \dots + a_1 \lambda + a_0 = 0$. 
 
 Wir nennen 
 $$
@@ -101,8 +101,6 @@ Falls $y_p(x)$ eine partikuläre Lösung einer solchen DGL ist und $y_h(x)$ die 
 | Spezialfall: $i\omega$ ist eine m-fache Nullst. des charakteristischen Polynoms | <br>$y(t) = (C_1\sin(\omega t) + C_2\cos(\omega t))t^m$    |
 
 **Löse die DGL:** $y' - 2y = 4e^{2x}$
-
-**Lösung:** Wir wenden unsere vorher gelernte Eigenschaft an.
 
 1. Homogene Lösung: $y' - 2y = 0 \implies \lambda - 2 = 0 \implies \lambda = 2$
    Somit ist $y_h(x) = C \cdot e^{2x}$ die homogene Lösung.

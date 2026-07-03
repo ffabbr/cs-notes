@@ -17,6 +17,7 @@ $\cos(-\varphi)=\cos(\varphi)$
 $\sin(-\varphi)=-\sin(\varphi)$
 
 ![[Pasted image 20260427162909.png]]
+![[2nd Semester/Analysis/Slides/02 Slides.pdf#page=3]]
 
 ## Additionstheoreme
 
@@ -40,4 +41,46 @@ $$
 $$
  \cos(x - y) = \cos(x)\cos(y) + \sin(x)\sin(y) 
  $$
+
+## Hyperbolicus
+
+$$\sinh(x) = \frac{e^x - e^{-x}}{2}$$
+
+$$\cosh(x) = \frac{e^x + e^{-x}}{2}$$
+
+$$\tanh(x) = \frac{\sinh(x)}{\cosh(x)} = \frac{e^x - e^{-x}}{e^x + e^{-x}}$$
+
+Da Hyperbelfunktionen keine periodischen Kreiswinkel abbilden, gibt es keine klassische $\pi$\-Tabelle. Wichtig sind die Werte an der Stelle $0$:
+
+$$\sinh(0) = 0$$
+
+$$\cosh(0) = 1$$
+
+$$\tanh(0) = 0$$
+
+### Symmetrie (Negative Argumente)
+
+$$\cosh(-\varphi) = \cosh(\varphi)$$
+
+$$\sinh(-\varphi) = -\sinh(\varphi)$$
+
+$$\tanh(-\varphi) = -\tanh(\varphi)$$
+
+### Fundamentalbeziehung (Trigonometrischer Pythagoras für Hyperbeln)
+
+$$\cosh^2(x) - \sinh^2(x) = 1$$
+
+### Additionstheoreme
+
+$$\sinh(x + y) = \sinh(x)\cosh(y) + \cosh(x)\sinh(y)$$
+
+$$\sinh(x - y) = \sinh(x)\cosh(y) - \cosh(x)\sinh(y)$$
+
+$$\cosh(x + y) = \cosh(x)\cosh(y) + \sinh(x)\sinh(y)$$
+
+$$\cosh(x - y) = \cosh(x)\cosh(y) - \sinh(x)\sinh(y)$$
+
+$$\tanh(x + y) = \frac{\tanh(x) + \tanh(y)}{1 + \tanh(x)\cdot \tanh(y)}$$
+
+$$\tanh(x - y) = \frac{\tanh(x) - \tanh(y)}{1 - \tanh(x)\cdot \tanh(y)}$$
 
