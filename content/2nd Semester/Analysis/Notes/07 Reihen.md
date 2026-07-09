@@ -62,7 +62,7 @@ oder (einfachere) Formel ==ab 0== verwenden $\sum_{n=0}^{\infty} a\cdot q^n = a\
 
 $$
  \text{Summe} = \frac{\text{Startwert}}{1 - q} 
- $$
+$$
 
 ### Teleskope Reihe
 

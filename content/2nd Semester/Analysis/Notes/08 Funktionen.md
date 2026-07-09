@@ -62,7 +62,7 @@ Unterscheide zwischen 2 Versionen von einseitigen Grenzwerten.
 #### Einseitige Grenzwerte, Version 1
 
 Wenn der Grenzwert existiert und die Funktion an dieser Stelle definiert ist, muss der Grenzwert der Funktionswert sein. Also ist $x_{0}$ ein "Mitstreiter". Gibt es bspw. eine Sprungstelle an $x_{0}$ der nicht in das Konvergenzverhalten passt, dann haben wir keinen Grenzwert. 
-
+ 
 Wenn
 $$ x \in \mathbb{D}(f) \cap [x_0, x_0 + \delta) \implies |f(x) - L| < \epsilon $$
 hat $f$ in $x_0$ den **rechtsseitigen Grenzwert L**

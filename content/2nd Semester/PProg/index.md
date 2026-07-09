@@ -33,5 +33,6 @@ my lecture notes:
 		- [[13 Execution Timelines]]
 		- [[14 Consensus]]
 		- [[15 Transactional Memory]]
+		- [[Exam Code Collection]]
 
 %% End Waypoint %%

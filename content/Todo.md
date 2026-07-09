@@ -2,7 +2,7 @@
 cssclasses:
 draft: "true"
 ---
-1. AuW Code Expert
-2. AuW Zettel lernen
-3. Analysis Deep Dive
-4. PProg mock exam missing pieces
+AuW Mock Exams, Theorie, Flow Aufgaben
+Analysis Teil 3
+
+20.30 Laurenz Tele

@@ -37,6 +37,14 @@ Was passiert, wenn eine Transaktion innerhalb einer anderen gestartet wird?
 
 ![[Bildschirmfoto 2026-06-04 um 11.32.23.png]]
 
+Konzept immer: 
+```
+atomic {
+	if (condition) STM.retry();
+	do something
+}
+```
+
 ## ScalaSTM
 
 - weak isolation
@@ -115,3 +123,15 @@ void Comm.Send(
 
 
 ![[Bildschirmfoto 2026-06-04 um 11.35.03.png|400]]
+
+- **`Bcast` (Broadcast):** Sends a copy of the same data from one root process to all other processes in the communicator.
+
+- **`Scatter`:** Divides a data array on a root process and sends a distinct, equal-sized chunk to each process.
+
+- **`Gather`:** Collects distinct chunks of data from all processes and concatenates them into a single array on a root process.
+
+- **`Reduce`:** Combines values provided by all processes using a specified mathematical operation (like sum, max, min) and stores the final result on a single root process.
+
+- **`Allreduce`:** Identical to `Reduce`, but distributes the final computed result back to all processes so everyone has the answer.
+
+- **`Barrier`:** A synchronization mechanism that forces all processes to pause; no process can execute past the barrier until every process has reached it.

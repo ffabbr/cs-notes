@@ -105,7 +105,10 @@ Warum gilt das?
 Jeder Graph kann in Zeit $O(|E|)$ mit $\Delta(G)+1$ Farben gefärbt werden
 
 *Satz von Brooks:*
-(1) $G$ zusammenhängend, (2) $G$ ist kein Kreis ungerader Länge, (3) nicht vollständiger Graph
+(1) $G$ zusammenhängend, 
+(2) $G$ ist kein Kreis ungerader Länge, 
+(3) nicht vollständiger Graph
+
 $\implies G$ kann in Zeit $O(|E|)$ mit $\Delta(G)$ Farben gefärbt werden
 
 > [!info]

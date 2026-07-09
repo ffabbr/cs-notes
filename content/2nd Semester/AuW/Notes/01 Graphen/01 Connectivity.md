@@ -79,9 +79,13 @@ G ist k-zusammenhängend $\iff \forall u,v \in V, u \neq v$, gibt es k kantendis
 > Blocks are units that contain all ==**edges**== which are in a cycle with one another (or also just a single edge).
 
 Äquivalenzklassen der Äquivalenzrelation auf ==Kanten== 
-$$e \sim f :\Longleftrightarrow 
+
+$$
+e \sim f :\Longleftrightarrow 
 \begin{cases} e = f, & \text{oder} \\ 
-\exists \text{ Kreis durch } e \text{ und } f \end{cases}$$
+\exists \text{ Kreis durch } e \text{ und } f \end{cases}
+$$
+
 Wenn sich zwei Blöcke schneiden, dann schneiden sie sich an einem Artikulationsknoten. 
 
 ![[Bildschirmfoto 2026-02-17 um 15.38.48.png]] 
