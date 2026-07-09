@@ -18,7 +18,7 @@ const config: QuartzConfig = {
     },
     locale: "en-US",
     baseUrl: "cs.rohlik.net",
-    ignorePatterns: ["private", "templates", ".obsidian"],
+    ignorePatterns: ["private", "templates", ".obsidian", "CLAUDE.md"],
     defaultDateType: "modified",
     theme: {
       fontOrigin: "googleFonts",
