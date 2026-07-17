@@ -102,7 +102,7 @@ $$
 ## Absolute und Bedingte Konvergenz
 
 **Absolut konvergent**:
-- $\sum_{n=0}^{\infty} |a_n|$ (Reihe der Absolutbeträge) konvergiert
+- $\sum_{n=0}^{\infty} |a_n|$ konvergiert
 - Absolute Konvergenz $\implies$ Konvergenz
 - Jede absolut konvergente Reihe kann beliebig umgeordnet werden und sie konvergiert trotzdem absolut mit demselben Grenzwert.
 

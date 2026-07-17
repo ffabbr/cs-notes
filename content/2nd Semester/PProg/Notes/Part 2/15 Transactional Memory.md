@@ -17,7 +17,7 @@ defined "atomic blocks" and not bother about the HOW
 
 Mögliche Ansätze
 - Thread erstellt lokale Kopie der Daten ("Snapshot"), macht die Änderungen dort, überprüft auf Konflikte und schreibt dann Änderungen atomar in den shared space, oder wiederholt
-- track changes, when a Thread makes a change to a value that is being used by another, abort early 
+	- track changes, when a Thread makes a change to a value that is being used by another, abort early 
 
 **Eigenschaften**
 - TM ist atomar, aber nicht mutex

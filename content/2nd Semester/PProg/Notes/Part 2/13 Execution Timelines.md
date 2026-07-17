@@ -37,3 +37,8 @@ Korrektheits-Beweise mit Linearisierbarkeit, dann darf es nur einen Linearisieru
 
 
 <iframe src="https://cs.rohlik.net/static/consistency.html" style="border-radius: 10px" width="100%" height="500"></iframe>
+
+---
+
+well-formed: per Thread könnte sequentiell sein
+equivalent: same per thread projections

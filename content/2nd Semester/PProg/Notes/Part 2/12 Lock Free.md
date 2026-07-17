@@ -26,6 +26,7 @@ CAS suggests that no other thread has written between (a) and (c), but might be 
 Remedies: 
 - Pointer tagging (use bits as counter)
 - hazard pointers 
+- see [[#ABA Remedies|below]]
 
 ---
 
@@ -112,3 +113,14 @@ Issue: when deleting 2 subsequent nodes, both get marked but only one gets actua
 ![[Bildschirmfoto 2026-05-11 um 11.37.28.png]]![[Bildschirmfoto 2026-05-11 um 11.37.36.png]]
 
 
+---
+
+## ABA Remedies
+
+- **DCAS (Double Compare-and-Swap):** Überprüft zwei Werte gleichzeitig (z. B. das aktuelle Element und sein direktes Folgeelement). Eine Änderung wird nur dann durchgeführt, wenn _beide_ Werte exakt den Erwartungen entsprechen.
+
+- **Garbage Collection:** Eine automatische Speicherbereinigung. Sie verhindert, dass freigegebener Speicherplatz (Knoten A) sofort für neue Daten wiederverwendet wird, solange noch ein anderer Prozess darauf zugreift.
+
+- **Pointer Tagging:** An den Speicherverweis (Pointer) wird eine Versionsnummer (Tag) angehängt. Bei jeder Änderung erhöht sich dieser Zähler. Wird A zu B und wieder zu A, ist es nun "A Version 2" und kann unterschieden werden. Das Problem wird dadurch zwar nicht komplett gelöst, aber in der Praxis stark verzögert, bis der Zähler überläuft.
+
+- **Hazard Pointers:** Prozesse markieren die Speicheradressen, die sie gerade aktiv lesen, als "Gefahr" (Hazard). Andere Prozesse dürfen diesen markierten Speicherbereich weder freigeben noch überschreiben, bis die Markierung wieder entfernt wurde.

@@ -18,8 +18,10 @@ ist Funktion gerade (symmetrisch), vereinfacht sich die Aufgabe ev. durch Versch
 $$
 \int_{a}^{b} f(x) \, dx = \sup L(f) = \inf U(f)
 $$
+L ... Untersummen
+U ... Obersummen
 
-Es sei $f : [a,b] \to \mathbb{R}$ stetig und $F : [a,b] \to \mathbb{R}$ eine Stammfunktion von $f$. Dann gilt
+Es sei $f$ **auf $[a,b]$ integrierbar** und $F$ eine Stammfunktion von $f$. Dann gilt
 $$
 \int_{a}^{b} f(x) \, dx = [F(x)]_{a}^{b} = F(b) - F(a)
 $$
@@ -123,6 +125,7 @@ $$\int_a^c f(x) \, dx = \int_a^b f(x) \, dx + \int_b^c f(x) \, dx, \quad a \leq 
 $(f_n)_{n \in \mathbb{N}_0}$ konvergiert punktweise auf $D$ gegen $f$, falls für jedes $x \in D$ gilt:
 
 $$\lim_{n \to \infty} f_n(x) = f(x)$$
+---
 
 **vii) Etwas**
 $(f_n)_{n \in \mathbb{N}_0}$ konvergiert gleichmässig auf $D$ gegen $f$, falls für jedes $\varepsilon > 0$ ein $N$ existiert, sodass für alle $n \geq N$ und alle $x \in D$ gilt:
@@ -130,6 +133,8 @@ $(f_n)_{n \in \mathbb{N}_0}$ konvergiert gleichmässig auf $D$ gegen $f$, falls 
 $$|f_n(x) - f(x)| < \varepsilon$$
 **viii) Stetigkeit**
 Es sei $D \subset \mathbb{R}$ und $(f_n)_{n \in \mathbb{N}_0}$ eine Folge stetiger Funktionen $f_n : D \subset \mathbb{R} \to \mathbb{R}$, welche gleichmässig gegen $f : D \subset \mathbb{R} \to \mathbb{R}$ konvergiert. Dann ist $f$ stetig.
+
+---
 
 **ix) Unterteilung in Blöcke für Flächeninhalt**
 Es sei $(f_n)_{n \in \mathbb{N}_0}$ eine Folge integrierbarer Funktionen $f_n : [a,b] \to \mathbb{R}$, welche gleichmässig gegen $f : [a,b] \to \mathbb{R}$ konvergiert. Dann ist auch $f$ integrierbar, und es gilt

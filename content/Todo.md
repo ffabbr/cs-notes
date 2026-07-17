@@ -2,7 +2,8 @@
 cssclasses:
 draft: "true"
 ---
-AuW Mock Exams, Theorie, Flow Aufgaben
+AuW Flow coding
 Analysis Teil 3
-
-20.30 Laurenz Tele
+PProg Wait/Notify und Fork/Join
+PProg Mock
+DDCA Mock

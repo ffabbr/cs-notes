@@ -1,9 +1,5 @@
 
-All exam-relevant code from the Part 2 notes, including code extracted from the slide images. Grouped by topic. Each block has a title and a short description of what it is for.
-
----
-
-## 03 Software Locks
+## (!!) 03 Software Locks
 
 ### Dekker's Lock
 Two-process mutual exclusion. Combines interest flags (`wantp`/`wantq`) with a `turn` variable that resolves conflicts: if both want the lock, the one whose turn it is *not* backs off and waits.
@@ -65,26 +61,6 @@ loop                                  loop
   flag[P] = false                       flag[Q] = false
 ```
 
-### Peterson Lock in Java
-Same algorithm as a class. **Common bug shown on the slide:** `volatile boolean flag[]` only makes the *reference* volatile, not the elements — a correct version uses `AtomicInteger` / `AtomicIntegerArray`.
-
-```java
-class PetersonLock {
-    volatile boolean flag[] = new boolean[2];
-    volatile int victim;
-
-    public void Acquire(int id) {
-        flag[id] = true;
-        victim = id;
-        while (flag[1-id] && victim == id);   // spin
-    }
-
-    public void Release(int id) {
-        flag[id] = false;
-    }
-}
-```
-
 ### Peterson Lock — correct Java (atomics)
 The fix for the bug above: use `AtomicIntegerArray` for `flag` and `AtomicInteger` for `victim` so the elements are truly atomic/visible (0 = false, 1 = true).
 
@@ -122,42 +98,6 @@ unlock(me) {
 }
 ```
 
-### Filter Lock in Java
-
-```java
-import java.util.concurrent.atomic.AtomicIntegerArray;
-
-class FilterLock {
-    AtomicIntegerArray level;
-    AtomicIntegerArray victim;
-    volatile int n;
-
-    FilterLock(int n) {
-        this.n = n;
-        level  = new AtomicIntegerArray(n);
-        victim = new AtomicIntegerArray(n);
-    }
-
-    // ∃k ≠ me: level[k] >= lev
-    boolean Others(int me, int lev) {
-        for (int k = 0; k < n; ++k)
-            if (k != me && level.get(k) >= lev) return true;
-        return false;
-    }
-
-    public void Acquire(int me) {
-        for (int lev = 1; lev < n; ++lev) {
-            level.set(me, lev);
-            victim.set(lev, me);
-            while (me == victim.get(lev) && Others(me, lev));
-        }
-    }
-
-    public void Release(int me) {
-        level.set(me, 0);
-    }
-}
-```
 
 ### Bakery Lock (two processes, simplified)
 Ticket-based, fair. Take a number one higher than the other; enter when your number is lowest.
@@ -192,56 +132,13 @@ unlock(me):
 // (k, l_k) < (j, l_j)  ⇔  l_k < l_j  or  (l_k == l_j and k < j)
 ```
 
-### Bakery Lock in Java
-Note: there is no `AtomicBooleanArray`, so `flag` is an `AtomicIntegerArray` (0/1). *Remaining problem: labels can overflow / grow unboundedly.*
-
-```java
-class BakeryLock {
-    AtomicIntegerArray flag;   // there is no AtomicBooleanArray
-    AtomicIntegerArray label;
-    final int n;
-
-    BakeryLock(int n) {
-        this.n = n;
-        flag  = new AtomicIntegerArray(n);
-        label = new AtomicIntegerArray(n);
-    }
-
-    int MaxLabel() {
-        int max = label.get(0);
-        for (int i = 1; i < n; ++i)
-            max = Math.max(max, label.get(i));
-        return max;
-    }
-
-    boolean Conflict(int me) {
-        for (int i = 0; i < n; ++i)
-            if (i != me && flag.get(i) != 0) {
-                int diff = label.get(i) - label.get(me);
-                if (diff < 0 || (diff == 0 && i < me))
-                    return true;
-            }
-        return false;
-    }
-
-    public void Acquire(int me) {
-        flag.set(me, 1);
-        label.set(me, MaxLabel() + 1);
-        while (Conflict(me));
-    }
-
-    public void Release(int me) {
-        flag.set(me, 0);
-    }
-}
-```
 
 ---
 
 ## 04 Hardware Locks
 
-### TAS primitive (Test-and-Set) — pseudocode
-Atomic hardware operation: if the location is 0, set it to 1 and return true; otherwise return false. (This is the primitive the TAS lock is built on.)
+### TAS primitive 
+if the location is 0, set it to 1 and return true; otherwise return false.
 
 ```text
 boolean TAS(memref s) {
@@ -253,8 +150,8 @@ boolean TAS(memref s) {
 }
 ```
 
-### CAS primitive (Compare-and-Swap) — pseudocode
-Atomically compare the location to `expected`; if equal, write `new`. Returns the old value (Java's `compareAndSet` instead returns a boolean success flag).
+### CAS primitive
+if equal, write `new`. Returns the old value (Java's `compareAndSet` instead returns a boolean success flag).
 
 ```text
 int CAS(memref a, int expected, int new) {
@@ -293,7 +190,7 @@ class TATASLock {
     public void lock() {
         while (true) {
             while (state.get()) {};          // test: spin on cheap read only
-            if (!state.getAndSet(true))      // test-and-set only when it looks free
+            if (!state.getAndSet(true))      // tas only when it looks free
                 return;
         }
     }
@@ -336,22 +233,6 @@ public void lock() {
                 backoff.backoff();
             } catch (InterruptedException ex) {}
         }
-    }
-}
-```
-
-### Exponential Backoff class
-Sleeps a random duration and doubles the limit each time until `maxDelay`.
-
-```java
-class Backoff {
-    ...
-    public void backoff() throws InterruptedException {
-        int delay = random.nextInt(limit);
-        if (limit < maxDelay) {              // double limit if less than max
-            limit = 2 * limit;
-        }
-        Thread.sleep(delay);
     }
 }
 ```
@@ -483,30 +364,7 @@ public class Barrier {
 }
 ```
 
-### Barrier with a Monitor — simple (NOT reusable)
-Minimal barrier; works once because `count` never resets to 0.
-
-```java
-public class MyBarrier {
-    private final int limit;
-    private volatile int count;
-
-    MyBarrier(int n) {
-        this.limit = n;
-        this.count = 0;
-    }
-
-    synchronized void await() throws InterruptedException {
-        count++;
-        while (count < limit) {
-            wait();
-        }
-        notifyAll();
-    }
-}
-```
-
-### Two-Phase Barrier with Semaphores (pseudocode)
+### (!!) Two-Phase Barrier with Semaphores (pseudocode)
 Two turnstiles guarantee reusability: phase 1 waits for all to arrive, phase 2 waits for all to leave, so a fast thread cannot lap a slow one.
 
 ```text
@@ -532,7 +390,7 @@ barrier:
   // barrier1 = 0 for all processes, barrier2 = 1 for all processes
 ```
 
-### Two-Phase Barrier with Semaphores (Java)
+### (!!) Two-Phase Barrier with Semaphores (Java)
 
 ```java
 import java.util.concurrent.Semaphore;
@@ -577,7 +435,7 @@ public class MyBarrier {
 
 ---
 
-## 08 Producer / Consumer
+## (!!) 08 Producer / Consumer
 
 ### Circular buffer — full / empty tests
 With one slot deliberately left unused, empty vs full can be told apart from the `in`/`out` pointers alone — no counter needed.
@@ -714,8 +572,10 @@ Counters `m` (clients) and `n` (barbers) avoid signalling when nobody waits. `m<
 ```java
 void enqueue(long x) {              long dequeue() {
     lock.lock();                        long x;
-    m--; if (m < 0)                     lock.lock();
-        while (isFull())                n--; if (n < 0)
+    m--; 
+	if (m < 0)                          lock.lock();
+        while (isFull())                n--; 
+                                        if (n < 0)
             try { notFull.await(); }        while (isEmpty())
             catch (...) {}                      try { notEmpty.await(); }
     doEnqueue(x);                               catch (...) {}
@@ -741,21 +601,10 @@ Condition notFull = lock.newCondition();
 // notFull.await();  notFull.signal();  notFull.signalAll();
 ```
 
-### Semaphore as a monitor — acquire / release
-Illustrates why `release` can use plain `notify()`: any single waiter can proceed. `acquire` still needs `while` (not `if`) around `wait`.
-
-```java
-synchronized void acquire() {          synchronized void release() {
-    while (number <= 0)                    number++;
-        try { wait(); }                    if (number > 0)
-        catch (InterruptedException e){};      notify();
-    number--;                          }
-}
-```
 
 ---
 
-## 10 Reader/Writer Locks
+## (!!) 10 Reader/Writer Locks
 
 ### Fair(er) Reader/Writer Lock
 Separates read-locking from write-locking with the invariant `writers * readers == 0`. Fairness: when a writer finishes it sets `writersWait = readersWaiting`, letting exactly the currently-waiting readers through before writers are blocked again — so writers can't be starved by a stream of new readers.
@@ -803,7 +652,7 @@ class RWLock {
 
 ---
 
-## 11 Lock Granularity
+## (!!) 11 Lock Granularity
 
 ### Fine-grained: Hand-over-hand (lock coupling) — remove
 Each node has its own lock. Traverse holding two locks at a time (`pred` and `curr`): lock the next node **before** releasing the previous one, so no thread can overtake you. Sentinels at front and end avoid null checks.

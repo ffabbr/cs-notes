@@ -16,6 +16,8 @@ Ein Graph ist zusammenhängend, wenn es für alle $u, v \in V$ einen Pfad von u 
 
 G ist k-(Knoten-)zusammenhängend $\iff$ egal welche k-1 Knoten man entfernt, der Graph bleibt zusammenhängend
 
+Condition $\vert{}V\vert{} \ge k+1$
+
 > [!faq]- Formal
 > Man muss mindestens k Knoten löschen, um den Zusammenhang (entweder des Graphens oder nur zwischen u → v) zu zerstören. 
 > - **Zwei verschiedene Knoten u und v sind k-zusammenhängend**, wenn man weniger als k beliebige andere Knoten löschen darf, und trotzdem gibt es immer noch einen Weg u → v.
