@@ -54,7 +54,7 @@ $$\chi(G) \leq C(G) \leq \Delta(G) + 1.$$
 - Gibt Reihenfolge $V = \{v_1, \dots, v_n\}$ der Knoten, Greedy-Algorithmus braucht nur $\chi(\mathbf{G})$ viele Farben
 - Es gibt bipartite Graphen und eine Reihenfolge der Knoten, für die der GreedyAlgorithmus $|V|/2$ viele Farben benötigt. Kann auch passieren, dass bei bipartitem Graphen mehrere Farben benötigt. 
 
-- Gilt für die (gewählte) Reihenfolge $|N(v_i) \cap \{v_1, \dots, v_{i-1}\}| \le k \quad \forall 2 \le i \le n$,  benötigt  Greedy-Algorithmus max. $\mathbf{k+1}$ Farben.
+- Gilt für die (gewählte) Reihenfolge $|N(v_i) \cap \{v_1, \dots, v_{i-1}\}| \le k \quad \forall 2 \le i \le n$,  benötigt  Greedy-Algorithmus max. $k+1$ Farben.
   
   Wenn du Knoten $v_i$ färbst, er hat max. $k$ Nachbarn , die in der Rhf vor ihm, so können diese Nachbarn max. $k$  Farben blockieren. Nehmen nächste freie Farbe nehmen, worst case Farbe $k+1$
 
@@ -121,7 +121,7 @@ $\implies G$ kann in Zeit $O(|E|)$ mit $\Delta(G)$ Farben gefärbt werden
 
 Beweis nicht prüfungsrelevant. 
 
-![[Bildschirmfoto 2026-03-10 um 22.47.25.png]]
+→ [[Bildschirmfoto 2026-03-10 um 22.47.25.png|Slides]]
 
 
 ---
@@ -134,7 +134,7 @@ Einen ==3-färbbaren Graphen== kann man in Zeit $O(|V| + |E|)$ mit $O(\sqrt{|V|}
 2. Lösche v und Nachbarn (alle gefärbten Knoten). Restgraph hat Maximalgrad $\Delta \leq \sqrt{ |V| }$
 3. Färbe verbleibende Knoten mit [[#Greedy Algorithm]] mit $\Delta + 1$ neuen Farben
 
-There are at most $n/\sqrt{n} = \sqrt{n}$ many vertices of degree $\ge \sqrt{n}$. Thus in the first step, we used at most $3 \cdot \sqrt{n}$ colors (3 colors per neighborhood). In the second step, we used another $O(\sqrt{n})$ many colors. Since we used BFS and the greedy-algorithm, the algorithm operates in $O(|E|)$ runtime in total, which proves the theorem.
+There are at most $\frac{n}{\sqrt{n}} = \sqrt{n}$ many vertices of degree $\ge \sqrt{n}$. Thus in the first step, we used at most $3 \cdot \sqrt{n}$ colors (3 colors per neighborhood). In the second step, we used another $O(\sqrt{n})$ many colors. Since we used BFS and the greedy-algorithm, the algorithm operates in $O(|E|)$ runtime in total, which proves the theorem.
 
 ---
 

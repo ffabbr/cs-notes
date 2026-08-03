@@ -23,6 +23,7 @@ my lecture notes:
 		- [[15 Ungleichungen, Abschätzungen]]
 		- [[16 DP]]
 	- **03 Algorithmen**
+		- [[2_Suchen und Sortieren.pdf]]
 		- [[12 Stabile Menge]]
 		- [[17 Target Shooting]]
 		- [[18 Randomisierte Algorithmen]]

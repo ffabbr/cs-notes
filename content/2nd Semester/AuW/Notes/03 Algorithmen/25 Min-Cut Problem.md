@@ -6,7 +6,7 @@
 - Schnitt: Teilmenge der Kanten, Graph nicht mehr zusammenhängend, wenn ich diese Kanten entferne
 
 $\mu(G)$ = minimaler Kantenschnitt:
-  **wie viele Kanten muss ich entfernen, damit nicht zusammenhängend**
+**wie viele Kanten muss ich entfernen, damit nicht zusammenhängend**
 
 Immer (logisch):
 $$

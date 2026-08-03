@@ -1370,3 +1370,11 @@ Waitall          Waitall
 
 ### MPI — common functions
 `MPI_INIT` (first call), `MPI_COMM_SIZE`, `MPI_COMM_RANK`, `MPI_SEND`, `MPI_RECV`, `MPI_FINALIZE` (last call).
+
+
+- **`Bcast` (Broadcast):** Sends a copy of the same data from one root process to all other processes in the communicator.
+- **`Scatter`:** Divides a data array on a root process and sends a distinct, equal-sized chunk to each process.
+- **`Gather`:** Collects distinct chunks of data from all processes and concatenates them into a single array on a root process.
+- **`Reduce`:** Combines values provided by all processes using a specified mathematical operation (like sum, max, min) and stores the final result on a single root process.
+- **`Allreduce`:** Identical to `Reduce`, but distributes the final computed result back to all processes so everyone has the answer.
+- **`Barrier`:** A synchronization mechanism that forces all processes to pause; no process can execute past the barrier until every process has reached it.

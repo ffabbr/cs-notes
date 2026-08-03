@@ -8,7 +8,7 @@
 | **Pfad (path)**      | **Weg ohne wiederholte Knoten**                                                                                                    |
 | Hamiltonpfad         | jeder Knoten genau einmal                                                                                                          |
 | Zyklus (closed walk) | **Weg mit Start = Ende**, mindestens 2 Knoten (hin-zurück-hin), Endknoten inzident zu (verbunden mit) geraden Anzahl Kanten im Weg |
-| ==Eulertour==        | Closed Walk, jede Kante genau einmal                                                                                               |
+| ==Eulertour==        | Closed Walk (Anfang = Ende)k, jede Kante genau einmal                                                                              |
 | Kreis                | Anfang = Ende, aber kein Knoten wird 2 mal besucht, also mindestens 3 Knoten                                                       |
 | ==Hamiltonkreis==    | Kreis über alle Knoten                                                                                                             |
 
@@ -21,7 +21,7 @@
 
 > Geschlossener Weg (Zyklus), jede Kante genau einmal
 
-- Eulertour existiert $\Longleftrightarrow$ alle Knotengrade gerade, Graph connected
+- alle Knotengrade gerade, Graph connected $\implies$ Eulertour existiert (andere Richtung gilt nicht, siehe z.B. Dreieck und isolierter Knoten)
 - Weg ist Zyklus $\Longleftrightarrow$ der Endknoten vom Eulerweg ist inzident zu einer geraden Anzahl von Kanten
 
 **Eulertouren finden**
@@ -49,7 +49,7 @@ $O(|E|)$
 
 Für endliche Mengen, Grösse trotz Überschneidung berechnen
 
-Nür n=2: 
+Für n=2: 
 $|A_{1} \cup A_{2}| = |A_{1}| + |A_{2}| - |A_{1} \cap A_{2}|$
 
 

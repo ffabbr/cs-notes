@@ -16,7 +16,16 @@ Y=\frac{1}{N} \cdot  \sum_{i=1}^N I_{s}(u_{i})
 $$
 Wie gross muss N sein damit Ausgabe aussagekräftig? 
 
-*   Sei $N \geq 3 \frac{|U|}{|S|} \cdot \varepsilon^{-2} \ln\left(\frac{2}{\delta}\right)$ für $\varepsilon, \delta > 0$. Dann ist die Ausgabe des Algorithmus mit Wahrscheinlichkeit $\geq 1-\delta$ im Intervall $\left[(1-\varepsilon)\frac{|S|}{|U|}, (1+\varepsilon)\frac{|S|}{|U|}\right]$ richtig
+Sei 
+
+$$
+N \geq 3 \frac{|U|}{|S|} \cdot \varepsilon^{-2} \ln\left(\frac{2}{\delta}\right)
+$$
+
+für $\varepsilon, \delta > 0$. Dann ist die Ausgabe des Algorithmus mit Wahrscheinlichkeit $\geq 1-\delta$ im Intervall 
+$$
+\left[(1-\varepsilon)\frac{|S|}{|U|}, (1+\varepsilon)\frac{|S|}{|U|}\right]
+$$ richtig
 
 ---
 

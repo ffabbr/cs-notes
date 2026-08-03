@@ -171,9 +171,9 @@ Perfektes Matching finden
 ![](https://youtu.be/lM5eIpF0xjA?si=g65DFdBSOwNwnWAd&t=251)
 
 > [!warning]
->1.  If $M$ is a matching and $P$ is a shortest $M$\-augmenting-path and $P'$ an $M \oplus P$\-augmenting-path (i.e. we apply $P$ first, then $P'$), then $$|P'| \geq |P| + 2|P \cap P'|$$ So if we augment $M$ successively with shortest $M$\-augmenting-paths, then the length of augmenting-paths cannot become smaller.
->2.  with every iteration of the while-loop, the length of a shortest augmenting-path increases by at least 2.
->3.  Let $M$ be a matching, where the length of the shortest augmenting-paths is $k$. Let $M'$ be an arbitrary another matching. Then $$|M'| \leq |M| + \frac{|V|}{k+1}$$
+>1. If $M$ is a matching and $P$ is a shortest $M$\-augmenting-path and $P'$ an $M \oplus P$\-augmenting-path (i.e. we apply $P$ first, then $P'$), then $$|P'| \geq |P| + 2|P \cap P'|$$ So if we augment $M$ successively with shortest $M$\-augmenting-paths, then the length of augmenting-paths cannot become smaller.
+>2. with every iteration of the while-loop, the length of a shortest augmenting-path increases by at least 2.
+>3. Let $M$ be a matching, where the length of the shortest augmenting-paths is $k$. Let $M'$ be an arbitrary another matching. Then $$|M'| \leq |M| + \frac{|V|}{k+1}$$
 
 
 ---

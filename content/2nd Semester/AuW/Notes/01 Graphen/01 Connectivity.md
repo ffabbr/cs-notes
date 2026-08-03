@@ -97,8 +97,6 @@ Wenn sich zwei Blöcke schneiden, dann schneiden sie sich an einem Artikulations
 - Two blocks can only overlap in a cut-vertex.
 - Block-Partitionings can be determined in $O(|E|)$
 - If G (original graph) was **connected**:
-	- I (the block partitioning graph) is connected
-	- I has no cycles
 	- I is a **tree**
 
 ![[Bildschirmfoto 2026-02-17 um 15.56.55.png]]

@@ -49,6 +49,7 @@ $O(n\cdot h)$
 Es gilt: 
 - $h \leq n$
 - wenn punkte gleichverteilt: $\mathbb{E}[h] \le O(\log n)$  
+- if number of corner vertices is constant, JarvisWrap runs in $O(n)$ time
 
 ## Local Repair
 

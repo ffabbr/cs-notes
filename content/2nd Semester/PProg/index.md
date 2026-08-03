@@ -34,6 +34,5 @@ my lecture notes:
 		- [[14 Consensus]]
 		- [[15 Transactional Memory]]
 		- [[Exam Code Collection]]
-		- [[test]]
 
 %% End Waypoint %%
