@@ -58,7 +58,7 @@ Statt Kreis zu suchen, suchen wir **unteren** Teilpolygonzug: x-monoton wachsend
 1. sortiere Punkte nach x-Achse ($\mathcal{O}(n \log n)$), erster und letzter Punkt sind garantiert Eckpunkte
 2. Iteriere über alle Knoten, zuerst von links nach rechts (unten), dann von rechts nach links (oben) und verbessere mit Backtracking:
 	1. Suppose Knoten 1,2,3,4,5 sind in der Reihenfolge bzgl. x-Achse. Unser Teilpolygonzug unten ist bisher 1,2,3,4. Wir wollen 5 hinzufügen. Ziehe Verbindungslinie von Knoten 3 zu 5. 
-	2. Liegt 4 jetzt links von dieser Linie, hätten wir eine Rechtskurve (aka indent), wenn wir 3 im unteren Polygonzug haben. Wir wollen keinen indent, also skippe Knoten 4, und Backtracking:
+	2. Liegt 4 jetzt links von dieser Linie, haben wir eine Rechtskurve (indent), wenn wir 3 im unteren Polygonzug haben. Wir wollen keinen indent, also skippe Knoten 4 (3—5), und jetzt Backtracking:
 		1. wenn wir Knoten 2 und 5 Verbinden, liegt Knoten 3 links oder rechts von der Verbindungslinie → repeat solange bis nicht mehr links
 
 **Runtime**

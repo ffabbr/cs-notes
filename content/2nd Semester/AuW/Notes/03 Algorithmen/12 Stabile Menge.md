@@ -1,6 +1,8 @@
 
 **Ziel**: Möglichst grosse stabile Menge (menge an Knoten, die keine direkte Kante zwischen ihnen haben) finden. 
 
+**Long story short**: jeder Knoten tritt mit Wahrscheinlichkeit p bei, somit haben wir $|V|\cdot p$ Knoten dabei. Es kann Konfliktkanten geben (mit 2 Knoten an den Enden die dabei sind), das sind $|E|\cdot p^2$ viele. Wir suchen p sodass $E(|S|)$ maximiert ist, indem wir $|V|\cdot p - |E|\cdot p^2$ als Funktion betrachten, nach p ableiten und auf $p=$ umstellen. Dann setzen wir zurück ein und bekommen $E(|S|)\geq \frac{n^2}{4m}$ als Antwort. 
+
 ## Algorithmus
 
 Jeder Knoten $v$ entscheidet sich unabhängig mit Wahrscheinlichkeit $p$, Teil der Menge zu sein ($s_v = 1$). Mit Wahrscheinlichkeit $1-p$ wählt er sich nicht ($s_v = 0$).

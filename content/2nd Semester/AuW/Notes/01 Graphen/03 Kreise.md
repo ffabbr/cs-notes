@@ -52,6 +52,9 @@ Für endliche Mengen, Grösse trotz Überschneidung berechnen
 Für n=2: 
 $|A_{1} \cup A_{2}| = |A_{1}| + |A_{2}| - |A_{1} \cap A_{2}|$
 
+Für n=3: 
+$\vert{}A_1 \cup A_2 \cup A_3\vert{} = \vert{}A_1\vert{} + \vert{}A_2\vert{} + \vert{}A_3\vert{} - \vert{}A_1 \cap A_2\vert{} - \vert{}A_1 \cap A_3\vert{} - \vert{}A_2 \cap A_3\vert{} + \vert{}A_1 \cap A_2 \cap A_3\vert{}$
+
 
 ---
 
@@ -83,7 +86,7 @@ Minimalgrad $\frac{n}{2}$, also hat jeder Knoten mindestens $\frac{n}{2}$ Nachba
 $k < n$
 ##### aus k-Kreis folgt k+1 Pfad
 
-Hat es einen k-Kreis, so nimm einen Knoten der irgendwo absteht und sehe $k+1$ Pfad als der Kreis und die Kante mit dem abstehenden Knoten. Es gibt Knoten die nicht im Kreis sind, da $k< n$, und zusammenhängend. 
+Hat es einen k-Kreis, so nimm einen Knoten der irgendwo absteht und siehe $k+1$ Pfad als der Kreis und die Kante mit dem abstehenden Knoten. Es gibt Knoten die nicht im Kreis sind, da $k< n$, und zusammenhängend. 
 
 ##### aus k-Pfad folgt: k+1 Pfad ∨ k-Kreis
 
@@ -102,9 +105,9 @@ $|N(v_{1}) \cap N^+(v_{j})| \geq 1$ (überschneiden sich)
 
 ---
 
-Dirak Beweis alternativ, Josia
+Dirak Beweis Teil 2 alternativ, Josia
 
-![[Dirak-1.png]]
+
 ![[Dirak-2.png]]
 ![[Dirak-3.png]]
 ![[Dirak-4.png]]

@@ -42,7 +42,7 @@ Für $X_{i}$ unabhängig und **Bernoulli-Verteilt** und $X= \sum X_{i}$
 
 Beispiel aus dem Miniquiz 5: 
 
-Wenn ein probabilistischer Algorithmus mit einer Wahrscheinlichkeit von mindestens $2/3$ eine korrekte JA/NEIN-Antwort liefert und wir ihn unabhängig $n$-mal ausführen, ist die Wahrscheinlichkeit, dass er mehr als $n/2$ Mal eine falsche Antwort gibt, kleiner als $\exp(-0.001n)$.
+Wenn ein probabilistischer Algorithmus mit einer Wahrscheinlichkeit von mindestens $2/3$ eine korrekte JA/NEIN-Antwort liefert und wir ihn unabhängig $n$-mal ausführen, ist die Wahrscheinlichkeit, dass er mehr als $n/2$ Mal eine falsche Antwort gibt, kleiner als $e^{-0.001n}$.
 
 ![[Bildschirmfoto 2026-04-30 um 17.08.53.png]]
 

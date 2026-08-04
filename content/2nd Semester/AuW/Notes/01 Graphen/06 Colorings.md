@@ -18,8 +18,9 @@
 	- gibt ==keine Approximation==
 
 - **2-färbbarer Graph**: Färbung mit BFS, ungerade/gerade Distanz
-- **3-färbbarer Graph**: Zeit $O(|V| + |E|)$ mit $O(\sqrt{|V|})$ Farben färben
-- **NP-vollständig**: gibt es eine Färbung mit $\leq k$  Farben mit $k \geq 3$
+- **3+ färbbarer Graph**: färben ist ==NP-vollständig==
+
+- **3-färbbar-Approximation**: können in Zeit $O(|V| + |E|)$ mit $O(\sqrt{|V|})$ Farben färben (siehe unten, [[#3-Färbung in linearer Zeit mit 4 sqrt(n)+1 Farben]]) 
 
 - Anzahl Färbungen: $O(2^{|V|} \cdot |V|)$
 
@@ -52,7 +53,8 @@ Number of colors $C(G)$ needed:
 $$\chi(G) \leq C(G) \leq \Delta(G) + 1.$$
 
 - Gibt Reihenfolge $V = \{v_1, \dots, v_n\}$ der Knoten, Greedy-Algorithmus braucht nur $\chi(\mathbf{G})$ viele Farben
-- Es gibt bipartite Graphen und eine Reihenfolge der Knoten, für die der GreedyAlgorithmus $|V|/2$ viele Farben benötigt. Kann auch passieren, dass bei bipartitem Graphen mehrere Farben benötigt. 
+
+- Es gibt bipartite Graphen und eine Reihenfolge der Knoten, für die der Greedy Algorithmus $|V|/2$ viele Farben benötigt. Kann auch passieren, dass bei bipartitem Graphen mehrere Farben benötigt. 
 
 - Gilt für die (gewählte) Reihenfolge $|N(v_i) \cap \{v_1, \dots, v_{i-1}\}| \le k \quad \forall 2 \le i \le n$,  benötigt  Greedy-Algorithmus max. $k+1$ Farben.
   

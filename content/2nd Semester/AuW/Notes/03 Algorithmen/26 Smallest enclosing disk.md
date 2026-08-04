@@ -30,3 +30,4 @@ Las-Vegas
 ![[Lemma328.png]]
 
 → [[Bildschirmfoto 2026-05-28 um 20.49.30.png|Beweis]]
+

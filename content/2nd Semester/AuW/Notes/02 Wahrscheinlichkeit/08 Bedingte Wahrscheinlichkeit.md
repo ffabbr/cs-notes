@@ -33,8 +33,7 @@ Wahrscheinlichkeit, dass mehrere Ereignisse zusammen (oder nacheinander) eintret
 
 ![[Bildschirmfoto 2026-03-23 um 11.27.38.png]]
 
-
-> [!example]- Geburtstagsproblem
+> [!example] Geburtstagsproblem
 > Wahrscheinlichkeit, dass mindestens 2 Personen von m gleichen Geburtstag haben. Gegenwahrscheinlichkeit, alle haben unterschiedlichen Geburtstag. Erste Person hat $\frac{365}{365}$ Möglichkeiten, 2. hat $\frac{364}{365}$ Möglichkeiten, usw., somit
 > $$
 > P(\text{mindestens 2 gleichen Geb})=1-\prod_{k=0}^{m-1} \frac{365-k}{365}

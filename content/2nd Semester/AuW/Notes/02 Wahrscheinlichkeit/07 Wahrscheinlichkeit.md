@@ -17,11 +17,10 @@ Ein **diskreter Wahrscheinlichkeitsraum** hat eine ==Ergebnismenge== $\Omega$ vo
 Ein **Ereignis** E, oder oft $A_{i}$ ist eine Teilmenge von der Ergebnismenge. Die Wahrscheinlichkeit ist die Summe aller Wahrscheinlichkeiten aller Elementarereignisse die Teil des Ereignisses sind. vgl. Komplementärereignis $\overline{E} = \Omega \setminus E$. 
 
 $$
-\Pr[\overline{A} \cap B] = \Pr[B] - \Pr[A \cap B]
-$$
-
-$$
-Pr[B] = Pr[B|A] \cdot Pr[A] + Pr[B|\bar{A}] \cdot Pr[\bar{A}]
+\begin{align}
+\Pr[\overline{A} \cap B] &= \Pr[B] - \Pr[A \cap B] \\
+Pr[B] &= Pr[B|A] \cdot Pr[A] + Pr[B|\bar{A}] \cdot Pr[\bar{A}]
+\end{align}
 $$
 
 Out-of-context fun fact: 
@@ -47,13 +46,12 @@ $$
 \Pr[E]=\frac{|E|}{|\Omega|}
 $$
 
-$\Omega$ berechnen: z.B. 3 Mal Münze werfen: $2^3$. (Anzahl der möglichen Outcomes)
+$|\Omega|$ berechnen: z.B. 3 Mal Münze werfen: $2^3$. (Anzahl der möglichen Outcomes)
 
 ## Vereinigung von Ereignissen
 
 Wenn die Ereignisse $A_1, \dots, A_n$ **paarweise disjunkt** sind, gilt. 
 $$ \text{Pr}\left[\bigcup_{i=1}^{n} A_i\right] = \sum_{i=1}^{n} \text{Pr}[A_i]. $$
-Das geht analog genauso auch für eine unendliche Menge von disjunkten Ereignissen. 
 
 Wenn sie **nicht disjunkt sind**, dann Siebformel. 
 
@@ -64,8 +62,8 @@ Pr[A \cup B]  & = Pr[A] + Pr[B] - Pr[A \cap B] \\
 \end{align}
 $$
 
-[[Bildschirmfoto 2026-03-18 um 11.39.23.png]]
-[[Bildschirmfoto 2026-03-17 um 15.53.41.png]]
+→ [[Bildschirmfoto 2026-03-18 um 11.39.23.png|Skript Part1]]
+→ [[Bildschirmfoto 2026-03-17 um 15.53.41.png|Skript Part2]]
 
 ## Siebformel
 
@@ -86,7 +84,7 @@ $$
 > [!abstract]- Einleitung
 > Wir mischen ein Kartenspiel und geben Spieler 1 und Spieler 2 jeweils 5 Karten. **Wahrscheinlichkeit: Spieler 1 hat 4 Asse.** $\Omega = \{ (X,Y) : X, Y \subseteq C, X \cap Y = \emptyset, |X| = |Y| = 5 \}$. Günstige durch Mögliche: 
 > $$
-> Pr[A] = \frac{48 \cdot \binom{47}{5}}{\binom{52}{5} \cdot \binom{47}{5}}
+> Pr[A] = \frac{\binom{4}{4} \cdot 48 \cdot \binom{47}{5}}{\binom{52}{5} \cdot \binom{47}{5}}
 > $$
 
 Wir mischen ein Deck von n Karten. 

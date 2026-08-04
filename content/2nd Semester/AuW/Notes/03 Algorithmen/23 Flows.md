@@ -46,7 +46,7 @@ $$
 $$
 
 Fluss maximal $\iff$ Restnetzwerk hat keinen gerichteten s-t-Pfad
-Fluss maximal $\implies$ gibt s-t Schnitt mit $val(f)=cap(S,T)$ 
+Fluss maximal $\iff$ gibt s-t Schnitt mit $val(f)=cap(S,T)$ 
 
 ## Max-Flow mit Ford-Fulkerson
 

@@ -86,7 +86,7 @@ N und X **unabhängige** Zufallsvariablen.
 - N ist die Anzahl
 - X ist ein Experiment, dass wir N mal machen
 
-Wir wollen den EW für Z (Gesamtzahl der geworfenen "Köpfe") $Z := \sum_{i=1}^{N} X_i$
+Wir wollen den EW für Z (Gesamtzahl der geworfenen Köpfe) $Z := \sum_{i=1}^{N} X_i$
 
 $$
 \mathbb{E}[Z] = \mathbb{E}[N] \cdot \mathbb{E}[X]

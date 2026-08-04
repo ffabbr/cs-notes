@@ -33,9 +33,14 @@
 
 Mit dem Greedy-Algorithmus kann man in Zeit $O(|E|)$ ein ==inklusionsmaximales== Matching $M_{\text{Greedy}}$ bestimmen mit
 
-$$|M_{\text{Greedy}}| \geq \frac{|M_{\text{max}}|}{2},$$
+$$
+|M_{\text{Greedy}}| \geq \frac{|M_{\text{max}}|}{2}
+$$
 Allgemein: 
-$$\frac{1}{2}|M_{\text{kard.max}}| \leq |M_{\text{inkl.max}}| \leq |M_{\text{kard.max}}|$$
+
+$$
+\frac{1}{2}|M_{\text{kard.max}}| \leq |M_{\text{inkl.max}}| \leq |M_{\text{kard.max}}|
+$$
 
 → $M_{\text{max}}$ ist ein kardinalitätsmaximales Matching 
 
@@ -124,8 +129,7 @@ $N(X)$ sind die Nachbarknoten von X.
 
 **Beweis von Hall's Theorem**
 
-![[Bildschirmfoto 2026-03-14 um 17.39.31.png]]
-
+→ [[Bildschirmfoto 2026-03-14 um 17.39.31.png|Tafel]]
 → [[2nd Semester/AuW/Skript.pdf#page=76|Skript]] 
 
 Slides

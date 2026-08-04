@@ -66,4 +66,14 @@ $O(n^3)$
 
 $l(M) \leq \frac{1}{2} \text{ OPT}$
 
+1.5 Beweis: 
+
+- sei M ein perfektes Matching von minimalen Gewicht
+- sei $M_{1}$ der Kreis gelaufen und jede zweite Kante zum Matching hinzugefügt, $M_{2}$ der Rest (ebenso jede 2. Kante aber verschoben)
+- (I) es gilt $l(M_{1})+l(M_{2})=l(K)$ (K=gesamt, also gesamter Kreis)
+- (II) es gilt $l(M) \leq l(M_{1})$ und $l(M) \leq l(M_{2})$ (da M ist minimales Matching)
+- (III): aus (II) folgt $2\cdot l(M) \leq l(M_{1})+l(M_{2})$
+- wir setzen (I) in (III) ein und erhalten $2\cdot l(M) \leq l(K)$ 
+- somit $l(M) \leq \frac{l(K)}{2}$
+
 ![[Bildschirmfoto 2026-03-12 um 16.44.47.png]]

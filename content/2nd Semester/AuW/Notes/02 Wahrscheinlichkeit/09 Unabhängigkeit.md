@@ -52,8 +52,8 @@ $\prod_{j=1}^n \text{Pr} \left[ A_j^{s_j} \right]$
 ## Unabhängigkeit bei Vereinigung und Schnitt
 
 $A$, $B$ und $C$ unabhängig. 
-- $A \cap B$ und $C$ unabhängig
-- $A \cup B$ und $C$ unabhängig
+$\implies$ $A \cap B$ und $C$ unabhängig
+$\implies$ $A \cup B$ und $C$ unabhängig
 
 > [!example]- Proof
 > Beweis: 
