@@ -80,7 +80,9 @@ $\implies$ Parabel ist konvex
 $\implies$ jeder Punkt ist Teil der konvexen Hülle
 $\implies$ der $\text{conv(P)}$ Algorithmus listet gegen den Uhrzeigersinn, also genau sortiert
 
-Runtime: $O(n)$
+Runtime:
 - Punkte erstellen $O(n)$
-- Convex Hull $O(n)$
+- Convex Hull $O(n \log n)$
 - Ablesen $O(n)$
+
+Wir sehen, dass Convex Hull in diesem Fall nicht in $O(n)$ laufen kann, da das bedeuten würde dass wir in $O(n)$ sortieren können, was ja nicht möglich ist. $O(n)$ für Convex Hull geht nur bei einer konstanten Anzahl äusserer Ecken (h), aber hier ist ja die Anzahl der Ecken die Anzahl der Elemente, somit $O(h\cdot n)=O(n^2)$ bei JarvisWrap, somit nutzen wir Local Repair und brauchen $O(n \log n)$.

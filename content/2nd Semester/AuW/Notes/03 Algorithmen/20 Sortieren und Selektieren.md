@@ -5,8 +5,9 @@
 2. nehme $a_i$ and $a_j$, $i < j$ so $a_i < a_j$
 
 	Wahrscheinlichkeit, dass $a_i$ und $a_j$ verglichen werden
-	
-	$$I_{ij} = \begin{cases} 1 & a_i, a_j \text{ verglichen} \\ 0 & \text{sonst} \end{cases}$$
+	$$
+	I_{ij} = \begin{cases} 1 & a_i, a_j \text{ verglichen} \\ 0 & \text{sonst} \end{cases}
+	$$
 	
 	Quicksort wählt ein random pivot Element. 
 	

@@ -39,7 +39,7 @@ Notizen zum Beweis:
 
 ## Duplikate finden mit Hase-Igel-Algorithmus (Floyd)
 
-Gegeben: Array Grösse n mit Elementen zwischen 1 und n-1. Es gibt immer ein Duplikat per Pigeonhole Principle.
+Gegeben: Array Grösse n mit Elementen von Wert zwischen 1 und n-1. Es gibt immer ein Duplikat per Pigeonhole Principle.
 
 Gerichteter Graph: 
 
