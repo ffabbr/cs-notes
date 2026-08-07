@@ -30,10 +30,9 @@ $$
 
 ### Bernoulli-Verteilung
 
-Wslkt für Erfolg oder Misserfolg bei einem einzigen Versuch (Ja/Nein)
-**Beispiel**: Werfen Münze, Variable Kopf; Werfen Würfel, Variable Augenzahl 5. 
+Wslkt für Erfolg oder Misserfolg bei einem einzigen Versuch (Ja/Nein). Meist hilfreich als Indikatorvariable. **Beispiel**: Werfen Münze, Variable Kopf; Werfen Würfel, Variable Augenzahl 5. 
 
-Praktisch: $X^2=X$ hier, da X ja nur 0 oder 1. 
+$X^2=X$ hier, da X ja nur 0 oder 1. 
 
 Varianz: $p\cdot(1-p)$
 Erwartungswert $p$
@@ -115,11 +114,27 @@ Annäherung der Binomialverteilung, für grosses n und kleines k.
 > P(X = 82) = \frac{82^{82} \cdot e^{-82}}{82!} = 0,044
 > $$
 
-![[Bildschirmfoto 2026-04-02 um 23.40.00.png]]
-
-
 ---
-
 ## Coupon Collector
 
-![[Bildschirmfoto 2026-04-16 um 11.34.49.png]]
+Situation: 
+
+- es gibt n Sammelbilder
+- wir bekommen immer ein zufälliges
+- X: nach wie vielen Runden haben wir alle? 
+
+Betrachte immer die Wahrscheinlichkeit, dass wir ein neues bekommen. z.B. n=6
+
+$$
+E[X] = \frac{6}{6} + \frac{6}{5} + \frac{6}{4} + \frac{6}{3} + \frac{6}{2} + \frac{6}{1}
+$$
+
+Siehe  $E[X] = 6 \cdot \left(1 + \frac{1}{2} + \frac{1}{3} + \frac{1}{4} + \frac{1}{5} + \frac{1}{6}\right) = 6\cdot H_{6}$, allgemein
+
+$$
+=n\cdot \sum_{i=1}^n \frac{1}{i} = n\cdot H_{n} \leq O(n \log n)
+$$
+
+
+![[Bildschirmfoto 2026-04-02 um 23.40.00.png]]
+

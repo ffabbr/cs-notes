@@ -97,13 +97,13 @@ code{font-family:"SF Mono",Menlo,"Courier New",monospace;background:#eef0f2;padd
   <button id="reset">Zur&uuml;cksetzen</button>
   <button id="solAll">Alle L&ouml;sungen zeigen</button>
   <button id="hideSolved">Gel&ouml;ste ausblenden</button>
-  <span class="score" id="score">128 Teilantworten insgesamt</span>
+  <span class="score" id="score">199 Teilantworten insgesamt</span>
   <span class="saved" id="saved">Fortschritt wird im Browser gespeichert</span>
 </div>
 <h2 id="s1">Teil A — Algorithmen vervollständigen</h2>
 <p class="hint">Wählen Sie für jede Lücke ①②③… die passende Option. Genau eine Option pro Lücke ist korrekt.</p>
 
-<div class="q" id="A1" data-type="gap" data-ans='[0, 0, 0, 0, 0]'>
+<div class="q" id="A1" data-type="gap" data-ans='[3, 2, 0, 1, 1]'>
   <div class="qhead"><span class="tag">Algorithmus vervollständigen</span>
     <span class="qnum">Aufgabe A1</span></div>
   <h3>Christofides — 1.5-Approximation für metrisches TSP</h3>
@@ -112,34 +112,34 @@ code{font-family:"SF Mono",Menlo,"Courier New",monospace;background:#eef0f2;padd
  Vervollständigen Sie den Algorithmus.</p>
   <div class="code"><div class="cl">1: Berechne ① $T$ von $K_n$</div><div class="cl">2: $X \leftarrow$ Menge aller Knoten, die in $T$ ② haben</div><div class="cl">3: Berechne ③ auf dem von $X$ induzierten vollständigen Graphen</div><div class="cl">4: Bestimme in $T \cup M$ ④</div><div class="cl">5: Durchlaufe $W$ und ⑤; gib den so entstehenden Hamiltonkreis $C$ aus</div></div>
   <div class="gaps"><div class="gap"><div class="gaplab">①</div>
-<label class="opt"><input type="radio" name="A1_0" value="0"><span class="optbody">einen minimalen Spannbaum (MST)</span></label>
+<label class="opt"><input type="radio" name="A1_0" value="0"><span class="optbody">einen kürzesten Hamiltonpfad</span></label>
 <label class="opt"><input type="radio" name="A1_0" value="1"><span class="optbody">einen maximalen Spannbaum</span></label>
-<label class="opt"><input type="radio" name="A1_0" value="2"><span class="optbody">einen kürzesten Hamiltonpfad</span></label>
-<label class="opt"><input type="radio" name="A1_0" value="3"><span class="optbody">eine Eulertour</span></label>
+<label class="opt"><input type="radio" name="A1_0" value="2"><span class="optbody">eine Eulertour</span></label>
+<label class="opt"><input type="radio" name="A1_0" value="3"><span class="optbody">einen minimalen Spannbaum (MST)</span></label>
 </div>
 <div class="gap"><div class="gaplab">②</div>
-<label class="opt"><input type="radio" name="A1_1" value="0"><span class="optbody">ungeraden Grad</span></label>
-<label class="opt"><input type="radio" name="A1_1" value="1"><span class="optbody">geraden Grad</span></label>
-<label class="opt"><input type="radio" name="A1_1" value="2"><span class="optbody">Grad genau $1$</span></label>
+<label class="opt"><input type="radio" name="A1_1" value="0"><span class="optbody">geraden Grad</span></label>
+<label class="opt"><input type="radio" name="A1_1" value="1"><span class="optbody">Grad genau $1$</span></label>
+<label class="opt"><input type="radio" name="A1_1" value="2"><span class="optbody">ungeraden Grad</span></label>
 <label class="opt"><input type="radio" name="A1_1" value="3"><span class="optbody">maximalen Grad</span></label>
 </div>
 <div class="gap"><div class="gaplab">③</div>
 <label class="opt"><input type="radio" name="A1_2" value="0"><span class="optbody">ein perfektes Matching $M$ von minimalem Gewicht</span></label>
-<label class="opt"><input type="radio" name="A1_2" value="1"><span class="optbody">ein inklusionsmaximales Matching $M$</span></label>
-<label class="opt"><input type="radio" name="A1_2" value="2"><span class="optbody">ein perfektes Matching $M$ von maximalem Gewicht</span></label>
-<label class="opt"><input type="radio" name="A1_2" value="3"><span class="optbody">einen minimalen Spannbaum $M$</span></label>
+<label class="opt"><input type="radio" name="A1_2" value="1"><span class="optbody">ein perfektes Matching $M$ von maximalem Gewicht</span></label>
+<label class="opt"><input type="radio" name="A1_2" value="2"><span class="optbody">einen minimalen Spannbaum $M$</span></label>
+<label class="opt"><input type="radio" name="A1_2" value="3"><span class="optbody">ein inklusionsmaximales Matching $M$</span></label>
 </div>
 <div class="gap"><div class="gaplab">④</div>
-<label class="opt"><input type="radio" name="A1_3" value="0"><span class="optbody">eine Eulertour $W$</span></label>
-<label class="opt"><input type="radio" name="A1_3" value="1"><span class="optbody">einen Hamiltonkreis $W$</span></label>
+<label class="opt"><input type="radio" name="A1_3" value="0"><span class="optbody">einen Hamiltonkreis $W$</span></label>
+<label class="opt"><input type="radio" name="A1_3" value="1"><span class="optbody">eine Eulertour $W$</span></label>
 <label class="opt"><input type="radio" name="A1_3" value="2"><span class="optbody">einen kürzesten Kreis $W$</span></label>
 <label class="opt"><input type="radio" name="A1_3" value="3"><span class="optbody">einen DFS-Baum $W$</span></label>
 </div>
 <div class="gap"><div class="gaplab">⑤</div>
-<label class="opt"><input type="radio" name="A1_4" value="0"><span class="optbody">überspringe bereits besuchte Knoten (Abkürzungen)</span></label>
-<label class="opt"><input type="radio" name="A1_4" value="1"><span class="optbody">besuche jeden Knoten genau zweimal</span></label>
-<label class="opt"><input type="radio" name="A1_4" value="2"><span class="optbody">entferne die schwerste Kante von $W$</span></label>
-<label class="opt"><input type="radio" name="A1_4" value="3"><span class="optbody">verdopple jede Kante von $W$</span></label>
+<label class="opt"><input type="radio" name="A1_4" value="0"><span class="optbody">entferne die schwerste Kante von $W$</span></label>
+<label class="opt"><input type="radio" name="A1_4" value="1"><span class="optbody">überspringe bereits besuchte Knoten (Abkürzungen)</span></label>
+<label class="opt"><input type="radio" name="A1_4" value="2"><span class="optbody">verdopple jede Kante von $W$</span></label>
+<label class="opt"><input type="radio" name="A1_4" value="3"><span class="optbody">besuche jeden Knoten genau zweimal</span></label>
 </div>
 </div>
   <div class="row"><button class="check">Prüfen</button>
@@ -155,7 +155,7 @@ code{font-family:"SF Mono",Menlo,"Courier New",monospace;background:#eef0f2;padd
 </div>
 
 
-<div class="q" id="A2" data-type="gap" data-ans='[0, 0, 0]'>
+<div class="q" id="A2" data-type="gap" data-ans='[0, 3, 2]'>
   <div class="qhead"><span class="tag">Algorithmus vervollständigen</span>
     <span class="qnum">Aufgabe A2</span></div>
   <h3>Kontraktionsalgorithmus für Min-Cut (Karger)</h3>
@@ -169,16 +169,16 @@ code{font-family:"SF Mono",Menlo,"Courier New",monospace;background:#eef0f2;padd
 <label class="opt"><input type="radio" name="A2_0" value="3"><span class="optbody">$|V| > \log n$</span></label>
 </div>
 <div class="gap"><div class="gaplab">②</div>
-<label class="opt"><input type="radio" name="A2_1" value="0"><span class="optbody">eine Kante $e \in E$ uniform zufällig</span></label>
-<label class="opt"><input type="radio" name="A2_1" value="1"><span class="optbody">eine Kante $e$ mit minimalem Gewicht</span></label>
-<label class="opt"><input type="radio" name="A2_1" value="2"><span class="optbody">zwei Knoten $u,v$ uniform zufällig</span></label>
-<label class="opt"><input type="radio" name="A2_1" value="3"><span class="optbody">eine Kante $e$ auf einem kürzesten Kreis</span></label>
+<label class="opt"><input type="radio" name="A2_1" value="0"><span class="optbody">eine Kante $e$ mit minimalem Gewicht</span></label>
+<label class="opt"><input type="radio" name="A2_1" value="1"><span class="optbody">zwei Knoten $u,v$ uniform zufällig</span></label>
+<label class="opt"><input type="radio" name="A2_1" value="2"><span class="optbody">eine Kante $e$ auf einem kürzesten Kreis</span></label>
+<label class="opt"><input type="radio" name="A2_1" value="3"><span class="optbody">eine Kante $e \in E$ uniform zufällig</span></label>
 </div>
 <div class="gap"><div class="gaplab">③</div>
-<label class="opt"><input type="radio" name="A2_2" value="0"><span class="optbody">die Anzahl der Kanten zwischen den beiden verbliebenen Knoten</span></label>
+<label class="opt"><input type="radio" name="A2_2" value="0"><span class="optbody">die Anzahl durchgeführter Kontraktionen</span></label>
 <label class="opt"><input type="radio" name="A2_2" value="1"><span class="optbody">die Anzahl der verbliebenen Knoten</span></label>
-<label class="opt"><input type="radio" name="A2_2" value="2"><span class="optbody">den minimalen Grad des Ausgangsgraphen</span></label>
-<label class="opt"><input type="radio" name="A2_2" value="3"><span class="optbody">die Anzahl durchgeführter Kontraktionen</span></label>
+<label class="opt"><input type="radio" name="A2_2" value="2"><span class="optbody">die Anzahl der Kanten zwischen den beiden verbliebenen Knoten</span></label>
+<label class="opt"><input type="radio" name="A2_2" value="3"><span class="optbody">den minimalen Grad des Ausgangsgraphen</span></label>
 </div>
 </div>
   <div class="row"><button class="check">Prüfen</button>
@@ -191,7 +191,7 @@ code{font-family:"SF Mono",Menlo,"Courier New",monospace;background:#eef0f2;padd
 </div>
 
 
-<div class="q" id="A3" data-type="gap" data-ans='[0, 0, 0, 0, 0]'>
+<div class="q" id="A3" data-type="gap" data-ans='[1, 3, 0, 1, 2]'>
   <div class="qhead"><span class="tag">Algorithmus vervollständigen</span>
     <span class="qnum">Aufgabe A3</span></div>
   <h3>3-färbbaren Graphen mit $O(\sqrt{n})$ Farben färben</h3>
@@ -199,34 +199,34 @@ code{font-family:"SF Mono",Menlo,"Courier New",monospace;background:#eef0f2;padd
  $O(|V|+|E|)$ mit $4\sqrt{n}+1$ Farben.</p>
   <div class="code"><div class="cl">1: while $\exists$ Knoten $v$ mit ① do</div><div class="cl">2: $\quad$ der von $N(v)$ induzierte Graph ist ②</div><div class="cl">3: $\quad$ färbe $v$ mit einer neuen Farbe und $N(v)$ mittels BFS mit ③</div><div class="cl">4: $\quad$ entferne $v$ und $N(v)$ aus $G$</div><div class="cl">5: // der Restgraph hat nun Maximalgrad ④</div><div class="cl">6: färbe den Restgraphen ⑤</div></div>
   <div class="gaps"><div class="gap"><div class="gaplab">①</div>
-<label class="opt"><input type="radio" name="A3_0" value="0"><span class="optbody">mehr als $\sqrt{n}$ ungefärbten Nachbarn</span></label>
-<label class="opt"><input type="radio" name="A3_0" value="1"><span class="optbody">weniger als $\sqrt{n}$ ungefärbten Nachbarn</span></label>
+<label class="opt"><input type="radio" name="A3_0" value="0"><span class="optbody">mehr als $n/2$ Nachbarn</span></label>
+<label class="opt"><input type="radio" name="A3_0" value="1"><span class="optbody">mehr als $\sqrt{n}$ ungefärbten Nachbarn</span></label>
 <label class="opt"><input type="radio" name="A3_0" value="2"><span class="optbody">Grad genau $3$</span></label>
-<label class="opt"><input type="radio" name="A3_0" value="3"><span class="optbody">mehr als $n/2$ Nachbarn</span></label>
+<label class="opt"><input type="radio" name="A3_0" value="3"><span class="optbody">weniger als $\sqrt{n}$ ungefärbten Nachbarn</span></label>
 </div>
 <div class="gap"><div class="gaplab">②</div>
-<label class="opt"><input type="radio" name="A3_1" value="0"><span class="optbody">2-färbbar (bipartit)</span></label>
-<label class="opt"><input type="radio" name="A3_1" value="1"><span class="optbody">3-färbbar</span></label>
-<label class="opt"><input type="radio" name="A3_1" value="2"><span class="optbody">ein vollständiger Graph</span></label>
-<label class="opt"><input type="radio" name="A3_1" value="3"><span class="optbody">ein Baum</span></label>
+<label class="opt"><input type="radio" name="A3_1" value="0"><span class="optbody">ein vollständiger Graph</span></label>
+<label class="opt"><input type="radio" name="A3_1" value="1"><span class="optbody">ein Baum</span></label>
+<label class="opt"><input type="radio" name="A3_1" value="2"><span class="optbody">3-färbbar</span></label>
+<label class="opt"><input type="radio" name="A3_1" value="3"><span class="optbody">2-färbbar (bipartit)</span></label>
 </div>
 <div class="gap"><div class="gaplab">③</div>
 <label class="opt"><input type="radio" name="A3_2" value="0"><span class="optbody">2 weiteren neuen Farben</span></label>
-<label class="opt"><input type="radio" name="A3_2" value="1"><span class="optbody">1 weiteren neuen Farbe</span></label>
+<label class="opt"><input type="radio" name="A3_2" value="1"><span class="optbody">$\sqrt{n}$ neuen Farben</span></label>
 <label class="opt"><input type="radio" name="A3_2" value="2"><span class="optbody">bereits verwendeten Farben</span></label>
-<label class="opt"><input type="radio" name="A3_2" value="3"><span class="optbody">$\sqrt{n}$ neuen Farben</span></label>
+<label class="opt"><input type="radio" name="A3_2" value="3"><span class="optbody">1 weiteren neuen Farbe</span></label>
 </div>
 <div class="gap"><div class="gaplab">④</div>
-<label class="opt"><input type="radio" name="A3_3" value="0"><span class="optbody">$\le \sqrt{n}$</span></label>
-<label class="opt"><input type="radio" name="A3_3" value="1"><span class="optbody">$\le 3$</span></label>
-<label class="opt"><input type="radio" name="A3_3" value="2"><span class="optbody">$\le \log n$</span></label>
+<label class="opt"><input type="radio" name="A3_3" value="0"><span class="optbody">$\le \log n$</span></label>
+<label class="opt"><input type="radio" name="A3_3" value="1"><span class="optbody">$\le \sqrt{n}$</span></label>
+<label class="opt"><input type="radio" name="A3_3" value="2"><span class="optbody">$\le 3$</span></label>
 <label class="opt"><input type="radio" name="A3_3" value="3"><span class="optbody">$\le n/2$</span></label>
 </div>
 <div class="gap"><div class="gaplab">⑤</div>
-<label class="opt"><input type="radio" name="A3_4" value="0"><span class="optbody">mit dem Greedy-Algorithmus und höchstens $\sqrt{n}+1$ neuen Farben</span></label>
+<label class="opt"><input type="radio" name="A3_4" value="0"><span class="optbody">durch Ausprobieren aller Färbungen in $O(2^n)$</span></label>
 <label class="opt"><input type="radio" name="A3_4" value="1"><span class="optbody">mit dem Greedy-Algorithmus und genau 3 Farben</span></label>
-<label class="opt"><input type="radio" name="A3_4" value="2"><span class="optbody">mit BFS und 2 Farben</span></label>
-<label class="opt"><input type="radio" name="A3_4" value="3"><span class="optbody">durch Ausprobieren aller Färbungen in $O(2^n)$</span></label>
+<label class="opt"><input type="radio" name="A3_4" value="2"><span class="optbody">mit dem Greedy-Algorithmus und höchstens $\sqrt{n}+1$ neuen Farben</span></label>
+<label class="opt"><input type="radio" name="A3_4" value="3"><span class="optbody">mit BFS und 2 Farben</span></label>
 </div>
 </div>
   <div class="row"><button class="check">Prüfen</button>
@@ -240,7 +240,7 @@ code{font-family:"SF Mono",Menlo,"Courier New",monospace;background:#eef0f2;padd
 </div>
 
 
-<div class="q" id="A4" data-type="gap" data-ans='[0, 0, 0]'>
+<div class="q" id="A4" data-type="gap" data-ans='[1, 1, 0]'>
   <div class="qhead"><span class="tag">Algorithmus vervollständigen</span>
     <span class="qnum">Aufgabe A4</span></div>
   <h3>Ford-Fulkerson</h3>
@@ -248,22 +248,22 @@ code{font-family:"SF Mono",Menlo,"Courier New",monospace;background:#eef0f2;padd
  Algorithmus zur Berechnung eines maximalen Flusses.</p>
   <div class="code"><div class="cl">1: $f(e) \leftarrow 0$ für alle $e \in A$</div><div class="cl">2: while ① do</div><div class="cl">3: $\quad \gamma \leftarrow$ ②</div><div class="cl">4: $\quad$ erhöhe $f$ entlang $P$ um $\gamma$, d.h. ③</div><div class="cl">5: return $f$</div></div>
   <div class="gaps"><div class="gap"><div class="gaplab">①</div>
-<label class="opt"><input type="radio" name="A4_0" value="0"><span class="optbody">es im Restnetzwerk $N_f$ einen gerichteten $s$-$t$-Pfad $P$ gibt</span></label>
-<label class="opt"><input type="radio" name="A4_0" value="1"><span class="optbody">es in $N$ einen gerichteten $s$-$t$-Pfad $P$ mit freier Kapazität gibt</span></label>
-<label class="opt"><input type="radio" name="A4_0" value="2"><span class="optbody">es im Restnetzwerk $N_f$ einen gerichteten Kreis $P$ gibt</span></label>
+<label class="opt"><input type="radio" name="A4_0" value="0"><span class="optbody">es im Restnetzwerk $N_f$ einen gerichteten Kreis $P$ gibt</span></label>
+<label class="opt"><input type="radio" name="A4_0" value="1"><span class="optbody">es im Restnetzwerk $N_f$ einen gerichteten $s$-$t$-Pfad $P$ gibt</span></label>
+<label class="opt"><input type="radio" name="A4_0" value="2"><span class="optbody">es in $N$ einen gerichteten $s$-$t$-Pfad $P$ mit freier Kapazität gibt</span></label>
 <label class="opt"><input type="radio" name="A4_0" value="3"><span class="optbody">$\mathrm{val}(f) < \mathrm{cap}(S,T)$ für einen beliebigen Schnitt gilt</span></label>
 </div>
 <div class="gap"><div class="gaplab">②</div>
-<label class="opt"><input type="radio" name="A4_1" value="0"><span class="optbody">das Minimum der Restkapazitäten der Kanten auf $P$</span></label>
-<label class="opt"><input type="radio" name="A4_1" value="1"><span class="optbody">das Maximum der Restkapazitäten der Kanten auf $P$</span></label>
-<label class="opt"><input type="radio" name="A4_1" value="2"><span class="optbody">die Summe der Kapazitäten der Kanten auf $P$</span></label>
-<label class="opt"><input type="radio" name="A4_1" value="3"><span class="optbody">$1$</span></label>
+<label class="opt"><input type="radio" name="A4_1" value="0"><span class="optbody">das Maximum der Restkapazitäten der Kanten auf $P$</span></label>
+<label class="opt"><input type="radio" name="A4_1" value="1"><span class="optbody">das Minimum der Restkapazitäten der Kanten auf $P$</span></label>
+<label class="opt"><input type="radio" name="A4_1" value="2"><span class="optbody">$1$</span></label>
+<label class="opt"><input type="radio" name="A4_1" value="3"><span class="optbody">die Summe der Kapazitäten der Kanten auf $P$</span></label>
 </div>
 <div class="gap"><div class="gaplab">③</div>
 <label class="opt"><input type="radio" name="A4_2" value="0"><span class="optbody">bei Vorwärtskanten addieren, bei Rückwärtskanten subtrahieren</span></label>
-<label class="opt"><input type="radio" name="A4_2" value="1"><span class="optbody">bei allen Kanten addieren</span></label>
-<label class="opt"><input type="radio" name="A4_2" value="2"><span class="optbody">bei allen Kanten subtrahieren</span></label>
-<label class="opt"><input type="radio" name="A4_2" value="3"><span class="optbody">bei Vorwärtskanten subtrahieren, bei Rückwärtskanten addieren</span></label>
+<label class="opt"><input type="radio" name="A4_2" value="1"><span class="optbody">bei Vorwärtskanten subtrahieren, bei Rückwärtskanten addieren</span></label>
+<label class="opt"><input type="radio" name="A4_2" value="2"><span class="optbody">bei allen Kanten addieren</span></label>
+<label class="opt"><input type="radio" name="A4_2" value="3"><span class="optbody">bei allen Kanten subtrahieren</span></label>
 </div>
 </div>
   <div class="row"><button class="check">Prüfen</button>
@@ -276,7 +276,7 @@ code{font-family:"SF Mono",Menlo,"Courier New",monospace;background:#eef0f2;padd
 </div>
 
 
-<div class="q" id="A5" data-type="gap" data-ans='[0, 0, 0, 0]'>
+<div class="q" id="A5" data-type="gap" data-ans='[1, 0, 2, 0]'>
   <div class="qhead"><span class="tag">Algorithmus vervollständigen</span>
     <span class="qnum">Aufgabe A5</span></div>
   <h3>Color Coding — langer Pfad</h3>
@@ -285,28 +285,28 @@ code{font-family:"SF Mono",Menlo,"Courier New",monospace;background:#eef0f2;padd
  die in $v$ enden.</p>
   <div class="code"><div class="cl">1: färbe jeden Knoten ①</div><div class="cl">2: $P_0(v) \leftarrow$ ② für alle $v \in V$</div><div class="cl">3: for $i = 1$ to $k-1$ do</div><div class="cl">4: $\quad P_i(v) \leftarrow \{\, S \cup \{\gamma(v)\} \;:\; u \in N(v),\; S \in P_{i-1}(u),\;$ ③ $\,\}$</div><div class="cl">5: if $\exists v: P_{k-1}(v) \neq \emptyset$ then return „JA“ else return „NEIN“</div><div class="cl">6: // Fehlerreduktion: wiederhole die Schritte 1–5 insgesamt ④ mal</div></div>
   <div class="gaps"><div class="gap"><div class="gaplab">①</div>
-<label class="opt"><input type="radio" name="A5_0" value="0"><span class="optbody">uniform zufällig und unabhängig mit einer von $k$ Farben</span></label>
-<label class="opt"><input type="radio" name="A5_0" value="1"><span class="optbody">mit dem Greedy-Algorithmus</span></label>
-<label class="opt"><input type="radio" name="A5_0" value="2"><span class="optbody">mit $\chi(G)$ Farben</span></label>
-<label class="opt"><input type="radio" name="A5_0" value="3"><span class="optbody">so, dass benachbarte Knoten verschiedene Farben haben</span></label>
+<label class="opt"><input type="radio" name="A5_0" value="0"><span class="optbody">mit dem Greedy-Algorithmus</span></label>
+<label class="opt"><input type="radio" name="A5_0" value="1"><span class="optbody">uniform zufällig und unabhängig mit einer von $k$ Farben</span></label>
+<label class="opt"><input type="radio" name="A5_0" value="2"><span class="optbody">so, dass benachbarte Knoten verschiedene Farben haben</span></label>
+<label class="opt"><input type="radio" name="A5_0" value="3"><span class="optbody">mit $\chi(G)$ Farben</span></label>
 </div>
 <div class="gap"><div class="gaplab">②</div>
 <label class="opt"><input type="radio" name="A5_1" value="0"><span class="optbody">$\{\,\{\gamma(v)\}\,\}$</span></label>
-<label class="opt"><input type="radio" name="A5_1" value="1"><span class="optbody">$\emptyset$</span></label>
-<label class="opt"><input type="radio" name="A5_1" value="2"><span class="optbody">$\{\,\emptyset\,\}$</span></label>
-<label class="opt"><input type="radio" name="A5_1" value="3"><span class="optbody">$\{1,\dots,k\}$</span></label>
+<label class="opt"><input type="radio" name="A5_1" value="1"><span class="optbody">$\{\,\emptyset\,\}$</span></label>
+<label class="opt"><input type="radio" name="A5_1" value="2"><span class="optbody">$\{1,\dots,k\}$</span></label>
+<label class="opt"><input type="radio" name="A5_1" value="3"><span class="optbody">$\emptyset$</span></label>
 </div>
 <div class="gap"><div class="gaplab">③</div>
-<label class="opt"><input type="radio" name="A5_2" value="0"><span class="optbody">$\gamma(v) \notin S$</span></label>
-<label class="opt"><input type="radio" name="A5_2" value="1"><span class="optbody">$\gamma(v) \in S$</span></label>
-<label class="opt"><input type="radio" name="A5_2" value="2"><span class="optbody">$|S| = k$</span></label>
-<label class="opt"><input type="radio" name="A5_2" value="3"><span class="optbody">$\gamma(u) \notin S$</span></label>
+<label class="opt"><input type="radio" name="A5_2" value="0"><span class="optbody">$\gamma(u) \notin S$</span></label>
+<label class="opt"><input type="radio" name="A5_2" value="1"><span class="optbody">$|S| = k$</span></label>
+<label class="opt"><input type="radio" name="A5_2" value="2"><span class="optbody">$\gamma(v) \notin S$</span></label>
+<label class="opt"><input type="radio" name="A5_2" value="3"><span class="optbody">$\gamma(v) \in S$</span></label>
 </div>
 <div class="gap"><div class="gaplab">④</div>
 <label class="opt"><input type="radio" name="A5_3" value="0"><span class="optbody">$\Theta(e^{k})$</span></label>
-<label class="opt"><input type="radio" name="A5_3" value="1"><span class="optbody">$\Theta(k)$</span></label>
-<label class="opt"><input type="radio" name="A5_3" value="2"><span class="optbody">$\Theta(\log n)$</span></label>
-<label class="opt"><input type="radio" name="A5_3" value="3"><span class="optbody">$\Theta(n)$</span></label>
+<label class="opt"><input type="radio" name="A5_3" value="1"><span class="optbody">$\Theta(n)$</span></label>
+<label class="opt"><input type="radio" name="A5_3" value="2"><span class="optbody">$\Theta(k)$</span></label>
+<label class="opt"><input type="radio" name="A5_3" value="3"><span class="optbody">$\Theta(\log n)$</span></label>
 </div>
 </div>
   <div class="row"><button class="check">Prüfen</button>
@@ -320,7 +320,7 @@ code{font-family:"SF Mono",Menlo,"Courier New",monospace;background:#eef0f2;padd
 </div>
 
 
-<div class="q" id="A6" data-type="gap" data-ans='[0, 0, 0]'>
+<div class="q" id="A6" data-type="gap" data-ans='[3, 2, 3]'>
   <div class="qhead"><span class="tag">Algorithmus vervollständigen</span>
     <span class="qnum">Aufgabe A6</span></div>
   <h3>Kleinste umschliessende Kreisscheibe (randomisiert)</h3>
@@ -329,22 +329,22 @@ code{font-family:"SF Mono",Menlo,"Courier New",monospace;background:#eef0f2;padd
  Multimenge.</p>
   <div class="code"><div class="cl">1: $S \leftarrow P$ (jeder Punkt mit Vielfachheit 1)</div><div class="cl">2: repeat</div><div class="cl">3: $\quad$ wähle ① aus $S$</div><div class="cl">4: $\quad$ bestimme deren kleinsten umschliessenden Kreis $C$ — Kosten ②</div><div class="cl">5: $\quad$ if alle Punkte aus $P$ liegen in $C^\bullet$ then return $C$</div><div class="cl">6: $\quad$ else ③</div></div>
   <div class="gaps"><div class="gap"><div class="gaplab">①</div>
-<label class="opt"><input type="radio" name="A6_0" value="0"><span class="optbody">11 Punkte uniform zufällig (gemäss Vielfachheiten)</span></label>
+<label class="opt"><input type="radio" name="A6_0" value="0"><span class="optbody">alle Punkte von $S$</span></label>
 <label class="opt"><input type="radio" name="A6_0" value="1"><span class="optbody">die 11 Punkte mit kleinster $x$-Koordinate</span></label>
-<label class="opt"><input type="radio" name="A6_0" value="2"><span class="optbody">alle Punkte von $S$</span></label>
-<label class="opt"><input type="radio" name="A6_0" value="3"><span class="optbody">die 3 am weitesten entfernten Punkte</span></label>
+<label class="opt"><input type="radio" name="A6_0" value="2"><span class="optbody">die 3 am weitesten entfernten Punkte</span></label>
+<label class="opt"><input type="radio" name="A6_0" value="3"><span class="optbody">11 Punkte uniform zufällig (gemäss Vielfachheiten)</span></label>
 </div>
 <div class="gap"><div class="gaplab">②</div>
-<label class="opt"><input type="radio" name="A6_1" value="0"><span class="optbody">$O(1)$, denn $C$ ist durch höchstens 3 Punkte bestimmt</span></label>
-<label class="opt"><input type="radio" name="A6_1" value="1"><span class="optbody">$O(n)$</span></label>
-<label class="opt"><input type="radio" name="A6_1" value="2"><span class="optbody">$O(n \log n)$</span></label>
-<label class="opt"><input type="radio" name="A6_1" value="3"><span class="optbody">$O(n^3)$</span></label>
+<label class="opt"><input type="radio" name="A6_1" value="0"><span class="optbody">$O(n)$</span></label>
+<label class="opt"><input type="radio" name="A6_1" value="1"><span class="optbody">$O(n^3)$</span></label>
+<label class="opt"><input type="radio" name="A6_1" value="2"><span class="optbody">$O(1)$, denn $C$ ist durch höchstens 3 Punkte bestimmt</span></label>
+<label class="opt"><input type="radio" name="A6_1" value="3"><span class="optbody">$O(n \log n)$</span></label>
 </div>
 <div class="gap"><div class="gaplab">③</div>
-<label class="opt"><input type="radio" name="A6_2" value="0"><span class="optbody">verdopple in $S$ die Vielfachheit aller Punkte ausserhalb von $C^\bullet$</span></label>
-<label class="opt"><input type="radio" name="A6_2" value="1"><span class="optbody">entferne aus $S$ alle Punkte innerhalb von $C^\bullet$</span></label>
-<label class="opt"><input type="radio" name="A6_2" value="2"><span class="optbody">verdopple die Vielfachheit aller Punkte in $S$</span></label>
-<label class="opt"><input type="radio" name="A6_2" value="3"><span class="optbody">wähle ohne Änderung von $S$ einfach 11 neue Punkte</span></label>
+<label class="opt"><input type="radio" name="A6_2" value="0"><span class="optbody">verdopple die Vielfachheit aller Punkte in $S$</span></label>
+<label class="opt"><input type="radio" name="A6_2" value="1"><span class="optbody">wähle ohne Änderung von $S$ einfach 11 neue Punkte</span></label>
+<label class="opt"><input type="radio" name="A6_2" value="2"><span class="optbody">entferne aus $S$ alle Punkte innerhalb von $C^\bullet$</span></label>
+<label class="opt"><input type="radio" name="A6_2" value="3"><span class="optbody">verdopple in $S$ die Vielfachheit aller Punkte ausserhalb von $C^\bullet$</span></label>
 </div>
 </div>
   <div class="row"><button class="check">Prüfen</button>
@@ -357,7 +357,7 @@ code{font-family:"SF Mono",Menlo,"Courier New",monospace;background:#eef0f2;padd
 </div>
 
 
-<div class="q" id="A7" data-type="gap" data-ans='[0, 0, 0, 0]'>
+<div class="q" id="A7" data-type="gap" data-ans='[1, 2, 0, 0]'>
   <div class="qhead"><span class="tag">Algorithmus vervollständigen</span>
     <span class="qnum">Aufgabe A7</span></div>
   <h3>JarvisWrap / FindNext (konvexe Hülle)</h3>
@@ -365,28 +365,28 @@ code{font-family:"SF Mono",Menlo,"Courier New",monospace;background:#eef0f2;padd
  Vervollständigen Sie die Subroutine und den Hauptalgorithmus.</p>
   <div class="code"><div class="cl">$\textbf{FindNext}(q,P)$:</div><div class="cl">1: $q_{\text{next}} \leftarrow$ beliebiger Punkt aus $P \setminus \{q\}$</div><div class="cl">2: for all $p \in P$ do</div><div class="cl">3: $\quad$ if ① then $q_{\text{next}} \leftarrow p$</div><div class="cl">4: return $q_{\text{next}}$</div><div class="cl">&nbsp;</div><div class="cl">$\textbf{JarvisWrap}(P)$:</div><div class="cl">5: $p_{\text{now}} \leftarrow$ ②</div><div class="cl">6: repeat $q_h \leftarrow p_{\text{now}}$; $p_{\text{now}} \leftarrow \textbf{FindNext}(q_h,P)$; $h \leftarrow h+1$ until ③</div><div class="cl">7: return $q_0, q_1, \dots, q_{h-1}$ — Laufzeit ④</div></div>
   <div class="gaps"><div class="gap"><div class="gaplab">①</div>
-<label class="opt"><input type="radio" name="A7_0" value="0"><span class="optbody">$p$ liegt rechts der Geraden durch $q$ und $q_{\text{next}}$</span></label>
-<label class="opt"><input type="radio" name="A7_0" value="1"><span class="optbody">$p$ liegt links der Geraden durch $q$ und $q_{\text{next}}$</span></label>
+<label class="opt"><input type="radio" name="A7_0" value="0"><span class="optbody">$p$ liegt links der Geraden durch $q$ und $q_{\text{next}}$</span></label>
+<label class="opt"><input type="radio" name="A7_0" value="1"><span class="optbody">$p$ liegt rechts der Geraden durch $q$ und $q_{\text{next}}$</span></label>
 <label class="opt"><input type="radio" name="A7_0" value="2"><span class="optbody">$p$ hat kleinere $x$-Koordinate als $q_{\text{next}}$</span></label>
 <label class="opt"><input type="radio" name="A7_0" value="3"><span class="optbody">$\|q-p\| < \|q-q_{\text{next}}\|$</span></label>
 </div>
 <div class="gap"><div class="gaplab">②</div>
-<label class="opt"><input type="radio" name="A7_1" value="0"><span class="optbody">der Punkt mit kleinster $x$-Koordinate</span></label>
+<label class="opt"><input type="radio" name="A7_1" value="0"><span class="optbody">der Punkt mit grösster $y$-Koordinate</span></label>
 <label class="opt"><input type="radio" name="A7_1" value="1"><span class="optbody">ein beliebiger Punkt aus $P$</span></label>
-<label class="opt"><input type="radio" name="A7_1" value="2"><span class="optbody">der Punkt mit grösster $y$-Koordinate</span></label>
+<label class="opt"><input type="radio" name="A7_1" value="2"><span class="optbody">der Punkt mit kleinster $x$-Koordinate</span></label>
 <label class="opt"><input type="radio" name="A7_1" value="3"><span class="optbody">der Schwerpunkt von $P$</span></label>
 </div>
 <div class="gap"><div class="gaplab">③</div>
 <label class="opt"><input type="radio" name="A7_2" value="0"><span class="optbody">$p_{\text{now}} = q_0$</span></label>
-<label class="opt"><input type="radio" name="A7_2" value="1"><span class="optbody">alle Punkte besucht wurden</span></label>
-<label class="opt"><input type="radio" name="A7_2" value="2"><span class="optbody">$h = n$</span></label>
-<label class="opt"><input type="radio" name="A7_2" value="3"><span class="optbody">$\textbf{FindNext}$ keinen Punkt mehr liefert</span></label>
+<label class="opt"><input type="radio" name="A7_2" value="1"><span class="optbody">$h = n$</span></label>
+<label class="opt"><input type="radio" name="A7_2" value="2"><span class="optbody">$\textbf{FindNext}$ keinen Punkt mehr liefert</span></label>
+<label class="opt"><input type="radio" name="A7_2" value="3"><span class="optbody">alle Punkte besucht wurden</span></label>
 </div>
 <div class="gap"><div class="gaplab">④</div>
 <label class="opt"><input type="radio" name="A7_3" value="0"><span class="optbody">$O(n \cdot h)$</span></label>
-<label class="opt"><input type="radio" name="A7_3" value="1"><span class="optbody">$O(n \log n)$</span></label>
+<label class="opt"><input type="radio" name="A7_3" value="1"><span class="optbody">$O(n^2 \log n)$</span></label>
 <label class="opt"><input type="radio" name="A7_3" value="2"><span class="optbody">$O(n)$</span></label>
-<label class="opt"><input type="radio" name="A7_3" value="3"><span class="optbody">$O(n^2 \log n)$</span></label>
+<label class="opt"><input type="radio" name="A7_3" value="3"><span class="optbody">$O(n \log n)$</span></label>
 </div>
 </div>
   <div class="row"><button class="check">Prüfen</button>
@@ -401,7 +401,7 @@ code{font-family:"SF Mono",Menlo,"Courier New",monospace;background:#eef0f2;padd
 </div>
 
 
-<div class="q" id="A8" data-type="gap" data-ans='[0, 0, 0, 0]'>
+<div class="q" id="A8" data-type="gap" data-ans='[1, 0, 1, 3]'>
   <div class="qhead"><span class="tag">Algorithmus vervollständigen</span>
     <span class="qnum">Aufgabe A8</span></div>
   <h3>Hase-Igel-Algorithmus (Floyd) — Duplikat finden</h3>
@@ -409,28 +409,28 @@ code{font-family:"SF Mono",Menlo,"Courier New",monospace;background:#eef0f2;padd
  ein Duplikat. Wir betrachten den gerichteten Graphen mit Kanten $i \to a[i]$ und starten in Knoten $n$.</p>
   <div class="code"><div class="cl">1: igel $\leftarrow n$; hase $\leftarrow n$</div><div class="cl">2: repeat igel $\leftarrow a[\text{igel}]$; hase $\leftarrow$ ① until ②</div><div class="cl">3: ③</div><div class="cl">4: repeat igel $\leftarrow a[\text{igel}]$; hase $\leftarrow a[\text{hase}]$ until igel $=$ hase</div><div class="cl">5: return ④</div></div>
   <div class="gaps"><div class="gap"><div class="gaplab">①</div>
-<label class="opt"><input type="radio" name="A8_0" value="0"><span class="optbody">$a[a[\text{hase}]]$</span></label>
-<label class="opt"><input type="radio" name="A8_0" value="1"><span class="optbody">$a[\text{hase}]$</span></label>
+<label class="opt"><input type="radio" name="A8_0" value="0"><span class="optbody">$a[\text{hase}]$</span></label>
+<label class="opt"><input type="radio" name="A8_0" value="1"><span class="optbody">$a[a[\text{hase}]]$</span></label>
 <label class="opt"><input type="radio" name="A8_0" value="2"><span class="optbody">$a[\text{igel}]$</span></label>
 <label class="opt"><input type="radio" name="A8_0" value="3"><span class="optbody">hase $+\,2$</span></label>
 </div>
 <div class="gap"><div class="gaplab">②</div>
 <label class="opt"><input type="radio" name="A8_1" value="0"><span class="optbody">igel $=$ hase</span></label>
-<label class="opt"><input type="radio" name="A8_1" value="1"><span class="optbody">igel $= n$</span></label>
+<label class="opt"><input type="radio" name="A8_1" value="1"><span class="optbody">$a[\text{igel}] = a[\text{hase}]$</span></label>
 <label class="opt"><input type="radio" name="A8_1" value="2"><span class="optbody">hase $= n$</span></label>
-<label class="opt"><input type="radio" name="A8_1" value="3"><span class="optbody">$a[\text{igel}] = a[\text{hase}]$</span></label>
+<label class="opt"><input type="radio" name="A8_1" value="3"><span class="optbody">igel $= n$</span></label>
 </div>
 <div class="gap"><div class="gaplab">③</div>
-<label class="opt"><input type="radio" name="A8_2" value="0"><span class="optbody">setze hase $\leftarrow n$; igel bleibt stehen</span></label>
-<label class="opt"><input type="radio" name="A8_2" value="1"><span class="optbody">setze igel $\leftarrow n$; hase bleibt stehen</span></label>
+<label class="opt"><input type="radio" name="A8_2" value="0"><span class="optbody">vertausche igel und hase</span></label>
+<label class="opt"><input type="radio" name="A8_2" value="1"><span class="optbody">setze hase $\leftarrow n$; igel bleibt stehen</span></label>
 <label class="opt"><input type="radio" name="A8_2" value="2"><span class="optbody">setze igel $\leftarrow n$ und hase $\leftarrow n$</span></label>
-<label class="opt"><input type="radio" name="A8_2" value="3"><span class="optbody">vertausche igel und hase</span></label>
+<label class="opt"><input type="radio" name="A8_2" value="3"><span class="optbody">setze igel $\leftarrow n$; hase bleibt stehen</span></label>
 </div>
 <div class="gap"><div class="gaplab">④</div>
-<label class="opt"><input type="radio" name="A8_3" value="0"><span class="optbody">igel — der Startknoten des Kreises; dieser Wert kommt doppelt vor</span></label>
-<label class="opt"><input type="radio" name="A8_3" value="1"><span class="optbody">die Anzahl der bisher gemachten Schritte</span></label>
-<label class="opt"><input type="radio" name="A8_3" value="2"><span class="optbody">$a[n]$</span></label>
-<label class="opt"><input type="radio" name="A8_3" value="3"><span class="optbody">die Länge des Kreises</span></label>
+<label class="opt"><input type="radio" name="A8_3" value="0"><span class="optbody">die Länge des Kreises</span></label>
+<label class="opt"><input type="radio" name="A8_3" value="1"><span class="optbody">$a[n]$</span></label>
+<label class="opt"><input type="radio" name="A8_3" value="2"><span class="optbody">die Anzahl der bisher gemachten Schritte</span></label>
+<label class="opt"><input type="radio" name="A8_3" value="3"><span class="optbody">igel — der Startknoten des Kreises; dieser Wert kommt doppelt vor</span></label>
 </div>
 </div>
   <div class="row"><button class="check">Prüfen</button>
@@ -444,7 +444,7 @@ code{font-family:"SF Mono",Menlo,"Courier New",monospace;background:#eef0f2;padd
 </div>
 
 
-<div class="q" id="A9" data-type="gap" data-ans='[0, 0, 0, 0]'>
+<div class="q" id="A9" data-type="gap" data-ans='[0, 1, 0, 0]'>
   <div class="qhead"><span class="tag">Algorithmus vervollständigen</span>
     <span class="qnum">Aufgabe A9</span></div>
   <h3>Miller-Rabin</h3>
@@ -453,13 +453,13 @@ code{font-family:"SF Mono",Menlo,"Courier New",monospace;background:#eef0f2;padd
   <div class="gaps"><div class="gap"><div class="gaplab">①</div>
 <label class="opt"><input type="radio" name="A9_0" value="0"><span class="optbody">$d$ ungerade</span></label>
 <label class="opt"><input type="radio" name="A9_0" value="1"><span class="optbody">$d$ gerade</span></label>
-<label class="opt"><input type="radio" name="A9_0" value="2"><span class="optbody">$d$ prim</span></label>
-<label class="opt"><input type="radio" name="A9_0" value="3"><span class="optbody">$k$ ungerade</span></label>
+<label class="opt"><input type="radio" name="A9_0" value="2"><span class="optbody">$k$ ungerade</span></label>
+<label class="opt"><input type="radio" name="A9_0" value="3"><span class="optbody">$d$ prim</span></label>
 </div>
 <div class="gap"><div class="gaplab">②</div>
-<label class="opt"><input type="radio" name="A9_1" value="0"><span class="optbody">$a^{d} \bmod n$</span></label>
-<label class="opt"><input type="radio" name="A9_1" value="1"><span class="optbody">$a^{n-1} \bmod n$</span></label>
-<label class="opt"><input type="radio" name="A9_1" value="2"><span class="optbody">$\gcd(a,n)$</span></label>
+<label class="opt"><input type="radio" name="A9_1" value="0"><span class="optbody">$\gcd(a,n)$</span></label>
+<label class="opt"><input type="radio" name="A9_1" value="1"><span class="optbody">$a^{d} \bmod n$</span></label>
+<label class="opt"><input type="radio" name="A9_1" value="2"><span class="optbody">$a^{n-1} \bmod n$</span></label>
 <label class="opt"><input type="radio" name="A9_1" value="3"><span class="optbody">$a^{2} \bmod n$</span></label>
 </div>
 <div class="gap"><div class="gaplab">③</div>
@@ -470,9 +470,9 @@ code{font-family:"SF Mono",Menlo,"Courier New",monospace;background:#eef0f2;padd
 </div>
 <div class="gap"><div class="gaplab">④</div>
 <label class="opt"><input type="radio" name="A9_3" value="0"><span class="optbody">„nicht prim“ — wir haben einen Zeugen $a$ gefunden</span></label>
-<label class="opt"><input type="radio" name="A9_3" value="1"><span class="optbody">„prim“</span></label>
+<label class="opt"><input type="radio" name="A9_3" value="1"><span class="optbody">$a$</span></label>
 <label class="opt"><input type="radio" name="A9_3" value="2"><span class="optbody">„unbekannt“</span></label>
-<label class="opt"><input type="radio" name="A9_3" value="3"><span class="optbody">$a$</span></label>
+<label class="opt"><input type="radio" name="A9_3" value="3"><span class="optbody">„prim“</span></label>
 </div>
 </div>
   <div class="row"><button class="check">Prüfen</button>
@@ -486,7 +486,7 @@ code{font-family:"SF Mono",Menlo,"Courier New",monospace;background:#eef0f2;padd
 </div>
 
 
-<div class="q" id="A10" data-type="gap" data-ans='[0, 0, 0, 0, 0]'>
+<div class="q" id="A10" data-type="gap" data-ans='[1, 2, 3, 0, 3]'>
   <div class="qhead"><span class="tag">Algorithmus vervollständigen</span>
     <span class="qnum">Aufgabe A10</span></div>
   <h3>Randomisierte grosse stabile Menge</h3>
@@ -494,34 +494,34 @@ code{font-family:"SF Mono",Menlo,"Courier New",monospace;background:#eef0f2;padd
  (keine zwei Knoten benachbart).</p>
   <div class="code"><div class="cl">1: jeder Knoten $v$ wählt sich unabhängig mit Wahrscheinlichkeit $p$; $S \leftarrow$ gewählte Knoten</div><div class="cl">2: for jede Kante mit beiden Endknoten in $S$: ①</div><div class="cl">3: return $S$</div><div class="cl">&nbsp;</div><div class="cl">Analyse: $X$ = Anzahl gewählter Knoten, $Y$ = Anzahl Konfliktkanten, $|S| \ge X - Y$</div><div class="cl">$\mathbb{E}[X] = $ ②, $\quad \mathbb{E}[Y] = $ ③</div><div class="cl">optimales $p = $ ④ $\;\Longrightarrow\; \mathbb{E}[|S|] \ge$ ⑤</div></div>
   <div class="gaps"><div class="gap"><div class="gaplab">①</div>
-<label class="opt"><input type="radio" name="A10_0" value="0"><span class="optbody">entferne einen der beiden Endknoten aus $S$</span></label>
-<label class="opt"><input type="radio" name="A10_0" value="1"><span class="optbody">entferne beide Endknoten aus $S$</span></label>
-<label class="opt"><input type="radio" name="A10_0" value="2"><span class="optbody">entferne die Kante aus $G$</span></label>
-<label class="opt"><input type="radio" name="A10_0" value="3"><span class="optbody">füge einen weiteren Knoten zu $S$ hinzu</span></label>
+<label class="opt"><input type="radio" name="A10_0" value="0"><span class="optbody">entferne die Kante aus $G$</span></label>
+<label class="opt"><input type="radio" name="A10_0" value="1"><span class="optbody">entferne einen der beiden Endknoten aus $S$</span></label>
+<label class="opt"><input type="radio" name="A10_0" value="2"><span class="optbody">füge einen weiteren Knoten zu $S$ hinzu</span></label>
+<label class="opt"><input type="radio" name="A10_0" value="3"><span class="optbody">entferne beide Endknoten aus $S$</span></label>
 </div>
 <div class="gap"><div class="gaplab">②</div>
-<label class="opt"><input type="radio" name="A10_1" value="0"><span class="optbody">$n \cdot p$</span></label>
-<label class="opt"><input type="radio" name="A10_1" value="1"><span class="optbody">$n \cdot p^2$</span></label>
-<label class="opt"><input type="radio" name="A10_1" value="2"><span class="optbody">$m \cdot p$</span></label>
+<label class="opt"><input type="radio" name="A10_1" value="0"><span class="optbody">$n \cdot p^2$</span></label>
+<label class="opt"><input type="radio" name="A10_1" value="1"><span class="optbody">$m \cdot p$</span></label>
+<label class="opt"><input type="radio" name="A10_1" value="2"><span class="optbody">$n \cdot p$</span></label>
 <label class="opt"><input type="radio" name="A10_1" value="3"><span class="optbody">$p$</span></label>
 </div>
 <div class="gap"><div class="gaplab">③</div>
-<label class="opt"><input type="radio" name="A10_2" value="0"><span class="optbody">$m \cdot p^2$</span></label>
-<label class="opt"><input type="radio" name="A10_2" value="1"><span class="optbody">$m \cdot p$</span></label>
-<label class="opt"><input type="radio" name="A10_2" value="2"><span class="optbody">$n \cdot p^2$</span></label>
-<label class="opt"><input type="radio" name="A10_2" value="3"><span class="optbody">$m^2 \cdot p$</span></label>
+<label class="opt"><input type="radio" name="A10_2" value="0"><span class="optbody">$m^2 \cdot p$</span></label>
+<label class="opt"><input type="radio" name="A10_2" value="1"><span class="optbody">$n \cdot p^2$</span></label>
+<label class="opt"><input type="radio" name="A10_2" value="2"><span class="optbody">$m \cdot p$</span></label>
+<label class="opt"><input type="radio" name="A10_2" value="3"><span class="optbody">$m \cdot p^2$</span></label>
 </div>
 <div class="gap"><div class="gaplab">④</div>
 <label class="opt"><input type="radio" name="A10_3" value="0"><span class="optbody">$\frac{n}{2m}$</span></label>
-<label class="opt"><input type="radio" name="A10_3" value="1"><span class="optbody">$\frac{m}{2n}$</span></label>
-<label class="opt"><input type="radio" name="A10_3" value="2"><span class="optbody">$\frac{1}{2}$</span></label>
+<label class="opt"><input type="radio" name="A10_3" value="1"><span class="optbody">$\frac{1}{2}$</span></label>
+<label class="opt"><input type="radio" name="A10_3" value="2"><span class="optbody">$\frac{m}{2n}$</span></label>
 <label class="opt"><input type="radio" name="A10_3" value="3"><span class="optbody">$\frac{n}{m}$</span></label>
 </div>
 <div class="gap"><div class="gaplab">⑤</div>
-<label class="opt"><input type="radio" name="A10_4" value="0"><span class="optbody">$\frac{n^2}{4m}$</span></label>
-<label class="opt"><input type="radio" name="A10_4" value="1"><span class="optbody">$\frac{n}{4m}$</span></label>
+<label class="opt"><input type="radio" name="A10_4" value="0"><span class="optbody">$\frac{n}{4m}$</span></label>
+<label class="opt"><input type="radio" name="A10_4" value="1"><span class="optbody">$\frac{m^2}{4n}$</span></label>
 <label class="opt"><input type="radio" name="A10_4" value="2"><span class="optbody">$\frac{n^2}{2m}$</span></label>
-<label class="opt"><input type="radio" name="A10_4" value="3"><span class="optbody">$\frac{m^2}{4n}$</span></label>
+<label class="opt"><input type="radio" name="A10_4" value="3"><span class="optbody">$\frac{n^2}{4m}$</span></label>
 </div>
 </div>
   <div class="row"><button class="check">Prüfen</button>
@@ -534,17 +534,17 @@ code{font-family:"SF Mono",Menlo,"Courier New",monospace;background:#eef0f2;padd
 </div>
 
 
-<div class="q" id="A11" data-type="gap" data-ans='[0, 0, 0, 0, 0]'>
+<div class="q" id="A11" data-type="gap" data-ans='[3, 0, 3, 1, 3]'>
   <div class="qhead"><span class="tag">Algorithmus vervollständigen</span>
     <span class="qnum">Aufgabe A11</span></div>
   <h3>Tarjan — Artikulationsknoten und Brücken</h3>
   <p class="lead">Wir führen eine DFS aus; $\mathrm{disc}[v]$ sei die Besuchsnummer (pre-order) von $v$.</p>
   <div class="code"><div class="cl">1: $\mathrm{low}[v] := $ kleinste $\mathrm{disc}$-Nummer, die von $v$ aus erreichbar ist über ①</div><div class="cl">2: Eine Baumkante $(u,v)$ ($v$ Kind von $u$) ist eine Brücke $\iff$ ②</div><div class="cl">3: Ein Nicht-Wurzel-Knoten $u$ mit Kind $v$ ist Artikulationsknoten $\iff$ ③</div><div class="cl">4: Die Wurzel ist Artikulationsknoten $\iff$ ④</div><div class="cl">5: Gesamtlaufzeit: ⑤</div></div>
   <div class="gaps"><div class="gap"><div class="gaplab">①</div>
-<label class="opt"><input type="radio" name="A11_0" value="0"><span class="optbody">beliebig viele Baumkanten nach unten und höchstens eine Restkante</span></label>
+<label class="opt"><input type="radio" name="A11_0" value="0"><span class="optbody">ausschliesslich Restkanten</span></label>
 <label class="opt"><input type="radio" name="A11_0" value="1"><span class="optbody">beliebig viele Kanten in beliebiger Reihenfolge</span></label>
 <label class="opt"><input type="radio" name="A11_0" value="2"><span class="optbody">genau eine Baumkante</span></label>
-<label class="opt"><input type="radio" name="A11_0" value="3"><span class="optbody">ausschliesslich Restkanten</span></label>
+<label class="opt"><input type="radio" name="A11_0" value="3"><span class="optbody">beliebig viele Baumkanten nach unten und höchstens eine Restkante</span></label>
 </div>
 <div class="gap"><div class="gaplab">②</div>
 <label class="opt"><input type="radio" name="A11_1" value="0"><span class="optbody">$\mathrm{low}[v] > \mathrm{disc}[u]$</span></label>
@@ -553,22 +553,22 @@ code{font-family:"SF Mono",Menlo,"Courier New",monospace;background:#eef0f2;padd
 <label class="opt"><input type="radio" name="A11_1" value="3"><span class="optbody">$\mathrm{low}[v] = \mathrm{disc}[u]$</span></label>
 </div>
 <div class="gap"><div class="gaplab">③</div>
-<label class="opt"><input type="radio" name="A11_2" value="0"><span class="optbody">$\mathrm{low}[v] \ge \mathrm{disc}[u]$</span></label>
-<label class="opt"><input type="radio" name="A11_2" value="1"><span class="optbody">$\mathrm{low}[v] > \mathrm{disc}[u]$</span></label>
+<label class="opt"><input type="radio" name="A11_2" value="0"><span class="optbody">$\mathrm{low}[v] > \mathrm{disc}[u]$</span></label>
+<label class="opt"><input type="radio" name="A11_2" value="1"><span class="optbody">$u$ mehr als ein Kind hat</span></label>
 <label class="opt"><input type="radio" name="A11_2" value="2"><span class="optbody">$\mathrm{low}[v] < \mathrm{disc}[u]$</span></label>
-<label class="opt"><input type="radio" name="A11_2" value="3"><span class="optbody">$u$ mehr als ein Kind hat</span></label>
+<label class="opt"><input type="radio" name="A11_2" value="3"><span class="optbody">$\mathrm{low}[v] \ge \mathrm{disc}[u]$</span></label>
 </div>
 <div class="gap"><div class="gaplab">④</div>
-<label class="opt"><input type="radio" name="A11_3" value="0"><span class="optbody">sie mehr als ein Kind im DFS-Baum hat</span></label>
-<label class="opt"><input type="radio" name="A11_3" value="1"><span class="optbody">sie mindestens ein Kind hat</span></label>
-<label class="opt"><input type="radio" name="A11_3" value="2"><span class="optbody">$\mathrm{low}[\text{Wurzel}] = 0$ gilt</span></label>
-<label class="opt"><input type="radio" name="A11_3" value="3"><span class="optbody">ihr Grad $\ge 3$ ist</span></label>
+<label class="opt"><input type="radio" name="A11_3" value="0"><span class="optbody">ihr Grad $\ge 3$ ist</span></label>
+<label class="opt"><input type="radio" name="A11_3" value="1"><span class="optbody">sie mehr als ein Kind im DFS-Baum hat</span></label>
+<label class="opt"><input type="radio" name="A11_3" value="2"><span class="optbody">sie mindestens ein Kind hat</span></label>
+<label class="opt"><input type="radio" name="A11_3" value="3"><span class="optbody">$\mathrm{low}[\text{Wurzel}] = 0$ gilt</span></label>
 </div>
 <div class="gap"><div class="gaplab">⑤</div>
-<label class="opt"><input type="radio" name="A11_4" value="0"><span class="optbody">$O(|V|+|E|)$</span></label>
+<label class="opt"><input type="radio" name="A11_4" value="0"><span class="optbody">$O(|V|^2)$</span></label>
 <label class="opt"><input type="radio" name="A11_4" value="1"><span class="optbody">$O(|V|\cdot|E|)$</span></label>
-<label class="opt"><input type="radio" name="A11_4" value="2"><span class="optbody">$O(|V|^2)$</span></label>
-<label class="opt"><input type="radio" name="A11_4" value="3"><span class="optbody">$O(|E| \log |V|)$</span></label>
+<label class="opt"><input type="radio" name="A11_4" value="2"><span class="optbody">$O(|E| \log |V|)$</span></label>
+<label class="opt"><input type="radio" name="A11_4" value="3"><span class="optbody">$O(|V|+|E|)$</span></label>
 </div>
 </div>
   <div class="row"><button class="check">Prüfen</button>
@@ -582,7 +582,7 @@ code{font-family:"SF Mono",Menlo,"Courier New",monospace;background:#eef0f2;padd
 </div>
 
 
-<div class="q" id="A12" data-type="gap" data-ans='[0, 0, 0, 0, 0]'>
+<div class="q" id="A12" data-type="gap" data-ans='[0, 3, 0, 0, 0]'>
   <div class="qhead"><span class="tag">Algorithmus vervollständigen</span>
     <span class="qnum">Aufgabe A12</span></div>
   <h3>Hopcroft-Karp</h3>
@@ -592,26 +592,26 @@ code{font-family:"SF Mono",Menlo,"Courier New",monospace;background:#eef0f2;padd
   <div class="gaps"><div class="gap"><div class="gaplab">①</div>
 <label class="opt"><input type="radio" name="A12_0" value="0"><span class="optbody">kürzesten $M$-augmentierenden Pfades</span></label>
 <label class="opt"><input type="radio" name="A12_0" value="1"><span class="optbody">längsten $M$-augmentierenden Pfades</span></label>
-<label class="opt"><input type="radio" name="A12_0" value="2"><span class="optbody">beliebigen $M$-augmentierenden Pfades</span></label>
-<label class="opt"><input type="radio" name="A12_0" value="3"><span class="optbody">kürzesten Pfades in $G$</span></label>
+<label class="opt"><input type="radio" name="A12_0" value="2"><span class="optbody">kürzesten Pfades in $G$</span></label>
+<label class="opt"><input type="radio" name="A12_0" value="3"><span class="optbody">beliebigen $M$-augmentierenden Pfades</span></label>
 </div>
 <div class="gap"><div class="gaplab">②</div>
-<label class="opt"><input type="radio" name="A12_1" value="0"><span class="optbody">inklusionsmaximale</span></label>
+<label class="opt"><input type="radio" name="A12_1" value="0"><span class="optbody">einelementige</span></label>
 <label class="opt"><input type="radio" name="A12_1" value="1"><span class="optbody">kardinalitätsminimale</span></label>
-<label class="opt"><input type="radio" name="A12_1" value="2"><span class="optbody">einelementige</span></label>
-<label class="opt"><input type="radio" name="A12_1" value="3"><span class="optbody">beliebige nicht-leere</span></label>
+<label class="opt"><input type="radio" name="A12_1" value="2"><span class="optbody">beliebige nicht-leere</span></label>
+<label class="opt"><input type="radio" name="A12_1" value="3"><span class="optbody">inklusionsmaximale</span></label>
 </div>
 <div class="gap"><div class="gaplab">③</div>
 <label class="opt"><input type="radio" name="A12_2" value="0"><span class="optbody">$M \leftarrow M \oplus P$</span></label>
-<label class="opt"><input type="radio" name="A12_2" value="1"><span class="optbody">$M \leftarrow M \cup P$</span></label>
+<label class="opt"><input type="radio" name="A12_2" value="1"><span class="optbody">$M \leftarrow P$</span></label>
 <label class="opt"><input type="radio" name="A12_2" value="2"><span class="optbody">$M \leftarrow M \cap P$</span></label>
-<label class="opt"><input type="radio" name="A12_2" value="3"><span class="optbody">$M \leftarrow P$</span></label>
+<label class="opt"><input type="radio" name="A12_2" value="3"><span class="optbody">$M \leftarrow M \cup P$</span></label>
 </div>
 <div class="gap"><div class="gaplab">④</div>
 <label class="opt"><input type="radio" name="A12_3" value="0"><span class="optbody">$O(\sqrt{|V|})$</span></label>
-<label class="opt"><input type="radio" name="A12_3" value="1"><span class="optbody">$O(|V|)$</span></label>
-<label class="opt"><input type="radio" name="A12_3" value="2"><span class="optbody">$O(\log |V|)$</span></label>
-<label class="opt"><input type="radio" name="A12_3" value="3"><span class="optbody">$O(|E|)$</span></label>
+<label class="opt"><input type="radio" name="A12_3" value="1"><span class="optbody">$O(\log |V|)$</span></label>
+<label class="opt"><input type="radio" name="A12_3" value="2"><span class="optbody">$O(|E|)$</span></label>
+<label class="opt"><input type="radio" name="A12_3" value="3"><span class="optbody">$O(|V|)$</span></label>
 </div>
 <div class="gap"><div class="gaplab">⑤</div>
 <label class="opt"><input type="radio" name="A12_4" value="0"><span class="optbody">$O(\sqrt{|V|}\cdot(|V|+|E|))$</span></label>
@@ -629,19 +629,672 @@ code{font-family:"SF Mono",Menlo,"Courier New",monospace;background:#eef0f2;padd
  Augmentierungen fehlen, kommt man auf insgesamt $O(\sqrt{|V|})$ Phasen à $O(|V|+|E|)$ (BFS/DFS).</div>
 </div>
 
+
+<div class="q" id="A13" data-type="gap" data-ans='[2, 1, 1, 0, 2, 3]'>
+  <div class="qhead"><span class="tag">Algorithmus vervollständigen</span>
+    <span class="qnum">Aufgabe A13</span></div>
+  <h3>2-Approximation für metrisches TSP</h3>
+  <p class="lead">$K_n$ mit Längenfunktion $l$, die die Dreiecksungleichung erfüllt.</p>
+  <div class="code"><div class="cl">1: $T \leftarrow$ ①</div><div class="cl">2: ②</div><div class="cl">3: $W \leftarrow$ ③</div><div class="cl">4: $C \leftarrow$ ④</div><div class="cl">5: return $C$</div></div>
+  <div class="gaps"><div class="gap"><div class="gaplab">①</div>
+<label class="opt"><input type="radio" name="A13_0" value="0"><span class="optbody">ein Hamiltonpfad minimaler Länge</span></label>
+<label class="opt"><input type="radio" name="A13_0" value="1"><span class="optbody">ein maximaler Spannbaum von $K_n$</span></label>
+<label class="opt"><input type="radio" name="A13_0" value="2"><span class="optbody">ein minimaler Spannbaum (MST) von $K_n$</span></label>
+<label class="opt"><input type="radio" name="A13_0" value="3"><span class="optbody">eine Eulertour von $K_n$</span></label>
+</div>
+<div class="gap"><div class="gaplab">②</div>
+<label class="opt"><input type="radio" name="A13_1" value="0"><span class="optbody">entferne die schwerste Kante von $T$</span></label>
+<label class="opt"><input type="radio" name="A13_1" value="1"><span class="optbody">verdopple jede Kante von $T$</span></label>
+<label class="opt"><input type="radio" name="A13_1" value="2"><span class="optbody">füge ein perfektes Matching auf allen Knoten hinzu</span></label>
+<label class="opt"><input type="radio" name="A13_1" value="3"><span class="optbody">verdopple nur die Kanten zwischen Knoten ungeraden Grades</span></label>
+</div>
+<div class="gap"><div class="gaplab">③</div>
+<label class="opt"><input type="radio" name="A13_2" value="0"><span class="optbody">ein Hamiltonkreis von $K_n$</span></label>
+<label class="opt"><input type="radio" name="A13_2" value="1"><span class="optbody">eine Eulertour des verdoppelten Baums</span></label>
+<label class="opt"><input type="radio" name="A13_2" value="2"><span class="optbody">ein DFS-Baum von $T$</span></label>
+<label class="opt"><input type="radio" name="A13_2" value="3"><span class="optbody">ein kürzester $s$-$t$-Pfad</span></label>
+</div>
+<div class="gap"><div class="gaplab">④</div>
+<label class="opt"><input type="radio" name="A13_3" value="0"><span class="optbody">der Hamiltonkreis, der beim Durchlaufen von $W$ mit Abkürzungen entsteht</span></label>
+<label class="opt"><input type="radio" name="A13_3" value="1"><span class="optbody">der Spannbaum $T$ selbst</span></label>
+<label class="opt"><input type="radio" name="A13_3" value="2"><span class="optbody">der Kreis $W$ selbst</span></label>
+<label class="opt"><input type="radio" name="A13_3" value="3"><span class="optbody">ein minimales perfektes Matching auf den Knoten ungeraden Grades</span></label>
+</div>
+<div class="gap"><div class="gaplab">⑤ Approximationsgüte</div>
+<label class="opt"><input type="radio" name="A13_4" value="0"><span class="optbody">$l(C) \le \tfrac32\,\mathrm{opt}$</span></label>
+<label class="opt"><input type="radio" name="A13_4" value="1"><span class="optbody">$l(C) \le \tfrac43\,\mathrm{opt}$</span></label>
+<label class="opt"><input type="radio" name="A13_4" value="2"><span class="optbody">$l(C) \le 2\,\mathrm{opt}$</span></label>
+<label class="opt"><input type="radio" name="A13_4" value="3"><span class="optbody">$l(C) \le \mathrm{opt}\cdot\log n$</span></label>
+</div>
+<div class="gap"><div class="gaplab">⑥ Laufzeit</div>
+<label class="opt"><input type="radio" name="A13_5" value="0"><span class="optbody">$O(n\log n)$</span></label>
+<label class="opt"><input type="radio" name="A13_5" value="1"><span class="optbody">$O(n^3)$</span></label>
+<label class="opt"><input type="radio" name="A13_5" value="2"><span class="optbody">$O(2^n)$</span></label>
+<label class="opt"><input type="radio" name="A13_5" value="3"><span class="optbody">$O(n^2)$</span></label>
+</div>
+</div>
+  <div class="row"><button class="check">Prüfen</button>
+    <span class="verdict"></span></div>
+  <div class="sol"><b>Lösung.</b> Es gilt $l(T) \le \mathrm{opt}$, denn entfernt man aus dem optimalen Hamiltonkreis eine Kante,
+ erhält man einen Spannbaum. Verdoppeln liefert $l(W) = 2l(T) \le 2\,\mathrm{opt}$, und die Abkürzungen
+ verschlechtern wegen der Dreiecksungleichung nichts. Der Unterschied zu Christofides: dort wird statt der
+ Verdopplung ein minimales perfektes Matching auf den Knoten ungeraden Grades ergänzt, was auf
+ $\frac32$ statt $2$ führt — dafür aber $O(n^3)$ kostet.</div>
+</div>
+
+
+<div class="q" id="A14" data-type="gap" data-ans='[2, 0, 3, 3, 0]'>
+  <div class="qhead"><span class="tag">Algorithmus vervollständigen</span>
+    <span class="qnum">Aufgabe A14</span></div>
+  <h3>Eulertour finden in $O(|E|)$</h3>
+  <p class="lead">$G$ sei zusammenhängend, alle Knotengrade seien gerade.</p>
+  <div class="code"><div class="cl">1: ①</div><div class="cl">2: while ② do</div><div class="cl">3: $\quad$ ③</div><div class="cl">4: $\quad$ ④</div><div class="cl">5: return $W$</div></div>
+  <div class="gaps"><div class="gap"><div class="gaplab">①</div>
+<label class="opt"><input type="radio" name="A14_0" value="0"><span class="optbody">finde einen kürzesten Kreis und setze $W$ auf diesen</span></label>
+<label class="opt"><input type="radio" name="A14_0" value="1"><span class="optbody">setze $W$ auf einen beliebigen Knoten</span></label>
+<label class="opt"><input type="radio" name="A14_0" value="2"><span class="optbody">finde einen beliebigen Kreis, markiere seine Kanten und setze $W$ auf diesen Kreis</span></label>
+<label class="opt"><input type="radio" name="A14_0" value="3"><span class="optbody">berechne einen Spannbaum und setze $W$ auf dessen Kanten</span></label>
+</div>
+<div class="gap"><div class="gaplab">②</div>
+<label class="opt"><input type="radio" name="A14_1" value="0"><span class="optbody">es noch unmarkierte Kanten gibt</span></label>
+<label class="opt"><input type="radio" name="A14_1" value="1"><span class="optbody">$W$ noch kein Hamiltonkreis ist</span></label>
+<label class="opt"><input type="radio" name="A14_1" value="2"><span class="optbody">der Restgraph noch zusammenhängend ist</span></label>
+<label class="opt"><input type="radio" name="A14_1" value="3"><span class="optbody">es noch unbesuchte Knoten gibt</span></label>
+</div>
+<div class="gap"><div class="gaplab">③</div>
+<label class="opt"><input type="radio" name="A14_2" value="0"><span class="optbody">wähle einen beliebigen Knoten des Graphen</span></label>
+<label class="opt"><input type="radio" name="A14_2" value="1"><span class="optbody">wähle einen Knoten, der noch nicht auf $W$ liegt</span></label>
+<label class="opt"><input type="radio" name="A14_2" value="2"><span class="optbody">wähle den Knoten mit dem grössten Grad</span></label>
+<label class="opt"><input type="radio" name="A14_2" value="3"><span class="optbody">wähle einen Knoten $v$ auf $W$ mit noch unmarkierten inzidenten Kanten</span></label>
+</div>
+<div class="gap"><div class="gaplab">④</div>
+<label class="opt"><input type="radio" name="A14_3" value="0"><span class="optbody">starte die Suche mit einem komplett neuen Kreis von vorne</span></label>
+<label class="opt"><input type="radio" name="A14_3" value="1"><span class="optbody">hänge die unmarkierten Kanten von $v$ hinten an $W$ an</span></label>
+<label class="opt"><input type="radio" name="A14_3" value="2"><span class="optbody">lösche $v$ aus $W$</span></label>
+<label class="opt"><input type="radio" name="A14_3" value="3"><span class="optbody">finde von $v$ aus einen neuen Kreis aus unmarkierten Kanten und füge ihn bei $v$ in $W$ ein</span></label>
+</div>
+<div class="gap"><div class="gaplab">⑤ Laufzeit</div>
+<label class="opt"><input type="radio" name="A14_4" value="0"><span class="optbody">$O(|E|)$</span></label>
+<label class="opt"><input type="radio" name="A14_4" value="1"><span class="optbody">$O(|E|\log|V|)$</span></label>
+<label class="opt"><input type="radio" name="A14_4" value="2"><span class="optbody">$O(|V|\cdot|E|)$</span></label>
+<label class="opt"><input type="radio" name="A14_4" value="3"><span class="optbody">$O(|V|^2)$</span></label>
+</div>
+</div>
+  <div class="row"><button class="check">Prüfen</button>
+    <span class="verdict"></span></div>
+  <div class="sol"><b>Lösung.</b> Der Schlüssel ist: Entfernt man aus dem Graphen die Kanten eines Kreises, so bleiben alle Grade
+ gerade (jeder Kreis nimmt an jedem Knoten eine gerade Anzahl Kanten weg). Von einem Knoten $v$ mit
+ unmarkierten Kanten aus kann man deshalb immer wieder loslaufen und kommt zwangsläufig zu $v$ zurück.
+ Jede Kante wird genau einmal markiert $\Rightarrow O(|E|)$. Achtung: „alle Grade gerade + zusammenhängend"
+ ist hinreichend, die Rückrichtung ohne Zusammenhang gilt nicht (Dreieck plus isolierter Knoten).</div>
+</div>
+
+
+<div class="q" id="A15" data-type="gap" data-ans='[0, 1, 1, 1, 0]'>
+  <div class="qhead"><span class="tag">Algorithmus vervollständigen</span>
+    <span class="qnum">Aufgabe A15</span></div>
+  <h3>Greedy-Matching</h3>
+  <p class="lead">$G=(V,E)$ sei ein beliebiger Graph.</p>
+  <div class="code"><div class="cl">1: $M \leftarrow \emptyset$</div><div class="cl">2: while ① do</div><div class="cl">3: $\quad$ wähle ②</div><div class="cl">4: $\quad M \leftarrow M \cup \{e\}$</div><div class="cl">5: $\quad$ ③</div><div class="cl">6: return $M$</div></div>
+  <div class="gaps"><div class="gap"><div class="gaplab">①</div>
+<label class="opt"><input type="radio" name="A15_0" value="0"><span class="optbody">$E \neq \emptyset$</span></label>
+<label class="opt"><input type="radio" name="A15_0" value="1"><span class="optbody">es gibt einen augmentierenden Pfad</span></label>
+<label class="opt"><input type="radio" name="A15_0" value="2"><span class="optbody">$|M| < \frac{|V|}{2}$</span></label>
+<label class="opt"><input type="radio" name="A15_0" value="3"><span class="optbody">$M$ ist nicht perfekt</span></label>
+</div>
+<div class="gap"><div class="gaplab">②</div>
+<label class="opt"><input type="radio" name="A15_1" value="0"><span class="optbody">eine Kante $e$ mit minimalem Gewicht</span></label>
+<label class="opt"><input type="radio" name="A15_1" value="1"><span class="optbody">eine beliebige Kante $e \in E$</span></label>
+<label class="opt"><input type="radio" name="A15_1" value="2"><span class="optbody">eine uniform zufällige Kante $e$ eines Kreises</span></label>
+<label class="opt"><input type="radio" name="A15_1" value="3"><span class="optbody">eine Kante $e$, deren Endknoten maximalen Grad haben</span></label>
+</div>
+<div class="gap"><div class="gaplab">③</div>
+<label class="opt"><input type="radio" name="A15_2" value="0"><span class="optbody">lösche nur $e$ aus $G$</span></label>
+<label class="opt"><input type="radio" name="A15_2" value="1"><span class="optbody">lösche $e$ und alle zu $e$ inzidenten Kanten aus $G$</span></label>
+<label class="opt"><input type="radio" name="A15_2" value="2"><span class="optbody">lösche beide Endknoten samt Nachbarschaft</span></label>
+<label class="opt"><input type="radio" name="A15_2" value="3"><span class="optbody">lösche alle Kanten des aktuellen Blocks</span></label>
+</div>
+<div class="gap"><div class="gaplab">④ Ergebnis</div>
+<label class="opt"><input type="radio" name="A15_3" value="0"><span class="optbody">ein inklusionsmaximales Matching mit $|M| \ge \frac23|M_{\max}|$</span></label>
+<label class="opt"><input type="radio" name="A15_3" value="1"><span class="optbody">ein inklusionsmaximales Matching mit $|M| \ge \frac12|M_{\max}|$</span></label>
+<label class="opt"><input type="radio" name="A15_3" value="2"><span class="optbody">ein perfektes Matching, falls eines existiert</span></label>
+<label class="opt"><input type="radio" name="A15_3" value="3"><span class="optbody">stets ein kardinalitätsmaximales Matching</span></label>
+</div>
+<div class="gap"><div class="gaplab">⑤ Laufzeit</div>
+<label class="opt"><input type="radio" name="A15_4" value="0"><span class="optbody">$O(|E|)$</span></label>
+<label class="opt"><input type="radio" name="A15_4" value="1"><span class="optbody">$O(|V|\cdot|E|)$</span></label>
+<label class="opt"><input type="radio" name="A15_4" value="2"><span class="optbody">$O(\sqrt{|V|}\cdot|E|)$</span></label>
+<label class="opt"><input type="radio" name="A15_4" value="3"><span class="optbody">$O(|V|^3)$</span></label>
+</div>
+</div>
+  <div class="row"><button class="check">Prüfen</button>
+    <span class="verdict"></span></div>
+  <div class="sol"><b>Lösung.</b> Da nach jedem Schritt alle inzidenten Kanten verschwinden, ist $M$ am Ende inklusionsmaximal.
+ Jede Greedy-Kante kann höchstens zwei Kanten eines kardinalitätsmaximalen Matchings „blockieren", also
+ $|M_{\text{inkl.max}}| \ge \frac12 |M_{\text{kard.max}}|$. Die Schranke ist scharf: Beim Pfad mit drei
+ Kanten kann Greedy die mittlere Kante wählen und endet mit $|M|=1$ statt $2$.</div>
+</div>
+
+
+<div class="q" id="A16" data-type="gap" data-ans='[1, 3, 3, 0, 3, 1]'>
+  <div class="qhead"><span class="tag">Algorithmus vervollständigen</span>
+    <span class="qnum">Aufgabe A16</span></div>
+  <h3>Perfektes Matching in $2^k$-regulären bipartiten Graphen</h3>
+  <p class="lead">$G=(A \uplus B, E)$ sei bipartit und $2^k$-regulär. Gesucht ist ein perfektes Matching in
+ $O(|E|)$.</p>
+  <div class="code"><div class="cl">1: while ① do</div><div class="cl">2: $\quad$ // ②</div><div class="cl">3: $\quad$ ③</div><div class="cl">4: $\quad$ ④</div><div class="cl">5: return ⑤</div></div>
+  <div class="gaps"><div class="gap"><div class="gaplab">①</div>
+<label class="opt"><input type="radio" name="A16_0" value="0"><span class="optbody">der Graph noch zusammenhängend ist</span></label>
+<label class="opt"><input type="radio" name="A16_0" value="1"><span class="optbody">der Graph noch nicht $1$-regulär ist</span></label>
+<label class="opt"><input type="radio" name="A16_0" value="2"><span class="optbody">es noch augmentierende Pfade gibt</span></label>
+<label class="opt"><input type="radio" name="A16_0" value="3"><span class="optbody">noch Knoten unüberdeckt sind</span></label>
+</div>
+<div class="gap"><div class="gaplab">②</div>
+<label class="opt"><input type="radio" name="A16_1" value="0"><span class="optbody">jede Komponente ist ein Baum</span></label>
+<label class="opt"><input type="radio" name="A16_1" value="1"><span class="optbody">der Graph ist vollständig bipartit</span></label>
+<label class="opt"><input type="radio" name="A16_1" value="2"><span class="optbody">jede Komponente enthält einen Hamiltonkreis</span></label>
+<label class="opt"><input type="radio" name="A16_1" value="3"><span class="optbody">jede Zusammenhangskomponente ist eulersch, da alle Grade gerade sind</span></label>
+</div>
+<div class="gap"><div class="gaplab">③</div>
+<label class="opt"><input type="radio" name="A16_2" value="0"><span class="optbody">bestimme ein inklusionsmaximales Matching</span></label>
+<label class="opt"><input type="radio" name="A16_2" value="1"><span class="optbody">bestimme einen kürzesten Kreis</span></label>
+<label class="opt"><input type="radio" name="A16_2" value="2"><span class="optbody">bestimme einen Spannbaum</span></label>
+<label class="opt"><input type="radio" name="A16_2" value="3"><span class="optbody">bestimme in jeder Komponente eine Eulertour</span></label>
+</div>
+<div class="gap"><div class="gaplab">④</div>
+<label class="opt"><input type="radio" name="A16_3" value="0"><span class="optbody">entferne entlang der Eulertour jede zweite Kante</span></label>
+<label class="opt"><input type="radio" name="A16_3" value="1"><span class="optbody">entferne entlang der Eulertour jede dritte Kante</span></label>
+<label class="opt"><input type="radio" name="A16_3" value="2"><span class="optbody">verdopple die Kanten der Eulertour</span></label>
+<label class="opt"><input type="radio" name="A16_3" value="3"><span class="optbody">entferne alle Kanten der Eulertour</span></label>
+</div>
+<div class="gap"><div class="gaplab">⑤</div>
+<label class="opt"><input type="radio" name="A16_4" value="0"><span class="optbody">die Menge der Knoten mit Grad 1</span></label>
+<label class="opt"><input type="radio" name="A16_4" value="1"><span class="optbody">das grösste gefundene inklusionsmaximale Matching</span></label>
+<label class="opt"><input type="radio" name="A16_4" value="2"><span class="optbody">die Eulertour selbst</span></label>
+<label class="opt"><input type="radio" name="A16_4" value="3"><span class="optbody">die verbliebene Kantenmenge — sie ist $1$-regulär und damit ein perfektes Matching</span></label>
+</div>
+<div class="gap"><div class="gaplab">⑥ Laufzeit</div>
+<label class="opt"><input type="radio" name="A16_5" value="0"><span class="optbody">$O(|V|\cdot|E|)$</span></label>
+<label class="opt"><input type="radio" name="A16_5" value="1"><span class="optbody">$O(|E|)$, da $|E|+\frac{|E|}2+\frac{|E|}4+\dots = 2|E|$</span></label>
+<label class="opt"><input type="radio" name="A16_5" value="2"><span class="optbody">$O(|E|\log|E|)$, da $k=\log(\text{Grad})$ Runden</span></label>
+<label class="opt"><input type="radio" name="A16_5" value="3"><span class="optbody">$O(\sqrt{|V|}\cdot(|V|+|E|))$</span></label>
+</div>
+</div>
+  <div class="row"><button class="check">Prüfen</button>
+    <span class="verdict"></span></div>
+  <div class="sol"><b>Lösung.</b> In jeder Runde halbiert sich der Grad: Ein $2^j$-regulärer Graph hat nur gerade Grade, jede
+ Komponente ist also eulersch; entfernt man entlang der Eulertour jede zweite Kante, bleibt jeder Knoten
+ mit genau der Hälfte seiner Kanten zurück, der Graph ist $2^{j-1}$-regulär. Nach $k$ Runden ist er
+ $1$-regulär — und ein $1$-regulärer bipartiter Graph <b>ist</b> ein perfektes Matching. Die Kosten bilden
+ eine geometrische Reihe und summieren sich zu $O(|E|)$. Allgemein garantiert der Satz von Frobenius für
+ jeden $k$-regulären bipartiten Graphen ein perfektes Matching, aber nur für Zweierpotenzen ist dieser
+ Trick anwendbar.</div>
+</div>
+
+
+<div class="q" id="A17" data-type="gap" data-ans='[0, 3, 1, 2, 0, 1]'>
+  <div class="qhead"><span class="tag">Algorithmus vervollständigen</span>
+    <span class="qnum">Aufgabe A17</span></div>
+  <h3>Augmentierenden Pfad in bipartiten Graphen per BFS</h3>
+  <p class="lead">$G=(A \uplus B, E)$ sei bipartit, $M$ ein Matching.</p>
+  <div class="code"><div class="cl">1: starte BFS ①</div><div class="cl">2: von $A$ nach $B$: ②</div><div class="cl">3: von $B$ nach $A$: ③</div><div class="cl">4: Abbruch, sobald ④</div><div class="cl">5: danach ⑤</div></div>
+  <div class="gaps"><div class="gap"><div class="gaplab">①</div>
+<label class="opt"><input type="radio" name="A17_0" value="0"><span class="optbody">gleichzeitig von allen von $M$ nicht überdeckten Knoten in $A$</span></label>
+<label class="opt"><input type="radio" name="A17_0" value="1"><span class="optbody">von den Knoten mit maximalem Grad</span></label>
+<label class="opt"><input type="radio" name="A17_0" value="2"><span class="optbody">von einem beliebigen Knoten in $A$</span></label>
+<label class="opt"><input type="radio" name="A17_0" value="3"><span class="optbody">von allen von $M$ überdeckten Knoten in $A$</span></label>
+</div>
+<div class="gap"><div class="gaplab">②</div>
+<label class="opt"><input type="radio" name="A17_1" value="0"><span class="optbody">benutze nur Kanten zu bereits besuchten Knoten</span></label>
+<label class="opt"><input type="radio" name="A17_1" value="1"><span class="optbody">benutze alle Kanten</span></label>
+<label class="opt"><input type="radio" name="A17_1" value="2"><span class="optbody">benutze nur Kanten aus $M$</span></label>
+<label class="opt"><input type="radio" name="A17_1" value="3"><span class="optbody">benutze nur Kanten, die nicht in $M$ liegen</span></label>
+</div>
+<div class="gap"><div class="gaplab">③</div>
+<label class="opt"><input type="radio" name="A17_2" value="0"><span class="optbody">benutze alle Kanten</span></label>
+<label class="opt"><input type="radio" name="A17_2" value="1"><span class="optbody">benutze nur Kanten aus $M$</span></label>
+<label class="opt"><input type="radio" name="A17_2" value="2"><span class="optbody">benutze nur Kanten, die nicht in $M$ liegen</span></label>
+<label class="opt"><input type="radio" name="A17_2" value="3"><span class="optbody">gehe zurück zum Startknoten</span></label>
+</div>
+<div class="gap"><div class="gaplab">④</div>
+<label class="opt"><input type="radio" name="A17_3" value="0"><span class="optbody">alle Knoten in $B$ besucht wurden</span></label>
+<label class="opt"><input type="radio" name="A17_3" value="1"><span class="optbody">die BFS-Tiefe $\frac{|V|}2$ erreicht</span></label>
+<label class="opt"><input type="radio" name="A17_3" value="2"><span class="optbody">ein von $M$ nicht überdeckter Knoten in $B$ erreicht wird</span></label>
+<label class="opt"><input type="radio" name="A17_3" value="3"><span class="optbody">ein bereits besuchter Knoten erreicht wird</span></label>
+</div>
+<div class="gap"><div class="gaplab">⑤</div>
+<label class="opt"><input type="radio" name="A17_4" value="0"><span class="optbody">$M \leftarrow M \oplus P$ — das Matching wächst um genau eine Kante</span></label>
+<label class="opt"><input type="radio" name="A17_4" value="1"><span class="optbody">$M \leftarrow P$</span></label>
+<label class="opt"><input type="radio" name="A17_4" value="2"><span class="optbody">$M \leftarrow M \cup P$</span></label>
+<label class="opt"><input type="radio" name="A17_4" value="3"><span class="optbody">$M \leftarrow M \setminus P$</span></label>
+</div>
+<div class="gap"><div class="gaplab">⑥ Laufzeit</div>
+<label class="opt"><input type="radio" name="A17_5" value="0"><span class="optbody">$O(|V|^2)$</span></label>
+<label class="opt"><input type="radio" name="A17_5" value="1"><span class="optbody">$O(|V|+|E|)$</span></label>
+<label class="opt"><input type="radio" name="A17_5" value="2"><span class="optbody">$O(|V|\cdot|E|)$</span></label>
+<label class="opt"><input type="radio" name="A17_5" value="3"><span class="optbody">$O(|E|\log|V|)$</span></label>
+</div>
+</div>
+  <div class="row"><button class="check">Prüfen</button>
+    <span class="verdict"></span></div>
+  <div class="sol"><b>Lösung.</b> Ein augmentierender Pfad wechselt zwischen Nicht-Matching- und Matching-Kanten und beginnt <b>und</b>
+ endet in unüberdeckten Knoten — deshalb hat er ungerade Länge und beginnt mit einer Nicht-Matching-Kante.
+ Die schichtweise BFS von allen freien $A$-Knoten aus findet einen kürzesten solchen Pfad in Linearzeit;
+ genau darauf setzt Hopcroft-Karp auf, das pro Phase gleich eine ganze inklusionsmaximale Menge
+ knotendisjunkter kürzester Pfade augmentiert.</div>
+</div>
+
+
+<div class="q" id="A18" data-type="gap" data-ans='[1, 1, 0, 2, 0]'>
+  <div class="qhead"><span class="tag">Algorithmus vervollständigen</span>
+    <span class="qnum">Aufgabe A18</span></div>
+  <h3>Greedy-Färbung und Smallest-Last-Heuristik</h3>
+  <p class="lead">Knotenfärbung von $G$ mit Maximalgrad $\Delta(G)$.</p>
+  <div class="code"><div class="cl">1: wähle eine Reihenfolge $v_1,\dots,v_n$</div><div class="cl">2: $c[v_1] \leftarrow 1$</div><div class="cl">3: for $i=2$ to $n$: $\;c[v_i] \leftarrow$ ①</div></div>
+  <div class="gaps"><div class="gap"><div class="gaplab">①</div>
+<label class="opt"><input type="radio" name="A18_0" value="0"><span class="optbody">$\max\{k : k \neq c(u)$ für alle Nachbarn $u\}$</span></label>
+<label class="opt"><input type="radio" name="A18_0" value="1"><span class="optbody">$\min\{k : k \neq c(u)$ für alle bereits gefärbten Nachbarn $u\}$</span></label>
+<label class="opt"><input type="radio" name="A18_0" value="2"><span class="optbody">$\min\{k : k \neq c(u)$ für alle Knoten $u$ mit $u \neq v_i\}$</span></label>
+<label class="opt"><input type="radio" name="A18_0" value="3"><span class="optbody">eine zufällige noch nicht verwendete Farbe</span></label>
+</div>
+<div class="gap"><div class="gaplab">② Schranke</div>
+<label class="opt"><input type="radio" name="A18_1" value="0"><span class="optbody">$C(G) \le 2\chi(G)$</span></label>
+<label class="opt"><input type="radio" name="A18_1" value="1"><span class="optbody">$\chi(G) \le C(G) \le \Delta(G)+1$</span></label>
+<label class="opt"><input type="radio" name="A18_1" value="2"><span class="optbody">$C(G) = \chi(G)$ für jede Reihenfolge</span></label>
+<label class="opt"><input type="radio" name="A18_1" value="3"><span class="optbody">$\chi(G) \le C(G) \le \Delta(G)$</span></label>
+</div>
+<div class="gap"><div class="gaplab">③ Smallest Last</div>
+<label class="opt"><input type="radio" name="A18_2" value="0"><span class="optbody">entferne wiederholt einen Knoten kleinsten Grades und setze ihn ans Ende; färbe in umgekehrter Reihenfolge</span></label>
+<label class="opt"><input type="radio" name="A18_2" value="1"><span class="optbody">färbe die Knoten in BFS-Reihenfolge</span></label>
+<label class="opt"><input type="radio" name="A18_2" value="2"><span class="optbody">entferne wiederholt einen Knoten grössten Grades und setze ihn ans Ende</span></label>
+<label class="opt"><input type="radio" name="A18_2" value="3"><span class="optbody">sortiere die Knoten absteigend nach Grad und färbe in dieser Reihenfolge</span></label>
+</div>
+<div class="gap"><div class="gaplab">④ Garantie</div>
+<label class="opt"><input type="radio" name="A18_3" value="0"><span class="optbody">es genügen stets $\chi(G)$ Farben</span></label>
+<label class="opt"><input type="radio" name="A18_3" value="1"><span class="optbody">hat jeder Restgraph einen Knoten vom Grad $\le k$, so genügen $k$ Farben</span></label>
+<label class="opt"><input type="radio" name="A18_3" value="2"><span class="optbody">hat jeder Restgraph einen Knoten vom Grad $\le k$, so genügen $k+1$ Farben</span></label>
+<label class="opt"><input type="radio" name="A18_3" value="3"><span class="optbody">es genügen stets $\frac{\Delta(G)}2+1$ Farben</span></label>
+</div>
+<div class="gap"><div class="gaplab">⑤ Planare Graphen</div>
+<label class="opt"><input type="radio" name="A18_4" value="0"><span class="optbody">$\le 6$ Farben, da jeder planare Graph einen Knoten vom Grad $\le 5$ hat</span></label>
+<label class="opt"><input type="radio" name="A18_4" value="1"><span class="optbody">$\le 5$ Farben, da der Minimalgrad $\le 4$ ist</span></label>
+<label class="opt"><input type="radio" name="A18_4" value="2"><span class="optbody">$\le 3$ Farben, da planare Graphen 3-färbbar sind</span></label>
+<label class="opt"><input type="radio" name="A18_4" value="3"><span class="optbody">$\le 4$ Farben, das liefert der Algorithmus direkt</span></label>
+</div>
+</div>
+  <div class="row"><button class="check">Prüfen</button>
+    <span class="verdict"></span></div>
+  <div class="sol"><b>Lösung.</b> Beim Färben von $v_i$ blockieren nur die bereits gefärbten Nachbarn, also höchstens $\Delta$ Farben
+ — daher $C(G)\le\Delta(G)+1$. Smallest Last sorgt dafür, dass jeder Knoten beim Färben wenige gefärbte
+ Nachbarn hat. Da jeder Teilgraph eines planaren Graphen wieder planar ist und einen Knoten vom Grad
+ $\le 5$ besitzt, greift die Garantie mit $k=5$, also $6$ Farben. Dass sogar $4$ genügen, ist der
+ Vierfarbensatz — der Algorithmus liefert das nicht. Es gibt übrigens bipartite Graphen und Reihenfolgen,
+ für die Greedy $\frac{|V|}2$ Farben braucht: die Reihenfolge ist entscheidend.</div>
+</div>
+
+
+<div class="q" id="A19" data-type="gap" data-ans='[0, 2, 3, 3, 0]'>
+  <div class="qhead"><span class="tag">Algorithmus vervollständigen</span>
+    <span class="qnum">Aufgabe A19</span></div>
+  <h3>QuickSort-Analyse und QuickSelect</h3>
+  <p class="lead">$a_1 < \dots < a_n$ sei die sortierte Reihenfolge, das Pivot wird uniform zufällig gewählt.
+ $I_{ij}=1$, falls $a_i$ und $a_j$ verglichen werden.</p>
+  <div class="code"><div class="cl">Betrachte die Menge $\{a_i, a_{i+1}, \dots, a_j\}$ und das erste Pivot daraus.</div></div>
+  <div class="gaps"><div class="gap"><div class="gaplab">① Wann werden $a_i,a_j$ verglichen?</div>
+<label class="opt"><input type="radio" name="A19_0" value="0"><span class="optbody">genau dann, wenn das erste Pivot aus $\{a_i,\dots,a_j\}$ gleich $a_i$ oder $a_j$ ist</span></label>
+<label class="opt"><input type="radio" name="A19_0" value="1"><span class="optbody">genau dann, wenn das erste Pivot echt zwischen $a_i$ und $a_j$ liegt</span></label>
+<label class="opt"><input type="radio" name="A19_0" value="2"><span class="optbody">genau dann, wenn $a_i$ und $a_j$ benachbart sind, also $j=i+1$</span></label>
+<label class="opt"><input type="radio" name="A19_0" value="3"><span class="optbody">immer, unabhängig vom Pivot</span></label>
+</div>
+<div class="gap"><div class="gaplab">② $\Pr[I_{ij}=1]$</div>
+<label class="opt"><input type="radio" name="A19_1" value="0"><span class="optbody">$\frac{2}{(j-i)(j-i+1)}$</span></label>
+<label class="opt"><input type="radio" name="A19_1" value="1"><span class="optbody">$\frac{2}{n}$</span></label>
+<label class="opt"><input type="radio" name="A19_1" value="2"><span class="optbody">$\frac{2}{j-i+1}$</span></label>
+<label class="opt"><input type="radio" name="A19_1" value="3"><span class="optbody">$\frac{1}{j-i}$</span></label>
+</div>
+<div class="gap"><div class="gaplab">③ Erwartete Vergleiche</div>
+<label class="opt"><input type="radio" name="A19_2" value="0"><span class="optbody">$\Theta(n^2)$</span></label>
+<label class="opt"><input type="radio" name="A19_2" value="1"><span class="optbody">$\Theta(n)$</span></label>
+<label class="opt"><input type="radio" name="A19_2" value="2"><span class="optbody">$\Theta(n\log^2 n)$</span></label>
+<label class="opt"><input type="radio" name="A19_2" value="3"><span class="optbody">$2n\ln n + O(n) = O(n\log n)$</span></label>
+</div>
+<div class="gap"><div class="gaplab">④ QuickSelect-Rekursion</div>
+<label class="opt"><input type="radio" name="A19_3" value="0"><span class="optbody">das Array wird vor jeder Rekursion neu sortiert</span></label>
+<label class="opt"><input type="radio" name="A19_3" value="1"><span class="optbody">es wird stets im linken Teilarray weitergesucht</span></label>
+<label class="opt"><input type="radio" name="A19_3" value="2"><span class="optbody">beide Teilarrays werden rekursiv bearbeitet wie bei QuickSort</span></label>
+<label class="opt"><input type="radio" name="A19_3" value="3"><span class="optbody">nach dem Partitionieren wird nur im Teilarray weitergesucht, das das $k$-te Element enthält</span></label>
+</div>
+<div class="gap"><div class="gaplab">⑤ Laufzeit QuickSelect</div>
+<label class="opt"><input type="radio" name="A19_4" value="0"><span class="optbody">erwartet $O(n)$, Worst Case $O(n^2)$</span></label>
+<label class="opt"><input type="radio" name="A19_4" value="1"><span class="optbody">immer $O(n)$</span></label>
+<label class="opt"><input type="radio" name="A19_4" value="2"><span class="optbody">erwartet $O(n\log n)$, Worst Case $O(n^2)$</span></label>
+<label class="opt"><input type="radio" name="A19_4" value="3"><span class="optbody">erwartet $O(\log n)$</span></label>
+</div>
+</div>
+  <div class="row"><button class="check">Prüfen</button>
+    <span class="verdict"></span></div>
+  <div class="sol"><b>Lösung.</b> Die Menge $\{a_i,\dots,a_j\}$ hat $j-i+1$ Elemente, jedes wird gleich wahrscheinlich als erstes
+ Pivot gezogen. Ist es $a_i$ oder $a_j$ ($2$ Fälle), werden sie verglichen; ist es ein Element dazwischen,
+ landen sie in verschiedenen Teilarrays und werden <b>nie</b> verglichen. Summation über alle Paare mit
+ Linearität des Erwartungswerts gibt $2n\ln n$. QuickSelect verwirft dagegen einen Teil und hat deshalb
+ geometrisch fallende Teilprobleme, was auf erwartet $O(n)$ führt.</div>
+</div>
+
+
+<div class="q" id="A20" data-type="gap" data-ans='[3, 0, 0, 2, 2, 3]'>
+  <div class="qhead"><span class="tag">Algorithmus vervollständigen</span>
+    <span class="qnum">Aufgabe A20</span></div>
+  <h3>Duplikate finden mit Hashfunktion</h3>
+  <p class="lead">$n$ grosse Datenobjekte, $m$ mögliche Hashwerte.</p>
+  <div class="code"><div class="cl">1: ①</div><div class="cl">2: ②</div><div class="cl">3: ③</div><div class="cl">4: ④</div></div>
+  <div class="gaps"><div class="gap"><div class="gaplab">①</div>
+<label class="opt"><input type="radio" name="A20_0" value="0"><span class="optbody">vergleiche alle Paare von Elementen</span></label>
+<label class="opt"><input type="radio" name="A20_0" value="1"><span class="optbody">lege eine Hashtabelle der Grösse $n$ an</span></label>
+<label class="opt"><input type="radio" name="A20_0" value="2"><span class="optbody">sortiere die Elemente direkt</span></label>
+<label class="opt"><input type="radio" name="A20_0" value="3"><span class="optbody">berechne für jedes Element seinen Hashwert</span></label>
+</div>
+<div class="gap"><div class="gaplab">②</div>
+<label class="opt"><input type="radio" name="A20_1" value="0"><span class="optbody">sortiere die Elemente nach ihrem Hashwert</span></label>
+<label class="opt"><input type="radio" name="A20_1" value="1"><span class="optbody">sortiere die Elemente nach ihrer Grösse</span></label>
+<label class="opt"><input type="radio" name="A20_1" value="2"><span class="optbody">mische die Elemente zufällig</span></label>
+<label class="opt"><input type="radio" name="A20_1" value="3"><span class="optbody">entferne alle doppelten Hashwerte</span></label>
+</div>
+<div class="gap"><div class="gaplab">③</div>
+<label class="opt"><input type="radio" name="A20_2" value="0"><span class="optbody">finde in der sortierten Folge Gruppen gleicher Hashwerte</span></label>
+<label class="opt"><input type="radio" name="A20_2" value="1"><span class="optbody">berechne für jede Gruppe einen neuen Hash</span></label>
+<label class="opt"><input type="radio" name="A20_2" value="2"><span class="optbody">zähle die verschiedenen Hashwerte</span></label>
+<label class="opt"><input type="radio" name="A20_2" value="3"><span class="optbody">finde die Elemente mit dem grössten Hashwert</span></label>
+</div>
+<div class="gap"><div class="gaplab">④</div>
+<label class="opt"><input type="radio" name="A20_3" value="0"><span class="optbody">sortiere die Gruppen erneut</span></label>
+<label class="opt"><input type="radio" name="A20_3" value="1"><span class="optbody">verdopple die Hashtabelle und beginne von vorn</span></label>
+<label class="opt"><input type="radio" name="A20_3" value="2"><span class="optbody">vergleiche innerhalb der Gruppen die Originalelemente (Kollision vs. echtes Duplikat)</span></label>
+<label class="opt"><input type="radio" name="A20_3" value="3"><span class="optbody">gib alle Gruppen direkt als Duplikate aus</span></label>
+</div>
+<div class="gap"><div class="gaplab">⑤ Laufzeit</div>
+<label class="opt"><input type="radio" name="A20_4" value="0"><span class="optbody">$O(n^2)$</span></label>
+<label class="opt"><input type="radio" name="A20_4" value="1"><span class="optbody">$O(n)$</span></label>
+<label class="opt"><input type="radio" name="A20_4" value="2"><span class="optbody">$O(n\log n + |\text{Duplikate}| + |\text{Kollisionen}|)$</span></label>
+<label class="opt"><input type="radio" name="A20_4" value="3"><span class="optbody">$O(n\log n)$ unabhängig von Kollisionen</span></label>
+</div>
+<div class="gap"><div class="gaplab">⑥ Wahl von $m$</div>
+<label class="opt"><input type="radio" name="A20_5" value="0"><span class="optbody">$m=n\log n$, dann ist $\mathbb{E}[\#\text{Kollisionen}]=0$</span></label>
+<label class="opt"><input type="radio" name="A20_5" value="1"><span class="optbody">$m=n$, dann ist $\mathbb{E}[\#\text{Kollisionen}] < \frac12$</span></label>
+<label class="opt"><input type="radio" name="A20_5" value="2"><span class="optbody">$m=\sqrt n$, dann sind Kollisionen ausgeschlossen</span></label>
+<label class="opt"><input type="radio" name="A20_5" value="3"><span class="optbody">$m=n^2$, dann ist $\mathbb{E}[\#\text{Kollisionen}] < \frac12$</span></label>
+</div>
+</div>
+  <div class="row"><button class="check">Prüfen</button>
+    <span class="verdict"></span></div>
+  <div class="sol"><b>Lösung.</b> Hashes sind klein und schnell vergleichbar, deshalb sortiert man nach ihnen statt nach den
+ Originalobjekten. Nur bei gleichem Hash muss man die (teuren) Originale vergleichen. Für ein festes Paar
+ ist $\Pr[\text{Kollision}] \le \frac1m$, also $\mathbb{E}[\#\text{Kollisionen}] \le
+ \binom{n}{2}\frac1m = \frac{n(n-1)}{2m}$; für $m=n^2$ ist das $< \frac12$, für $m=n$ dagegen $\Theta(n)$.</div>
+</div>
+
+
+<div class="q" id="A21" data-type="gap" data-ans='[0, 2, 2, 3, 1]'>
+  <div class="qhead"><span class="tag">Algorithmus vervollständigen</span>
+    <span class="qnum">Aufgabe A21</span></div>
+  <h3>Target Shooting</h3>
+  <p class="lead">$S \subseteq U$ unbekannt, $U$ bekannt; wir können uniform zufällige $u\in U$ ziehen und
+ $u \in S$ testen.</p>
+  <div class="code"><div class="cl">1: ①</div><div class="cl">2: $Y \leftarrow$ ②</div><div class="cl">3: return $Y$ als Schätzung für ③</div></div>
+  <div class="gaps"><div class="gap"><div class="gaplab">①</div>
+<label class="opt"><input type="radio" name="A21_0" value="0"><span class="optbody">ziehe $N$ Elemente $u_1,\dots,u_N$ uniform zufällig aus $U$</span></label>
+<label class="opt"><input type="radio" name="A21_0" value="1"><span class="optbody">zähle alle Elemente von $S$ auf</span></label>
+<label class="opt"><input type="radio" name="A21_0" value="2"><span class="optbody">wähle die $N$ kleinsten Elemente von $U$</span></label>
+<label class="opt"><input type="radio" name="A21_0" value="3"><span class="optbody">ziehe $N$ Elemente uniform zufällig aus $S$</span></label>
+</div>
+<div class="gap"><div class="gaplab">②</div>
+<label class="opt"><input type="radio" name="A21_1" value="0"><span class="optbody">$\frac{1}{N}\sum_{i=1}^N u_i$</span></label>
+<label class="opt"><input type="radio" name="A21_1" value="1"><span class="optbody">$\frac{|S|}{N}$</span></label>
+<label class="opt"><input type="radio" name="A21_1" value="2"><span class="optbody">$\frac1N \sum_{i=1}^N I_S(u_i)$</span></label>
+<label class="opt"><input type="radio" name="A21_1" value="3"><span class="optbody">$\sum_{i=1}^N I_S(u_i)$</span></label>
+</div>
+<div class="gap"><div class="gaplab">③</div>
+<label class="opt"><input type="radio" name="A21_2" value="0"><span class="optbody">$|S|$</span></label>
+<label class="opt"><input type="radio" name="A21_2" value="1"><span class="optbody">$\frac{|U|}{|S|}$</span></label>
+<label class="opt"><input type="radio" name="A21_2" value="2"><span class="optbody">$\frac{|S|}{|U|}$</span></label>
+<label class="opt"><input type="radio" name="A21_2" value="3"><span class="optbody">$|U|-|S|$</span></label>
+</div>
+<div class="gap"><div class="gaplab">④ Stichprobengrösse</div>
+<label class="opt"><input type="radio" name="A21_3" value="0"><span class="optbody">$N \ge \frac{|U|}{|S|}\ln\frac{2}{\delta}$</span></label>
+<label class="opt"><input type="radio" name="A21_3" value="1"><span class="optbody">$N \ge 3\varepsilon^{-2}\ln\frac{2}{\delta}$</span></label>
+<label class="opt"><input type="radio" name="A21_3" value="2"><span class="optbody">$N \ge 3\frac{|S|}{|U|}\varepsilon^{-2}\ln\frac{2}{\delta}$</span></label>
+<label class="opt"><input type="radio" name="A21_3" value="3"><span class="optbody">$N \ge 3\frac{|U|}{|S|}\varepsilon^{-2}\ln\frac{2}{\delta}$</span></label>
+</div>
+<div class="gap"><div class="gaplab">⑤ Garantie</div>
+<label class="opt"><input type="radio" name="A21_4" value="0"><span class="optbody">mit Wahrscheinlichkeit $\ge \varepsilon$ liegt $Y$ im Intervall</span></label>
+<label class="opt"><input type="radio" name="A21_4" value="1"><span class="optbody">mit Wahrscheinlichkeit $\ge 1-\delta$ liegt $Y$ in $\left[(1-\varepsilon)\frac{|S|}{|U|},(1+\varepsilon)\frac{|S|}{|U|}\right]$</span></label>
+<label class="opt"><input type="radio" name="A21_4" value="2"><span class="optbody">$Y$ weicht um höchstens $\delta$ von $\frac{|S|}{|U|}$ ab</span></label>
+<label class="opt"><input type="radio" name="A21_4" value="3"><span class="optbody">$Y$ ist mit Wahrscheinlichkeit $1$ exakt $\frac{|S|}{|U|}$</span></label>
+</div>
+</div>
+  <div class="row"><button class="check">Prüfen</button>
+    <span class="verdict"></span></div>
+  <div class="sol"><b>Lösung.</b> $Y$ ist der Stichprobenanteil und mit Chernoff/Chebyshev konzentriert sich $Y$ um seinen
+ Erwartungswert $\frac{|S|}{|U|}$. Der Faktor $\frac{|U|}{|S|}$ in $N$ ist entscheidend: Ist $S$ winzig,
+ sind fast alle Ziehungen Nieten, und man braucht sehr viele Versuche, bis genügend Treffer für eine
+ relative Genauigkeit $\varepsilon$ zusammenkommen.</div>
+</div>
+
+
+<div class="q" id="A22" data-type="gap" data-ans='[1, 2, 1, 2, 1, 2]'>
+  <div class="qhead"><span class="tag">Algorithmus vervollständigen</span>
+    <span class="qnum">Aufgabe A22</span></div>
+  <h3>Min-Cut über Flüsse</h3>
+  <p class="lead">$G$ sei ein zusammenhängender ungerichteter Multigraph; gesucht ist $\mu(G)$.</p>
+  <div class="code"><div class="cl">1: ①</div><div class="cl">2: ②</div><div class="cl">3: for ③ do</div><div class="cl">4: $\quad$ ④</div><div class="cl">5: return ⑤</div></div>
+  <div class="gaps"><div class="gap"><div class="gaplab">①</div>
+<label class="opt"><input type="radio" name="A22_0" value="0"><span class="optbody">kontrahiere zufällige Kanten, bis zwei Knoten übrig sind</span></label>
+<label class="opt"><input type="radio" name="A22_0" value="1"><span class="optbody">ersetze jede Kante durch zwei gerichtete Kanten mit Kapazität = Anzahl Kanten zwischen $u$ und $v$</span></label>
+<label class="opt"><input type="radio" name="A22_0" value="2"><span class="optbody">ersetze jede Kante durch eine gerichtete Kante mit Kapazität $\infty$</span></label>
+<label class="opt"><input type="radio" name="A22_0" value="3"><span class="optbody">richte alle Kanten von links nach rechts mit Kapazität 1</span></label>
+</div>
+<div class="gap"><div class="gaplab">②</div>
+<label class="opt"><input type="radio" name="A22_1" value="0"><span class="optbody">wähle $s$ und $t$ beide zufällig</span></label>
+<label class="opt"><input type="radio" name="A22_1" value="1"><span class="optbody">wähle $s$ als Knoten mit minimalem Grad</span></label>
+<label class="opt"><input type="radio" name="A22_1" value="2"><span class="optbody">wähle einen beliebigen, festen Knoten $s$</span></label>
+<label class="opt"><input type="radio" name="A22_1" value="3"><span class="optbody">füge einen neuen Superknoten $s$ hinzu</span></label>
+</div>
+<div class="gap"><div class="gaplab">③</div>
+<label class="opt"><input type="radio" name="A22_2" value="0"><span class="optbody">alle Paare $(s,t)$ von Knoten</span></label>
+<label class="opt"><input type="radio" name="A22_2" value="1"><span class="optbody">alle Knoten $t \neq s$</span></label>
+<label class="opt"><input type="radio" name="A22_2" value="2"><span class="optbody">$O(\log n)$ zufällige Knoten $t$</span></label>
+<label class="opt"><input type="radio" name="A22_2" value="3"><span class="optbody">alle Kanten des Graphen</span></label>
+</div>
+<div class="gap"><div class="gaplab">④</div>
+<label class="opt"><input type="radio" name="A22_3" value="0"><span class="optbody">kontrahiere den gefundenen augmentierenden Pfad</span></label>
+<label class="opt"><input type="radio" name="A22_3" value="1"><span class="optbody">berechne die Anzahl kantendisjunkter Kreise</span></label>
+<label class="opt"><input type="radio" name="A22_3" value="2"><span class="optbody">berechne den maximalen $s$-$t$-Fluss; nach Max-Flow-Min-Cut ist das die minimale $s$-$t$-Schnittkapazität</span></label>
+<label class="opt"><input type="radio" name="A22_3" value="3"><span class="optbody">berechne einen minimalen Spannbaum</span></label>
+</div>
+<div class="gap"><div class="gaplab">⑤</div>
+<label class="opt"><input type="radio" name="A22_4" value="0"><span class="optbody">das Maximum über alle berechneten Flusswerte</span></label>
+<label class="opt"><input type="radio" name="A22_4" value="1"><span class="optbody">das Minimum über alle berechneten Schnittkapazitäten</span></label>
+<label class="opt"><input type="radio" name="A22_4" value="2"><span class="optbody">den zuletzt berechneten Flusswert</span></label>
+<label class="opt"><input type="radio" name="A22_4" value="3"><span class="optbody">den Durchschnitt aller Flusswerte</span></label>
+</div>
+<div class="gap"><div class="gaplab">⑥ Warum genügt ein festes $s$?</div>
+<label class="opt"><input type="radio" name="A22_5" value="0"><span class="optbody">das genügt nicht — man muss über alle Paare $(s,t)$ iterieren</span></label>
+<label class="opt"><input type="radio" name="A22_5" value="1"><span class="optbody">weil alle Knoten symmetrisch sind und jeder Schnitt gleich gross ist</span></label>
+<label class="opt"><input type="radio" name="A22_5" value="2"><span class="optbody">weil $s$ in jedem Schnitt auf einer Seite liegt und der minimale Schnitt für irgendein $t$ auf der anderen Seite gefunden wird</span></label>
+<label class="opt"><input type="radio" name="A22_5" value="3"><span class="optbody">weil der minimale Schnitt immer $s$ isoliert</span></label>
+</div>
+</div>
+  <div class="row"><button class="check">Prüfen</button>
+    <span class="verdict"></span></div>
+  <div class="sol"><b>Lösung.</b> Man verwandelt das ungerichtete Min-Cut-Problem in $n-1$ gerichtete Max-Flow-Berechnungen. Der
+ Trick mit dem festen $s$: Ein minimaler Kantenschnitt zerlegt $V$ in zwei Teile, und $s$ liegt in genau
+ einem davon — für jedes $t$ auf der anderen Seite liefert die $s$-$t$-Rechnung genau diesen Wert.
+ Alternative ohne Flüsse: der randomisierte Kontraktionsalgorithmus von Karger.</div>
+</div>
+
+
+<div class="q" id="A23" data-type="gap" data-ans='[1, 2, 3, 1, 3, 3]'>
+  <div class="qhead"><span class="tag">Algorithmus vervollständigen</span>
+    <span class="qnum">Aufgabe A23</span></div>
+  <h3>Karger mit Bootstrapping (rekursive Kontraktion)</h3>
+  <p class="lead">Der einfache Kontraktionsalgorithmus macht Fehler vor allem spät, wenn der Graph klein ist.
+ Idee: die späten Schritte häufiger wiederholen.</p>
+  <div class="code"><div class="cl">1: if ① then ②</div><div class="cl">3: $G_1, G_2 \leftarrow$ zwei unabhängige Kopien: ③</div><div class="cl">4: ④</div><div class="cl">5: return ⑤</div></div>
+  <div class="gaps"><div class="gap"><div class="gaplab">①</div>
+<label class="opt"><input type="radio" name="A23_0" value="0"><span class="optbody">der Graph ist nicht mehr zusammenhängend</span></label>
+<label class="opt"><input type="radio" name="A23_0" value="1"><span class="optbody">der Graph hat nur noch konstant viele Knoten</span></label>
+<label class="opt"><input type="radio" name="A23_0" value="2"><span class="optbody">$n \le \log n$</span></label>
+<label class="opt"><input type="radio" name="A23_0" value="3"><span class="optbody">der Graph hat noch genau 2 Knoten</span></label>
+</div>
+<div class="gap"><div class="gaplab">②</div>
+<label class="opt"><input type="radio" name="A23_1" value="0"><span class="optbody">kontrahiere eine letzte zufällige Kante</span></label>
+<label class="opt"><input type="radio" name="A23_1" value="1"><span class="optbody">gib die Anzahl der Knoten zurück</span></label>
+<label class="opt"><input type="radio" name="A23_1" value="2"><span class="optbody">berechne den minimalen Schnitt direkt durch vollständige Aufzählung</span></label>
+<label class="opt"><input type="radio" name="A23_1" value="3"><span class="optbody">gib 0 zurück</span></label>
+</div>
+<div class="gap"><div class="gaplab">③</div>
+<label class="opt"><input type="radio" name="A23_2" value="0"><span class="optbody">kontrahiere zufällige Kanten, bis noch 2 Knoten übrig sind</span></label>
+<label class="opt"><input type="radio" name="A23_2" value="1"><span class="optbody">kontrahiere die Hälfte aller Kanten</span></label>
+<label class="opt"><input type="radio" name="A23_2" value="2"><span class="optbody">kontrahiere genau eine zufällige Kante</span></label>
+<label class="opt"><input type="radio" name="A23_2" value="3"><span class="optbody">kontrahiere zufällige Kanten, bis noch etwa $\frac{n}{\sqrt2}+1$ Knoten übrig sind</span></label>
+</div>
+<div class="gap"><div class="gaplab">④</div>
+<label class="opt"><input type="radio" name="A23_3" value="0"><span class="optbody">führe auf beiden den einfachen Kontraktionsalgorithmus $n^2$ mal aus</span></label>
+<label class="opt"><input type="radio" name="A23_3" value="1"><span class="optbody">rufe den Algorithmus rekursiv auf $G_1$ und auf $G_2$ auf</span></label>
+<label class="opt"><input type="radio" name="A23_3" value="2"><span class="optbody">rufe den Algorithmus einmal rekursiv auf dem kleineren der beiden auf</span></label>
+<label class="opt"><input type="radio" name="A23_3" value="3"><span class="optbody">berechne auf beiden einen maximalen Fluss</span></label>
+</div>
+<div class="gap"><div class="gaplab">⑤</div>
+<label class="opt"><input type="radio" name="A23_4" value="0"><span class="optbody">das Maximum der beiden Werte</span></label>
+<label class="opt"><input type="radio" name="A23_4" value="1"><span class="optbody">den Mittelwert der beiden Werte</span></label>
+<label class="opt"><input type="radio" name="A23_4" value="2"><span class="optbody">den Wert des ersten Aufrufs</span></label>
+<label class="opt"><input type="radio" name="A23_4" value="3"><span class="optbody">das Minimum der beiden rekursiv berechneten Werte</span></label>
+</div>
+<div class="gap"><div class="gaplab">⑥ Laufzeit</div>
+<label class="opt"><input type="radio" name="A23_5" value="0"><span class="optbody">$T(n)=2T\!\left(\frac{n}{2}\right)+O(n) = O(n\log n)$</span></label>
+<label class="opt"><input type="radio" name="A23_5" value="1"><span class="optbody">$O(n^4)$</span></label>
+<label class="opt"><input type="radio" name="A23_5" value="2"><span class="optbody">$O(n^2)$ wie beim einfachen Algorithmus</span></label>
+<label class="opt"><input type="radio" name="A23_5" value="3"><span class="optbody">$T(n)=2T\!\left(\frac{n}{\sqrt2}\right)+O(n^2) = O(n^2\log n)$</span></label>
+</div>
+</div>
+  <div class="row"><button class="check">Prüfen</button>
+    <span class="verdict"></span></div>
+  <div class="sol"><b>Lösung.</b> Die Erfolgswahrscheinlichkeit des einfachen Algorithmus bricht am Ende ein: Solange der Graph noch
+ gross ist, ist eine Kante des minimalen Schnitts unwahrscheinlich, bei wenigen Knoten aber sehr
+ wahrscheinlich. Kontrahiert man nur bis $\frac{n}{\sqrt2}$ Knoten, überlebt der minimale Schnitt mit
+ Wahrscheinlichkeit $\ge \frac12$ — deshalb genügen zwei rekursive Aufrufe, um den Verlust auszugleichen.
+ Das ist genau die Bootstrapping-Idee: hinten öfter wiederholen als vorne.</div>
+</div>
+
+
+<div class="q" id="A24" data-type="gap" data-ans='[1, 2, 2, 2, 1]'>
+  <div class="qhead"><span class="tag">Algorithmus vervollständigen</span>
+    <span class="qnum">Aufgabe A24</span></div>
+  <h3>Local Repair (konvexe Hülle)</h3>
+  <p class="lead">$P$ sei eine Punktmenge in allgemeiner Lage; wir bauen einen unteren und einen oberen
+ Teilpolygonzug.</p>
+  <div class="code"><div class="cl">1: ①</div><div class="cl">2: untere Kette: ②</div><div class="cl">3: $\quad$ Reparatur: ③</div><div class="cl">4: obere Kette: ④</div><div class="cl">5: return ⑤</div></div>
+  <div class="gaps"><div class="gap"><div class="gaplab">①</div>
+<label class="opt"><input type="radio" name="A24_0" value="0"><span class="optbody">sortiere die Punkte nach $y$-Koordinate</span></label>
+<label class="opt"><input type="radio" name="A24_0" value="1"><span class="optbody">sortiere die Punkte nach $x$-Koordinate</span></label>
+<label class="opt"><input type="radio" name="A24_0" value="2"><span class="optbody">sortiere die Punkte nach Winkel um den Schwerpunkt</span></label>
+<label class="opt"><input type="radio" name="A24_0" value="3"><span class="optbody">bestimme den Punkt mit kleinster $x$-Koordinate</span></label>
+</div>
+<div class="gap"><div class="gaplab">②</div>
+<label class="opt"><input type="radio" name="A24_1" value="0"><span class="optbody">füge die Punkte in zufälliger Reihenfolge an</span></label>
+<label class="opt"><input type="radio" name="A24_1" value="1"><span class="optbody">füge die Punkte von rechts nach links an</span></label>
+<label class="opt"><input type="radio" name="A24_1" value="2"><span class="optbody">füge die Punkte von links nach rechts an die Kette an</span></label>
+<label class="opt"><input type="radio" name="A24_1" value="3"><span class="optbody">füge nur die Punkte unterhalb des Schwerpunkts an</span></label>
+</div>
+<div class="gap"><div class="gaplab">③</div>
+<label class="opt"><input type="radio" name="A24_2" value="0"><span class="optbody">solange der letzte Punkt $q$ rechts der Geraden durch $p$ und $r$ liegt, entferne $q$</span></label>
+<label class="opt"><input type="radio" name="A24_2" value="1"><span class="optbody">entferne stets den vorletzten Punkt</span></label>
+<label class="opt"><input type="radio" name="A24_2" value="2"><span class="optbody">solange der letzte Punkt $q$ links der Geraden durch den vorletzten Punkt $p$ und den neuen Punkt $r$ liegt, entferne $q$</span></label>
+<label class="opt"><input type="radio" name="A24_2" value="3"><span class="optbody">entferne den neuen Punkt $r$, falls er innerhalb liegt</span></label>
+</div>
+<div class="gap"><div class="gaplab">④</div>
+<label class="opt"><input type="radio" name="A24_3" value="0"><span class="optbody">dasselbe Verfahren erneut von links nach rechts</span></label>
+<label class="opt"><input type="radio" name="A24_3" value="1"><span class="optbody">JarvisWrap auf den restlichen Punkten</span></label>
+<label class="opt"><input type="radio" name="A24_3" value="2"><span class="optbody">dasselbe Verfahren von rechts nach links</span></label>
+<label class="opt"><input type="radio" name="A24_3" value="3"><span class="optbody">spiegle die untere Kette an der $x$-Achse</span></label>
+</div>
+<div class="gap"><div class="gaplab">⑤ Laufzeit</div>
+<label class="opt"><input type="radio" name="A24_4" value="0"><span class="optbody">$O(n\cdot h)$</span></label>
+<label class="opt"><input type="radio" name="A24_4" value="1"><span class="optbody">$O(n\log n)$, bei sortierter Eingabe $O(n)$</span></label>
+<label class="opt"><input type="radio" name="A24_4" value="2"><span class="optbody">$O(n^2)$</span></label>
+<label class="opt"><input type="radio" name="A24_4" value="3"><span class="optbody">$O(n\log h)$</span></label>
+</div>
+</div>
+  <div class="row"><button class="check">Prüfen</button>
+    <span class="verdict"></span></div>
+  <div class="sol"><b>Lösung.</b> Der erste und der letzte Punkt der $x$-Sortierung sind garantiert Ecken der Hülle. Beim Anhängen
+ eines neuen Punktes entsteht eventuell eine Einbuchtung; das Backtracking entfernt so lange den letzten
+ Kettenpunkt, bis die Kette wieder konvex ist. Da jeder Punkt höchstens einmal wieder entfernt wird, gibt
+ es nur $2(n-1)-h = O(n)$ lokale Verbesserungen — der Reparaturteil ist also linear, und nur das Sortieren
+ kostet $O(n\log n)$. Im Vergleich: JarvisWrap braucht $O(n\cdot h)$, ist also nur bei sehr kleinem $h$
+ besser.</div>
+</div>
+
+
+<div class="q" id="A25" data-type="gap" data-ans='[0, 1, 1, 0, 1]'>
+  <div class="qhead"><span class="tag">Algorithmus vervollständigen</span>
+    <span class="qnum">Aufgabe A25</span></div>
+  <h3>Brute-Force für die kleinste umschliessende Kreisscheibe</h3>
+  <p class="lead">$P$ sei eine Menge von $n$ Punkten in allgemeiner Lage.</p>
+  <div class="code"><div class="cl">1: for ① do</div><div class="cl">2: $\quad$ ②</div><div class="cl">3: $\quad$ if ③ then return $C(Q)$</div></div>
+  <div class="gaps"><div class="gap"><div class="gaplab">①</div>
+<label class="opt"><input type="radio" name="A25_0" value="0"><span class="optbody">alle Teilmengen $Q \subseteq P$ mit $|Q|=3$</span></label>
+<label class="opt"><input type="radio" name="A25_0" value="1"><span class="optbody">alle Paare von Punkten aus $P$</span></label>
+<label class="opt"><input type="radio" name="A25_0" value="2"><span class="optbody">alle Punkte $q \in P$</span></label>
+<label class="opt"><input type="radio" name="A25_0" value="3"><span class="optbody">alle Teilmengen $Q \subseteq P$</span></label>
+</div>
+<div class="gap"><div class="gaplab">②</div>
+<label class="opt"><input type="radio" name="A25_1" value="0"><span class="optbody">bestimme den Schwerpunkt von $Q$ ($O(1)$)</span></label>
+<label class="opt"><input type="radio" name="A25_1" value="1"><span class="optbody">bestimme den Kreis $C(Q)$ durch die drei Punkte ($O(1)$)</span></label>
+<label class="opt"><input type="radio" name="A25_1" value="2"><span class="optbody">bestimme den grössten Abstand innerhalb von $Q$ ($O(n^2)$)</span></label>
+<label class="opt"><input type="radio" name="A25_1" value="3"><span class="optbody">bestimme die konvexe Hülle von $Q$ ($O(n)$)</span></label>
+</div>
+<div class="gap"><div class="gaplab">③</div>
+<label class="opt"><input type="radio" name="A25_2" value="0"><span class="optbody">alle Punkte aus $Q$ liegen auf dem Rand ($O(1)$)</span></label>
+<label class="opt"><input type="radio" name="A25_2" value="1"><span class="optbody">alle Punkte aus $P$ liegen in $C^\bullet(Q)$ (Test in $O(n)$)</span></label>
+<label class="opt"><input type="radio" name="A25_2" value="2"><span class="optbody">kein Punkt aus $P$ liegt in $C^\bullet(Q)$</span></label>
+<label class="opt"><input type="radio" name="A25_2" value="3"><span class="optbody">der Radius von $C(Q)$ ist minimal unter allen bisher gesehenen</span></label>
+</div>
+<div class="gap"><div class="gaplab">④ Laufzeit</div>
+<label class="opt"><input type="radio" name="A25_3" value="0"><span class="optbody">$O(n^4)$</span></label>
+<label class="opt"><input type="radio" name="A25_3" value="1"><span class="optbody">$O(n^2)$</span></label>
+<label class="opt"><input type="radio" name="A25_3" value="2"><span class="optbody">$O(n^3)$</span></label>
+<label class="opt"><input type="radio" name="A25_3" value="3"><span class="optbody">$O(n\log n)$</span></label>
+</div>
+<div class="gap"><div class="gaplab">⑤ Warum genügen Dreiermengen?</div>
+<label class="opt"><input type="radio" name="A25_4" value="0"><span class="optbody">weil alle Punkte in allgemeiner Lage sind</span></label>
+<label class="opt"><input type="radio" name="A25_4" value="1"><span class="optbody">weil der kleinste umschliessende Kreis eindeutig ist und durch höchstens 3 Punkte bestimmt wird</span></label>
+<label class="opt"><input type="radio" name="A25_4" value="2"><span class="optbody">weil drei Punkte immer einen eindeutigen Kreis definieren</span></label>
+<label class="opt"><input type="radio" name="A25_4" value="3"><span class="optbody">weil die konvexe Hülle höchstens 3 Ecken hat</span></label>
+</div>
+</div>
+  <div class="row"><button class="check">Prüfen</button>
+    <span class="verdict"></span></div>
+  <div class="sol"><b>Lösung.</b> Es gibt $\binom{n}{3}=O(n^3)$ Tripel, der Kreis durch drei Punkte ist in $O(1)$ berechenbar und
+ der Test „liegen alle Punkte drin?" kostet $O(n)$ — zusammen $O(n^4)$. Der randomisierte Las-Vegas-Algorithmus
+ mit Stichproben und Verdopplung der aussenliegenden Punkte schafft dasselbe in erwartet $O(n\log n)$.
+ Beachte: „drei Punkte definieren einen Kreis" allein reicht als Begründung nicht — entscheidend ist, dass
+ der <b>kleinste umschliessende</b> Kreis durch höchstens drei Punkte der Menge festgelegt ist (bei stumpfwinkligen
+ Konstellationen sogar durch zwei).</div>
+</div>
+
 <h2 id="s2">Teil B — Single Choice</h2>
 <p class="hint">Genau eine Antwort ist korrekt (Scoring SC1/0).</p>
 
-<div class="q" id="B1" data-type="sc" data-ans='[0]'>
+<div class="q" id="B1" data-type="sc" data-ans='[1]'>
   <div class="qhead"><span class="tag">Single Choice · SC1/0</span>
     <span class="qnum">Aufgabe B1</span></div>
   <p class="lead">Anna wirft 12 faire Würfel auf einen Tisch. Leider ist das Fenster offen: Jeder Würfel wird
  unabhängig von den anderen mit Wahrscheinlichkeit $q$ von einer Elster gestohlen.
  Wie gross ist die Wahrscheinlichkeit, dass Anna mindestens einen Würfel behält, der eine 6 zeigt?</p>
-  <div class="gap"><label class="opt"><input type="radio" name="B1" value="0"><span class="optbody">$1 - \left(1 - \frac{1-q}{6}\right)^{12}$</span></label>
-<label class="opt"><input type="radio" name="B1" value="1"><span class="optbody">$1 - q^{12}$</span></label>
+  <div class="gap"><label class="opt"><input type="radio" name="B1" value="0"><span class="optbody">$1 - \frac{(1-q)^{12}}{6^{12}}$</span></label>
+<label class="opt"><input type="radio" name="B1" value="1"><span class="optbody">$1 - \left(1 - \frac{1-q}{6}\right)^{12}$</span></label>
 <label class="opt"><input type="radio" name="B1" value="2"><span class="optbody">$12 \cdot \frac{1-q}{6}$</span></label>
-<label class="opt"><input type="radio" name="B1" value="3"><span class="optbody">$1 - \frac{(1-q)^{12}}{6^{12}}$</span></label>
+<label class="opt"><input type="radio" name="B1" value="3"><span class="optbody">$1 - q^{12}$</span></label>
 </div>
   <div class="row"><button class="check">Prüfen</button><span class="verdict"></span></div>
   <div class="sol"><b>Lösung.</b> Ein einzelner Würfel ist „gut“, wenn er <b>nicht</b> gestohlen wird <b>und</b> eine 6 zeigt:
@@ -651,17 +1304,17 @@ code{font-family:"SF Mono",Menlo,"Courier New",monospace;background:#eef0f2;padd
 </div>
 
 
-<div class="q" id="B2" data-type="sc" data-ans='[0]'>
+<div class="q" id="B2" data-type="sc" data-ans='[1]'>
   <div class="qhead"><span class="tag">Single Choice · SC1/0</span>
     <span class="qnum">Aufgabe B2</span></div>
   <p class="lead">Ein Monte-Carlo-Algorithmus $\textbf{A}(x)$ für ein Entscheidungsproblem liefert bei jedem Aufruf
  unabhängig mit Wahrscheinlichkeit $\tfrac{2}{3}$ die korrekte JA/NEIN-Antwort (<b>zweiseitiger</b> Fehler).
  Wir rufen $\textbf{A}(x)$ insgesamt $k$ mal auf. Welche Art, aus den $k$ Outputs einen einzigen zu
  erzeugen, verkleinert die Fehlerwahrscheinlichkeit?</p>
-  <div class="gap"><label class="opt"><input type="radio" name="B2" value="0"><span class="optbody">Wir geben den Output aus, der unter den $k$ Outputs am häufigsten vorkommt (Mehrheitsentscheid).</span></label>
-<label class="opt"><input type="radio" name="B2" value="1"><span class="optbody">Falls mindestens einer der $k$ Aufrufe „JA“ ausgibt, geben wir „JA“ aus, sonst „NEIN“.</span></label>
-<label class="opt"><input type="radio" name="B2" value="2"><span class="optbody">Falls mindestens einer der $k$ Aufrufe „NEIN“ ausgibt, geben wir „NEIN“ aus, sonst „JA“.</span></label>
-<label class="opt"><input type="radio" name="B2" value="3"><span class="optbody">Unabhängig von der Strategie ist es unmöglich, die Fehlerwahrscheinlichkeit zu verkleinern.</span></label>
+  <div class="gap"><label class="opt"><input type="radio" name="B2" value="0"><span class="optbody">Unabhängig von der Strategie ist es unmöglich, die Fehlerwahrscheinlichkeit zu verkleinern.</span></label>
+<label class="opt"><input type="radio" name="B2" value="1"><span class="optbody">Wir geben den Output aus, der unter den $k$ Outputs am häufigsten vorkommt (Mehrheitsentscheid).</span></label>
+<label class="opt"><input type="radio" name="B2" value="2"><span class="optbody">Falls mindestens einer der $k$ Aufrufe „JA“ ausgibt, geben wir „JA“ aus, sonst „NEIN“.</span></label>
+<label class="opt"><input type="radio" name="B2" value="3"><span class="optbody">Falls mindestens einer der $k$ Aufrufe „NEIN“ ausgibt, geben wir „NEIN“ aus, sonst „JA“.</span></label>
 </div>
   <div class="row"><button class="check">Prüfen</button><span class="verdict"></span></div>
   <div class="sol"><b>Lösung.</b> Bei <b>zweiseitigem</b> Fehler ist keine der beiden Antworten „sicher“, also darf man nicht einfach
@@ -672,15 +1325,15 @@ code{font-family:"SF Mono",Menlo,"Courier New",monospace;background:#eef0f2;padd
 </div>
 
 
-<div class="q" id="B3" data-type="sc" data-ans='[0]'>
+<div class="q" id="B3" data-type="sc" data-ans='[1]'>
   <div class="qhead"><span class="tag">Single Choice · SC1/0</span>
     <span class="qnum">Aufgabe B3</span></div>
   <p class="lead">Sei $\textbf{A}$ ein Las-Vegas-Algorithmus mit erwarteter Laufzeit $T$. Wie erhält man daraus einen
  Monte-Carlo-Algorithmus mit <b>garantierter</b> Laufzeit $O(T)$ und Fehlerwahrscheinlichkeit
  $\le \tfrac{1}{2}$?</p>
-  <div class="gap"><label class="opt"><input type="radio" name="B3" value="0"><span class="optbody">Man bricht $\textbf{A}$ nach $2T$ Schritten ab und gibt eine beliebige Antwort aus; nach Markov ist $\Pr[\text{Laufzeit} \ge 2T] \le \tfrac{1}{2}$.</span></label>
-<label class="opt"><input type="radio" name="B3" value="1"><span class="optbody">Man ruft $\textbf{A}$ zweimal auf und gibt die häufigere Antwort aus.</span></label>
-<label class="opt"><input type="radio" name="B3" value="2"><span class="optbody">Man bricht $\textbf{A}$ nach $T/2$ Schritten ab; nach Chebyshev ist der Fehler $\le \tfrac{1}{2}$.</span></label>
+  <div class="gap"><label class="opt"><input type="radio" name="B3" value="0"><span class="optbody">Man bricht $\textbf{A}$ nach $T/2$ Schritten ab; nach Chebyshev ist der Fehler $\le \tfrac{1}{2}$.</span></label>
+<label class="opt"><input type="radio" name="B3" value="1"><span class="optbody">Man bricht $\textbf{A}$ nach $2T$ Schritten ab und gibt eine beliebige Antwort aus; nach Markov ist $\Pr[\text{Laufzeit} \ge 2T] \le \tfrac{1}{2}$.</span></label>
+<label class="opt"><input type="radio" name="B3" value="2"><span class="optbody">Man ruft $\textbf{A}$ zweimal auf und gibt die häufigere Antwort aus.</span></label>
 <label class="opt"><input type="radio" name="B3" value="3"><span class="optbody">Das ist unmöglich, Las-Vegas-Algorithmen lassen sich nicht in Monte-Carlo-Algorithmen umwandeln.</span></label>
 </div>
   <div class="row"><button class="check">Prüfen</button><span class="verdict"></span></div>
@@ -691,16 +1344,16 @@ code{font-family:"SF Mono",Menlo,"Courier New",monospace;background:#eef0f2;padd
 </div>
 
 
-<div class="q" id="B4" data-type="sc" data-ans='[0]'>
+<div class="q" id="B4" data-type="sc" data-ans='[1]'>
   <div class="qhead"><span class="tag">Single Choice · SC1/0</span>
     <span class="qnum">Aufgabe B4</span></div>
   <p class="lead">QuickSort mit uniform zufällig gewähltem Pivot sortiert $n$ paarweise verschiedene Zahlen.
  Seien $a_i$ und $a_j$ ($i<j$) die Elemente an Position $i$ bzw. $j$ des <b>sortierten</b> Arrays.
  Wie gross ist die Wahrscheinlichkeit, dass $a_i$ und $a_j$ im Verlauf des Algorithmus verglichen werden?</p>
-  <div class="gap"><label class="opt"><input type="radio" name="B4" value="0"><span class="optbody">$\frac{2}{j-i+1}$</span></label>
-<label class="opt"><input type="radio" name="B4" value="1"><span class="optbody">$\frac{1}{j-i}$</span></label>
+  <div class="gap"><label class="opt"><input type="radio" name="B4" value="0"><span class="optbody">$\frac{2}{(j-i)(j-i+1)}$</span></label>
+<label class="opt"><input type="radio" name="B4" value="1"><span class="optbody">$\frac{2}{j-i+1}$</span></label>
 <label class="opt"><input type="radio" name="B4" value="2"><span class="optbody">$\frac{2}{n}$</span></label>
-<label class="opt"><input type="radio" name="B4" value="3"><span class="optbody">$\frac{2}{(j-i)(j-i+1)}$</span></label>
+<label class="opt"><input type="radio" name="B4" value="3"><span class="optbody">$\frac{1}{j-i}$</span></label>
 </div>
   <div class="row"><button class="check">Prüfen</button><span class="verdict"></span></div>
   <div class="sol"><b>Lösung.</b> Betrachte die Menge $\{a_i, a_{i+1}, \dots, a_j\}$ mit $j-i+1$ Elementen. Sie wird erst getrennt,
@@ -711,16 +1364,16 @@ code{font-family:"SF Mono",Menlo,"Courier New",monospace;background:#eef0f2;padd
 </div>
 
 
-<div class="q" id="B5" data-type="sc" data-ans='[0]'>
+<div class="q" id="B5" data-type="sc" data-ans='[3]'>
   <div class="qhead"><span class="tag">Single Choice · SC1/0</span>
     <span class="qnum">Aufgabe B5</span></div>
   <p class="lead">Im Color-Coding-Algorithmus färben wir alle Knoten unabhängig und uniform mit einer von $k$
  Farben. Wie gross ist die Wahrscheinlichkeit, dass ein <b>fest gewählter</b> Pfad mit $k$ Knoten bunt wird
  (alle $k$ Knoten paarweise verschiedene Farben)?</p>
-  <div class="gap"><label class="opt"><input type="radio" name="B5" value="0"><span class="optbody">$\frac{k!}{k^{k}} \ge e^{-k}$</span></label>
+  <div class="gap"><label class="opt"><input type="radio" name="B5" value="0"><span class="optbody">$\frac{1}{k^{k}}$</span></label>
 <label class="opt"><input type="radio" name="B5" value="1"><span class="optbody">$\frac{1}{k!}$</span></label>
 <label class="opt"><input type="radio" name="B5" value="2"><span class="optbody">$\frac{k^{k}}{k!}$</span></label>
-<label class="opt"><input type="radio" name="B5" value="3"><span class="optbody">$\frac{1}{k^{k}}$</span></label>
+<label class="opt"><input type="radio" name="B5" value="3"><span class="optbody">$\frac{k!}{k^{k}} \ge e^{-k}$</span></label>
 </div>
   <div class="row"><button class="check">Prüfen</button><span class="verdict"></span></div>
   <div class="sol"><b>Lösung.</b> Es gibt $k^k$ gleich wahrscheinliche Färbungen der $k$ Knoten und $k!$ davon sind bunt (jede
@@ -729,16 +1382,16 @@ code{font-family:"SF Mono",Menlo,"Courier New",monospace;background:#eef0f2;padd
 </div>
 
 
-<div class="q" id="B6" data-type="sc" data-ans='[0]'>
+<div class="q" id="B6" data-type="sc" data-ans='[3]'>
   <div class="qhead"><span class="tag">Single Choice · SC1/0</span>
     <span class="qnum">Aufgabe B6</span></div>
   <p class="lead">Wir speichern $n$ grosse Datenobjekte über eine Hashfunktion mit $m$ möglichen Hashwerten,
  um Duplikate zu finden. Für welche Wahl von $m$ ist die erwartete Anzahl an Kollisionen konstant
  (und der Algorithmus damit in $O(n \log n + \#\text{Duplikate})$)?</p>
-  <div class="gap"><label class="opt"><input type="radio" name="B6" value="0"><span class="optbody">$m = n^2$</span></label>
+  <div class="gap"><label class="opt"><input type="radio" name="B6" value="0"><span class="optbody">$m = \sqrt{n}$</span></label>
 <label class="opt"><input type="radio" name="B6" value="1"><span class="optbody">$m = n$</span></label>
 <label class="opt"><input type="radio" name="B6" value="2"><span class="optbody">$m = n \log n$</span></label>
-<label class="opt"><input type="radio" name="B6" value="3"><span class="optbody">$m = \sqrt{n}$</span></label>
+<label class="opt"><input type="radio" name="B6" value="3"><span class="optbody">$m = n^2$</span></label>
 </div>
   <div class="row"><button class="check">Prüfen</button><span class="verdict"></span></div>
   <div class="sol"><b>Lösung.</b> Für ein festes Paar $(i,j)$ ist $\Pr[\text{Kollision}] \le \frac{1}{m}$. Mit Linearität des
@@ -748,15 +1401,15 @@ code{font-family:"SF Mono",Menlo,"Courier New",monospace;background:#eef0f2;padd
 </div>
 
 
-<div class="q" id="B7" data-type="sc" data-ans='[0]'>
+<div class="q" id="B7" data-type="sc" data-ans='[1]'>
   <div class="qhead"><span class="tag">Single Choice · SC1/0</span>
     <span class="qnum">Aufgabe B7</span></div>
   <p class="lead">Wir sammeln Sammelbilder: Jedes gekaufte Bild ist uniform zufällig eines von $n$ verschiedenen
  Motiven (unabhängig). Sei $X$ die Anzahl Käufe, bis wir alle $n$ Motive besitzen. Was gilt?</p>
-  <div class="gap"><label class="opt"><input type="radio" name="B7" value="0"><span class="optbody">$\mathbb{E}[X] = n \cdot H_n = n\ln n + O(n)$</span></label>
-<label class="opt"><input type="radio" name="B7" value="1"><span class="optbody">$\mathbb{E}[X] = n^2$</span></label>
-<label class="opt"><input type="radio" name="B7" value="2"><span class="optbody">$\mathbb{E}[X] = \frac{n}{2}\ln n$</span></label>
-<label class="opt"><input type="radio" name="B7" value="3"><span class="optbody">$\mathbb{E}[X] = H_n = \ln n + O(1)$</span></label>
+  <div class="gap"><label class="opt"><input type="radio" name="B7" value="0"><span class="optbody">$\mathbb{E}[X] = n^2$</span></label>
+<label class="opt"><input type="radio" name="B7" value="1"><span class="optbody">$\mathbb{E}[X] = n \cdot H_n = n\ln n + O(n)$</span></label>
+<label class="opt"><input type="radio" name="B7" value="2"><span class="optbody">$\mathbb{E}[X] = H_n = \ln n + O(1)$</span></label>
+<label class="opt"><input type="radio" name="B7" value="3"><span class="optbody">$\mathbb{E}[X] = \frac{n}{2}\ln n$</span></label>
 </div>
   <div class="row"><button class="check">Prüfen</button><span class="verdict"></span></div>
   <div class="sol"><b>Lösung.</b> Zerlege $X = X_1 + \dots + X_n$, wobei $X_i$ die Anzahl Käufe ist, um vom $(i-1)$-ten zum $i$-ten
@@ -766,16 +1419,16 @@ code{font-family:"SF Mono",Menlo,"Courier New",monospace;background:#eef0f2;padd
 </div>
 
 
-<div class="q" id="B8" data-type="sc" data-ans='[0]'>
+<div class="q" id="B8" data-type="sc" data-ans='[2]'>
   <div class="qhead"><span class="tag">Single Choice · SC1/0</span>
     <span class="qnum">Aufgabe B8</span></div>
   <p class="lead">$G$ sei ein $d$-regulärer Graph mit $n$ Knoten. Welche Grösse garantiert der randomisierte
  Algorithmus für stabile Mengen (jeder Knoten wählt sich mit Wahrscheinlichkeit $p$, danach werden
  Konflikte aufgelöst) im Erwartungswert?</p>
-  <div class="gap"><label class="opt"><input type="radio" name="B8" value="0"><span class="optbody">$\mathbb{E}[|S|] \ge \frac{n}{2d}$</span></label>
-<label class="opt"><input type="radio" name="B8" value="1"><span class="optbody">$\mathbb{E}[|S|] \ge \frac{n}{4d}$</span></label>
-<label class="opt"><input type="radio" name="B8" value="2"><span class="optbody">$\mathbb{E}[|S|] \ge \frac{n^2}{2d}$</span></label>
-<label class="opt"><input type="radio" name="B8" value="3"><span class="optbody">$\mathbb{E}[|S|] \ge \frac{d}{2n}$</span></label>
+  <div class="gap"><label class="opt"><input type="radio" name="B8" value="0"><span class="optbody">$\mathbb{E}[|S|] \ge \frac{d}{2n}$</span></label>
+<label class="opt"><input type="radio" name="B8" value="1"><span class="optbody">$\mathbb{E}[|S|] \ge \frac{n^2}{2d}$</span></label>
+<label class="opt"><input type="radio" name="B8" value="2"><span class="optbody">$\mathbb{E}[|S|] \ge \frac{n}{2d}$</span></label>
+<label class="opt"><input type="radio" name="B8" value="3"><span class="optbody">$\mathbb{E}[|S|] \ge \frac{n}{4d}$</span></label>
 </div>
   <div class="row"><button class="check">Prüfen</button><span class="verdict"></span></div>
   <div class="sol"><b>Lösung.</b> Allgemein gilt $\mathbb{E}[|S|] \ge \frac{n^2}{4m}$ bei optimalem $p = \frac{n}{2m}$. In einem
@@ -790,9 +1443,9 @@ code{font-family:"SF Mono",Menlo,"Courier New",monospace;background:#eef0f2;padd
   <p class="lead">Sei $N=(V,A,c,s,t)$ ein Netzwerk und $f$ ein Fluss. Welche Aussage charakterisiert korrekt,
  dass $f$ maximal ist?</p>
   <div class="gap"><label class="opt"><input type="radio" name="B9" value="0"><span class="optbody">Das Restnetzwerk $N_f$ enthält keinen gerichteten $s$-$t$-Pfad.</span></label>
-<label class="opt"><input type="radio" name="B9" value="1"><span class="optbody">Jede Kante $e$ mit $f(e) = c(e)$ liegt auf einem $s$-$t$-Pfad.</span></label>
-<label class="opt"><input type="radio" name="B9" value="2"><span class="optbody">Das Restnetzwerk $N_f$ enthält keinen gerichteten Kreis.</span></label>
-<label class="opt"><input type="radio" name="B9" value="3"><span class="optbody">Für jeden $s$-$t$-Schnitt $(S,T)$ gilt $\mathrm{val}(f) < \mathrm{cap}(S,T)$.</span></label>
+<label class="opt"><input type="radio" name="B9" value="1"><span class="optbody">Für jeden $s$-$t$-Schnitt $(S,T)$ gilt $\mathrm{val}(f) < \mathrm{cap}(S,T)$.</span></label>
+<label class="opt"><input type="radio" name="B9" value="2"><span class="optbody">Jede Kante $e$ mit $f(e) = c(e)$ liegt auf einem $s$-$t$-Pfad.</span></label>
+<label class="opt"><input type="radio" name="B9" value="3"><span class="optbody">Das Restnetzwerk $N_f$ enthält keinen gerichteten Kreis.</span></label>
 </div>
   <div class="row"><button class="check">Prüfen</button><span class="verdict"></span></div>
   <div class="sol"><b>Lösung.</b> Das ist genau die Abbruchbedingung von Ford-Fulkerson und äquivalent zu: es gibt einen Schnitt
@@ -801,13 +1454,13 @@ code{font-family:"SF Mono",Menlo,"Courier New",monospace;background:#eef0f2;padd
 </div>
 
 
-<div class="q" id="B10" data-type="sc" data-ans='[0]'>
+<div class="q" id="B10" data-type="sc" data-ans='[2]'>
   <div class="qhead"><span class="tag">Single Choice · SC1/0</span>
     <span class="qnum">Aufgabe B10</span></div>
   <p class="lead">Welche der folgenden Aussagen über den Greedy-Algorithmus für Matchings ist korrekt?</p>
-  <div class="gap"><label class="opt"><input type="radio" name="B10" value="0"><span class="optbody">Er liefert in $O(|E|)$ ein inklusionsmaximales Matching $M$ mit $|M| \ge \frac{1}{2}|M_{\max}|$.</span></label>
-<label class="opt"><input type="radio" name="B10" value="1"><span class="optbody">Er liefert in $O(|E|)$ stets ein kardinalitätsmaximales Matching.</span></label>
-<label class="opt"><input type="radio" name="B10" value="2"><span class="optbody">Er liefert in $O(|E|)$ ein Matching $M$ mit $|M| \ge \frac{2}{3}|M_{\max}|$.</span></label>
+  <div class="gap"><label class="opt"><input type="radio" name="B10" value="0"><span class="optbody">Er liefert in $O(|E|)$ stets ein kardinalitätsmaximales Matching.</span></label>
+<label class="opt"><input type="radio" name="B10" value="1"><span class="optbody">Er liefert in $O(|E|)$ ein Matching $M$ mit $|M| \ge \frac{2}{3}|M_{\max}|$.</span></label>
+<label class="opt"><input type="radio" name="B10" value="2"><span class="optbody">Er liefert in $O(|E|)$ ein inklusionsmaximales Matching $M$ mit $|M| \ge \frac{1}{2}|M_{\max}|$.</span></label>
 <label class="opt"><input type="radio" name="B10" value="3"><span class="optbody">Er liefert in $O(|V|\cdot|E|)$ ein perfektes Matching, falls eines existiert.</span></label>
 </div>
   <div class="row"><button class="check">Prüfen</button><span class="verdict"></span></div>
@@ -1569,7 +2222,7 @@ function updateScore(){
     }
   });
   var el=document.getElementById("score");
-  if(!done){ el.textContent="128 Teilantworten insgesamt"; return; }
+  if(!done){ el.textContent="199 Teilantworten insgesamt"; return; }
   el.textContent="Bearbeitet: "+done+"/"+total+" Aufgaben · vollständig gelöst: "+solved+
                  " · Punkte: "+g+"/"+t+" ("+Math.round(100*g/t)+"%)";
 }
