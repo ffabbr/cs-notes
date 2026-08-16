@@ -54,7 +54,7 @@ Total runtime without Bootstrapping is $O(n^2\cdot \lambda n^2)$
 
 Der Algorithmus wählt ja Kanten at random. Wenn er eine Kante kontrahiert, die aber eigentlich Teil des min cuts ist, haben wir ein Problem.
 
-Umdo kleiner der Graph, desto wahrscheinlicher macht der Algorithmus einen Fehler. Statt Monte-Carlo gesamt zu wiederholen, wiederholen wir umso öfter, desto "weiter hinten" wir im Algorithmus sind. 
+Umso kleiner der Graph, desto wahrscheinlicher macht der Algorithmus einen Fehler. Statt Monte-Carlo gesamt zu wiederholen, wiederholen wir umso öfter, desto "weiter hinten" wir im Algorithmus sind. 
 
 
 ![[Bildschirmfoto 2026-05-28 um 20.36.15.png]]

@@ -72,7 +72,7 @@ Now, suppose the middle input 1 → 0:
 
 ![[2nd Semester/DDCA/Slides/06 Slides.pdf#page=56]]
 
-Metastability: Things changed while the sampling
+Metastability: Things changed during sampling
 
 ![[2nd Semester/DDCA/Slides/06 Slides.pdf#page=57]]
 

@@ -42,3 +42,4 @@ Korrektheits-Beweise mit Linearisierbarkeit, dann darf es nur einen Linearisieru
 
 well-formed: per Thread könnte sequentiell sein
 equivalent: same per thread projections
+complete: no pending responses

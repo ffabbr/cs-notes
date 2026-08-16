@@ -67,11 +67,10 @@ $$
 Wslkt, **höchstens** n Versuche
 
 $$
-\begin{align}
-\sum_{i=1}^{n} \Pr[X=i]
- & = \sum_{i=1}^{n} p \cdot (1-p)^{i-1} \\
- & = 
-\end{align}
+\begin{align}  \\
+\sum_{i=1}^{n} \Pr[X=i] & = \sum_{i=1}^{n} p \cdot (1-p)^{i-1} \  \\
+& = p \cdot \sum_{i=0}^{n-1} (1-p)^i \  \\
+& = 1 - (1-p)^n \end{align}
 $$
 
 **Gedächtnislosigkeit**: Der Fakt dass ich schon 99 mal Erfolg hatte hat keinen Einfluss darauf, was beim 100. Mal passiert
@@ -123,7 +122,9 @@ Situation:
 - wir bekommen immer ein zufälliges
 - X: nach wie vielen Runden haben wir alle? 
 
-Betrachte immer die Wahrscheinlichkeit, dass wir ein neues bekommen. z.B. n=6
+Betrachte immer die Wahrscheinlichkeit, dass wir ein neues bekommen. Erwartungswert ist $1/p$ (siehe geometrische Verteilung). 
+
+z.B. n=6
 
 $$
 E[X] = \frac{6}{6} + \frac{6}{5} + \frac{6}{4} + \frac{6}{3} + \frac{6}{2} + \frac{6}{1}

@@ -85,6 +85,8 @@ Each thread/task has its own private state, they cooperate via message passing.
 - a thread can be part of multiple communicators
 - each thread has a rank (id) within each communicator
 
+In **point-to-point** communication a message is sent **from one sender to one receiver**, where as in **collective operations**, one process either **receives data from many other processes or sends data to many processes**.
+
 ![[Bildschirmfoto 2026-06-04 um 11.33.52.png|400]]
 
 How to **SPMD** (Single Program, Multiple Data)
@@ -93,7 +95,7 @@ How to **SPMD** (Single Program, Multiple Data)
 if (rank == 0) {
     // (Master-Prozess) Verteile die Arbeit
 } else {
-    // Du bist Worker-Prozess, rechne
+    // du bist Worker-Prozess, rechne
 }
 ```
 

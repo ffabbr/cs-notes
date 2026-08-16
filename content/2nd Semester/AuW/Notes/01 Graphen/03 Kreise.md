@@ -8,7 +8,7 @@
 | **Pfad (path)**      | **Weg ohne wiederholte Knoten**                                                                                                    |
 | Hamiltonpfad         | jeder Knoten genau einmal                                                                                                          |
 | Zyklus (closed walk) | **Weg mit Start = Ende**, mindestens 2 Knoten (hin-zurück-hin), Endknoten inzident zu (verbunden mit) geraden Anzahl Kanten im Weg |
-| ==Eulertour==        | Closed Walk (Anfang = Ende)k, jede Kante genau einmal                                                                              |
+| ==Eulertour==        | Closed Walk (Anfang = Ende), jede Kante genau einmal                                                                               |
 | Kreis                | Anfang = Ende, aber kein Knoten wird 2 mal besucht, also mindestens 3 Knoten                                                       |
 | ==Hamiltonkreis==    | Kreis über alle Knoten                                                                                                             |
 

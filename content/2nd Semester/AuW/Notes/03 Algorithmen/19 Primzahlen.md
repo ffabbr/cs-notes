@@ -10,11 +10,11 @@ Introduction
 Wähle random a, teste gcd(n,a), wenn $gcd(n,a)=1$, return prime, sonst nicht prime
 
 - korrekt für Primzahlen
-- Korrekt mit Wahrscheinlichkeit $\geq 1-O\left( \frac{1}{\sqrt{ n }} \right)$ für NEIN (= nicht-Primzahlen)
+- Korrekt mit Wahrscheinlichkeit $\leq O\left( \frac{1}{\sqrt{ n }} \right)$ für NEIN (= nicht-Primzahlen)
 
 ## Fermat
 
-Wähle random a, falls p prim, dann $a^{p-1} \equiv_{p} 1$, also return prime, sonst nicht prime. 
+Wähle random a, falls n prim, dann $a^{n-1} \equiv_{n} 1$, also return prime, sonst nicht prime. 
 
 - korrekt für Primzahlen
 - Korrekt mit Wahrscheinlichkeit $> \frac{1}{2}$ für NEIN (= nicht-Primzahlen) die ==keine Carmichael-Zahl sind==

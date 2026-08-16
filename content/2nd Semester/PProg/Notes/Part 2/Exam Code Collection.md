@@ -80,6 +80,7 @@ void unlock(int id) {
 ```
 
 ### Filter Lock (n processes)
+
 Generalizes Peterson to `n` threads through `n-1` levels. Each level has one `victim` that must let others pass; a thread climbs a level only when no one else is at its level or above.
 
 ```text
@@ -100,6 +101,7 @@ unlock(me) {
 
 
 ### Bakery Lock (two processes, simplified)
+
 Ticket-based, fair. Take a number one higher than the other; enter when your number is lowest.
 
 ```text

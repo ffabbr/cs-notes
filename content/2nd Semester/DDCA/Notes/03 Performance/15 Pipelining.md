@@ -62,7 +62,7 @@ reorder back before making results visible to architectural state
 1. Start: all valid in RF. 
 2. Suppose multiply R1, R2, store to R3. Add row to ROB, set valid. Set row in RF to invalid, and point to ROB. Because of pointer, not every row of ROB needs to be searched
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/TH386wzOXvA?si=v3eDbakgwpQ2hn_I&amp;start=5544" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+<iframe width="900" height="515" src="https://www.youtube.com/embed/TH386wzOXvA?si=v3eDbakgwpQ2hn_I&amp;start=5544" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 ---
 

@@ -50,7 +50,10 @@ GREEDY-FÄRBUNG (G)
 ```
 
 Number of colors $C(G)$ needed: 
-$$\chi(G) \leq C(G) \leq \Delta(G) + 1.$$
+
+$$
+\chi(G) \leq C(G) \leq \Delta(G) + 1.
+$$
 
 - Gibt Reihenfolge $V = \{v_1, \dots, v_n\}$ der Knoten, Greedy-Algorithmus braucht nur $\chi(\mathbf{G})$ viele Farben
 
@@ -62,9 +65,9 @@ $$\chi(G) \leq C(G) \leq \Delta(G) + 1.$$
 
 - In jedem möglichen Restgraphen existiert ein Knoten, der maximal $k$ Nachbarn hat $\implies$ max. $k+1$ Farben (z.B. 2 Farben für Bäume)
 
-- Wenn ein **zusammenhängender Graph** einen Knoten besitzt, dessen Grad **kleiner als das Maximum** ($\Delta(G)$) ist, liefert eine schlaue Sortierung eine Färbung mit höchstens $\Delta(G)$ Farben.
-
 ### Heuristik
+
+Wenn ein **zusammenhängender Graph** einen Knoten besitzt, dessen Grad **kleiner als das Maximum** ($\Delta(G)$) ist, liefert eine schlaue Sortierung (die Heuristik, also smallest last) eine Färbung mit höchstens $\Delta(G)$ Farben.
 
 **Smallest Last Coloring** für eine gute Reihenfolge: setze Knoten mit wenigsten Verbinungen ans Ende und entferne, suche weiter im Graphen Knoten mit wenigsten Verbindungen
 
@@ -132,7 +135,7 @@ Beweis nicht prüfungsrelevant.
 
 Einen ==3-färbbaren Graphen== kann man in Zeit $O(|V| + |E|)$ mit $O(\sqrt{|V|})$ Farben färben.
 
-1. Während es Knoten v gibt mit $> \sqrt{ |V| }$ ungefärbten Nachbarn: Färbe v mit neuer Farbe und Nachbarn mit 2 weiteren **neuen** Farben (BFS). 
+1. While es gibt Knoten mit $> \sqrt{ |V| }$ ungefärbten Nachbarn: Färbe v mit neuer Farbe und Nachbarn mit 2 weiteren **neuen** Farben (BFS). 
 2. Lösche v und Nachbarn (alle gefärbten Knoten). Restgraph hat Maximalgrad $\Delta \leq \sqrt{ |V| }$
 3. Färbe verbleibende Knoten mit [[#Greedy Algorithm]] mit $\Delta + 1$ neuen Farben
 
