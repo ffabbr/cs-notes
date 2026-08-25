@@ -1,7 +1,7 @@
 # yaml-language-server: $schema=./quartz/plugins/quartz-plugins.schema.json
 configuration:
-  pageTitle: CS Notes
-  pageTitleSuffix: " - Fabian Rohlik"
+  pageTitle: Fabian Rohlik
+  pageTitleSuffix: " · CS Notes"
   enableSPA: true
   enablePopovers: true
   analytics:
@@ -14,33 +14,33 @@ configuration:
     - .obsidian
     - CLAUDE.md
   theme:
-    fontOrigin: googleFonts
-    cdnCaching: true
+    fontOrigin: local
+    cdnCaching: false
     typography:
-      header: Schibsted Grotesk
-      body: Source Sans Pro
-      code: IBM Plex Mono
+      header: Inter
+      body: Inter
+      code: JetBrains Mono
     colors:
       lightMode:
-        light: "#161618"
-        lightgray: "#393639"
-        gray: "#646464"
-        darkgray: "#d4d4d4"
-        dark: "#fffbd8"
-        secondary: "#ffd589"
-        tertiary: "#c7893c"
-        highlight: rgba(143, 159, 169, 0.15)
-        textHighlight: "#b3aa0288"
+        light: "#0f0f0f"
+        lightgray: "#252525"
+        gray: "#747474"
+        darkgray: "#9e9e9e"
+        dark: "#e8e8e8"
+        secondary: "#cccccf"
+        tertiary: "#e8e8e8"
+        highlight: "rgba(190, 190, 190, 0.12)"
+        textHighlight: "rgba(190, 190, 190, 0.22)"
       darkMode:
-        light: "#161618"
-        lightgray: "#393639"
-        gray: "#646464"
-        darkgray: "#d4d4d4"
-        dark: "#fffbd8"
-        secondary: "#ffd589"
-        tertiary: "#c7893c"
-        highlight: rgba(143, 159, 169, 0.15)
-        textHighlight: "#b3aa0288"
+        light: "#0f0f0f"
+        lightgray: "#252525"
+        gray: "#747474"
+        darkgray: "#9e9e9e"
+        dark: "#e8e8e8"
+        secondary: "#cccccf"
+        tertiary: "#e8e8e8"
+        highlight: "rgba(190, 190, 190, 0.12)"
+        textHighlight: "rgba(190, 190, 190, 0.22)"
 plugins:
   - source: "@quartz-community/created-modified-date"
     enabled: true
@@ -111,7 +111,7 @@ plugins:
     enabled: false
     order: 92
   - source: "@quartz-community/quartz-fonts"
-    enabled: true
+    enabled: false
   - source: "@quartz-themes/core"
     enabled: false
     options:
@@ -161,11 +161,15 @@ plugins:
     enabled: true
   - source: "@quartz-community/explorer"
     enabled: true
+    options:
+      folderClickBehavior: collapse
+      folderDefaultState: collapsed
+      useSavedState: true
     layout:
       position: left
       priority: 50
   - source: "@quartz-community/graph"
-    enabled: true
+    enabled: false
     layout:
       position: right
       priority: 10
@@ -178,7 +182,7 @@ plugins:
       groupOptions:
         grow: true
   - source: "@quartz-community/backlinks"
-    enabled: true
+    enabled: false
     layout:
       position: right
       priority: 50
@@ -215,7 +219,7 @@ plugins:
       priority: 35
       group: toolbar
   - source: "@quartz-community/breadcrumbs"
-    enabled: true
+    enabled: false
     layout:
       position: beforeBody
       priority: 5
