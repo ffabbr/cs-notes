@@ -4,6 +4,16 @@ import { fetchCanonical } from "./util"
 
 const p = new DOMParser()
 let activeAnchor: HTMLAnchorElement | null = null
+const pdfViewerParams = "toolbar=0&navpanes=0&scrollbar=0&statusbar=0&messages=0"
+
+const buildPdfEmbedSrc = (targetUrl: URL) => {
+  const withParams = targetUrl.hash
+    ? `${targetUrl.hash.replace(/^#/, "")}&${pdfViewerParams}`
+    : pdfViewerParams
+  const next = new URL(targetUrl.toString())
+  next.hash = withParams
+  return next.toString()
+}
 
 async function mouseEnterHandler(
   this: HTMLAnchorElement,
@@ -85,7 +95,9 @@ async function mouseEnterHandler(
       switch (typeInfo) {
         case "pdf":
           const pdf = document.createElement("iframe")
-          pdf.src = targetUrl.toString()
+          pdf.src = buildPdfEmbedSrc(targetUrl)
+          pdf.setAttribute("scrolling", "no")
+          pdf.setAttribute("tabindex", "-1")
           popoverInner.appendChild(pdf)
           break
         default:

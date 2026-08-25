@@ -1,0 +1,19 @@
+{
+  "id": "conv-1776461170836-d4543hsws",
+  "title": "Combine items in giant callout",
+  "titleGenerationStatus": "success",
+  "createdAt": 1776461170836,
+  "updatedAt": 1776511844653,
+  "lastResponseAt": 1776461183965,
+  "sessionId": "42823fd0-2b4e-4bb3-8f14-d9f02c382a51",
+  "sdkSessionId": "42823fd0-2b4e-4bb3-8f14-d9f02c382a51",
+  "usage": {
+    "model": "sonnet",
+    "inputTokens": 1,
+    "cacheCreationInputTokens": 1040,
+    "cacheReadInputTokens": 14402,
+    "contextWindow": 200000,
+    "contextTokens": 15443,
+    "percentage": 8
+  }
+}

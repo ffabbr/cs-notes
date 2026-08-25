@@ -1,0 +1,43 @@
+---
+title: Diskrete Mathematik
+---
+- [[1st Semester/DM/DiskMat Exam.md|DiskMat Exam]]
+- [[1st Semester/DM/DM Week Timeline.md|DM Week Timeline]]
+- [[1st Semester/DM/Notizen/]]
+- [[1st Semester/DM/Exercises/]]
+- [[1st Semester/DM/Skript.pdf|Skript]]
+
+my lecture notes: 
+
+- Algebra
+	- [[1st Semester/DM/Notes/Algebra/01 Einleitung Algebra.md|01 Einleitung Algebra]]
+	- [[1st Semester/DM/Notes/Algebra/02 Ordnung.md|02 Ordnung]]
+	- [[1st Semester/DM/Notes/Algebra/03 Zyklische Gruppen.md|03 Zyklische Gruppen]]
+	- [[1st Semester/DM/Notes/Algebra/04 Euler.md|04 Euler]]
+	- [[1st Semester/DM/Notes/Algebra/05 Ringe und Körper.md|05 Ringe und Körper]]
+	- [[1st Semester/DM/Notes/Algebra/06 Polynome.md|06 Polynome]]
+	- [[1st Semester/DM/Notes/Algebra/07 How-To's (Algebra).md|07 How-To's (Algebra)]]
+- Kryptographie und Codes
+	- [[1st Semester/DM/Notes/Kryptographie und Codes/Diffie-Hellman.md|Diffie-Hellman]]
+	- [[1st Semester/DM/Notes/Kryptographie und Codes/Error Correcting Codes.md|Error Correcting Codes]]
+	- [[1st Semester/DM/Notes/Kryptographie und Codes/RSA Public-Key Verfahren.md|RSA Public-Key Verfahren]]
+- Logik
+	- Introduction
+		- [[1st Semester/DM/Notes/Logik/Introduction/01 Operatoren.md|01 Operatoren]]
+		- [[1st Semester/DM/Notes/Logik/Introduction/02 Beweisstrategien (Proof Patterns).md|02 Beweisstrategien (Proof Patterns)]]
+		- [[1st Semester/DM/Notes/Logik/Introduction/03 Position der Quantoren (Prädikatenlogik).md|03 Position der Quantoren (Prädikatenlogik)]]
+	- Revamped
+		- [[1st Semester/DM/Notes/Logik/Revamped/01 Einleitung Logik Revamped.md|01 Einleitung Logik Revamped]]
+		- [[1st Semester/DM/Notes/Logik/Revamped/02 Kalküle.md|02 Kalküle]]
+		- [[1st Semester/DM/Notes/Logik/Revamped/03 Aussagenlogik.md|03 Aussagenlogik]]
+		- [[1st Semester/DM/Notes/Logik/Revamped/04 Prädikatenlogik.md|04 Prädikatenlogik]]
+- Mengen
+	- [[1st Semester/DM/Notes/Mengen/01 Mengen.md|01 Mengen]]
+	- [[1st Semester/DM/Notes/Mengen/02 Zählbarkeit.md|02 Zählbarkeit]]
+	- [[1st Semester/DM/Notes/Mengen/03 Relationen.md|03 Relationen]]
+	- [[1st Semester/DM/Notes/Mengen/04 Spezielle Relationen.md|04 Spezielle Relationen]]
+	- [[1st Semester/DM/Notes/Mengen/05 Posets.md|05 Posets]]
+	- [[1st Semester/DM/Notes/Mengen/06 Hasse Diagramme.md|06 Hasse Diagramme]]
+	- [[1st Semester/DM/Notes/Mengen/07 Funktionen.md|07 Funktionen]]
+- [[1st Semester/DM/Notes/Pigeonhole Principle.md|Pigeonhole Principle]]
+- [[1st Semester/DM/Notes/Zahlentheorie.md|Zahlentheorie]]

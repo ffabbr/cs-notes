@@ -1,0 +1,20 @@
+{
+  "id": "conv-1779284886302-yktl64aig",
+  "title": "Continue Roman numeral numbering in integrals",
+  "titleGenerationStatus": "success",
+  "createdAt": 1779284886302,
+  "updatedAt": 1779468384951,
+  "lastResponseAt": 1779464280399,
+  "sessionId": "7f87243a-09ce-4b96-bb1e-379998ac1004",
+  "sdkSessionId": "7f87243a-09ce-4b96-bb1e-379998ac1004",
+  "currentNote": "2nd Semester/Analysis/Notes/12 Integral.md",
+  "usage": {
+    "model": "sonnet",
+    "inputTokens": 0,
+    "cacheCreationInputTokens": 0,
+    "cacheReadInputTokens": 0,
+    "contextWindow": 200000,
+    "contextTokens": 0,
+    "percentage": 0
+  }
+}

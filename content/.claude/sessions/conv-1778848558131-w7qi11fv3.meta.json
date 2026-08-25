@@ -1,0 +1,20 @@
+{
+  "id": "conv-1778848558131-w7qi11fv3",
+  "title": "Explain DRAM, SRAM, PCM memory types",
+  "titleGenerationStatus": "success",
+  "createdAt": 1778848558132,
+  "updatedAt": 1779023398855,
+  "lastResponseAt": 1778848580034,
+  "sessionId": "19d97627-8141-4b2e-8890-36be0b091755",
+  "sdkSessionId": "19d97627-8141-4b2e-8890-36be0b091755",
+  "currentNote": "2nd Semester/DDCA/Notes/05 Hardware/Unbenannt.md",
+  "usage": {
+    "model": "sonnet",
+    "inputTokens": 1,
+    "cacheCreationInputTokens": 279,
+    "cacheReadInputTokens": 15888,
+    "contextWindow": 200000,
+    "contextTokens": 16168,
+    "percentage": 8
+  }
+}

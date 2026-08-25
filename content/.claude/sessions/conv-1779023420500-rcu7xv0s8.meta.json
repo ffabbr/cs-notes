@@ -1,0 +1,20 @@
+{
+  "id": "conv-1779023420500-rcu7xv0s8",
+  "title": "Move formulas to line beginning",
+  "titleGenerationStatus": "success",
+  "createdAt": 1779023420501,
+  "updatedAt": 1779090163611,
+  "lastResponseAt": 1779023430349,
+  "sessionId": "edf9cfef-41f9-4a02-99ca-95932dbe9764",
+  "sdkSessionId": "edf9cfef-41f9-4a02-99ca-95932dbe9764",
+  "currentNote": "2nd Semester/DDCA/Notes/05 Hardware/25 Memory.md",
+  "usage": {
+    "model": "sonnet",
+    "inputTokens": 1,
+    "cacheCreationInputTokens": 413,
+    "cacheReadInputTokens": 17206,
+    "contextWindow": 200000,
+    "contextTokens": 17620,
+    "percentage": 9
+  }
+}

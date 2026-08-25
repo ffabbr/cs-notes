@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Happens-Before Diagram</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg:        #f7f6f2;
+    --thread:    #e2dfd6;
+    --text-sec:  #7a7870;
+    --dash:      #b8b5ab;
+    --col-black: #1e1d1a;
+    --col-blue:  #1d52c4;
+    --col-gray:  #8a8880;
+    --col-red:   #c43530;
+    --band:      rgba(60,160,90,0.07);
+    --font: "SF Pro Text", "Helvetica Neue", "Segoe UI", system-ui, sans-serif;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg:        #151412;
+      --thread:    #302e2a;
+      --text-sec:  #6a6860;
+      --dash:      #403e3a;
+      --col-black: #d0cdc2;
+      --col-blue:  #5b94f5;
+      --col-gray:  #686460;
+      --col-red:   #e06860;
+      --band:      rgba(60,140,80,0.09);
+    }
+  }
+
+  body {
+    background: var(--bg);
+    font-family: var(--font);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 40px 24px;
+  }
+
+  .wrap {
+    max-width: 860px;
+    width: 100%;
+  }
+
+  svg {
+    display: block;
+    width: 100%;
+    height: auto;
+    cursor: crosshair;
+  }
+
+  svg text {
+    font-family: var(--font);
+  }
+
+  .legend {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px 28px;
+    margin-top: 22px;
+  }
+
+  .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    font-size: 12.5px;
+    color: var(--text-sec);
+    font-weight: 400;
+    transition: opacity 0.16s ease;
+  }
+
+  .legend-dot {
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <svg id="diagram" viewBox="0 0 740 300" xmlns="http://www.w3.org/2000/svg">
+
+    <!-- background band -->
+    <rect x="70" y="22" width="642" height="256" rx="10" fill="var(--band)"/>
+
+    <!-- thread lines -->
+    <line x1="66" y1="70"  x2="708" y2="70"  stroke="var(--thread)" stroke-width="1"/>
+    <line x1="66" y1="150" x2="708" y2="150" stroke="var(--thread)" stroke-width="1"/>
+    <line x1="66" y1="230" x2="708" y2="230" stroke="var(--thread)" stroke-width="1"/>
+
+    <!-- dashed vertical boundaries of X -->
+    <line x1="259.7" y1="32" x2="259.7" y2="268" stroke="var(--dash)" stroke-width="1" stroke-dasharray="5,4"/>
+    <line x1="387"   y1="32" x2="387"   y2="268" stroke="var(--dash)" stroke-width="1" stroke-dasharray="5,4"/>
+
+    <!-- X bracket -->
+    <line x1="259.7" y1="13" x2="259.7" y2="20" stroke="var(--dash)" stroke-width="1"/>
+    <line x1="387"   y1="13" x2="387"   y2="20" stroke="var(--dash)" stroke-width="1"/>
+    <line x1="259.7" y1="16" x2="387"   y2="16" stroke="var(--dash)" stroke-width="1"/>
+    <text x="323.4" y="11" font-size="11" font-weight="500"
+          fill="var(--text-sec)" text-anchor="middle" dominant-baseline="auto">X</text>
+
+    <!-- thread labels -->
+    <text x="40" y="70"  font-size="11" fill="var(--text-sec)" text-anchor="end" dominant-baseline="middle">t1</text>
+    <text x="40" y="150" font-size="11" fill="var(--text-sec)" text-anchor="end" dominant-baseline="middle">t2</text>
+    <text x="40" y="230" font-size="11" fill="var(--text-sec)" text-anchor="end" dominant-baseline="middle">t3</text>
+
+    <!-- t1 · gray [0.06–0.16] -->
+    <g data-color="gray" stroke="var(--col-gray)" fill="var(--col-gray)" stroke-width="2.4" stroke-linecap="round">
+      <line x1="92.2" y1="70" x2="159.2" y2="70"/>
+      <circle cx="92.2"  cy="70" r="4.5"/>
+      <circle cx="159.2" cy="70" r="4.5"/>
+    </g>
+
+    <!-- t1 · black (X) [0.31–0.50] -->
+    <g data-color="black" stroke="var(--col-black)" fill="var(--col-black)" stroke-width="2.4" stroke-linecap="round">
+      <line x1="259.7" y1="70" x2="387" y2="70"/>
+      <circle cx="259.7" cy="70" r="4.5"/>
+      <circle cx="387"   cy="70" r="4.5"/>
+    </g>
+
+    <!-- t1 · blue [0.60–0.72] -->
+    <g data-color="blue" stroke="var(--col-blue)" fill="var(--col-blue)" stroke-width="2.4" stroke-linecap="round">
+      <line x1="454" y1="70" x2="534.4" y2="70"/>
+      <circle cx="454"   cy="70" r="4.5"/>
+      <circle cx="534.4" cy="70" r="4.5"/>
+    </g>
+
+    <!-- t1 · blue [0.79–0.91] -->
+    <g data-color="blue" stroke="var(--col-blue)" fill="var(--col-blue)" stroke-width="2.4" stroke-linecap="round">
+      <line x1="581.3" y1="70" x2="661.7" y2="70"/>
+      <circle cx="581.3" cy="70" r="4.5"/>
+      <circle cx="661.7" cy="70" r="4.5"/>
+    </g>
+
+    <!-- t2 · red [0.20–0.40] -->
+    <g data-color="red" stroke="var(--col-red)" fill="var(--col-red)" stroke-width="2.4" stroke-linecap="round">
+      <line x1="186" y1="150" x2="320" y2="150"/>
+      <circle cx="186" cy="150" r="4.5"/>
+      <circle cx="320" cy="150" r="4.5"/>
+    </g>
+
+    <!-- t2 · blue [0.68–0.82] -->
+    <g data-color="blue" stroke="var(--col-blue)" fill="var(--col-blue)" stroke-width="2.4" stroke-linecap="round">
+      <line x1="507.6" y1="150" x2="601.4" y2="150"/>
+      <circle cx="507.6" cy="150" r="4.5"/>
+      <circle cx="601.4" cy="150" r="4.5"/>
+    </g>
+
+    <!-- t3 · gray [0.05–0.16] -->
+    <g data-color="gray" stroke="var(--col-gray)" fill="var(--col-gray)" stroke-width="2.4" stroke-linecap="round">
+      <line x1="85.5" y1="230" x2="159.2" y2="230"/>
+      <circle cx="85.5"  cy="230" r="4.5"/>
+      <circle cx="159.2" cy="230" r="4.5"/>
+    </g>
+
+    <!-- t3 · red [0.42–0.56] -->
+    <g data-color="red" stroke="var(--col-red)" fill="var(--col-red)" stroke-width="2.4" stroke-linecap="round">
+      <line x1="333.4" y1="230" x2="427.2" y2="230"/>
+      <circle cx="333.4" cy="230" r="4.5"/>
+      <circle cx="427.2" cy="230" r="4.5"/>
+    </g>
+
+    <!-- t3 · blue [0.69–0.83] -->
+    <g data-color="blue" stroke="var(--col-blue)" fill="var(--col-blue)" stroke-width="2.4" stroke-linecap="round">
+      <line x1="514.3" y1="230" x2="608.1" y2="230"/>
+      <circle cx="514.3" cy="230" r="4.5"/>
+      <circle cx="608.1" cy="230" r="4.5"/>
+    </g>
+
+    <!-- hover cursor (hidden until mousemove) -->
+    <line id="hover-line"    x1="0" y1="32" x2="0" y2="268"
+          stroke="var(--text-sec)" stroke-width="1" opacity="0" pointer-events="none"/>
+    <circle id="hover-top"  cx="0" cy="32"  r="2.5"
+          fill="var(--text-sec)" opacity="0" pointer-events="none"/>
+    <circle id="hover-bot"  cx="0" cy="268" r="2.5"
+          fill="var(--text-sec)" opacity="0" pointer-events="none"/>
+
+  </svg>
+
+  <div class="legend">
+    <div class="legend-item" data-color="gray">
+      <div class="legend-dot" style="background:var(--col-gray)"></div>
+      Definitely before X
+    </div>
+    <div class="legend-item" data-color="black">
+      <div class="legend-dot" style="background:var(--col-black)"></div>
+      Invocation X
+    </div>
+    <div class="legend-item" data-color="blue">
+      <div class="legend-dot" style="background:var(--col-blue)"></div>
+      Definitely after X
+    </div>
+    <div class="legend-item" data-color="red">
+      <div class="legend-dot" style="background:var(--col-red)"></div>
+      Cannot order relative to X
+    </div>
+  </div>
+</div>
+
+<script>
+const svg        = document.getElementById('diagram');
+const hoverLine  = document.getElementById('hover-line');
+const hoverTop   = document.getElementById('hover-top');
+const hoverBot   = document.getElementById('hover-bot');
+const legendItems = document.querySelectorAll('.legend-item');
+
+const MARGIN_L = 52, W = 740, PLOT_W = W - MARGIN_L - 18;
+
+const EVENTS = [
+  [0.06, 0.16, 'gray'],
+  [0.31, 0.50, 'black'],
+  [0.60, 0.72, 'blue'],
+  [0.79, 0.91, 'blue'],
+  [0.20, 0.40, 'red'],
+  [0.68, 0.82, 'blue'],
+  [0.05, 0.16, 'gray'],
+  [0.42, 0.56, 'red'],
+  [0.69, 0.83, 'blue'],
+];
+
+function colorsAt(f) {
+  const s = new Set();
+  for (const [f1, f2, col] of EVENTS) if (f >= f1 && f <= f2) s.add(col);
+  return s;
+}
+
+function setFocus(active) {
+  legendItems.forEach(el => {
+    el.style.opacity = (!active || active.size === 0 || active.has(el.dataset.color)) ? '1' : '0.15';
+  });
+}
+
+svg.addEventListener('mousemove', e => {
+  const rect = svg.getBoundingClientRect();
+  const svgX = (e.clientX - rect.left) / rect.width * W;
+  const x = Math.max(MARGIN_L, Math.min(W - 18, svgX));
+
+  [hoverLine, hoverTop, hoverBot].forEach(el => el.setAttribute('cx', x) || el.setAttribute('x1', x) || el.setAttribute('x2', x));
+  hoverLine.setAttribute('x1', x); hoverLine.setAttribute('x2', x); hoverLine.setAttribute('opacity', '0.4');
+  hoverTop.setAttribute('cx', x); hoverTop.setAttribute('opacity', '0.22');
+  hoverBot.setAttribute('cx', x); hoverBot.setAttribute('opacity', '0.22');
+
+  setFocus(colorsAt((x - MARGIN_L) / PLOT_W));
+});
+
+svg.addEventListener('mouseleave', () => {
+  hoverLine.setAttribute('opacity', '0');
+  hoverTop.setAttribute('opacity', '0');
+  hoverBot.setAttribute('opacity', '0');
+  setFocus(null);
+});
+</script>
+</body>
+</html>

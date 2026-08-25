@@ -1,0 +1,20 @@
+{
+  "id": "conv-1778683333593-n2fib21jo",
+  "title": "Wrap skip list section in callout",
+  "titleGenerationStatus": "success",
+  "createdAt": 1778683333594,
+  "updatedAt": 1778848546702,
+  "lastResponseAt": 1778683356593,
+  "sessionId": "2e644d51-76c1-427f-acc1-ddb6ccc08234",
+  "sdkSessionId": "2e644d51-76c1-427f-acc1-ddb6ccc08234",
+  "currentNote": "2nd Semester/PProg/Notes/Part 2/11 Lock Granularity.md",
+  "usage": {
+    "model": "sonnet",
+    "inputTokens": 1,
+    "cacheCreationInputTokens": 1305,
+    "cacheReadInputTokens": 16613,
+    "contextWindow": 200000,
+    "contextTokens": 17919,
+    "percentage": 9
+  }
+}

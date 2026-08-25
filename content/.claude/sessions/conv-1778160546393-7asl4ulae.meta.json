@@ -1,0 +1,19 @@
+{
+  "id": "conv-1778160546393-7asl4ulae",
+  "title": "Restructure note for clarity",
+  "titleGenerationStatus": "success",
+  "createdAt": 1778160546395,
+  "updatedAt": 1778683316459,
+  "lastResponseAt": 1778160643086,
+  "sessionId": "a2037f11-6313-4670-8bc4-b89289033a9c",
+  "sdkSessionId": "a2037f11-6313-4670-8bc4-b89289033a9c",
+  "usage": {
+    "model": "sonnet",
+    "inputTokens": 1,
+    "cacheCreationInputTokens": 1114,
+    "cacheReadInputTokens": 17700,
+    "contextWindow": 200000,
+    "contextTokens": 18815,
+    "percentage": 9
+  }
+}

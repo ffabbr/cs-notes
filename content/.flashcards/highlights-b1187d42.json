@@ -1,0 +1,26 @@
+{
+  "version": 1,
+  "sourcePath": "2nd Semester/PProg/Exercises/04 Sheet.pdf",
+  "highlights": [
+    {
+      "id": "1773357219598-3ba6un",
+      "color": "green",
+      "isFlashcard": false,
+      "text": "pipeline throughput as well as latency",
+      "createdAt": "2026-03-12T23:13:39.599Z",
+      "pages": [
+        {
+          "page": 0,
+          "rects": [
+            {
+              "x": 0.4009895843392692,
+              "y": 0.8165708812260536,
+              "w": 0.24019280470198548,
+              "h": 0.014367816091954023
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

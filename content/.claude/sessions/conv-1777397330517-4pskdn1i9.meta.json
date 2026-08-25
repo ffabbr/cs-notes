@@ -1,0 +1,20 @@
+{
+  "id": "conv-1777397330517-4pskdn1i9",
+  "title": "Create callout box",
+  "titleGenerationStatus": "success",
+  "createdAt": 1777397330517,
+  "updatedAt": 1779468384953,
+  "lastResponseAt": 1777397741987,
+  "sessionId": "f8a1fc36-d6f3-4ae4-bc46-5752242915f1",
+  "sdkSessionId": "f8a1fc36-d6f3-4ae4-bc46-5752242915f1",
+  "currentNote": "2nd Semester/AuW/Notes/Wahrscheinlichkeit/19 Primzahlen.md",
+  "usage": {
+    "model": "sonnet",
+    "inputTokens": 1,
+    "cacheCreationInputTokens": 3037,
+    "cacheReadInputTokens": 19237,
+    "contextWindow": 200000,
+    "contextTokens": 22275,
+    "percentage": 11
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "id": "conv-1774096154498-3gz4r4aqg",
+  "title": "Identify Von Neumann content for ISA notes",
+  "titleGenerationStatus": "success",
+  "createdAt": 1774096154509,
+  "updatedAt": 1774100183242,
+  "lastResponseAt": 1774097505210,
+  "sessionId": "0e03d3a8-cf65-491c-bb14-1b6f774a5f02",
+  "sdkSessionId": "0e03d3a8-cf65-491c-bb14-1b6f774a5f02",
+  "currentNote": "2nd Semester/DDCA/Notes/10 Instruction Set Architectures.md",
+  "usage": {
+    "model": "sonnet",
+    "inputTokens": 3,
+    "cacheCreationInputTokens": 452,
+    "cacheReadInputTokens": 24299,
+    "contextWindow": 200000,
+    "contextTokens": 24754,
+    "percentage": 12
+  }
+}

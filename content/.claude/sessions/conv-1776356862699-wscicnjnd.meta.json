@@ -1,0 +1,20 @@
+{
+  "id": "conv-1776356862699-wscicnjnd",
+  "title": "Find ISA tradeoff mentions",
+  "titleGenerationStatus": "success",
+  "createdAt": 1776356862700,
+  "updatedAt": 1776378057134,
+  "lastResponseAt": 1776356907876,
+  "sessionId": "c7ab3e51-7568-4608-8fb9-d6c3c8bb3727",
+  "sdkSessionId": "c7ab3e51-7568-4608-8fb9-d6c3c8bb3727",
+  "currentNote": "2nd Semester/DDCA/Notes/10 Instruction Set Architectures.md",
+  "usage": {
+    "model": "sonnet",
+    "inputTokens": 1,
+    "cacheCreationInputTokens": 4669,
+    "cacheReadInputTokens": 14133,
+    "contextWindow": 200000,
+    "contextTokens": 18803,
+    "percentage": 9
+  }
+}

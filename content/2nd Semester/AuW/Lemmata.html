@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sätze, Lemmas, Korollare & Propositionen – AuW Skript</title>
+<script>
+  window.MathJax = {
+    tex: { inlineMath: [['$','$'], ['\\(','\\)']] },
+    svg: { fontCache: 'global' },
+    startup: { typeset: true },
+    options: { skipHtmlTags: ['script','noscript','style','textarea','code','annotation','annotation-xml'] }
+  };
+</script>
+<script src="tex-svg.js" id="MathJax-script" async></script>
+<style>
+  :root {
+    --bg: #f7f7f5;
+    --card: #ffffff;
+    --ink: #1a1a1a;
+    --muted: #8a8a86;
+    --line: #e7e7e3;
+    --accent: #2563eb;
+    --accent-bg: #eff6ff;
+    --btn-ink: #fff;
+    --hint: #b8b8b3;
+    --shadow: rgba(0,0,0,.04);
+    --card-radius: 2rem;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #1a1a18;
+      --card: #242422;
+      --ink: #ededeb;
+      --muted: #8a8a86;
+      --line: #36352f;
+      --accent: #60a5fa;
+      --accent-bg: #1e293b;
+      --btn-ink: #1a1a18;
+      --hint: #56564f;
+      --shadow: rgba(0,0,0,.3);
+    }
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background: var(--bg); color: var(--ink); min-height: 100vh;
+    display: flex; flex-direction: column; align-items: center;
+    padding: clamp(40px, 9vh, 80px) 20px 60px;
+    font-size: 15px; line-height: 1.6;
+  }
+  .wrap { width: 100%; max-width: 680px; }
+
+  header { text-align: center; margin-bottom: 10px; }
+  h1 { font-size: 17px; font-weight: 600; margin: 0; letter-spacing: -.01em; }
+  .sub { color: var(--muted); font-size: 13px; margin-top: 4px; }
+
+  #bar {
+    position: sticky; top: 0; z-index: 5; background: var(--bg);
+    display: flex; flex-wrap: wrap; gap: 8px; align-items: center;
+    padding: 16px 0 13px; border-bottom: 1px solid var(--line);
+  }
+  #bar button {
+    font-family: inherit; font-size: 13px; font-weight: 600; cursor: pointer;
+    background: var(--card); color: var(--ink); border: 1.5px solid var(--line);
+    padding: 7px 15px; border-radius: 99px; corner-shape: squircle;
+    box-shadow: 0 2px 0 var(--line); transform: translateY(0);
+    transition: transform .15s ease, box-shadow .15s ease, border-color .15s ease,
+                background .15s ease, color .15s ease;
+  }
+  #bar button:hover {
+    border-color: var(--accent); color: var(--accent); background: var(--accent-bg);
+    box-shadow: 0 5px 0 color-mix(in srgb, var(--accent) 22%, transparent); transform: translateY(-2px);
+  }
+  #bar button:active { transform: translateY(2px) scale(.985); box-shadow: 0 1px 0 var(--line); }
+  #bar button.on {
+    background: var(--accent); border-color: var(--accent); color: var(--btn-ink);
+    box-shadow: 0 3px 0 color-mix(in srgb, var(--accent) 55%, transparent);
+  }
+  #bar button.on:hover { background: var(--accent); color: var(--btn-ink); transform: translateY(-2px); }
+  #count { margin-left: auto; font-size: 13px; color: var(--muted); }
+
+  h2 {
+    font-size: 11px; font-weight: 600; letter-spacing: .07em; text-transform: uppercase;
+    color: var(--muted); margin: 34px 0 12px; padding: 0 6px;
+  }
+  .item {
+    background: var(--card); border: 1px solid var(--line); box-shadow: 0 1px 2px var(--shadow);
+    border-radius: var(--card-radius); corner-shape: squircle;
+    padding: 22px 26px; margin: 14px 0;
+  }
+  @supports not (corner-shape: squircle) { .item { border-radius: 1.65rem; } }
+  .item p { margin: 10px 0; }
+  .item p:first-of-type { margin-top: 0; }
+  .item > :last-child { margin-bottom: 0; }
+  .item .name { font-weight: 600; }
+  .page {
+    float: right; margin-left: 14px;
+    font-size: 11px; font-weight: 600; letter-spacing: .04em; text-transform: uppercase;
+    color: var(--muted); background: var(--line); padding: 4px 11px; border-radius: 99px;
+  }
+  .eq { display: block; text-align: center; margin: 14px 0; overflow-x: auto; overflow-y: hidden; }
+  mjx-container { font-size: 1em !important; }
+  mjx-container[display="true"] { margin: 0 !important; }
+  ol, ul { margin: 8px 0 0; padding-left: 22px; }
+  li { margin: 3px 0; }
+  ul.plain { list-style: none; padding-left: 6px; }
+  pre {
+    font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 13px; line-height: 1.55;
+    background: var(--bg); border: 1px solid var(--line); border-radius: 14px;
+    padding: 14px 16px; margin: 12px 0; white-space: pre-wrap;
+  }
+  h2.hidden, .item.hidden { display: none; }
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+  <h1>Sätze, Lemmas, Korollare &amp; Propositionen</h1>
+  <div class="sub">AuW-Skript · wörtliche Zitate · Seitenzahlen gemäss Skript</div>
+</header>
+
+<div id="bar">
+  <button data-f="all" class="on">Alle</button>
+  <button data-f="satz">Sätze</button>
+  <button data-f="lemma">Lemmas</button>
+  <button data-f="korollar">Korollare</button>
+  <button data-f="proposition">Propositionen</button>
+  <span id="count"></span>
+</div>
+
+<h2>Kapitel 1 – Graphentheorie</h2>
+
+<div class="item" data-t="satz"><span class="page">S. 3</span>
+<p><span class="name">Satz 1.2.</span> Für jeden Graphen $G = (V, E)$ gilt</p>
+<div class="eq">$$\sum_{v \in V} \deg(v) = 2|E|.$$</div></div>
+
+<div class="item" data-t="korollar"><span class="page">S. 4</span>
+<p><span class="name">Korollar 1.3.</span> Für jeden Graphen $G = (V, E)$ gilt: Die Anzahl der Knoten mit ungeradem Grad ist gerade.</p></div>
+
+<div class="item" data-t="korollar"><span class="page">S. 4</span>
+<p><span class="name">Korollar 1.4.</span> In jedem Graph $G = (V, E)$ ist der durchschnittliche Knotengrad gleich $2|E|/|V|$. Insbesondere gibt es daher Knoten $x, y \in V$ mit $\deg(x) \le 2|E|/|V|$ und $\deg(y) \ge 2|E|/|V|$.</p></div>
+
+<div class="item" data-t="lemma"><span class="page">S. 7</span>
+<p><span class="name">Lemma 1.5.</span> Ist $T = (V, E)$ ein Baum mit $|V| \ge 2$ Knoten, so gilt:</p>
+<ul class="plain"><li>a) &nbsp;$T$ enthält mindestens zwei Blätter,</li><li>b) &nbsp;ist $v \in V$ ein Blatt, so ist der Graph $T - v$ ebenfalls ein Baum.</li></ul></div>
+
+<div class="item" data-t="satz"><span class="page">S. 8</span>
+<p><span class="name">Satz 1.6.</span> Ist $G = (V, E)$ ein Graph auf $|V| \ge 1$ Knoten, so sind die folgenden Aussagen äquivalent:</p>
+<ul class="plain"><li>(a) $G$ ist ein Baum,</li><li>(b) $G$ ist zusammenhängend und kreisfrei,</li><li>(c) $G$ ist zusammenhängend und $|E| = |V| - 1$,</li><li>(d) $G$ ist kreisfrei und $|E| = |V| - 1$,</li><li>(e) für alle $x, y \in V$ gilt: $G$ enthält genau einen $x$-$y$-Pfad.</li></ul></div>
+
+<div class="item" data-t="lemma"><span class="page">S. 10</span>
+<p><span class="name">Lemma 1.7.</span> Ein Wald $G = (V, E)$ enthält genau $|V| - |E|$ viele Zusammenhangskomponenten.</p></div>
+
+<div class="item" data-t="satz"><span class="page">S. 11</span>
+<p><span class="name">Satz 1.8.</span> Für jeden gerichteten Graphen $D = (V, A)$ gilt:</p>
+<div class="eq">$$\sum_{v \in V} \deg^{-}(v) = \sum_{v \in V} \deg^{+}(v) = |A|.$$</div></div>
+
+<div class="item" data-t="satz"><span class="page">S. 13</span>
+<p><span class="name">Satz 1.9.</span> Für jeden DAG $D = (V, A)$ kann man in Zeit $O(|V| + |A|)$ eine topologische Sortierung berechnen.</p></div>
+
+<div class="item" data-t="satz"><span class="page">S. 15</span>
+<p><span class="name">Satz 1.13.</span> Sei $G = (V, E)$ bzw. $D = (V, A)$ ein ungerichteter bzw. gerichteter Graph mit Knotenmenge $V = [n]$ und $M$ die zugehörige Adjazenzmatrix. Dann entspricht der Eintrag $m^{k}_{ij}$ der $i$-ten Zeile und $j$-ten Spalte der Matrix $M^{k}$ der Anzahl gerichteter Wege der Länge (genau) $k$ von $i$ nach $j$.</p></div>
+
+<div class="item" data-t="satz"><span class="page">S. 16</span>
+<p><span class="name">Satz 1.14.</span> Ist $G = (V, E)$ ein zusammenhängender Graph, so findet der folgende Algorithmus einen Baum $T = (V, E_T)$ mit $E_T \subseteq E$:</p>
+<pre>$G' \leftarrow G$
+while ($G'$ enthält einen Kreis)
+    wähle einen beliebigen Kreis $C$ in $G'$ und entferne eine
+    beliebige Kante des Kreises $C$ aus der Kantenmenge von $G'$
+return $G'$</pre></div>
+
+<div class="item" data-t="lemma"><span class="page">S. 16</span>
+<p><span class="name">Lemma 1.15.</span> Ist $G = (V, E)$ ein zusammenhängender Graph, $C$ ein Kreis in $G$ und $e$ eine Kante in $C$, so ist der Graph $G_e = (V, E \setminus \{e\})$ (sprich: der Graph den wir aus $G$ erhalten in dem wir die Kante $e$ löschen) ebenfalls zusammenhängend.</p></div>
+
+<div class="item" data-t="lemma"><span class="page">S. 18</span>
+<p><span class="name">Lemma 1.16.</span> Sei $G = (V, E)$ ein zusammenhängender Graph und sei $S \subseteq V$ mit $\emptyset \ne S$ und $S \ne V$. Für jede Kante $\hat{e}$ in $E(S, V \setminus S)$ mit $c(\hat{e}) = \min\{c(e) \mid e \in E(S, V \setminus S)\}$ gilt dann:</p>
+<ul class="plain"><li>a) &nbsp;es gibt einen minimalen Spannbaum $T^{*}$ in $G$, der $\hat{e}$ enthält.</li><li>b) &nbsp;gilt $c(\hat{e}) &lt; c(e)$ für alle Kanten $e \in E(S, V \setminus S)$, $e \ne \hat{e}$, so ist $\hat{e}$ in <em>allen</em> minimalen Spannbäume in $G$ enthalten.</li></ul></div>
+
+<div class="item" data-t="lemma"><span class="page">S. 19</span>
+<p><span class="name">Lemma 1.17.</span> Sei $G = (V, E)$ ein zusammenhängender Graph und sei $C$ ein Kreis in $G$. Für jede Kante $\hat{e} \in C$ mit $c(\hat{e}) = \max\{c(e) \mid e \in C\}$ gilt dann:</p>
+<ul class="plain"><li>a) &nbsp;es gibt einen minimalen Spannbaum $T^{*}$ in $G$, der $\hat{e}$ nicht enthält.</li><li>b) &nbsp;gilt $c(\hat{e}) &gt; c(e)$ für alle Kanten $e \in C$, $e \ne \hat{e}$, so gilt $\hat{e} \notin T$ für <em>alle</em> minimalen Spannbäume in $G$.</li></ul></div>
+
+<div class="item" data-t="satz"><span class="page">S. 21</span>
+<p><span class="name">Satz 1.18.</span> Ist $G = (V, E)$ ein zusammenhängender Graph mit Kostenfunktion $c : E \to \mathbb{R}$, so gilt für jede Ausführungsreihenfolge der blauen und roten Regel: lässt sich keine der beiden Regeln mehr anwenden, so sind alle Kanten gefärbt und die blauen Kanten bilden einen minimalen Spannbaum.</p></div>
+
+<div class="item" data-t="satz"><span class="page">S. 26</span>
+<p><span class="name">Satz 1.19.</span> Der Algorithmus von Prim berechnet für zusammenhängende Graphen $G = (V, E)$ mit Gewichtsfunktion $c : E \to \mathbb{R}$, die mit Adjazenzlisten gespeichert sind, in Zeit $O\!\left(\min\{|V|^2,\, |E| \cdot \log|V|\}\right)$ einen minimalen Spannbaum.</p></div>
+
+<div class="item" data-t="satz"><span class="page">S. 28</span>
+<p><span class="name">Satz 1.20.</span> Eine Union-Find-Struktur für eine Menge $X$ kann so implementiert werden, dass jedes Insert und jedes Find nur Zeit $O(1)$ benötigt und eine beliebige Folge von Union Operationen eine Gesamt-Laufzeit von $O(|X| \cdot \log|X|)$ hat.</p></div>
+
+<div class="item" data-t="satz"><span class="page">S. 29</span>
+<p><span class="name">Satz 1.21.</span> Der Algorithmus von Kruskal berechnet für zusammenhängende Graphen $G = (V, E)$ mit Gewichtsfunktion $c : E \to \mathbb{R}$, die mit Adjazenzlisten gespeichert sind, in Zeit $O(|E| \cdot \log|V|)$ einen minimalen Spannbaum.</p></div>
+
+<div class="item" data-t="satz"><span class="page">S. 30</span>
+<p><span class="name">Satz 1.22.</span> Für einen $G = (V, E)$ gibt es genau dann eine Gewinnstrategie für Maker, wenn $G$ zwei kantendisjunkten Spannbäume enthält.</p></div>
+
+<div class="item" data-t="satz"><span class="page">S. 34</span>
+<p><span class="name">Satz 1.25</span> (Menger). Sei $G = (V, E)$ ein Graph und $u, v \in V$, $u \ne v$. Dann gilt:</p>
+<ul class="plain"><li>a) &nbsp;Jeder $u$-$v$-Knotenseparator hat Grösse mindestens $k$ $\iff$ Es gibt mindestens $k$ intern-knotendisjunkte $u$-$v$-Pfade.</li><li>b) &nbsp;Jeder $u$-$v$-Kantenseparator hat Grösse mindestens $k$ $\iff$ Es gibt mindestens $k$ kantendisjunkte $u$-$v$-Pfade.</li></ul></div>
+
+<div class="item" data-t="satz"><span class="page">S. 39</span>
+<p><span class="name">Satz 1.27.</span> Für zusammenhängende Graphen $G = (V, E)$, die mit Adjazenzlisten gespeichert sind, kann man in Zeit $O(|E|)$ alle Artikulationsknoten berechnen.</p></div>
+
+<div class="item" data-t="satz"><span class="page">S. 40</span>
+<p><span class="name">Satz 1.28.</span> Für zusammenhängende Graphen $G = (V, E)$, die mit Adjazenzlisten gespeichert sind, kann man in Zeit $O(|E|)$ alle Artikulationsknoten und alle Brücken berechnen.</p></div>
+
+<div class="item" data-t="proposition"><span class="page">S. 41</span>
+<p><span class="name">Definition/Proposition 1.29.</span> Sei $G = (V, E)$ ein zusammenhängender Graph. Für $e, f \in E$ definieren wir eine Relation durch</p>
+<div class="eq">$e \sim f \;:\!\iff\; e = f$ oder es gibt einen gemeinsamen Kreis durch $e$ und $f$.</div>
+<p>Dann ist diese Relation eine Äquivalenzrelation. Wir nennen die Äquivalenzklassen <em>Blöcke</em>.</p></div>
+
+<div class="item" data-t="satz"><span class="page">S. 46</span>
+<p><span class="name">Satz 1.31.</span> a) Ein zusammenhängender Graph $G = (V, E)$ ist genau dann eulersch, wenn der Grad aller Knoten gerade ist.<br>
+b) In einem zusammenhängenden, eulerschen Graphen kann man eine Eulertour in Zeit $O(|E|)$ finden.</p></div>
+
+<div class="item" data-t="satz"><span class="page">S. 50</span>
+<p><span class="name">Satz 1.34.</span> Algorithmus Hamiltonkreis ist korrekt und benötigt Speicher $O(n \cdot 2^{n})$ und Laufzeit $O(n^{2} \cdot 2^{n})$, wobei $n = |V|$.</p></div>
+
+<div class="item" data-t="satz"><span class="page">S. 51</span>
+<p><span class="name">Satz 1.35.</span> <em>(Siebformel, Prinzip der Inklusion/Exklusion)</em> Für endliche Mengen $A_1, \dots, A_n$ ($n \ge 2$) gilt:</p>
+<div class="eq">$$\begin{aligned}
+\left|\bigcup_{i=1}^{n} A_i\right| &amp;= \sum_{\ell=1}^{n} (-1)^{\ell+1} \sum_{1 \le i_1 &lt; \cdots &lt; i_\ell \le n} \left|A_{i_1} \cap \cdots \cap A_{i_\ell}\right| \\
+&amp;= \sum_{i=1}^{n} |A_i| - \sum_{1 \le i_1 &lt; i_2 \le n} |A_{i_1} \cap A_{i_2}| + \sum_{1 \le i_1 &lt; i_2 &lt; i_3 \le n} |A_{i_1} \cap A_{i_2} \cap A_{i_3}| \\
+&amp;\quad - \cdots + (-1)^{n+1} \cdot |A_1 \cap \cdots \cap A_n|.
+\end{aligned}$$</div></div>
+
+<div class="item" data-t="satz"><span class="page">S. 54</span>
+<p><span class="name">Satz 1.36.</span> Der Algorithmus Zähle_Hamiltonkreise berechnet die Zahl der Hamiltonkreise in $G = (V, E)$ und benötigt Speicher $O(n^{2})$ und Laufzeit $O(n^{2.81} \log n \cdot 2^{n})$, wobei $n = |V|$.</p></div>
+
+<div class="item" data-t="lemma"><span class="page">S. 55</span>
+<p><span class="name">Lemma 1.38.</span> Ist $G = (A \uplus B, E)$ ein bipartiter Graph mit $|A| \ne |B|$, so kann $G$ keinen Hamiltonkreis enthalten.</p></div>
+
+<div class="item" data-t="satz"><span class="page">S. 56</span>
+<p><span class="name">Satz 1.40</span> (Dirac). Wenn $G = (V, E)$ ein Graph mit $|V| \ge 3$ Knoten ist, in dem jeder Knoten mindestens $|V|/2$ Nachbarn hat, dann ist $G$ hamiltonsch.</p></div>
+
+<div class="item" data-t="satz"><span class="page">S. 58</span>
+<p><span class="name">Satz 1.42.</span> Gibt es für ein $\alpha &gt; 1$ einen $\alpha$-Approximationsalgorithmus für das Travelling Salesman Problem mit Laufzeit $O(f(n))$, so gibt es auch einen Algorithmus, der für alle Graphen auf $n$ Knoten in Laufzeit $O(f(n))$ entscheidet, ob sie hamiltonsch sind.</p></div>
+
+<div class="item" data-t="satz"><span class="page">S. 59</span>
+<p><span class="name">Satz 1.43.</span> Für das Metrische Travelling Salesman Problem gibt es einen 2-Approximationsalgorithmus mit Laufzeit $O(n^{2})$.</p></div>
+
+<div class="item" data-t="satz"><span class="page">S. 63</span>
+<p><span class="name">Satz 1.47.</span> Der Algorithmus Greedy-Matching bestimmt in Zeit $O(|E|)$ ein inklusionsmaximales Matching $M_{\text{Greedy}}$ für das gilt:</p>
+<div class="eq">$$|M_{\text{Greedy}}| \ge \tfrac{1}{2}|M_{\max}|,$$</div>
+<p>wobei $M_{\max}$ ein kardinalitätsmaximales Matching sei.</p></div>
+
+<div class="item" data-t="satz"><span class="page">S. 64</span>
+<p><span class="name">Satz 1.48</span> (Satz von Berge). Ist $M$ ein Matching in einem Graphen $G = (V, E)$, das nicht kardinalitätsmaximal ist, so existiert ein augmentierender Pfad zu $M$.</p></div>
+
+<div class="item" data-t="satz"><span class="page">S. 68</span>
+<p><span class="name">Satz 1.49.</span> Der Algorithmus von Hopcroft und Karp durchläuft die while-Schleife nur $O\!\left(\sqrt{|V|}\right)$ Mal. Er berechnet daher ein maximales Matching in einem bipartiten Graphen in Zeit $O\!\left(\sqrt{|V|} \cdot (|V| + |E|)\right)$.</p></div>
+
+<div class="item" data-t="satz"><span class="page">S. 70</span>
+<p><span class="name">Satz 1.50.</span> Ist $n$ gerade und $\ell : \binom{[n]}{2} \to \mathbb{N}_0$ eine Gewichtsfunktion des vollständigen Graphen $K_n$, so kann man in Zeit $O(n^{3})$ ein minimales perfektes Matching finden, also ein perfektes Matching $M$ mit</p>
+<div class="eq">$$\sum_{e \in M} \ell(e) = \min\left\{ \sum_{e \in M'} \ell(e) \;\middle|\; M' \text{ perfektes Matching in } K_n \right\}.$$</div></div>
+
+<div class="item" data-t="satz"><span class="page">S. 70</span>
+<p><span class="name">Satz 1.51.</span> Für das Metrische Travelling Salesman Problem gibt es einen $3/2$-Approximationsalgorithmus mit Laufzeit $O(n^{3})$.</p></div>
+
+<div class="item" data-t="satz"><span class="page">S. 72</span>
+<p><span class="name">Satz 1.52</span> (Satz von Hall, Heiratssatz). Für einen bipartiten Graphen $G = (A \uplus B, E)$ gibt es genau dann ein Matching $M$ der Kardinalität $|M| = |A|,$ wenn gilt</p>
+<div class="eq">$$|N(X)| \ge |X| \quad \text{für alle } X \subseteq A. \tag{1.1}$$</div></div>
+
+<div class="item" data-t="satz"><span class="page">S. 73</span>
+<p><span class="name">Satz 1.53.</span> Sei $G = (A \uplus B, E)$ ein $k$-regulärer bipartiter Graph. Dann gibt es $M_1, \dots, M_k$ so dass $E = M_1 \uplus \dots \uplus M_k$ und alle $M_i$, $1 \le i \le k$, perfekte Matchings in $G$ sind.</p></div>
+
+<div class="item" data-t="satz"><span class="page">S. 74</span>
+<p><span class="name">Satz 1.54.</span> Ist $G = (V, E)$ ein $2^{k}$-regulärer bipartiter Graph, so kann man in Zeit $O(|E|)$ ein perfektes Matching bestimmen.</p></div>
+
+<div class="item" data-t="satz"><span class="page">S. 77</span>
+<p><span class="name">Satz 1.58.</span> Ein Graph $G = (V, E)$ ist genau dann bipartit, wenn er keinen Kreis ungerader Länge als Teilgraphen enthält.</p></div>
+
+<div class="item" data-t="satz"><span class="page">S. 77</span>
+<p><span class="name">Satz 1.59</span> (Vierfarbensatz). Jede Landkarte lässt sich mit vier Farben färben.</p></div>
+
+<div class="item" data-t="satz"><span class="page">S. 78</span>
+<p><span class="name">Satz 1.60.</span> Sei $G$ ein zusammenhängender Graph. Für die Anzahl Farben $C(G)$, die der Algorithmus Greedy-Färbung benötigt, um die Knoten des Graphen $G$ zu färben, gilt</p>
+<div class="eq">$$\chi(G) \le C(G) \le \Delta(G) + 1.$$</div>
+<p>Ist der Graph als Adjazenzliste gespeichert, findet der Algorithmus die Färbung in Zeit $O(|E|)$.</p></div>
+
+<div class="item" data-t="satz"><span class="page">S. 80</span>
+<p><span class="name">Satz 1.64</span> (Satz von Brooks). Ist $G = (V, E)$ ein zusammenhängender Graph, der weder vollständig ist noch ein ungerader Kreis ist, also $G \ne K_n$ und $G \ne C_{2n+1}$, so gilt</p>
+<div class="eq">$$\chi(G) \le \Delta(G)$$</div>
+<p>und es gibt einen Algorithmus, der die Knoten des Graphen in Zeit $O(|E|)$ mit $\Delta(G)$ Farben färbt.</p></div>
+
+<div class="item" data-t="satz"><span class="page">S. 81</span>
+<p><span class="name">Satz 1.65.</span> Ist $G = (V, E)$ ein Graph und $k \in \mathbb{N}$ eine natürliche Zahl mit der Eigenschaft, dass jeder induzierte Subgraph von $G$ einen Knoten mit Grad höchstens $k$ enthält, so gilt $\chi(G) \le k + 1$ und eine $(k + 1)$-Färbung lässt sich in Zeit $O(|E|)$ finden.</p></div>
+
+<div class="item" data-t="satz"><span class="page">S. 83</span>
+<p><span class="name">Satz 1.66</span> (Mycielski-Konstruktion). Für alle $k \ge 2$ gibt es einen dreiecksfreien Graphen $G_k$ mit $\chi(G_k) \ge k$.</p></div>
+
+<div class="item" data-t="satz"><span class="page">S. 84</span>
+<p><span class="name">Satz 1.67.</span> Jeden 3-färbbaren Graphen $G = (V, E)$ kann man in Zeit $O(|E|)$ mit $O\!\left(\sqrt{|V|}\right)$ Farben färben.</p></div>
+
+<h2>Kapitel 2 – Wahrscheinlichkeitstheorie und randomisierte Algorithmen</h2>
+
+<div class="item" data-t="lemma"><span class="page">S. 87–88</span>
+<p><span class="name">Lemma 2.2.</span> Für Ereignisse $A, B$ gilt:</p>
+<ol><li>$\Pr[\emptyset] = 0$, $\Pr[\Omega] = 1$.</li><li>$0 \le \Pr[A] \le 1$.</li><li>$\Pr[\bar{A}] = 1 - \Pr[A]$.</li><li>Wenn $A \subseteq B$, so folgt $\Pr[A] \le \Pr[B]$.</li></ol></div>
+
+<div class="item" data-t="satz"><span class="page">S. 88</span>
+<p><span class="name">Satz 2.3</span> (Additionssatz). Wenn die Ereignisse $A_1, \dots, A_n$ paarweise disjunkt sind (also wenn für alle Paare $i \ne j$ gilt, dass $A_i \cap A_j = \emptyset$), so gilt</p>
+<div class="eq">$$\Pr\left[\bigcup_{i=1}^{n} A_i\right] = \sum_{i=1}^{n} \Pr[A_i].$$</div>
+<p>Für eine unendliche Menge von disjunkten Ereignissen $A_1, A_2, \dots$ gilt analog</p>
+<div class="eq">$$\Pr\left[\bigcup_{i=1}^{\infty} A_i\right] = \sum_{i=1}^{\infty} \Pr[A_i].$$</div></div>
+
+<div class="item" data-t="satz"><span class="page">S. 88</span>
+<p><span class="name">Satz 2.5.</span> <em>(Siebformel, Prinzip der Inklusion/Exklusion)</em> Für Ereignisse $A_1, \dots, A_n$ ($n \ge 2$) gilt:</p>
+<div class="eq">$$\begin{aligned}
+\Pr\left[\bigcup_{i=1}^{n} A_i\right] &amp;= \sum_{\ell=1}^{n} (-1)^{\ell+1} \sum_{1 \le i_1 &lt; \cdots &lt; i_\ell \le n} \Pr\!\left[A_{i_1} \cap \cdots \cap A_{i_\ell}\right] \\
+&amp;= \sum_{i=1}^{n} \Pr[A_i] - \sum_{1 \le i_1 &lt; i_2 \le n} \Pr[A_{i_1} \cap A_{i_2}] \\
+&amp;\quad + \sum_{1 \le i_1 &lt; i_2 &lt; i_3 \le n} \Pr[A_{i_1} \cap A_{i_2} \cap A_{i_3}] - \cdots \\
+&amp;\quad + (-1)^{n+1} \cdot \Pr[A_1 \cap \cdots \cap A_n].
+\end{aligned}$$</div></div>
+
+<div class="item" data-t="korollar"><span class="page">S. 90</span>
+<p><span class="name">Korollar 2.6.</span> <em>(Boolesche Ungleichung, Union Bound)</em> Für Ereignisse $A_1, \dots, A_n$ gilt</p>
+<div class="eq">$$\Pr\left[\bigcup_{i=1}^{n} A_i\right] \le \sum_{i=1}^{n} \Pr[A_i].$$</div>
+<p>Analog gilt für eine unendliche Folge von Ereignissen $A_1, A_2, \dots$, dass $\Pr\left[\bigcup_{i=1}^{\infty} A_i\right] \le \sum_{i=1}^{\infty} \Pr[A_i]$.</p></div>
+
+<div class="item" data-t="satz"><span class="page">S. 96</span>
+<p><span class="name">Satz 2.10.</span> <em>(Multiplikationssatz)</em> Seien die Ereignisse $A_1, \dots, A_n$ gegeben. Falls $\Pr[A_1 \cap \cdots \cap A_n] &gt; 0$ ist, gilt</p>
+<div class="eq">$$\begin{aligned}
+&amp;\Pr[A_1 \cap \cdots \cap A_n] \\
+&amp;\quad = \Pr[A_1] \cdot \Pr[A_2 \mid A_1] \cdot \Pr[A_3 \mid A_1 \cap A_2] \cdots \Pr[A_n \mid A_1 \cap \cdots \cap A_{n-1}].
+\end{aligned}$$</div></div>
+
+<div class="item" data-t="satz"><span class="page">S. 99</span>
+<p><span class="name">Satz 2.13.</span> <em>(Satz von der totalen Wahrscheinlichkeit)</em> Die Ereignisse $A_1, \dots, A_n$ seien paarweise disjunkt und es gelte $B \subseteq A_1 \cup \dots \cup A_n$. Dann folgt</p>
+<div class="eq">$$\Pr[B] = \sum_{i=1}^{n} \Pr[B \mid A_i] \cdot \Pr[A_i].$$</div>
+<p>Analog gilt für paarweise disjunkte Ereignisse $A_1, A_2, \dots$ mit $B \subseteq \bigcup_{i=1}^{\infty} A_i$, dass</p>
+<div class="eq">$$\Pr[B] = \sum_{i=1}^{\infty} \Pr[B \mid A_i] \cdot \Pr[A_i].$$</div></div>
+
+<div class="item" data-t="satz"><span class="page">S. 100</span>
+<p><span class="name">Satz 2.15.</span> <em>(Satz von Bayes)</em> Die Ereignisse $A_1, \dots, A_n$ seien paarweise disjunkt. Ferner sei $B \subseteq A_1 \cup \cdots \cup A_n$ ein Ereignis mit $\Pr[B] &gt; 0$. Dann gilt für ein beliebiges $i = 1, \dots, n$</p>
+<div class="eq">$$\Pr[A_i \mid B] = \frac{\Pr[A_i \cap B]}{\Pr[B]} = \frac{\Pr[B \mid A_i] \cdot \Pr[A_i]}{\sum_{j=1}^{n} \Pr[B \mid A_j] \cdot \Pr[A_j]}.$$</div>
+<p>Analog gilt für paarweise disjunkte Ereignisse $A_1, A_2, \dots$ mit $B \subseteq \bigcup_{i=1}^{\infty} A_i$, dass</p>
+<div class="eq">$$\Pr[A_i \mid B] = \frac{\Pr[A_i \cap B]}{\Pr[B]} = \frac{\Pr[B \mid A_i] \cdot \Pr[A_i]}{\sum_{j=1}^{\infty} \Pr[B \mid A_j] \cdot \Pr[A_j]}.$$</div></div>
+
+<div class="item" data-t="lemma"><span class="page">S. 106</span>
+<p><span class="name">Lemma 2.23.</span> Die Ereignisse $A_1, \dots, A_n$ sind genau dann unabhängig, wenn für alle $(s_1, \dots, s_n) \in \{0, 1\}^{n}$ gilt, dass</p>
+<div class="eq">$$\Pr\!\left[A_1^{s_1} \cap \cdots \cap A_n^{s_n}\right] = \Pr\!\left[A_1^{s_1}\right] \cdots \Pr\!\left[A_n^{s_n}\right], \tag{2.3}$$</div>
+<p>wobei $A_i^{0} = \bar{A}_i$ und $A_i^{1} = A_i$.</p></div>
+
+<div class="item" data-t="lemma"><span class="page">S. 107</span>
+<p><span class="name">Lemma 2.24.</span> Seien $A$, $B$ und $C$ unabhängige Ereignisse. Dann sind auch $A \cap B$ und $C$ bzw. $A \cup B$ und $C$ unabhängig.</p></div>
+
+<div class="item" data-t="lemma"><span class="page">S. 112</span>
+<p><span class="name">Lemma 2.29.</span> Ist $X$ eine Zufallsvariable, so gilt:</p>
+<div class="eq">$$\mathbb{E}[X] = \sum_{\omega \in \Omega} X(\omega) \cdot \Pr[\omega].$$</div></div>
+
+<div class="item" data-t="satz"><span class="page">S. 113</span>
+<p><span class="name">Satz 2.30.</span> Sei $X$ eine Zufallsvariable mit $\mathcal{W}_X \subseteq \mathbb{N}_0$. Dann gilt</p>
+<div class="eq">$$\mathbb{E}[X] = \sum_{i=1}^{\infty} \Pr[X \ge i].$$</div></div>
+
+<div class="item" data-t="satz"><span class="page">S. 114</span>
+<p><span class="name">Satz 2.32.</span> Sei $X$ eine Zufallsvariable. Für paarweise disjunkte Ereignisse $A_1, \dots, A_n$ mit $A_1 \cup \cdots \cup A_n = \Omega$ und $\Pr[A_1], \dots, \Pr[A_n] &gt; 0$ gilt</p>
+<div class="eq">$$\mathbb{E}[X] = \sum_{i=1}^{n} \mathbb{E}[X \mid A_i] \cdot \Pr[A_i].$$</div>
+<p>Für paarweise disjunkte Ereignisse $A_1, A_2, \dots$ mit $\bigcup_{k=1}^{\infty} A_k = \Omega$ und $\Pr[A_1], \Pr[A_2], \dots &gt; 0$ gilt analog</p>
+<div class="eq">$$\mathbb{E}[X] = \sum_{i=1}^{\infty} \mathbb{E}[X \mid A_i] \cdot \Pr[A_i].$$</div></div>
+
+<div class="item" data-t="satz"><span class="page">S. 116</span>
+<p><span class="name">Satz 2.33.</span> <em>(Linearität des Erwartungswerts)</em> Für Zufallsvariablen $X_1, \dots, X_n$ und $X := a_1 X_1 + \dots + a_n X_n + b$ mit $a_1, \dots, a_n, b \in \mathbb{R}$ gilt</p>
+<div class="eq">$$\mathbb{E}[X] = a_1 \mathbb{E}[X_1] + \dots + a_n \mathbb{E}[X_n] + b.$$</div></div>
+
+<div class="item" data-t="satz"><span class="page">S. 121</span>
+<p><span class="name">Satz 2.40.</span> Für eine beliebige Zufallsvariable $X$ gilt</p>
+<div class="eq">$$\operatorname{Var}[X] = \mathbb{E}[X^{2}] - \mathbb{E}[X]^{2}.$$</div></div>
+
+<div class="item" data-t="satz"><span class="page">S. 121</span>
+<p><span class="name">Satz 2.41.</span> Für eine beliebige Zufallsvariable $X$ und $a, b \in \mathbb{R}$ gilt</p>
+<div class="eq">$$\operatorname{Var}[a \cdot X + b] = a^{2} \cdot \operatorname{Var}[X].$$</div></div>
+
+<div class="item" data-t="satz"><span class="page">S. 125</span>
+<p><span class="name">Satz 2.45.</span> Ist $X \sim \operatorname{Geo}(p)$, so gilt für alle $s, t \in \mathbb{N}$:</p>
+<div class="eq">$$\Pr[X \ge s + t \mid X &gt; s] = \Pr[X \ge t].$$</div></div>
+
+<div class="item" data-t="lemma"><span class="page">S. 132</span>
+<p><span class="name">Lemma 2.53.</span> Sind $X_1, \dots, X_n$ unabhängige Zufallsvariablen und sind $S_1, \dots, S_n \subseteq \mathbb{R}$ beliebige Mengen, dann gilt</p>
+<div class="eq">$$\Pr[X_1 \in S_1, \dots, X_n \in S_n] = \Pr[X_1 \in S_1] \cdot \ldots \cdot \Pr[X_n \in S_n].$$</div></div>
+
+<div class="item" data-t="korollar"><span class="page">S. 133</span>
+<p><span class="name">Korollar 2.54.</span> Sind $X_1, \dots, X_n$ unabhängige Zufallsvariablen und ist $I = \{i_1, \dots, i_k\} \subseteq [n]$, dann sind $X_{i_1}, \dots, X_{i_k}$ ebenfalls unabhängig.</p></div>
+
+<div class="item" data-t="satz"><span class="page">S. 134</span>
+<p><span class="name">Satz 2.55.</span> Seien $f_1, \dots, f_n$ reellwertige Funktionen ($f_i : \mathbb{R} \to \mathbb{R}$ für $i = 1, \dots, n$). Wenn die Zufallsvariablen $X_1, \dots, X_n$ unabhängig sind, dann gilt dies auch für $f_1(X_1), \dots, f_n(X_n)$.</p></div>
+
+<div class="item" data-t="satz"><span class="page">S. 135</span>
+<p><span class="name">Satz 2.58.</span> Für zwei unabhängige Zufallsvariablen $X$ und $Y$ sei $Z := X + Y$. Es gilt</p>
+<div class="eq">$$f_Z(z) = \sum_{x \in \mathcal{W}_X} f_X(x) \cdot f_Y(z - x).$$</div></div>
+
+<div class="item" data-t="satz"><span class="page">S. 136</span>
+<p><span class="name">Satz 2.60.</span> <em>(Linearität des Erwartungswerts)</em> Für Zufallsvariablen $X_1, \dots, X_n$ und $X := a_1 X_1 + \cdots + a_n X_n$ mit $a_1, \dots, a_n \in \mathbb{R}$ gilt</p>
+<div class="eq">$$\mathbb{E}[X] = a_1 \mathbb{E}[X_1] + \cdots + a_n \mathbb{E}[X_n].$$</div></div>
+
+<div class="item" data-t="satz"><span class="page">S. 136</span>
+<p><span class="name">Satz 2.61.</span> <em>(Multiplikativität des Erwartungswerts)</em> Für unabhängige Zufallsvariablen $X_1, \dots, X_n$ gilt</p>
+<div class="eq">$$\mathbb{E}[X_1 \cdot \ldots \cdot X_n] = \mathbb{E}[X_1] \cdot \ldots \cdot \mathbb{E}[X_n].$$</div></div>
+
+<div class="item" data-t="satz"><span class="page">S. 137</span>
+<p><span class="name">Satz 2.62.</span> Für unabhängige Zufallsvariablen $X_1, \dots, X_n$ und $X := X_1 + \dots + X_n$ gilt</p>
+<div class="eq">$$\operatorname{Var}[X] = \operatorname{Var}[X_1] + \dots + \operatorname{Var}[X_n].$$</div></div>
+
+<div class="item" data-t="satz"><span class="page">S. 138</span>
+<p><span class="name">Satz 2.65</span> (Waldsche Identität). $N$ und $X$ seien zwei unabhängige Zufallsvariable, wobei für den Wertebereich von $N$ gilt: $\mathcal{W}_N \subseteq \mathbb{N}$. Weiter sei</p>
+<div class="eq">$$Z := \sum_{i=1}^{N} X_i,$$</div>
+<p>wobei $X_1, X_2, \dots$ unabhängige Kopien von $X$ seien. Dann gilt:</p>
+<div class="eq">$$\mathbb{E}[Z] = \mathbb{E}[N] \cdot \mathbb{E}[X].$$</div></div>
+
+<div class="item" data-t="satz"><span class="page">S. 140</span>
+<p><span class="name">Satz 2.67.</span> <em>(Ungleichung von Markov)</em> Sei $X$ eine Zufallsvariable, die nur nicht-negative Werte annimmt. Dann gilt für alle $t \in \mathbb{R}$ mit $t &gt; 0$, dass</p>
+<div class="eq">$$\Pr[X \ge t] \le \frac{\mathbb{E}[X]}{t}.$$</div>
+<p>Oder äquivalent dazu $\Pr[X \ge t \cdot \mathbb{E}[X]] \le 1/t$.</p></div>
+
+<div class="item" data-t="satz"><span class="page">S. 141</span>
+<p><span class="name">Satz 2.68.</span> <em>(Ungleichung von Chebyshev)</em> Sei $X$ eine Zufallsvariable und $t \in \mathbb{R}$ mit $t &gt; 0$. Dann gilt</p>
+<div class="eq">$$\Pr\big[|X - \mathbb{E}[X]| \ge t\big] \le \frac{\operatorname{Var}[X]}{t^{2}}$$</div>
+<p>oder äquivalent dazu $\Pr\!\left[|X - \mathbb{E}[X]| \ge t\sqrt{\operatorname{Var}[X]}\right] \le 1/t^{2}$.</p></div>
+
+<div class="item" data-t="satz"><span class="page">S. 143</span>
+<p><span class="name">Satz 2.70</span> (Chernoff-Schranken). Seien $X_1, \dots, X_n$ unabhängige Bernoulli-verteilte Zufallsvariablen mit $\Pr[X_i = 1] = p_i$ und $\Pr[X_i = 0] = 1 - p_i$. Dann gilt für $X := \sum_{i=1}^{n} X_i$:</p>
+<ul class="plain">
+<li>(i) &nbsp;$\Pr\big[X \ge (1 + \delta)\mathbb{E}[X]\big] \le e^{-\frac{1}{3}\delta^{2}\mathbb{E}[X]}$ &nbsp;&nbsp;für alle $0 &lt; \delta \le 1$,</li>
+<li>(ii) &nbsp;$\Pr\big[X \le (1 - \delta)\mathbb{E}[X]\big] \le e^{-\frac{1}{2}\delta^{2}\mathbb{E}[X]}$ &nbsp;&nbsp;für alle $0 &lt; \delta \le 1$,</li>
+<li>(iii) &nbsp;$\Pr[X \ge t] \le 2^{-t}$ &nbsp;&nbsp;für $t \ge 2e\,\mathbb{E}[X]$.</li></ul></div>
+
+<div class="item" data-t="satz"><span class="page">S. 147</span>
+<p><span class="name">Satz 2.72.</span> Sei $\mathcal{A}$ ein randomisierter Algorithmus, der nie eine falsche Antwort gibt, aber zuweilen '???' ausgibt, wobei</p>
+<div class="eq">$$\Pr[\mathcal{A}(I) \text{ korrekt}] \ge \varepsilon.$$</div>
+<p>Dann gilt für alle $\delta &gt; 0$: bezeichnet man mit $\mathcal{A}_\delta$ den Algorithmus, der $\mathcal{A}$ solange aufruft, bis entweder ein Wert verschieden von '???' ausgegeben wird (und $\mathcal{A}_\delta$ diesen Wert dann ebenfalls ausgibt) oder bis $N = \varepsilon^{-1} \ln \delta^{-1}$-mal '???' ausgegeben wurde (und $\mathcal{A}_\delta$ dann ebenfalls '???' ausgibt), so gilt für den Algorithmus $\mathcal{A}_\delta$, dass</p>
+<div class="eq">$$\Pr[\mathcal{A}_\delta(I) \text{ korrekt}] \ge 1 - \delta.$$</div></div>
+
+<div class="item" data-t="satz"><span class="page">S. 148</span>
+<p><span class="name">Satz 2.74.</span> Sei $\mathcal{A}$ ein randomisierter Algorithmus, der immer eine der beiden Antworten Ja oder Nein ausgibt, wobei</p>
+<div class="eq">$$\Pr[\mathcal{A}(I) = \text{Ja}] = 1 \quad \text{falls } I \text{ eine Ja-Instanz ist,}$$</div>
+<p>und</p>
+<div class="eq">$$\Pr[\mathcal{A}(I) = \text{Nein}] \ge \varepsilon \quad \text{falls } I \text{ eine Nein-Instanz ist.}$$</div>
+<p>Dann gilt für alle $\delta &gt; 0$: bezeichnet man mit $\mathcal{A}_\delta$ den Algorithmus, der $\mathcal{A}$ solange aufruft, bis entweder der Wert Nein ausgegeben wird (und $\mathcal{A}_\delta$ dann ebenfalls Nein ausgibt) oder bis $N = \varepsilon^{-1} \ln \delta^{-1}$-mal Ja ausgegeben wurde (und $\mathcal{A}_\delta$ dann ebenfalls Ja ausgibt), so gilt für alle Instanzen $I$</p>
+<div class="eq">$$\Pr[\mathcal{A}_\delta(I) \text{ korrekt}] \ge 1 - \delta.$$</div></div>
+
+<div class="item" data-t="satz"><span class="page">S. 149</span>
+<p><span class="name">Satz 2.75.</span> Sei $\varepsilon &gt; 0$ und $\mathcal{A}$ ein randomisierter Algorithmus, der immer eine der beiden Antworten Ja oder Nein ausgibt, wobei</p>
+<div class="eq">$$\Pr[\mathcal{A}(I) \text{ korrekt}] \ge \tfrac{1}{2} + \varepsilon.$$</div>
+<p>Dann gilt für alle $\delta &gt; 0$: bezeichnet man mit $\mathcal{A}_\delta$ den Algorithmus, der $N = 4\varepsilon^{-2} \ln \delta^{-1}$ unabhängige Aufrufe von $\mathcal{A}$ macht und dann die Mehrheit der erhaltenen Antworten ausgibt, so gilt für den Algorithmus $\mathcal{A}_\delta$, dass</p>
+<div class="eq">$$\Pr[\mathcal{A}_\delta(I) \text{ korrekt}] \ge 1 - \delta.$$</div></div>
+
+<div class="item" data-t="satz"><span class="page">S. 150</span>
+<p><span class="name">Satz 2.76.</span> Sei $\varepsilon &gt; 0$ und $\mathcal{A}$ ein randomisierter Algorithmus für ein Maximierungsproblem, wobei gelte:</p>
+<div class="eq">$$\Pr[\mathcal{A}(I) \ge f(I)] \ge \varepsilon.$$</div>
+<p>Dann gilt für alle $\delta &gt; 0$: bezeichnet man mit $\mathcal{A}_\delta$ den Algorithmus, der $N = \varepsilon^{-1} \ln \delta^{-1}$ unabhängige Aufrufe von $\mathcal{A}$ macht und die <em>beste</em> der erhaltenen Antworten ausgibt, so gilt für den Algorithmus $\mathcal{A}_\delta$, dass</p>
+<div class="eq">$$\Pr[\mathcal{A}_\delta(I) \ge f(I)] \ge 1 - \delta.$$</div>
+<p>(Für Minimierungsprobleme gilt eine analoge Aussage wenn wir „$\ge f(I)$“ durch „$\le f(I)$“ ersetzen.)</p></div>
+
+<div class="item" data-t="satz"><span class="page">S. 155</span>
+<p><span class="name">Satz 2.77</span> (Kleiner fermatscher Satz). Ist $n \in \mathbb{N}$ prim, so gilt für alle Zahlen $0 &lt; a &lt; n$</p>
+<div class="eq">$$a^{n-1} \equiv 1 \pmod{n}.$$</div></div>
+
+<div class="item" data-t="satz"><span class="page">S. 158–159</span>
+<p><span class="name">Satz 2.79.</span> Seien $\delta, \varepsilon &gt; 0$. Falls $N \ge 3(|U|/|S|) \cdot \varepsilon^{-2} \cdot \ln(2/\delta)$, so ist die Ausgabe des Algorithmus Target-Shooting mit Wahrscheinlichkeit mindestens $1 - \delta$ im Intervall $[(1 - \varepsilon)|S|/|U|,\, (1 + \varepsilon)|S|/|U|]$.</p></div>
+
+<h2>Kapitel 3 – Algorithmen - Highlights</h2>
+
+<div class="item" data-t="satz"><span class="page">S. 166</span>
+<p><span class="name">Satz 3.1.</span> Falls wir LONG-PATH für Graphen mit $n$ Knoten in $t(n)$ Zeit entscheiden können, dann können wir in $t(2n - 2) + O(n^{2})$ Zeit entscheiden, ob ein Graph mit $n$ Knoten einen Hamiltonkreis hat.</p></div>
+
+<div class="item" data-t="satz"><span class="page">S. 170</span>
+<p><span class="name">Satz 3.2.</span> Sei $G$ ein Graph mit einem Pfad der Länge $k - 1$.</p>
+<ul class="plain">
+<li>(1) &nbsp;Eine zufällige Färbung mit $k$ Farben erzeugt einen bunten Pfad der Länge $k - 1$ mit Wahrscheinlichkeit $p_{\text{Erfolg}} \ge e^{-k}$.</li>
+<li>(2) &nbsp;Bei wiederholten Färbungen mit $k$ Farben ist der Erwartungswert der Anzahl Versuche, bis man einen bunten Pfad der Länge $k - 1$ erhält $1/p_{\text{Erfolg}} \le e^{k}$.</li></ul></div>
+
+<div class="item" data-t="satz"><span class="page">S. 171</span>
+<p><span class="name">Satz 3.3.</span></p>
+<ul class="plain">
+<li>(1) &nbsp;Der Algorithmus hat eine Laufzeit von $O\!\left(\lambda (2e)^{k} k m\right)$.</li>
+<li>(2) &nbsp;Antwortet der Algorithmus mit Ja, dann hat der Graph einen Pfad der Länge $k - 1$.</li>
+<li>(3) &nbsp;Hat der Graph einen Pfad der Länge $k - 1$, dann ist die Wahrscheinlichkeit, dass der Algorithmus mit Nein antwortet, höchstens $e^{-\lambda}$.</li></ul></div>
+
+<div class="item" data-t="lemma"><span class="page">S. 174</span>
+<p><span class="name">Lemma 3.6.</span> Der Nettozufluss der Senke gleicht dem Wert des Flusses, d.h.</p>
+<div class="eq">$$\operatorname{netinflow}(t) := \sum_{u \in V :\, (u,t) \in A} f(u, t) - \sum_{u \in V :\, (t,u) \in A} f(t, u) \;=\; \operatorname{val}(f).$$</div></div>
+
+<div class="item" data-t="lemma"><span class="page">S. 175–176</span>
+<p><span class="name">Lemma 3.8.</span> Ist $f$ ein Fluss und $(S, T)$ ein $s$-$t$-Schnitt in einem Netzwerk $(V, A, c, s, t)$, so gilt</p>
+<div class="eq">$$\operatorname{val}(f) \le \operatorname{cap}(S, T).$$</div></div>
+
+<div class="item" data-t="satz"><span class="page">S. 177</span>
+<p><span class="name">Satz 3.9</span> („Maxflow-Mincut Theorem“). Jedes Netzwerk $N = (V, A, c, s, t)$ erfüllt</p>
+<div class="eq">$$\max_{f \text{ Fluss in } N} \operatorname{val}(f) \;=\; \min_{(S,T) \ s\text{-}t\text{-Schnitt in } N} \operatorname{cap}(S, T)$$</div></div>
+
+<div class="item" data-t="satz"><span class="page">S. 180</span>
+<p><span class="name">Satz 3.11.</span> Ein Fluss $f$ in einem Netzwerk $N$ ist ein maximaler Fluss gdw. es im Restnetzwerk $N_f$ keinen gerichteten Pfad von der Quelle $s$ zur Senke $t$ gibt. Für jeden solchen maximalen Fluss gibt es einen $s$-$t$-Schnitt $(S, T)$ mit $\operatorname{val}(f) = \operatorname{cap}(S, T)$.</p></div>
+
+<div class="item" data-t="satz"><span class="page">S. 182</span>
+<p><span class="name">Satz 3.12.</span> Sind in einem Netzwerk ohne entgegen gerichtete Kanten alle Kapazitäten ganzzahlig und höchstens $U$, so gibt es einen ganzzahligen maximalen Fluss, der in Zeit $O(mnU)$ berechnet werden kann ($m$ ist die Anzahl Kanten, $n$ die Anzahl Knoten im Netzwerk).</p></div>
+
+<div class="item" data-t="proposition"><span class="page">S. 183</span>
+<p><span class="name">Proposition 3.13</span> (<em>Capacity-Scaling</em>, Dinitz-Gabow, 1973). Sind in einem Netzwerk alle Kapazitäten ganzzahlig und höchstens $U$, so gibt es einen ganzzahligen maximalen Fluss, der in Zeit $O\!\left(mn(1 + \log U)\right)$ berechnet werden kann ($m$ Anzahl Kanten, $n$ Anzahl Knoten).</p></div>
+
+<div class="item" data-t="proposition"><span class="page">S. 183</span>
+<p><span class="name">Proposition 3.14</span> (<em>Dynamic Trees</em>, Sleator-Tarjan, 1983). Der maximale Fluss eines Netzwerks kann in Zeit $O(mn \log n)$ berechnet werden ($m$ Anzahl Kanten, $n$ Anzahl Knoten).</p></div>
+
+<div class="item" data-t="lemma"><span class="page">S. 185</span>
+<p><span class="name">Lemma 3.15.</span> Die maximale Grösse eines Matchings im bipartiten Graph $G$ ist gleich dem Wert eines maximalen Flusses im Netzwerk $N$.</p></div>
+
+<div class="item" data-t="lemma"><span class="page">S. 190</span>
+<p><span class="name">Lemma 3.16.</span> Sind $f_0$ und $f_1$ Flüsse in einem Netzwerk $N$ und $\lambda \in \mathbb{R}$, $0 &lt; \lambda &lt; 1$, dann ist der Fluss $f_\lambda$, definiert durch</p>
+<div class="eq">$$\forall e \in A : \quad f_\lambda(e) := (1 - \lambda)f_0(e) + \lambda f_1(e),$$</div>
+<p>ebenfalls ein Fluss in $N$. Es gilt</p>
+<div class="eq">$$\operatorname{val}(f_\lambda) = (1 - \lambda) \cdot \operatorname{val}(f_0) + \lambda \cdot \operatorname{val}(f_1).$$</div></div>
+
+<div class="item" data-t="korollar"><span class="page">S. 190</span>
+<p><span class="name">Korollar 3.17.</span> Es gilt:</p>
+<ul class="plain">
+<li>(i) &nbsp;Ein Netzwerk $N$ hat entweder genau einen Fluss (den Fluss $\mathbf{0}$) oder unendlich viele Flüsse.</li>
+<li>(ii) &nbsp;Ein Netzwerk hat entweder genau einen maximalen Fluss, oder unendlich viele maximale Flüsse.</li></ul></div>
+
+<div class="item" data-t="satz"><span class="page">S. 191</span>
+<p><span class="name">Satz 3.19.</span> Die Menge der Flüsse eines Netzwerks mit $m$ Kanten, interpretiert als Vektoren, ist eine konvexe Teilmenge des $\mathbb{R}^{m}$. Ebenso bildet die Menge der maximalen Flüsse eine konvexe Teilmenge des $\mathbb{R}^{m}$.</p></div>
+
+<div class="item" data-t="lemma"><span class="page">S. 193</span>
+<p><span class="name">Lemma 3.20.</span> Sei $G$ ein Graph und $e$ eine Kante in $G$. Dann gilt $\mu(G/e) \ge \mu(G)$ und falls es in $G$ einen minimalen Schnitt $C$ mit $e \notin C$ gibt, dann gilt $\mu(G/e) = \mu(G)$.</p></div>
+
+<div class="item" data-t="lemma"><span class="page">S. 194</span>
+<p><span class="name">Lemma 3.21.</span> Sei $G = (V, E)$ ein Multigraph mit $n$ Knoten. Falls $e$ gleichverteilt zufällig unter den Kanten in $G$ gewählt wird, dann gilt</p>
+<div class="eq">$$\Pr\big[\mu(G) = \mu(G/e)\big] \ge 1 - \frac{2}{n}.$$</div></div>
+
+<div class="item" data-t="lemma"><span class="page">S. 195</span>
+<p><span class="name">Lemma 3.22.</span> Es gilt für alle $n \ge 3$</p>
+<div class="eq">$$\hat{p}(n) \ge \left(1 - \frac{2}{n}\right) \cdot \hat{p}(n - 1).$$</div></div>
+
+<div class="item" data-t="lemma"><span class="page">S. 195</span>
+<p><span class="name">Lemma 3.23.</span> Es gilt $\hat{p}(n) \ge 2/(n(n-1)) = 1/\binom{n}{2}$ für alle $n \ge 2$.</p></div>
+
+<div class="item" data-t="satz"><span class="page">S. 195–196</span>
+<p><span class="name">Satz 3.24.</span> Für den Algorithmus der $\lambda\binom{n}{2}$-maligen Wiederholung von Cut($G$) gilt:</p>
+<ul class="plain">
+<li>(1) &nbsp;Der Algorithmus hat eine Laufzeit von $O(\lambda n^{4})$.</li>
+<li>(2) &nbsp;Der kleinste angetroffene Wert ist mit einer Wahrscheinlichkeit von mindestens $1 - e^{-\lambda}$ gleich $\mu(G)$.</li></ul></div>
+
+<div class="item" data-t="lemma"><span class="page">S. 198</span>
+<p><span class="name">Lemma 3.25.</span> Für jede (endliche) Punktemenge $P$ im $\mathbb{R}^{2}$ gibt es einen eindeutigen kleinsten umschliessenden Kreis $C(P)$.</p></div>
+
+<div class="item" data-t="lemma"><span class="page">S. 199</span>
+<p><span class="name">Lemma 3.26.</span> Für jede (endliche) Punktemenge $P$ im $\mathbb{R}^{2}$ mit $|P| \ge 3$ gibt es eine Teilmenge $Q \subseteq P$, so dass $|Q| = 3$ und $C(Q) = C(P)$.</p></div>
+
+<div class="item" data-t="lemma"><span class="page">S. 201</span>
+<p><span class="name">Lemma 3.27.</span> Seien $n_1, \dots, n_t$ natürliche Zahlen und $N := \sum_{i=1}^{t} n_i$. Wir erzeugen $X \in \{1, \dots, t\}$ zufällig wie folgt:</p>
+<pre>$k \leftarrow \mathrm{UniformInt}(1, N)$
+$x \leftarrow 1$
+while $\sum_{i=1}^{x} n_i &lt; k$ do
+    $x \leftarrow x + 1$
+return $x$</pre>
+<p>Dann gilt $\Pr[X = i] = n_i/N$ für alle $i = 1, \dots, t$.</p></div>
+
+<div class="item" data-t="lemma"><span class="page">S. 202</span>
+<p><span class="name">Lemma 3.28.</span> Sei $P$ eine Menge von $n$ (nicht unbedingt verschiedenen) Punkten und für $r \in \mathbb{N}$, $R$ zufällig gleichverteilt aus $\binom{P}{r}$. Dann ist die erwartete Anzahl Punkte von $P$, die ausserhalb von $C(R)$ liegen, höchstens $3 \cdot (n-r)/(r+1) \le 3 \cdot n/(r+1)$.</p></div>
+
+<div class="item" data-t="satz"><span class="page">S. 203</span>
+<p><span class="name">Satz 3.29.</span> Algorithmus Randomized_CleverVersion berechnet den kleinsten umschliessenden Kreis von $P$ in erwarteter Zeit $O(n \log n)$.</p></div>
+
+<div class="item" data-t="lemma"><span class="page">S. 205</span>
+<p><span class="name">Lemma 3.31</span> (Sampling Lemma). Sei $k \in \mathbb{N}$, $0 \le k \le n$. Wir setzen $v_k := \mathbb{E}\big[|V(R)|\big]$ und $x_k := \mathbb{E}\big[|X(R)|\big]$, wobei $R$ eine $k$-elementige Teilmenge von $S$ ist, zufällig gleichverteilt aus $\binom{S}{k}$. Dann gilt für $r \in \mathbb{N}$, $0 \le r &lt; n$,</p>
+<div class="eq">$$\frac{v_r}{n - r} = \frac{x_{r+1}}{r + 1}.$$</div></div>
+
+<div class="item" data-t="korollar"><span class="page">S. 206</span>
+<p><span class="name">Korollar 3.32.</span> Wählen wir $r$ Elemente $R$ aus einer Menge $A$ von $n$ Zahlen zufällig, dann ist der erwartete Rang des Minimums von $R$ in $A$ genau $(n-r)/(r+1) + 1 = (n+1)/(r+1)$.<br>
+Wählen wir $r$ Punkte $R$ aus einer Menge $P$ von $n$ Punkten in der Ebene zufällig, dann ist die erwartete Anzahl von Punkten aus $P$ ausserhalb von $C(R)$ höchstens $3(n-r)/(r+1)$.</p></div>
+
+<div class="item" data-t="lemma"><span class="page">S. 207</span>
+<p><span class="name">Lemma 3.34.</span> $(q_0, q_1, \dots, q_{h-1})$ ist die Eckenfolge des $\operatorname{conv}(P)$ umschliessenden Polygons gegen den Uhrzeigersinn genau dann, wenn alle Paare $(q_{i-1}, q_i)$, $i = 1, 2, \dots, h$, Randkanten von $P$ sind.</p></div>
+
+<div class="item" data-t="lemma"><span class="page">S. 208</span>
+<p><span class="name">Lemma 3.35.</span> Seien $p = (p_x, p_y)$, $q = (q_x, q_y)$, und $r = (r_x, r_y)$ Punkte in $\mathbb{R}^{2}$. Es gilt $q \ne r$ und $p$ liegt links von $\overline{qr}$ genau dann, wenn</p>
+<div class="eq">$$\begin{aligned}
+\det(p, q, r) := \begin{vmatrix} p_x &amp; p_y &amp; 1 \\ q_x &amp; q_y &amp; 1 \\ r_x &amp; r_y &amp; 1 \end{vmatrix}
+= \begin{vmatrix} q_x - p_x &amp; q_y - p_y \\ r_x - p_x &amp; r_y - p_y \end{vmatrix} &amp;&gt; 0 \\[2pt]
+\iff (q_x - p_x)(r_y - p_y) &amp;&gt; (q_y - p_y)(r_x - p_x)
+\end{aligned}$$</div></div>
+
+<div class="item" data-t="lemma"><span class="page">S. 209</span>
+<p><span class="name">Lemma 3.36.</span> Ist $q$ eine Ecke der konvexen Hülle von $P$, so ist die Relation $\prec_q$ eine totale Ordnung auf $P \setminus \{q\}$. Für das Minimum $p_{\min}$ dieser Ordnung gilt, dass $\overline{q\,p_{\min}}$ eine Randkante ist.</p></div>
+
+<div class="item" data-t="satz"><span class="page">S. 210</span>
+<p><span class="name">Satz 3.37.</span> Gegeben eine Menge $P$ von $n$ Punkten in allgemeiner Lage in $\mathbb{R}^{2}$, berechnet der Algorithmus JarvisWrap die konvexe Hülle in Zeit $O(nh)$, wobei $h$ die Anzahl der Ecken der konvexen Hülle von $P$ ist.</p></div>
+
+<div class="item" data-t="lemma"><span class="page">S. 214</span>
+<p><span class="name">Lemma 3.39.</span> Sei $h$ die Anzahl der Ecken der konvexen Hülle von $P$. Der lokale Verbesserungsprozess macht genau $2n - 2 - h$ Verbesserungsschritte und erzeugt eine Triangulierung mit $2n - 2 - h$ inneren Dreiecken und $3n - 3 - h$ Kanten.</p></div>
+
+<div class="item" data-t="lemma"><span class="page">S. 216</span>
+<p><span class="name">Lemma 3.40.</span> (Euler Relation) Sei $G = (P, E)$ ein ebener Graph auf $P$ mit $v := |P|$ Knoten, $e := |E|$ Kanten, $f$ Gebieten (inkl. des äusseren Gebiets), und $c$ Zusammenhangskomponenten. Dann gilt</p>
+<div class="eq">$$v - e + f = 1 + c. \tag{3.4}$$</div></div>
+
+<div class="item" data-t="korollar"><span class="page">S. 217</span>
+<p><span class="name">Korollar 3.41.</span> Sei $P$ eine Menge von $n \ge 3$ Punkten in allgemeiner Lage in $\mathbb{R}^{2}$ und sei $h$ die Anzahl der Kanten von $\operatorname{conv}(P)$. (i) Jede Triangulierung $T$ von $P$ hat genau $3n - 3 - h$ Kanten und genau $2n - 2 - h$ innere Gebiete. (ii) Jeder ebene Graph $G$ auf $P$ hat höchstens $3n - 3 - h \le 3n - 6$ Kanten und höchstens $2n - 2 - h \le 2n - 5$ innere Gebiete.</p></div>
+
+<div class="item" data-t="satz"><span class="page">S. 219</span>
+<p><span class="name">Satz 3.42.</span> Gegeben eine Folge $p_1, p_2, \dots, p_n$ nach $x$-Koordinate sortierter Punkte in allgemeiner Lage in $\mathbb{R}^{2}$, berechnet der Algorithmus LocalRepair die konvexe Hülle von $\{p_1, p_2, \dots, p_n\}$ in Zeit $O(n)$.</p></div>
+
+</div>
+
+<script>
+(function () {
+  var items = Array.prototype.slice.call(document.querySelectorAll('.item'));
+  var heads = Array.prototype.slice.call(document.querySelectorAll('h2'));
+  var btns  = Array.prototype.slice.call(document.querySelectorAll('#bar button'));
+  var count = document.getElementById('count');
+
+  function apply(f) {
+    var shown = 0;
+    items.forEach(function (el) {
+      var vis = (f === 'all' || el.dataset.t === f);
+      el.classList.toggle('hidden', !vis);
+      if (vis) shown++;
+    });
+    heads.forEach(function (h) {
+      var any = false, n = h.nextElementSibling;
+      while (n && n.tagName !== 'H2') {
+        if (n.classList.contains('item') && !n.classList.contains('hidden')) { any = true; break; }
+        n = n.nextElementSibling;
+      }
+      h.classList.toggle('hidden', !any);
+    });
+    btns.forEach(function (b) { b.classList.toggle('on', b.dataset.f === f); });
+    count.textContent = shown + ' von ' + items.length;
+  }
+
+  btns.forEach(function (b) {
+    b.addEventListener('click', function () { apply(b.dataset.f); });
+  });
+  apply('all');
+})();
+</script>
+
+</body>
+</html>

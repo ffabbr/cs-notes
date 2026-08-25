@@ -1,3 +1,76 @@
 @use "./variables.scss" as *;
 
 // put your custom CSS here!
+#quartz-body {
+  gap: 70px !important;
+
+  @media all and ($mobile) {
+    gap: 20px !important;
+  }
+}
+
+.table-container > table {
+  width: 100%;
+}
+
+button.title-button.explorer-toggle.desktop-explorer {
+  display: none !important;
+}
+
+.search-button {
+  border-radius: 100px !important;
+  padding: 10px !important;
+  height: 40px !important;
+}
+
+.breadcrumb-container {
+  opacity: 0.3;
+}
+
+footer > p {
+  display: none;
+}
+
+iframe.pdf {
+  overflow: hidden;
+  pointer-events: none;
+  touch-action: none;
+}
+
+code[data-theme*=" "] {
+  color: var(--shiki-dark);
+  background-color: var(--shiki-dark-bg);
+}
+
+code[data-theme*=" "] span {
+  color: var(--shiki-dark);
+}
+
+[saved-theme="light"] code[data-theme*=" "] {
+  color: var(--shiki-light);
+  background-color: var(--shiki-light-bg);
+}
+
+[saved-theme="light"] code[data-theme*=" "] span {
+  color: var(--shiki-light);
+}
+
+@media all and not ($desktop) {
+  .graph {
+    margin-bottom: 1.5rem;
+  }
+
+  .readermode {
+    display: none;
+  }
+}
+
+@media all and ($mobile) {
+  .search {
+    min-width: 100% !important;
+  }
+
+  .sidebar > .flex-component {
+    flex-grow: 1 !important;
+  }
+}

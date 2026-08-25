@@ -1,0 +1,43 @@
+Front	Back	Tags
+Was ist ein diskreter Wahrscheinlichkeitsraum?	Eine Ergebnismenge \(\Omega\) von Elementarereignissen mit Wahrscheinlichkeiten, die alle \(\ge 0\) sind und zusammen 1 ergeben.	grundlagen open
+Wie berechnet man in einem Laplace-Raum \(P(E)\)?	\(P(E)=\frac{|E|}{|\Omega|}\).	grundlagen open
+Was ist die Definition von bedingter Wahrscheinlichkeit?	\(P(A\mid B)=\frac{P(A\cap B)}{P(B)}\) für \(P(B)>0\).	bedingt open
+Was ist der Satz der totalen Wahrscheinlichkeit?	\(P(B)=\sum_i P(B\mid A_i)P(A_i)\) für eine disjunkte Zerlegung \(A_i\) von \(\Omega\).	bedingt open
+Was ist die Bayes-Formel?	\(P(A_i\mid B)=\frac{P(B\mid A_i)P(A_i)}{\sum_j P(B\mid A_j)P(A_j)}\).	bedingt open
+Wie prüft man Unabhängigkeit von zwei Ereignissen am schnellsten?	Mit \(P(A\cap B)=P(A)P(B)\).	unabhaengigkeit open
+Was ist eine Zufallsvariable?	Eine Funktion, die jedem Versuchsausgang eine Zahl zuordnet.	zufallsvariable open
+Wie lautet die gebräuchliche Formel für den Erwartungswert?	\(E(X)=\sum_{\alpha\in W_X} \alpha\,P(X=\alpha)\).	erwartungswert open
+Was ist die Tail-Sum-Formula?	Für \(X\in\mathbb N_0\): \(E(X)=\sum_{i=1}^{\infty} P(X\ge i)\).	erwartungswert open
+Wie lautet eine praktische Formel für die Varianz?	\(\operatorname{Var}(X)=E(X^2)-(E(X))^2\).	varianz open
+Wie lautet die Formel der Binomialverteilung?	\(P(X=k)=\binom{n}{k}p^k(1-p)^{n-k}\).	verteilungen open
+Wie lautet die Formel der geometrischen Verteilung?	\(P(X=k)=p(1-p)^{k-1}\) für \(k\ge1\).	verteilungen open
+Wie lautet die Formel der negativen Binomialverteilung?	\(P(X=k)=\binom{k-1}{n-1}p^n(1-p)^{k-n}\).	verteilungen open
+Wie lautet die Formel der Poisson-Verteilung?	\(P(X=k)=\frac{\lambda^k e^{-\lambda}}{k!}\).	verteilungen open
+Wie lautet die Faltungsformel für \(Z=X+Y\) bei unabhängigen diskreten Zufallsvariablen?	\(f_Z(\alpha)=\sum_{\beta\in W_X} f_X(\beta)f_Y(\alpha-\beta)\).	mehrerezv open
+Was sagt die Waldsche Identität?	Für \(Z=\sum_{i=1}^{N}X_i\) mit unabhängigem \(N\) gilt \(E(Z)=E(N)\,E(X)\).	mehrerezv open
+Was ist die Markov-Ungleichung?	Für nichtnegative \(X\) und \(t>0\): \(P(X\ge t)\le \frac{E(X)}{t}\).	abschaetzungen open
+Was ist die Chebyshev-Ungleichung?	Für \(t>0\): \(P(|X-E(X)|\ge t)\le \frac{\operatorname{Var}(X)}{t^2}\).	abschaetzungen open
+Welche Verteilung passt zu: Anzahl Erfolge in \(n\) unabhängigen Versuchen mit gleicher Erfolgswahrscheinlichkeit?	Binomialverteilung.	szenario open
+Welche Verteilung passt zu: Versuchsnummer des ersten Erfolgs?	Geometrische Verteilung.	szenario open
+Welche Verteilung passt zu: Versuchsnummer des \(r\)-ten Erfolgs?	Negative Binomialverteilung.	szenario open
+Welche Verteilung passt zu: Anzahl seltener Ereignisse pro Zeitintervall?	Poisson-Verteilung.	szenario open
+Wahr oder falsch: Für jedes Ereignis \(A\) gilt \(P(\overline A)=1-P(A)\).	Wahr.	tf grundlagen
+Wahr oder falsch: In einem Laplace-Raum haben alle Elementarereignisse dieselbe Wahrscheinlichkeit.	Wahr.	tf grundlagen
+Wahr oder falsch: Für disjunkte Ereignisse \(A,B\) gilt immer \(P(A\cup B)=P(A)+P(B)-P(A\cap B)\), also hier einfach \(P(A)+P(B)\).	Wahr.	tf grundlagen
+Wahr oder falsch: Wenn \(A\subseteq B\), dann ist immer \(P(A)\ge P(B)\).	Falsch. Es gilt \(P(A)\le P(B)\).	tf grundlagen
+"Wahr oder falsch: Bei Formulierungen wie ""mindestens einmal"" ist das Komplement oft der einfachste Weg."	Wahr.	tf strategie
+Wahr oder falsch: Unabhängigkeit von \(A\) und \(B\) bedeutet \(P(A\mid B)=P(A)\).	Wahr.	tf unabhaengigkeit
+Wahr oder falsch: Disjunkte Ereignisse sind automatisch unabhängig.	Falsch.	tf unabhaengigkeit
+Wahr oder falsch: Für unabhängige Ereignisse gilt \(P(A\cap B)=P(A)P(B)\).	Wahr.	tf unabhaengigkeit
+Wahr oder falsch: Für alle Zufallsvariablen gilt \(E(X+Y)=E(X)+E(Y)\).	Wahr.	tf erwartungswert
+Wahr oder falsch: Für \(E(XY)=E(X)E(Y)\) braucht man im Allgemeinen Unabhängigkeit.	Wahr.	tf erwartungswert
+Wahr oder falsch: Für eine Indikatorvariable \(I_A\) gilt \(E(I_A)=P(A)\).	Wahr.	tf erwartungswert
+Wahr oder falsch: Die Tail-Sum-Formula gilt ohne weitere Voraussetzung für jede reellwertige Zufallsvariable.	Falsch. In den Notizen nur für Wertebereich in \(\mathbb N_0\).	tf erwartungswert
+Wahr oder falsch: \(\operatorname{Var}(aX+b)=a^2\operatorname{Var}(X)\).	Wahr.	tf varianz
+Wahr oder falsch: Für alle Zufallsvariablen gilt \(\operatorname{Var}(X+Y)=\operatorname{Var}(X)+\operatorname{Var}(Y)\).	Falsch. So in den Notizen nur bei Unabhängigkeit.	tf varianz
+Wahr oder falsch: Eine Bernoulli-Zufallsvariable nimmt nur die Werte 0 und 1 an.	Wahr.	tf verteilungen
+Wahr oder falsch: Die geometrische Verteilung modelliert den Zeitpunkt des ersten Erfolgs.	Wahr.	tf verteilungen
+Wahr oder falsch: Die negative Binomialverteilung modelliert den Zeitpunkt des ersten Erfolgs.	Falsch. Sie modelliert den Zeitpunkt des \(n\)-ten Erfolgs.	tf verteilungen
+Wahr oder falsch: Für die Poisson-Verteilung gilt \(E(X)=\operatorname{Var}(X)=\lambda\).	Wahr.	tf verteilungen
+Wahr oder falsch: Die Markov-Ungleichung setzt Nichtnegativität von \(X\) voraus.	Wahr.	tf abschaetzungen
+Wahr oder falsch: Die Chebyshev-Ungleichung benutzt die Varianz, um Abweichungen vom Erwartungswert abzuschätzen.	Wahr.	tf abschaetzungen
