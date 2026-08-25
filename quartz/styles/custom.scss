@@ -1,42 +1,1311 @@
-@use "./base.scss";
 @use "./variables.scss" as *;
 
+@font-face {
+  font-family: "Rohlik Inter";
+  src: url("/static/fonts/inter-latin.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+}
 
-// put your custom CSS here!
-#quartz-body {
-  gap: 70px !important;
+@font-face {
+  font-family: "Rohlik Newsreader";
+  src: url("/static/fonts/newsreader-latin.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
 
-  @media all and ($mobile) {
-    gap: 20px !important;
+@font-face {
+  font-family: "Rohlik Newsreader";
+  src: url("/static/fonts/newsreader-italic-latin.woff2") format("woff2");
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Rohlik JetBrains Mono";
+  src: url("/static/fonts/jetbrains-mono-latin.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+
+:root,
+:root[saved-theme="dark"] {
+  color-scheme: dark;
+
+  // The same surface and ink ramp as rohlik.net.
+  --bg: oklch(16.5% 0 0);
+  --bg-sunken: oklch(13.8% 0 0);
+  --bg-raised: oklch(20.5% 0 0);
+  --fg: oklch(93% 0 0);
+  --fg-muted: oklch(70% 0 0);
+  --fg-faint: oklch(56% 0 0);
+  --fg-ghost: oklch(40% 0 0);
+  --fg-intro-link: #ccc;
+  --fg-list-date: oklch(32% 0 0);
+  --rule: oklch(26.5% 0 0);
+  --rule-strong: oklch(34% 0 0);
+  --accent: oklch(80% 0 0);
+  --accent-soft: oklch(80% 0 0 / 0.12);
+  --selection: oklch(80% 0 0 / 0.22);
+  --link-warm: #ffd589;
+  --link-warm-hover: #ffe7b8;
+  --link-warm-bg: rgb(255 213 137 / 0.1);
+  --link-warm-bg-hover: rgb(255 213 137 / 0.17);
+  --heading-warm: #fff3d6;
+  --rule-dashed: rgb(255 213 137 / 0.24);
+  --explorer-path: #fed588;
+  --explorer-path-hover: #c7893b;
+
+  --face-sans: "Rohlik Inter", system-ui, -apple-system, sans-serif;
+  --face-serif: "Rohlik Newsreader", Georgia, serif;
+  --face-mono: "Rohlik JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+
+  --titleFont: var(--face-sans);
+  --headerFont: var(--face-sans);
+  --bodyFont: var(--face-sans);
+  --codeFont: var(--face-mono);
+
+  // Quartz's canvas graph parser only accepts legacy colors. The visual layer
+  // below uses the exact OKLCH tokens; these close sRGB equivalents keep the
+  // graph and other third-party widgets functional.
+  --light: #0f0f0f;
+  --lightgray: #252525;
+  --gray: #747474;
+  --darkgray: #9e9e9e;
+  --dark: #e8e8e8;
+  --secondary: #cccccc;
+  --tertiary: #e8e8e8;
+  --highlight: rgb(190 190 190 / 0.12);
+  --textHighlight: rgb(190 190 190 / 0.22);
+
+  --step--1: clamp(0.72rem, 0.7rem + 0.09vw, 0.76rem);
+  --step-0: clamp(0.875rem, 0.85rem + 0.13vw, 0.93rem);
+  --step-1: clamp(0.95rem, 0.91rem + 0.2vw, 1.03rem);
+  --step-3: clamp(1.45rem, 1.25rem + 0.95vw, 2.05rem);
+  --ease: cubic-bezier(0.22, 0.61, 0.36, 1);
+  --ease-out-quart: cubic-bezier(0.16, 1, 0.3, 1);
+  --fast: 140ms;
+  --mid: 260ms;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  width: 100%;
+  overflow-x: clip;
+  background: var(--bg);
+  scrollbar-gutter: stable;
+  // Headings jumped to from the table of contents land flush against the top
+  // edge otherwise.
+  scroll-padding-top: 2.5rem;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  min-height: 100svh;
+  margin: 0;
+  // The ground lives on <html>, not here. body is static, so its ::before grain
+  // field sits at z-index -1 in the root stacking context — below body's own
+  // background box, which would paint straight over it. Transparent has to be
+  // stated outright: Quartz's own layered rule sets an opaque body background.
+  background: transparent;
+  color: var(--fg);
+  font-family: var(--face-sans);
+  font-size: var(--step-0);
+  // Inter is variable, so a half-step above regular is available and reads a
+  // touch sturdier without tipping into medium.
+  font-weight: 450;
+  line-height: 1.65;
+  font-synthesis-weight: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+// A restrained version of the homepage's top-edge grain field.
+body::before {
+  content: "";
+  position: fixed;
+  z-index: -1;
+  inset: 0 0 auto;
+  height: clamp(10rem, 30vw, 22rem);
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse at 12% -10%, oklch(72% 0.09 78 / 0.075), transparent 48%),
+    radial-gradient(ellipse at 55% -22%, oklch(78% 0.055 105 / 0.055), transparent 52%),
+    radial-gradient(circle at 1px 1px, oklch(90% 0 0 / 0.025) 0.6px, transparent 0.7px);
+  background-size:
+    auto,
+    auto,
+    5px 5px;
+  mask-image: linear-gradient(to bottom, #000 0%, #000 12%, transparent 100%);
+}
+
+::selection {
+  background: var(--selection);
+  color: var(--fg);
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 3px;
+}
+
+.skip-to-content {
+  position: fixed;
+  z-index: 1000;
+  top: 0.75rem;
+  left: 0.75rem;
+  padding: 0.28rem 0.7rem;
+  border: 1px solid var(--rule);
+  border-radius: 999px;
+  background: var(--bg-raised);
+  color: var(--fg);
+  font-size: var(--step--1);
+  transform: translateY(-200%);
+
+  &:focus {
+    transform: translateY(0);
   }
 }
 
-.table-container {
-  &>table {
-    width: 100%;
+// 240 + 96 + 544 + 96 + 240 with 32px outer gutters at a 1280px viewport.
+// The content begins at x=368, exactly like the homepage shell.
+.page {
+  width: 100%;
+  max-width: 1280px;
+  margin-inline: auto;
+
+  > #quartz-body {
+    display: grid;
+    grid-template-columns: 240px minmax(0, 544px) 240px;
+    grid-template-rows: auto;
+    grid-template-areas:
+      "grid-sidebar-left grid-header grid-sidebar-right"
+      "grid-sidebar-left grid-center grid-sidebar-right"
+      "grid-sidebar-left grid-footer grid-sidebar-right";
+    gap: 0 96px !important;
+    padding-inline: 32px;
   }
+}
+
+.page > #quartz-body .center {
+  width: 100%;
+  min-width: 0;
+  max-width: 544px;
+}
+
+.page > #quartz-body .page-header {
+  margin: 0;
+  padding-top: 72px;
+}
+
+.page > #quartz-body .sidebar {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  gap: 1.15rem;
+  padding: 72px 0 40px;
+}
+
+.page > #quartz-body footer {
+  margin: 6rem 0 0;
+  padding: 1rem 0 3rem;
+  border-top: 1px solid var(--rule);
+}
+
+// Brand and chrome.
+.page-title {
+  margin: 0 !important;
+  font-family: var(--face-sans) !important;
+  font-size: var(--step-0) !important;
+  font-weight: 500;
+  line-height: 1.2;
+  letter-spacing: -0.015em;
+
+  a {
+    color: var(--fg) !important;
+    font-weight: 500;
+  }
+
+  &::after {
+    content: "Computer Science";
+    display: block;
+    margin-top: 0.25rem;
+    color: var(--fg-faint);
+    font-size: var(--step--1);
+    font-weight: 400;
+    letter-spacing: 0;
+  }
+}
+
+.flex-component {
+  gap: 0.45rem !important;
+}
+
+// The search pill and the reader-mode button are one control surface: same
+// border, fill and hover, the only difference being that one is a pill and the
+// other a circle.
+.search-button,
+.readermode {
+  min-height: 30px;
+  border: 1px solid var(--rule) !important;
+  border-radius: 999px !important;
+  // Outline-only: the border alone defines the control, no fill contrast
+  // against the page.
+  background: var(--bg) !important;
+  color: var(--fg) !important;
+  box-shadow: none !important;
+  transition:
+    background var(--fast) var(--ease),
+    color var(--fast) var(--ease),
+    border-color var(--fast) var(--ease),
+    box-shadow var(--fast) var(--ease),
+    transform var(--fast) var(--ease);
+
+  &:hover,
+  &:focus-visible {
+    border-color: color-mix(in srgb, var(--link-warm) 30%, var(--rule-strong)) !important;
+    background: color-mix(in srgb, var(--bg) 88%, var(--fg) 12%) !important;
+    box-shadow: 0 0 0 2px rgb(255 213 137 / 0.06) !important;
+    color: var(--fg) !important;
+  }
+
+  &:active {
+    transform: scale(0.97);
+  }
+}
+
+.search-button {
+  height: 30px !important;
+  justify-content: flex-start !important;
+  padding: 0 0.7rem !important;
+
+  svg {
+    width: 14px !important;
+    min-width: 14px !important;
+    margin: 0 0.4rem 0 0 !important;
+  }
+
+  p {
+    color: inherit !important;
+    font-size: var(--step--1) !important;
+  }
+}
+
+.readermode {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px !important;
+  // The icon ships as a 64px SVG and was overflowing its padding box, sitting
+  // off-centre against the right edge. Centring is the button's job now, so the
+  // padding goes and the icon is sized outright.
+  padding: 0 !important;
+
+  svg {
+    // The plugin pins the icon with `position: absolute; top: calc(50% - 10px)`,
+    // hard-coded around its 20px size — at any other size that lands it off
+    // centre. Back in flow, the button centres it.
+    position: static !important;
+    width: 15px !important;
+    height: 15px !important;
+    min-width: 15px !important;
+  }
+}
+
+// Explorer: reliable full-width targets, faster disclosure, and clear state.
+.explorer {
+  min-height: 0;
+  margin-top: 0.35rem;
+  overflow: hidden;
 }
 
 button.title-button.explorer-toggle.desktop-explorer {
   display: none !important;
 }
 
-.search-button {
-  border-radius: 100px !important;
-  padding: 10px !important;
-  height: 40px !important;
+.explorer-content {
+  max-height: calc(100vh - 190px);
+  margin-top: 0 !important;
+  padding-right: 0.35rem;
+  overflow: auto;
+  scrollbar-width: thin;
+  scrollbar-color: var(--rule) transparent;
+}
+
+.explorer-content ul {
+  padding: 0 !important;
+}
+
+.explorer-content li {
+  margin: 0 !important;
+  font-size: 0.78rem;
+  line-height: 1.28;
+}
+
+.explorer-content .tree-item-self {
+  width: 100%;
+  min-height: 24px;
+  margin: 0 !important;
+  padding: 0.12rem 0.28rem !important;
+  border-radius: 3px;
+  background: transparent !important;
+  color: color-mix(in srgb, var(--fg) 72%, transparent) !important;
+  opacity: 1 !important;
+  font-family: var(--face-sans) !important;
+  font-weight: 500 !important;
+  text-decoration: none !important;
+  transition:
+    color var(--fast) var(--ease),
+    background var(--fast) var(--ease);
+}
+
+.explorer-content a.tree-item-self {
+  display: flex !important;
+  align-items: center;
+}
+
+.explorer-content .folder-container {
+  display: grid;
+  grid-template-columns: 17px minmax(0, 1fr);
+  align-items: center;
+}
+
+.explorer-content .folder-container > div,
+.explorer-content .folder-container .folder-button {
+  width: 100%;
+  min-width: 0;
+}
+
+.explorer-content .folder-container .folder-button {
+  min-height: 20px;
+  color: inherit !important;
+  font: inherit !important;
+}
+
+.explorer-content .folder-title {
+  display: block !important;
+  overflow: hidden;
+  color: inherit !important;
+  font: inherit !important;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.explorer-content .tree-item-self:hover {
+  background: color-mix(in srgb, var(--bg-raised) 76%, transparent) !important;
+  color: var(--fg) !important;
+}
+
+.explorer-content a.tree-item-self.active {
+  background: transparent !important;
+  box-shadow: none !important;
+  color: var(--link-warm) !important;
+  font-weight: 600 !important;
+}
+
+// Every folder containing the open note, all the way up the tree. The active
+// file's own li matches the :has() too, but has no folder row to colour.
+.explorer-content li:has(a.tree-item-self.active) > .folder-container {
+  color: var(--explorer-path) !important;
+
+  .folder-icon {
+    color: inherit !important;
+  }
+}
+
+.explorer-content li:has(a.tree-item-self.active) > .folder-container:hover {
+  color: var(--explorer-path-hover) !important;
+}
+
+.explorer-content .folder-icon {
+  width: 12px;
+  height: 12px;
+  margin: 0 !important;
+  color: var(--fg-faint) !important;
+}
+
+.explorer-content .folder-outer {
+  transition:
+    grid-template-rows var(--fast) var(--ease),
+    visibility var(--fast) var(--ease) !important;
+}
+
+.explorer-content .folder-outer > ul {
+  margin-left: 0.58rem !important;
+  padding-left: 0.35rem !important;
+  border-left: 1px solid var(--rule) !important;
+}
+
+// Shared link language from the homepage.
+a {
+  color: inherit;
+  font-weight: 400;
+  text-decoration: none;
+}
+
+a.internal {
+  padding: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  line-height: inherit !important;
+}
+
+// Warm inline links echo the original Quartz palette without tinting navigation.
+.center article :is(p, li, td, dd, figcaption, blockquote) a,
+.popover :is(p, li, td, dd, figcaption, blockquote) a {
+  padding: 0.06em 0.27em !important;
+  border-radius: 4px !important;
+  background: var(--link-warm-bg) !important;
+  box-decoration-break: clone;
+  color: var(--link-warm) !important;
+  line-height: inherit !important;
+  text-decoration: none !important;
+  -webkit-box-decoration-break: clone;
+  transition:
+    background var(--fast) var(--ease),
+    box-shadow var(--fast) var(--ease),
+    color var(--fast) var(--ease);
+
+  &:hover,
+  &:focus-visible {
+    background: var(--link-warm-bg-hover) !important;
+    box-shadow: 0 0 0 1px rgb(255 213 137 / 0.12) inset;
+    color: var(--link-warm-hover) !important;
+  }
 }
 
 .breadcrumb-container {
-  opacity: 0.3;
+  margin: 0 0 2.5rem !important;
+  color: var(--fg-faint);
+  font-family: var(--face-mono);
+  font-size: var(--step--1);
+  letter-spacing: 0.02em;
+  opacity: 1 !important;
 }
 
-@media all and ($mobile) {
-  .search {
-    min-width: 100% !important;
+.breadcrumb-container a,
+.breadcrumb-container p,
+.breadcrumb-container .breadcrumb-element {
+  color: var(--fg-faint) !important;
+  font: inherit !important;
+  text-decoration: none !important;
+}
+
+.article-title {
+  margin: 0 0 1.25rem !important;
+  color: var(--heading-warm);
+  font-family: var(--face-serif) !important;
+  font-size: var(--step-3) !important;
+  font-weight: 400 !important;
+  line-height: 1.14;
+  letter-spacing: -0.022em;
+}
+
+.tags {
+  gap: 0.4rem !important;
+  margin: 0 0 2rem !important;
+  padding: 0 !important;
+}
+
+.tags a.internal.tag-link {
+  display: inline-flex;
+  padding: 0.28rem 0.7rem !important;
+  border: 1px solid transparent !important;
+  border-radius: 999px !important;
+  background: var(--bg-sunken) !important;
+  color: var(--fg-muted) !important;
+  font-family: var(--face-sans);
+  font-size: var(--step--1);
+  line-height: 1.4 !important;
+  text-decoration: none !important;
+}
+
+// Article body stays in Inter; Newsreader is reserved for page-level h1s.
+article {
+  color: var(--fg);
+  font-family: var(--face-sans);
+  font-size: var(--step-0);
+  line-height: 1.7;
+
+  > * + * {
+    margin-block-start: 1.15em;
   }
 
-  .sidebar>.flex-component {
-    flex-grow: 1 !important;
+  p,
+  li,
+  tbody {
+    color: var(--fg);
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
   }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    position: relative;
+    color: var(--fg);
+    font-family: var(--face-sans) !important;
+    font-weight: 600;
+    line-height: 1.2;
+    letter-spacing: -0.018em;
+  }
+
+  > h1 {
+    color: var(--heading-warm);
+    font-family: var(--face-serif) !important;
+    font-size: var(--step-3) !important;
+    font-weight: 400;
+  }
+
+  h2 {
+    margin-block: 2.4em 0.2em;
+    padding-block-end: 0.5rem;
+    border-bottom: 1px dashed var(--rule-dashed);
+    font-size: clamp(1.05rem, 1.01rem + 0.18vw, 1.12rem);
+  }
+
+  h3 {
+    margin-block: 2.4em 0.2em;
+    color: var(--fg-muted);
+    font-size: var(--step-0);
+  }
+
+  h4,
+  h5,
+  h6 {
+    font-size: var(--step-0);
+  }
+
+  ul,
+  ol {
+    padding-inline-start: 1.3rem;
+  }
+
+  li + li {
+    margin-block-start: 0.35em;
+  }
+
+  li::marker {
+    color: var(--fg-ghost);
+  }
+
+  strong {
+    color: var(--fg);
+    font-family: var(--face-sans);
+    font-size: 1em;
+    font-weight: 600;
+  }
+}
+
+// Quartz defaults math to its muted gray token; equations should carry the
+// same visual weight as the prose around them.
+.katex,
+.math {
+  color: var(--fg) !important;
+  fill: var(--fg) !important;
+}
+
+blockquote {
+  margin: 1.4em 0;
+  padding-inline-start: 1.1rem;
+  border-left: 2px solid var(--rule-strong);
+  color: var(--fg-muted);
+  font-style: italic;
+}
+
+hr {
+  width: 100%;
+  height: 0;
+  margin-block: 2.4em;
+  border: 0;
+  border-top: 1px dashed var(--rule-dashed);
+  background: transparent;
+}
+
+code {
+  padding: 0.12em 0.38em;
+  border: 1px solid var(--rule);
+  border-radius: 5px;
+  background: var(--bg-sunken);
+  color: var(--fg);
+  font-family: var(--face-mono);
+  font-size: 0.82em;
+}
+
+pre {
+  margin-inline: -1.1rem;
+  padding: 1rem 1.1rem;
+  border: 0;
+  border-block: 1px dashed var(--rule-dashed);
+  border-radius: 0;
+  background: var(--bg-sunken) !important;
+
+  code {
+    border: 0;
+    background: transparent;
+  }
+}
+
+img {
+  border: 1px solid var(--rule);
+  border-radius: 0;
+}
+
+.table-container {
+  overflow-x: auto;
+
+  > table {
+    width: 100%;
+    margin: 1.5rem 0;
+    border-collapse: collapse;
+    font-size: 0.92em;
+  }
+}
+
+th,
+td {
+  border-color: var(--rule) !important;
+}
+
+// Folder/tag pages use the homepage's exact list-row treatment.
+.page-listing {
+  margin-top: 3.5rem;
+  font-family: var(--face-sans);
+  font-size: var(--step-0);
+
+  > p {
+    margin: 0 0 1.1rem;
+    color: var(--fg-faint);
+  }
+}
+
+.section-ul {
+  margin: 0 !important;
+  padding: 0 !important;
+  border-block: 1px solid var(--rule);
+  list-style: none;
+}
+
+.section-li {
+  margin: 0 !important;
+  padding: 0 !important;
+  border-bottom: 0 !important;
+}
+
+.section-li + .section-li {
+  border-top: 1px solid var(--rule) !important;
+}
+
+.section-li > .section {
+  display: flex !important;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  min-height: 45px;
+  padding: 0.65rem 0 !important;
+  opacity: 1;
+  transition: opacity var(--mid) var(--ease-out-quart);
+}
+
+.section-li .desc {
+  min-width: 0;
+  order: 1;
+}
+
+.section-li .desc h3 {
+  margin: 0 !important;
+  color: var(--fg);
+  font-family: var(--face-sans) !important;
+  font-size: var(--step-0) !important;
+  font-weight: 400 !important;
+  line-height: 1.65;
+  letter-spacing: 0;
+}
+
+.section-li .desc a.internal {
+  color: var(--fg) !important;
+  text-decoration: none !important;
+}
+
+.section-li .meta {
+  flex-shrink: 0;
+  order: 2;
+  margin: 0 !important;
+  color: var(--fg-list-date) !important;
+  font-family: var(--face-mono);
+  font-size: 0.94em;
+  line-height: 1.65;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.section-li > .section > .tags,
+.section-li .desc > p {
+  display: none;
+}
+
+@media (hover: hover) {
+  .section-ul:has(.section-li:hover) .section-li:not(:hover) > .section {
+    opacity: 0.28;
+  }
+}
+
+// Right rail.
+.sidebar.right > * {
+  padding-bottom: 1.25rem;
+  border-bottom: 1px dashed var(--rule-dashed);
+}
+
+// The rail usually holds the table of contents alone, and a dashed rule under
+// the last widget reads as a divider with nothing to divide.
+.sidebar.right > :last-child {
+  padding-bottom: 0;
+  border-bottom: 0;
+}
+
+.sidebar.right h3,
+.toc-header h3,
+.backlinks h3 {
+  margin: 0 0 0.8rem !important;
+  color: var(--fg-faint) !important;
+  font-family: var(--face-mono) !important;
+  font-size: var(--step--1) !important;
+  font-weight: 400 !important;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+}
+
+.graph .graph-outer {
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+}
+
+.graph .graph-container {
+  height: 150px !important;
+}
+
+// Table of contents. The heading row is dropped entirely — the list is the only
+// thing in the rail, so it reads as the table of contents without being
+// labelled. That row carried the collapse toggle, so the list is now always
+// open: the plugin's collapsed state is neutralised below in case a note ever
+// asks for it via frontmatter.
+button.toc-header {
+  display: none !important;
+}
+
+ul.toc-content.collapsed {
+  display: block;
+}
+
+ul.toc-content {
+  margin: 0 !important;
+  padding: 0 !important;
+  // The plugin caps the list at `calc(100% - 2rem)` of the TOC box to leave
+  // room for the heading row. With that row gone the box is the list, so the
+  // subtraction eats 2rem of the list itself and clips the last entries.
+  max-height: 100% !important;
+  scrollbar-width: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+// A hairline guide runs down the list, assembled from one border segment per
+// entry, so it can light up section by section as the reader moves down the
+// page. It cannot be a single border on the list: `overflow-y: auto` makes the
+// list a scroll container on both axes, which clips anything drawn outside it.
+.toc-content li {
+  margin: 0 !important;
+  padding-left: 0.9rem !important;
+  border-left: 1px solid var(--rule);
+  font-family: var(--face-sans);
+  font-size: var(--step--1);
+  line-height: 1.45;
+  transition: border-color var(--mid) var(--ease);
+}
+
+.toc-content li a {
+  display: block;
+  padding: 0.28rem 0;
+  color: var(--fg-faint) !important;
+  text-decoration: none !important;
+  text-wrap: pretty;
+  opacity: 1 !important; // the plugin dims links to 0.35, unreadable on this ink ramp
+  transition: color var(--fast) var(--ease) !important;
+}
+
+// The observer marks every heading scrolled past, so the last marked entry is
+// the one currently at the top of the viewport: style all of them as current,
+// then demote the ones that still have a marked entry below them.
+// (`:has()` cannot be nested inside `:has()`, hence matching the anchor
+// directly rather than another `:has()`.)
+.toc-content li:has(a.in-view) {
+  border-left-color: var(--link-warm);
+
+  a {
+    color: var(--fg) !important;
+  }
+}
+
+// Covered ground: the rail keeps the trail, the text stays quiet.
+.toc-content li:has(a.in-view):has(+ li > a.in-view) {
+  border-left-color: var(--fg-ghost);
+
+  a {
+    color: var(--fg-faint) !important;
+  }
+}
+
+.toc-content li:hover {
+  border-left-color: var(--fg-faint);
+
+  a {
+    color: var(--fg) !important;
+  }
+}
+
+// Nesting is shallow and the rail is narrow, so indent in small steps — on the
+// link rather than the item, to keep the rail itself flush.
+.toc-content li.depth-1 a {
+  padding-left: 0.7rem;
+}
+
+.toc-content li.depth-2 a {
+  padding-left: 1.4rem;
+}
+
+.toc-content li.depth-3 a,
+.toc-content li.depth-4 a,
+.toc-content li.depth-5 a,
+.toc-content li.depth-6 a {
+  padding-left: 2.1rem;
+}
+
+.backlinks ul {
+  padding: 0 !important;
+}
+
+.backlinks li {
+  margin: 0.35rem 0 !important;
+  font-family: var(--face-sans);
+  font-size: var(--step--1);
+  line-height: 1.4;
+}
+
+.backlinks a.internal {
+  color: var(--fg-faint) !important;
+  text-decoration: none !important;
+}
+
+.backlinks a.internal:hover {
+  color: var(--fg) !important;
+}
+
+footer p {
+  display: none;
+}
+
+footer ul {
+  display: flex;
+  gap: 1rem;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+footer a {
+  color: var(--fg-faint) !important;
+  font-size: var(--step--1);
+  text-decoration: none !important;
+}
+
+footer a:hover {
+  color: var(--fg) !important;
+}
+
+// Callouts use a single tinted surface and outline, following the generous
+// card treatment of the reference while staying proportional to this layout.
+.callout {
+  --color: #6aa7e8;
+  --border: color-mix(in srgb, var(--color) 38%, transparent);
+  --bg: color-mix(in srgb, var(--color) 7%, var(--bg-sunken));
+
+  position: relative;
+  margin: 1.9rem 0;
+  padding: 1.3rem 1.45rem;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: var(--bg);
+  font-style: normal;
+  box-shadow: 0 1px 0 rgb(255 255 255 / 0.018) inset;
+
+  &[data-callout="abstract"] {
+    --color: #45b7c4;
+  }
+
+  &[data-callout="info"],
+  &[data-callout="todo"] {
+    --color: #62a9ea;
+  }
+
+  &[data-callout="tip"],
+  &[data-callout="success"] {
+    --color: #20c997;
+  }
+
+  &[data-callout="question"],
+  &[data-callout="warning"] {
+    --color: #e5ad4f;
+  }
+
+  &[data-callout="failure"],
+  &[data-callout="danger"],
+  &[data-callout="bug"],
+  &[data-callout="error"] {
+    --color: #e47777;
+  }
+
+  &[data-callout="example"] {
+    --color: #9856d8;
+  }
+
+  &[data-callout="quote"] {
+    --color: var(--fg-muted);
+  }
+
+  > .callout-title {
+    align-items: center;
+    gap: 0.72rem;
+    min-height: 1.5rem;
+    padding: 0;
+    color: var(--color);
+
+    --icon-size: 20px;
+
+    > .callout-title-inner {
+      min-width: 0;
+      font-family: var(--face-sans);
+      font-size: 1rem;
+      font-weight: 650;
+      line-height: 1.35;
+      letter-spacing: -0.012em;
+      text-transform: none;
+
+      > p {
+        color: var(--color);
+      }
+    }
+
+    .callout-icon {
+      opacity: 1;
+    }
+
+    .fold-callout-icon {
+      margin-left: 0.3rem;
+      opacity: 0.72;
+      transition:
+        opacity var(--fast) var(--ease),
+        transform var(--fast) var(--ease);
+    }
+
+    &:hover .fold-callout-icon {
+      opacity: 0.9;
+    }
+  }
+
+  > .callout-content {
+    padding-inline-start: 2rem;
+    border: 0;
+
+    > :first-child {
+      margin-top: 1.05rem;
+    }
+
+    > :last-child {
+      margin-bottom: 0;
+    }
+
+    p,
+    li {
+      color: var(--fg);
+    }
+  }
+
+  &.is-collapsed > .callout-title {
+    min-height: 1.5rem;
+    padding: 0;
+  }
+
+  &.is-collapsed > .callout-content {
+    > * {
+      margin-block: 0;
+    }
+  }
+}
+
+// Search modal uses the same surface stack and pill language.
+.search-container .search-space {
+  border: 1px solid var(--rule) !important;
+  border-radius: 10px !important;
+  background: var(--bg) !important;
+  box-shadow: 0 24px 80px rgb(0 0 0 / 0.45) !important;
+}
+
+.search-bar {
+  // No box of its own: the input is the panel's header row, with only a
+  // hairline dividing it from the results.
+  border: 0 !important;
+  border-bottom: 1px solid var(--rule) !important;
+  border-radius: 0 !important;
+  outline: none !important;
+  background: transparent !important;
+  color: var(--fg) !important;
+  // The plugin spaces every child of the search space by 2em. The input reads
+  // as the top of the panel, not as a card floating above it.
+  margin-bottom: 0 !important;
+}
+
+// The results panel is not a card inside the modal, it is the modal. Its own
+// border, radius and fill only fought the search space wrapping it — the fill
+// especially, since the plugin uses the legacy `--light` token, a shade off the
+// current background.
+.search-layout.display-results {
+  margin-bottom: 0 !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+}
+
+// The preview container only carries side padding, so the note ran flush into
+// the panel edge at both ends. Matching the 2rem sides here keeps the content
+// evenly inset and, unlike padding on the scroll container itself, the bottom
+// is reliably honoured at the end of the scroll.
+.preview-container .preview-inner {
+  padding-block: 2rem;
+}
+
+.result-card {
+  border-color: var(--rule) !important;
+}
+
+iframe.pdf {
+  overflow: hidden;
+  pointer-events: none;
+  touch-action: none;
+}
+
+code[data-theme*=" "] {
+  color: var(--shiki-dark);
+  background-color: var(--shiki-dark-bg);
+}
+
+code[data-theme*=" "] span {
+  color: var(--shiki-dark);
+}
+
+@media (max-width: 1199px) {
+  .page {
+    max-width: 944px;
+
+    > #quartz-body {
+      grid-template-columns: 240px minmax(0, 544px);
+      grid-template-areas:
+        "grid-sidebar-left grid-header"
+        "grid-sidebar-left grid-center"
+        "grid-sidebar-left grid-sidebar-right"
+        "grid-sidebar-left grid-footer";
+      gap: 0 96px !important;
+    }
+  }
+
+  .page > #quartz-body .sidebar.right {
+    position: static;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    width: auto;
+    height: auto;
+    padding: 5rem 0 0;
+  }
+
+  // The table of contents is desktop-only. Quartz hides it below 1200px with a
+  // Media Queries Level 4 `not (min-width: ...)` query, which older mobile
+  // Safari drops on the floor — so state it in plain syntax here as well.
+  .page > #quartz-body .sidebar.right > .toc {
+    display: none;
+  }
+
+  // With the table of contents gone the rail is empty on this site, and an
+  // empty rail still reserves its padding as a gap above the footer.
+  .page > #quartz-body .sidebar.right:not(:has(> :not(.toc))) {
+    display: none;
+  }
+}
+
+@media (max-width: 800px) {
+  .page > #quartz-body {
+    display: block;
+    padding-inline: clamp(1.25rem, 5vw, 2rem);
+  }
+
+  .page > #quartz-body .sidebar.left {
+    position: static;
+    display: flex;
+    align-items: center;
+    gap: 0.55rem;
+    height: auto;
+    padding: 1.5rem 0 0;
+    // The explorer plugin paints this bar with the legacy `--light` token,
+    // which no longer matches the page ground and cut a darker band across the
+    // top. It scrolls with the page here, so it needs no fill of its own.
+    background: transparent;
+  }
+
+  .page-title {
+    margin-right: auto !important;
+  }
+
+  .page-title::after,
+  .readermode {
+    display: none !important;
+  }
+
+  .page > #quartz-body .page-header {
+    padding-top: 4.5rem;
+  }
+
+  .breadcrumb-container {
+    margin-bottom: 2rem !important;
+  }
+
+  .article-title {
+    font-size: var(--step-3) !important;
+  }
+
+  .page > #quartz-body.lock-scroll > :not(.sidebar.left:has(.explorer)) {
+    transform: none !important;
+  }
+
+  // The drawer is a viewport overlay: `position: absolute` anchors it to the
+  // document instead, so it drifts off the top of the screen once the page is
+  // scrolled. `max-height` has to be reset too — the desktop rule above leaves
+  // the panel 190px short of the bottom edge.
+  .explorer .explorer-content {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: min(86vw, 22rem) !important;
+    height: 100dvh !important;
+    max-height: 100dvh !important;
+    padding: 4.5rem 1.25rem 2rem !important;
+    border-right: 1px solid var(--rule);
+    background: var(--bg) !important;
+    box-shadow: 24px 0 80px rgb(0 0 0 / 0.32);
+    overflow-y: auto;
+    overscroll-behavior: contain;
+  }
+
+  .explorer-content .tree-item-self {
+    min-height: 34px;
+    padding: 0.48rem 0.55rem !important;
+  }
+
+  .search {
+    min-width: 30px !important;
+  }
+
+  .search-button {
+    width: 30px;
+    justify-content: center !important;
+    padding: 0.4rem !important;
+
+    svg {
+      margin: 0 !important;
+    }
+
+    p {
+      display: none;
+    }
+  }
+
+  .page > #quartz-body .sidebar.right {
+    display: block;
+    padding-top: 4rem;
+  }
+
+  .sidebar.right > * {
+    margin-bottom: 2rem;
+  }
+
+  .section-li > .section {
+    gap: 0.75rem;
+  }
+
+  .section-li .meta {
+    font-size: 0.78em;
+  }
+
+  footer ul {
+    flex-wrap: wrap;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// TEMPORARY COLOR TRIAL — delete this block to revert.
+// bg #161618 · body text #d4d4d4 · bold, titles and links #fffbd8
+// ─────────────────────────────────────────────────────────────────────────────
+:root,
+:root[saved-theme="dark"] {
+  --bg: #0e0e0e;
+  // Both surfaces follow the ground down: sunken has to stay below it, and
+  // raised was tuned against the old, lighter background.
+  --bg-sunken: #080808;
+  --bg-raised: #17171a;
+  --fg: #d4d4d4;
+
+  --heading-warm: #fffbd8;
+  --link-warm: #fffbd8;
+  --link-warm-hover: #fffef2;
+  --link-warm-bg: rgb(255 251 216 / 0.1);
+  --link-warm-bg-hover: rgb(255 251 216 / 0.17);
+}
+
+// h3 is muted and h2/h4-h6 track the body ink by default, so every heading has
+// to be pointed at the accent explicitly.
+article :is(h1, h2, h3, h4, h5, h6),
+.article-title {
+  color: var(--heading-warm) !important;
+}
+
+article :is(strong, b) {
+  color: var(--heading-warm) !important;
 }
