@@ -1071,9 +1071,36 @@ footer a:hover {
 }
 
 .search-bar {
+  // No box of its own: the input is the panel's header row, with only a
+  // hairline dividing it from the results.
+  border: 0 !important;
   border-bottom: 1px solid var(--rule) !important;
+  border-radius: 0 !important;
+  outline: none !important;
   background: transparent !important;
   color: var(--fg) !important;
+  // The plugin spaces every child of the search space by 2em. The input reads
+  // as the top of the panel, not as a card floating above it.
+  margin-bottom: 0 !important;
+}
+
+// The results panel is not a card inside the modal, it is the modal. Its own
+// border, radius and fill only fought the search space wrapping it — the fill
+// especially, since the plugin uses the legacy `--light` token, a shade off the
+// current background.
+.search-layout.display-results {
+  margin-bottom: 0 !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+}
+
+// The preview container only carries side padding, so the note ran flush into
+// the panel edge at both ends. Matching the 2rem sides here keeps the content
+// evenly inset and, unlike padding on the scroll container itself, the bottom
+// is reliably honoured at the end of the scroll.
+.preview-container .preview-inner {
+  padding-block: 2rem;
 }
 
 .result-card {
