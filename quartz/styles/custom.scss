@@ -260,7 +260,9 @@ body::before {
   min-height: 30px;
   border: 1px solid var(--rule) !important;
   border-radius: 999px !important;
-  background: var(--bg-raised) !important;
+  // Outline-only: the border alone defines the control, no fill contrast
+  // against the page.
+  background: var(--bg) !important;
   color: var(--fg) !important;
   box-shadow: none !important;
   transition:
@@ -273,7 +275,7 @@ body::before {
   &:hover,
   &:focus-visible {
     border-color: color-mix(in srgb, var(--link-warm) 30%, var(--rule-strong)) !important;
-    background: color-mix(in srgb, var(--bg-raised) 88%, var(--fg) 12%) !important;
+    background: color-mix(in srgb, var(--bg) 88%, var(--fg) 12%) !important;
     box-shadow: 0 0 0 2px rgb(255 213 137 / 0.06) !important;
     color: var(--fg) !important;
   }
