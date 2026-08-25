@@ -369,7 +369,7 @@ public class Barrier {
 ### (!!) Two-Phase Barrier with Semaphores (pseudocode)
 Two turnstiles guarantee reusability: phase 1 waits for all to arrive, phase 2 waits for all to leave, so a fast thread cannot lap a slow one.
 
-```text
+```java
 init:  mutex=1; barrier1=0; barrier2=1; count=0
 
 barrier:

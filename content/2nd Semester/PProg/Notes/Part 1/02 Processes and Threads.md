@@ -1,6 +1,5 @@
 
 Parallel output order changes between runs, because ==console access is random==. 
-
 ## Single-Core
 
 - A single-core CPU can execute one instruction at a time, meaning sequentially. 

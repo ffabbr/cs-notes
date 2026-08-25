@@ -25,6 +25,10 @@ Fetch and execute order:
 
 ![[Bildschirmfoto 2026-04-16 um 18.51.51.png|Dataflow Graph for factorial]]
 
+## Example of drawing a Dataflow Graph
+
+Based on a task about [[17 Out of order execution#Tomasulo's Algorithm|Tomasulo's Algorithm]]
+
 ![[Bildschirmfoto 2026-05-02 um 22.25.23.png]]
 
 

@@ -133,6 +133,8 @@ $O(n)$ work, $O(\log n)$ span
 
 ### Pack
 
+= filter
+
 Given an array input, produce an array output containing only elements such that f(element) is true.
 
 Output array hat Elemente aus dem Input mit bestimmen Eigenschaften. Erkennen: [[#Maps]]. In neues Array screiben: [[#Prefix-sum]]. 

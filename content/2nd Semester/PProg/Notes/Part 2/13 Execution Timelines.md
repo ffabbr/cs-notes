@@ -41,5 +41,9 @@ Korrektheits-Beweise mit Linearisierbarkeit, dann darf es nur einen Linearisieru
 ---
 
 well-formed: per Thread könnte sequentiell sein
+legal: per Objekt könnte sequentiell sein
 equivalent: same per thread projections
 complete: no pending responses
+sequential history: no overlaps
+
+Only linearizability is composable
