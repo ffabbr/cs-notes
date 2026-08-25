@@ -1257,10 +1257,10 @@ code[data-theme*=" "] span {
 :root,
 :root[saved-theme="dark"] {
   --bg: #0e0e0e;
-  // Sunken has to stay below the new ground; raised keeps its value so the
-  // search pill and reader button look exactly as they do now.
+  // Both surfaces follow the ground down: sunken has to stay below it, and
+  // raised was tuned against the old, lighter background.
   --bg-sunken: #080808;
-  --bg-raised: #1d1d20;
+  --bg-raised: #17171a;
   --fg: #d4d4d4;
 
   --heading-warm: #fffbd8;
