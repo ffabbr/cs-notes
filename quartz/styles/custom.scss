@@ -51,6 +51,14 @@
   --accent: oklch(80% 0 0);
   --accent-soft: oklch(80% 0 0 / 0.12);
   --selection: oklch(80% 0 0 / 0.22);
+  --link-warm: #ffd589;
+  --link-warm-hover: #ffe7b8;
+  --link-warm-bg: rgb(255 213 137 / 0.1);
+  --link-warm-bg-hover: rgb(255 213 137 / 0.17);
+  --heading-warm: #fff3d6;
+  --rule-dashed: rgb(255 213 137 / 0.24);
+  --explorer-path: #fed588;
+  --explorer-path-hover: #c7893b;
 
   --face-sans: "Rohlik Inter", system-ui, -apple-system, sans-serif;
   --face-serif: "Rohlik Newsreader", Georgia, serif;
@@ -95,16 +103,26 @@ html {
   overflow-x: clip;
   background: var(--bg);
   scrollbar-gutter: stable;
+  // Headings jumped to from the table of contents land flush against the top
+  // edge otherwise.
+  scroll-padding-top: 2.5rem;
   -webkit-text-size-adjust: 100%;
 }
 
 body {
   min-height: 100svh;
   margin: 0;
-  background: var(--bg);
+  // The ground lives on <html>, not here. body is static, so its ::before grain
+  // field sits at z-index -1 in the root stacking context — below body's own
+  // background box, which would paint straight over it. Transparent has to be
+  // stated outright: Quartz's own layered rule sets an opaque body background.
+  background: transparent;
   color: var(--fg);
   font-family: var(--face-sans);
   font-size: var(--step-0);
+  // Inter is variable, so a half-step above regular is available and reads a
+  // touch sturdier without tipping into medium.
+  font-weight: 450;
   line-height: 1.65;
   font-synthesis-weight: none;
   text-rendering: optimizeLegibility;
@@ -121,8 +139,8 @@ body::before {
   height: clamp(10rem, 30vw, 22rem);
   pointer-events: none;
   background:
-    radial-gradient(ellipse at 12% -10%, oklch(72% 0.09 78 / 0.11), transparent 48%),
-    radial-gradient(ellipse at 55% -22%, oklch(78% 0.055 105 / 0.08), transparent 52%),
+    radial-gradient(ellipse at 12% -10%, oklch(72% 0.09 78 / 0.075), transparent 48%),
+    radial-gradient(ellipse at 55% -22%, oklch(78% 0.055 105 / 0.055), transparent 52%),
     radial-gradient(circle at 1px 1px, oklch(90% 0 0 / 0.025) 0.6px, transparent 0.7px);
   background-size:
     auto,
@@ -234,23 +252,29 @@ body::before {
   gap: 0.45rem !important;
 }
 
+// The search pill and the reader-mode button are one control surface: same
+// border, fill and hover, the only difference being that one is a pill and the
+// other a circle.
 .search-button,
 .readermode {
   min-height: 30px;
-  border: 1px solid transparent !important;
+  border: 1px solid var(--rule) !important;
   border-radius: 999px !important;
-  background: var(--bg-sunken) !important;
-  color: var(--fg-muted) !important;
+  background: var(--bg-raised) !important;
+  color: var(--fg) !important;
   box-shadow: none !important;
   transition:
     background var(--fast) var(--ease),
     color var(--fast) var(--ease),
     border-color var(--fast) var(--ease),
+    box-shadow var(--fast) var(--ease),
     transform var(--fast) var(--ease);
 
-  &:hover {
-    border-color: var(--rule) !important;
-    background: var(--bg-raised) !important;
+  &:hover,
+  &:focus-visible {
+    border-color: color-mix(in srgb, var(--link-warm) 30%, var(--rule-strong)) !important;
+    background: color-mix(in srgb, var(--bg-raised) 88%, var(--fg) 12%) !important;
+    box-shadow: 0 0 0 2px rgb(255 213 137 / 0.06) !important;
     color: var(--fg) !important;
   }
 
@@ -277,9 +301,25 @@ body::before {
 }
 
 .readermode {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   width: 30px;
   height: 30px !important;
-  padding: 0.42rem !important;
+  // The icon ships as a 64px SVG and was overflowing its padding box, sitting
+  // off-centre against the right edge. Centring is the button's job now, so the
+  // padding goes and the icon is sized outright.
+  padding: 0 !important;
+
+  svg {
+    // The plugin pins the icon with `position: absolute; top: calc(50% - 10px)`,
+    // hard-coded around its 20px size — at any other size that lands it off
+    // centre. Back in flow, the button centres it.
+    position: static !important;
+    width: 15px !important;
+    height: 15px !important;
+    min-width: 15px !important;
+  }
 }
 
 // Explorer: reliable full-width targets, faster disclosure, and clear state.
@@ -308,20 +348,21 @@ button.title-button.explorer-toggle.desktop-explorer {
 
 .explorer-content li {
   margin: 0 !important;
-  font-size: var(--step--1);
-  line-height: 1.35;
+  font-size: 0.78rem;
+  line-height: 1.28;
 }
 
 .explorer-content .tree-item-self {
   width: 100%;
-  min-height: 29px;
+  min-height: 24px;
   margin: 0 !important;
-  padding: 0.34rem 0.45rem !important;
-  border-radius: 5px;
-  color: var(--fg-faint) !important;
+  padding: 0.12rem 0.28rem !important;
+  border-radius: 3px;
+  background: transparent !important;
+  color: color-mix(in srgb, var(--fg) 72%, transparent) !important;
   opacity: 1 !important;
   font-family: var(--face-sans) !important;
-  font-weight: 400 !important;
+  font-weight: 500 !important;
   text-decoration: none !important;
   transition:
     color var(--fast) var(--ease),
@@ -360,18 +401,37 @@ button.title-button.explorer-toggle.desktop-explorer {
   white-space: nowrap;
 }
 
-.explorer-content .tree-item-self:hover,
-.explorer-content .tree-item-self:has(a.active),
-.explorer-content a.tree-item-self.active {
-  background: var(--bg-raised) !important;
+.explorer-content .tree-item-self:hover {
+  background: color-mix(in srgb, var(--bg-raised) 76%, transparent) !important;
   color: var(--fg) !important;
+}
+
+.explorer-content a.tree-item-self.active {
+  background: transparent !important;
+  box-shadow: none !important;
+  color: var(--link-warm) !important;
+  font-weight: 600 !important;
+}
+
+// Every folder containing the open note, all the way up the tree. The active
+// file's own li matches the :has() too, but has no folder row to colour.
+.explorer-content li:has(a.tree-item-self.active) > .folder-container {
+  color: var(--explorer-path) !important;
+
+  .folder-icon {
+    color: inherit !important;
+  }
+}
+
+.explorer-content li:has(a.tree-item-self.active) > .folder-container:hover {
+  color: var(--explorer-path-hover) !important;
 }
 
 .explorer-content .folder-icon {
   width: 12px;
   height: 12px;
   margin: 0 !important;
-  color: var(--fg-ghost) !important;
+  color: var(--fg-faint) !important;
 }
 
 .explorer-content .folder-outer {
@@ -381,8 +441,8 @@ button.title-button.explorer-toggle.desktop-explorer {
 }
 
 .explorer-content .folder-outer > ul {
-  margin-left: 0.72rem !important;
-  padding-left: 0.45rem !important;
+  margin-left: 0.58rem !important;
+  padding-left: 0.35rem !important;
   border-left: 1px solid var(--rule) !important;
 }
 
@@ -393,29 +453,35 @@ a {
   text-decoration: none;
 }
 
-article a,
-.popover a {
-  color: var(--fg-muted) !important;
-  text-decoration-line: underline !important;
-  text-decoration-color: transparent !important;
-  text-decoration-thickness: 0.75px !important;
-  text-underline-offset: 0.22em;
-  transition:
-    text-decoration-color var(--mid) var(--ease),
-    color var(--fast) var(--ease);
-
-  &:hover,
-  &:focus-visible {
-    color: var(--fg) !important;
-    text-decoration-color: color-mix(in srgb, currentColor 70%, transparent) !important;
-  }
-}
-
 a.internal {
   padding: 0 !important;
   border-radius: 0 !important;
   background: transparent !important;
   line-height: inherit !important;
+}
+
+// Warm inline links echo the original Quartz palette without tinting navigation.
+.center article :is(p, li, td, dd, figcaption, blockquote) a,
+.popover :is(p, li, td, dd, figcaption, blockquote) a {
+  padding: 0.06em 0.27em !important;
+  border-radius: 4px !important;
+  background: var(--link-warm-bg) !important;
+  box-decoration-break: clone;
+  color: var(--link-warm) !important;
+  line-height: inherit !important;
+  text-decoration: none !important;
+  -webkit-box-decoration-break: clone;
+  transition:
+    background var(--fast) var(--ease),
+    box-shadow var(--fast) var(--ease),
+    color var(--fast) var(--ease);
+
+  &:hover,
+  &:focus-visible {
+    background: var(--link-warm-bg-hover) !important;
+    box-shadow: 0 0 0 1px rgb(255 213 137 / 0.12) inset;
+    color: var(--link-warm-hover) !important;
+  }
 }
 
 .breadcrumb-container {
@@ -437,7 +503,7 @@ a.internal {
 
 .article-title {
   margin: 0 0 1.25rem !important;
-  color: var(--fg);
+  color: var(--heading-warm);
   font-family: var(--face-serif) !important;
   font-size: var(--step-3) !important;
   font-weight: 400 !important;
@@ -464,12 +530,12 @@ a.internal {
   text-decoration: none !important;
 }
 
-// Article body: Newsreader, with the same measure and heading treatment.
+// Article body stays in Inter; Newsreader is reserved for page-level h1s.
 article {
   color: var(--fg);
-  font-family: var(--face-serif);
-  font-size: var(--step-1);
-  line-height: 1.72;
+  font-family: var(--face-sans);
+  font-size: var(--step-0);
+  line-height: 1.7;
 
   > * + * {
     margin-block-start: 1.15em;
@@ -499,6 +565,7 @@ article {
   }
 
   > h1 {
+    color: var(--heading-warm);
     font-family: var(--face-serif) !important;
     font-size: var(--step-3) !important;
     font-weight: 400;
@@ -507,8 +574,8 @@ article {
   h2 {
     margin-block: 2.4em 0.2em;
     padding-block-end: 0.5rem;
-    border-bottom: 1px dashed var(--rule);
-    font-size: var(--step-1);
+    border-bottom: 1px dashed var(--rule-dashed);
+    font-size: clamp(1.05rem, 1.01rem + 0.18vw, 1.12rem);
   }
 
   h3 {
@@ -539,9 +606,17 @@ article {
   strong {
     color: var(--fg);
     font-family: var(--face-sans);
-    font-size: 0.92em;
+    font-size: 1em;
     font-weight: 600;
   }
+}
+
+// Quartz defaults math to its muted gray token; equations should carry the
+// same visual weight as the prose around them.
+.katex,
+.math {
+  color: var(--fg) !important;
+  fill: var(--fg) !important;
 }
 
 blockquote {
@@ -557,7 +632,7 @@ hr {
   height: 0;
   margin-block: 2.4em;
   border: 0;
-  border-top: 1px dashed var(--rule);
+  border-top: 1px dashed var(--rule-dashed);
   background: transparent;
 }
 
@@ -575,7 +650,7 @@ pre {
   margin-inline: -1.1rem;
   padding: 1rem 1.1rem;
   border: 0;
-  border-block: 1px dashed var(--rule);
+  border-block: 1px dashed var(--rule-dashed);
   border-radius: 0;
   background: var(--bg-sunken) !important;
 
@@ -693,7 +768,14 @@ td {
 // Right rail.
 .sidebar.right > * {
   padding-bottom: 1.25rem;
-  border-bottom: 1px dashed var(--rule);
+  border-bottom: 1px dashed var(--rule-dashed);
+}
+
+// The rail usually holds the table of contents alone, and a dashed rule under
+// the last widget reads as a divider with nothing to divide.
+.sidebar.right > :last-child {
+  padding-bottom: 0;
+  border-bottom: 0;
 }
 
 .sidebar.right h3,
@@ -718,12 +800,108 @@ td {
   height: 150px !important;
 }
 
-.toc-content,
+// Table of contents. The heading row is dropped entirely — the list is the only
+// thing in the rail, so it reads as the table of contents without being
+// labelled. That row carried the collapse toggle, so the list is now always
+// open: the plugin's collapsed state is neutralised below in case a note ever
+// asks for it via frontmatter.
+button.toc-header {
+  display: none !important;
+}
+
+ul.toc-content.collapsed {
+  display: block;
+}
+
+ul.toc-content {
+  margin: 0 !important;
+  padding: 0 !important;
+  // The plugin caps the list at `calc(100% - 2rem)` of the TOC box to leave
+  // room for the heading row. With that row gone the box is the list, so the
+  // subtraction eats 2rem of the list itself and clips the last entries.
+  max-height: 100% !important;
+  scrollbar-width: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+// A hairline guide runs down the list, assembled from one border segment per
+// entry, so it can light up section by section as the reader moves down the
+// page. It cannot be a single border on the list: `overflow-y: auto` makes the
+// list a scroll container on both axes, which clips anything drawn outside it.
+.toc-content li {
+  margin: 0 !important;
+  padding-left: 0.9rem !important;
+  border-left: 1px solid var(--rule);
+  font-family: var(--face-sans);
+  font-size: var(--step--1);
+  line-height: 1.45;
+  transition: border-color var(--mid) var(--ease);
+}
+
+.toc-content li a {
+  display: block;
+  padding: 0.28rem 0;
+  color: var(--fg-faint) !important;
+  text-decoration: none !important;
+  text-wrap: pretty;
+  opacity: 1 !important; // the plugin dims links to 0.35, unreadable on this ink ramp
+  transition: color var(--fast) var(--ease) !important;
+}
+
+// The observer marks every heading scrolled past, so the last marked entry is
+// the one currently at the top of the viewport: style all of them as current,
+// then demote the ones that still have a marked entry below them.
+// (`:has()` cannot be nested inside `:has()`, hence matching the anchor
+// directly rather than another `:has()`.)
+.toc-content li:has(a.in-view) {
+  border-left-color: var(--link-warm);
+
+  a {
+    color: var(--fg) !important;
+  }
+}
+
+// Covered ground: the rail keeps the trail, the text stays quiet.
+.toc-content li:has(a.in-view):has(+ li > a.in-view) {
+  border-left-color: var(--fg-ghost);
+
+  a {
+    color: var(--fg-faint) !important;
+  }
+}
+
+.toc-content li:hover {
+  border-left-color: var(--fg-faint);
+
+  a {
+    color: var(--fg) !important;
+  }
+}
+
+// Nesting is shallow and the rail is narrow, so indent in small steps — on the
+// link rather than the item, to keep the rail itself flush.
+.toc-content li.depth-1 a {
+  padding-left: 0.7rem;
+}
+
+.toc-content li.depth-2 a {
+  padding-left: 1.4rem;
+}
+
+.toc-content li.depth-3 a,
+.toc-content li.depth-4 a,
+.toc-content li.depth-5 a,
+.toc-content li.depth-6 a {
+  padding-left: 2.1rem;
+}
+
 .backlinks ul {
   padding: 0 !important;
 }
 
-.toc-content li,
 .backlinks li {
   margin: 0.35rem 0 !important;
   font-family: var(--face-sans);
@@ -731,14 +909,11 @@ td {
   line-height: 1.4;
 }
 
-.toc-content a,
 .backlinks a.internal {
   color: var(--fg-faint) !important;
   text-decoration: none !important;
 }
 
-.toc-content a:hover,
-.toc-content a.in-view,
 .backlinks a.internal:hover {
   color: var(--fg) !important;
 }
@@ -762,6 +937,127 @@ footer a {
 
 footer a:hover {
   color: var(--fg) !important;
+}
+
+// Callouts use a single tinted surface and outline, following the generous
+// card treatment of the reference while staying proportional to this layout.
+.callout {
+  --color: #6aa7e8;
+  --border: color-mix(in srgb, var(--color) 38%, transparent);
+  --bg: color-mix(in srgb, var(--color) 7%, var(--bg-sunken));
+
+  position: relative;
+  margin: 1.9rem 0;
+  padding: 1.3rem 1.45rem;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: var(--bg);
+  font-style: normal;
+  box-shadow: 0 1px 0 rgb(255 255 255 / 0.018) inset;
+
+  &[data-callout="abstract"] {
+    --color: #45b7c4;
+  }
+
+  &[data-callout="info"],
+  &[data-callout="todo"] {
+    --color: #62a9ea;
+  }
+
+  &[data-callout="tip"],
+  &[data-callout="success"] {
+    --color: #20c997;
+  }
+
+  &[data-callout="question"],
+  &[data-callout="warning"] {
+    --color: #e5ad4f;
+  }
+
+  &[data-callout="failure"],
+  &[data-callout="danger"],
+  &[data-callout="bug"],
+  &[data-callout="error"] {
+    --color: #e47777;
+  }
+
+  &[data-callout="example"] {
+    --color: #9856d8;
+  }
+
+  &[data-callout="quote"] {
+    --color: var(--fg-muted);
+  }
+
+  > .callout-title {
+    align-items: center;
+    gap: 0.72rem;
+    min-height: 1.5rem;
+    padding: 0;
+    color: var(--color);
+
+    --icon-size: 20px;
+
+    > .callout-title-inner {
+      min-width: 0;
+      font-family: var(--face-sans);
+      font-size: 1rem;
+      font-weight: 650;
+      line-height: 1.35;
+      letter-spacing: -0.012em;
+      text-transform: none;
+
+      > p {
+        color: var(--color);
+      }
+    }
+
+    .callout-icon {
+      opacity: 1;
+    }
+
+    .fold-callout-icon {
+      margin-left: 0.3rem;
+      opacity: 0.72;
+      transition:
+        opacity var(--fast) var(--ease),
+        transform var(--fast) var(--ease);
+    }
+
+    &:hover .fold-callout-icon {
+      opacity: 0.9;
+    }
+  }
+
+  > .callout-content {
+    padding-inline-start: 2rem;
+    border: 0;
+
+    > :first-child {
+      margin-top: 1.05rem;
+    }
+
+    > :last-child {
+      margin-bottom: 0;
+    }
+
+    p,
+    li {
+      color: var(--fg);
+    }
+  }
+
+  &.is-collapsed > .callout-title {
+    min-height: 1.5rem;
+    padding: 0;
+  }
+
+  &.is-collapsed > .callout-content {
+    > * {
+      margin-block: 0;
+    }
+  }
 }
 
 // Search modal uses the same surface stack and pill language.
@@ -821,6 +1117,19 @@ code[data-theme*=" "] span {
     height: auto;
     padding: 5rem 0 0;
   }
+
+  // The table of contents is desktop-only. Quartz hides it below 1200px with a
+  // Media Queries Level 4 `not (min-width: ...)` query, which older mobile
+  // Safari drops on the floor — so state it in plain syntax here as well.
+  .page > #quartz-body .sidebar.right > .toc {
+    display: none;
+  }
+
+  // With the table of contents gone the rail is empty on this site, and an
+  // empty rail still reserves its padding as a gap above the footer.
+  .page > #quartz-body .sidebar.right:not(:has(> :not(.toc))) {
+    display: none;
+  }
 }
 
 @media (max-width: 800px) {
@@ -836,6 +1145,10 @@ code[data-theme*=" "] span {
     gap: 0.55rem;
     height: auto;
     padding: 1.5rem 0 0;
+    // The explorer plugin paints this bar with the legacy `--light` token,
+    // which no longer matches the page ground and cut a darker band across the
+    // top. It scrolls with the page here, so it needs no fill of its own.
+    background: transparent;
   }
 
   .page-title {
@@ -863,12 +1176,23 @@ code[data-theme*=" "] span {
     transform: none !important;
   }
 
+  // The drawer is a viewport overlay: `position: absolute` anchors it to the
+  // document instead, so it drifts off the top of the screen once the page is
+  // scrolled. `max-height` has to be reset too — the desktop rule above leaves
+  // the panel 190px short of the bottom edge.
   .explorer .explorer-content {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
     width: min(86vw, 22rem) !important;
+    height: 100dvh !important;
+    max-height: 100dvh !important;
     padding: 4.5rem 1.25rem 2rem !important;
     border-right: 1px solid var(--rule);
     background: var(--bg) !important;
     box-shadow: 24px 0 80px rgb(0 0 0 / 0.32);
+    overflow-y: auto;
+    overscroll-behavior: contain;
   }
 
   .explorer-content .tree-item-self {
@@ -924,4 +1248,35 @@ code[data-theme*=" "] span {
     animation-duration: 0.01ms !important;
     transition-duration: 0.01ms !important;
   }
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// TEMPORARY COLOR TRIAL — delete this block to revert.
+// bg #161618 · body text #d4d4d4 · bold, titles and links #fffbd8
+// ─────────────────────────────────────────────────────────────────────────────
+:root,
+:root[saved-theme="dark"] {
+  --bg: #0e0e0e;
+  // Sunken has to stay below the new ground; raised keeps its value so the
+  // search pill and reader button look exactly as they do now.
+  --bg-sunken: #080808;
+  --bg-raised: #1d1d20;
+  --fg: #d4d4d4;
+
+  --heading-warm: #fffbd8;
+  --link-warm: #fffbd8;
+  --link-warm-hover: #fffef2;
+  --link-warm-bg: rgb(255 251 216 / 0.1);
+  --link-warm-bg-hover: rgb(255 251 216 / 0.17);
+}
+
+// h3 is muted and h2/h4-h6 track the body ink by default, so every heading has
+// to be pointed at the accent explicitly.
+article :is(h1, h2, h3, h4, h5, h6),
+.article-title {
+  color: var(--heading-warm) !important;
+}
+
+article :is(strong, b) {
+  color: var(--heading-warm) !important;
 }
