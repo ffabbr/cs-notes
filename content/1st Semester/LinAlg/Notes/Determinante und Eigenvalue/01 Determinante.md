@@ -1,7 +1,9 @@
 - Vorstellung in $\mathbb{R}^2$: Determinante gibt Flächeninhalt der durch Spaltenvektoren aufgespannten Körpers an
 
 - Für eine Matrix $A = \begin{pmatrix} a & b \\ c & d \end{pmatrix}$ gilt die Formel:
-$$\det(A) = a \cdot d - c \cdot b$$
+$$
+\det(A) = a \cdot d - c \cdot b
+$$
 - → [[03 The General Case]]
 
 ## Rechenregeln
@@ -21,10 +23,17 @@ $$\det(A) = a \cdot d - c \cdot b$$
 
 **Determinanten sind linear:** 
 
-Für jede $a_0, \dots, a_n \in \mathbb{R}^n$ und $\alpha_0, \alpha_1 \in \mathbb{R}$ $$ \det \left( \begin{bmatrix} - \alpha_0 a_0^T + \alpha_1 a_1^T - \\ - a_2^T - \\ \vdots \\ - a_n^T - \end{bmatrix} \right) = \alpha_0 \det \left( \begin{bmatrix} - a_0^T - \\ - a_2^T - \\ \vdots \\ - a_n^T - \end{bmatrix} \right) + \alpha_1 \det \left( \begin{bmatrix} - a_1^T - \\ - a_2^T - \\ \vdots \\ - a_n^T - \end{bmatrix} \right) $$ und auch für Spalten $$\begin{align}
+Für jede $a_0, \dots, a_n \in \mathbb{R}^n$ und $\alpha_0, \alpha_1 \in \mathbb{R}$
+$$
+\det \left( \begin{bmatrix} - \alpha_0 a_0^T + \alpha_1 a_1^T - \\ - a_2^T - \\ \vdots \\ - a_n^T - \end{bmatrix} \right) = \alpha_0 \det \left( \begin{bmatrix} - a_0^T - \\ - a_2^T - \\ \vdots \\ - a_n^T - \end{bmatrix} \right) + \alpha_1 \det \left( \begin{bmatrix} - a_1^T - \\ - a_2^T - \\ \vdots \\ - a_n^T - \end{bmatrix} \right)
+$$
+und auch für Spalten
+$$
+\begin{align}
  &\det \left( \begin{bmatrix} | & | & & | \\ \alpha_0 a_0 + \alpha_1 a_1 & a_1 & \cdots & a_n \\ | & | & & | \end{bmatrix} \right)  \\
 &= \alpha_0 \det \left( \begin{bmatrix} | & & | \\ a_0 & \cdots & a_n \\ | & & | \end{bmatrix} \right) + \alpha_1 \det \left( \begin{bmatrix} | & & | \\ a_1 & \cdots & a_n \\ | & & | \end{bmatrix} \right)
-\end{align}$$
+\end{align}
+$$
 
 
 ---

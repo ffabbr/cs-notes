@@ -12,4 +12,6 @@ f = \Theta(g) \iff \frac{f}{g} \text{ ist } c
 $$
 ---
 
-$$\log(n!) = \Theta(n \log n)$$
+$$
+\log(n!) = \Theta(n \log n)
+$$

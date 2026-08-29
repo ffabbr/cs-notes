@@ -22,10 +22,13 @@
 
 - In einer endlichen Gruppe hat jedes Element eine endliche Ordnung. 
 	- Vorstellung: wenn ich a wiederholt mit a verknüpfe bis ich das neutrale Element bekomme, dann muss ich ja irgendwann im Kreis laufen, da ich nur endlich viele Elemente habe in der Gruppe. Also z.B. $a$ → $a^2$ → $a^3$ → $a^4$, und z.B. ist $a^2=a^4$. 
-	- Wir haben also $$\begin{align}
+	- Wir haben also
+$$
+\begin{align}
 a^r&=a^s\ \text{mit}\ r<s \\
 (a^{-r})*a^r&=(a^{-r})*a^s \\
 e &= a^{s-r} \\
 \text{ord(a)} & \leq s-r
-\end{align}$$
+\end{align}
+$$
 ![[Pasted image 20251120151759.png]]

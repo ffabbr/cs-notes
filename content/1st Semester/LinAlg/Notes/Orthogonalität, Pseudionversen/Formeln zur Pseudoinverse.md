@@ -28,17 +28,21 @@ $AA^\dagger=I$
 #### Pseudoinverse
 
 **[[Zerlegungen und Gram Schmidt#CR-Zerlegung|CR-Zerlegung]] durchführen** 
-$$A^\dagger=R^\dagger C^\dagger$$
+$$
+A^\dagger=R^\dagger C^\dagger
+$$
 C voller Spaltenrang, 
 R voller Zeilenrang, also
 
-$$\begin{align}
+$$
+\begin{align}
 A^{^\dagger} 
 &= R^{^\dagger} C^{^\dagger} \\
 &= R^{\top} (R R^{\top})^{-1} \, (C^{\top} C)^{-1} C^{\top} \\
 &= R^{\top} (C^{\top} C \, R R^{\top})^{-1} C^{\top} \\
 &= R^{\top} (C^{\top} A R^{\top})^{-1} C^{\top}
-\end{align}$$
+\end{align}
+$$
 
 ---
 

@@ -6,9 +6,13 @@
 ### CNF und DNF
 
 **CNF:** Konjunktion von Disjunktionen von **Literalen**
-$$F = (A \lor B) \land (C \lor \neg D)$$
+$$
+F = (A \lor B) \land (C \lor \neg D)
+$$
 **DNF:** Disjunktion von Konjunktionen von **Literalen**
-$$F = (A \land B) \lor (C \land \neg D)$$
+$$
+F = (A \land B) \lor (C \land \neg D)
+$$
 
 
 **Beispiel**

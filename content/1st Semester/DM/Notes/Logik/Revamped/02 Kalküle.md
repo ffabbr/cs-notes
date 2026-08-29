@@ -1,36 +1,57 @@
 ## Introduction
 
 Ableitungen der Form
-$$F \vdash G$$
+$$
+F \vdash G
+$$
 
 Oder:
-$$\{F_1, \dots, F_k\} \vdash G$$
+$$
+\{F_1, \dots, F_k\} \vdash G
+$$
 ## Ableitung
 $\vdash_R$ soll $\vDash$ imitieren nach festen Regeln R
-$$F \vdash_R G$$
+$$
+F \vdash_R G
+$$
 z.B.
-$$\{F, G\} \vdash_R (F \land G)$$
+$$
+\{F, G\} \vdash_R (F \land G)
+$$
 
 - **Schrittweise** mehr Formeln aus einer Menge $M$ von gegebenen Formeln ableiten
 - **Kalkül** ist eine (endliche) Menge von **Regeln**.
 
 ## Schreibweise
 
-$$M \vdash_K F$$
+$$
+M \vdash_K F
+$$
 
 ## Eigenschaften
 
 **==Sound==** (man kann nur Wahres ableiten)
-$$M \vdash_K F \implies M \models F$$
+$$
+M \vdash_K F \implies M \models F
+$$
 
 **==Vollständig==** (Completeness):
-$$M \models F \implies M \vdash_K F$$
+$$
+M \models F \implies M \vdash_K F
+$$
 
 ### Beispiele für **Sound**
 
-$$\{F, ¬ F \} \vdash_R G$$
+$$
+\{F, ¬ F \} \vdash_R G
+$$
 (die LHS ist immer falsch, also gilt die logische Implikation immer)
-$$\{F \lor G, ¬ G\} \vdash_R F \lor H$$ $$\emptyset \vdash_R (F \to G) \lor (G \to F)$$
+$$
+\{F \lor G, ¬ G\} \vdash_R F \lor H
+$$
+$$
+\emptyset \vdash_R (F \to G) \lor (G \to F)
+$$
 ---
 
 ## Resolutionskalkül

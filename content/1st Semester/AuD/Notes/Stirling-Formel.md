@@ -1,2 +1,4 @@
-$$n! \approx \sqrt{ 2 \pi n } \left( \frac{n}{e} \right)^n$$
+$$
+n! \approx \sqrt{ 2 \pi n } \left( \frac{n}{e} \right)^n
+$$
 

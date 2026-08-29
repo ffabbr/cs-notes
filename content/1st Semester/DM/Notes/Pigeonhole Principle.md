@@ -17,6 +17,8 @@ $n-1$ Freunde
 
 Man kann somit bis zu $n-1$ Freunde haben. Da es jedoch $n$ Personen sind, und $n-1$ Möglichkeiten, Freunde zu haben, kennen mindestens zwei Personen gleich viele. 
 
-$$\left\lceil  \frac{n}{n-1}  \right\rceil=2$$
+$$
+\left\lceil  \frac{n}{n-1}  \right\rceil=2
+$$
 
 zeigt das mit dem Pigeonhole Principle.

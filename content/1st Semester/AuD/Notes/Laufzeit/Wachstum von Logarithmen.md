@@ -17,11 +17,13 @@ $$
 
 Beispiele:
 
-1.  $$
+1.
+$$
    \log_7(n^8) = 8 \cdot \log_7(n) = \Theta(\log(n))
    $$
 
-2.  $$
+2.
+$$
    \log_3(n^{\sqrt{n}}) = \sqrt{n} \cdot \log_3(n) = \Theta(\sqrt{n} \cdot \log(n))
    $$
 

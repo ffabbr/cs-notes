@@ -29,12 +29,14 @@ Fun Fact: $R_{9}(247) = R_{9}(2+4+7)$ (Skript Seite 85)
 $gcd(m,n)=gcd(m,n-qm)$ 
 
 **Beispiel**
-$$\begin{align}
+$$
+\begin{align}
 gcd(24,70) &= gcd(24,70-2 \cdot 24) \\
 &= gcd(24,22) \\
 &= gcd(2,22) \\
 &= 2
-\end{align}$$
+\end{align}
+$$
 
 ## Ideale
 
@@ -58,24 +60,41 @@ $(a,b) = \mathbb{Z} \Longleftrightarrow gcd(a,b)=1$
 
 ## Primfaktorenzerlegung
 
-$$a = \prod_{i}p_{i}^{e_{i}}$$
-$$\begin{aligned}
+$$
+a = \prod_{i}p_{i}^{e_{i}}
+$$
+$$
+\begin{aligned}
 66 &= 2 \cdot 3 \cdot 11 \\
    &= 2^1 \cdot 3^1 \cdot 5^0 \cdot 7^0 \cdot 11^1
-\end{aligned}$$
+\end{aligned}
+$$
 
 > Liste der Primfaktoren auf das #helpsheet
 
-$$a=\prod_{i}p_{i}^{e_{i}} \ \ \ \text{und} \ \ \ b=\prod_{i}p_{i}^{f_{i}}$$
-dann $$gcd(a,b)=\prod_{i}p_{i}^{min(e_{i}, f_{i})}$$*Jeweils das Minimum jeder Potenz der Primfaktorzerlegung*
-$$\begin{align}
+$$
+a=\prod_{i}p_{i}^{e_{i}} \ \ \ \text{und} \ \ \ b=\prod_{i}p_{i}^{f_{i}}
+$$
+dann
+$$
+gcd(a,b)=\prod_{i}p_{i}^{min(e_{i}, f_{i})}
+$$
+*Jeweils das Minimum jeder Potenz der Primfaktorzerlegung*
+$$
+\begin{align}
 gcd(60,126) &= 2^1 \cdot 3^1 \cdot 5^0 \cdot 7^0\dots \\
 &= 6
-\end{align}$$
+\end{align}
+$$
 Außerdem
-$$lcm(a,b)=\prod_{i}p_{i}^{max(e_{i}, f_{i})}$$
+$$
+lcm(a,b)=\prod_{i}p_{i}^{max(e_{i}, f_{i})}
+$$
 und  somit 
-$$ab = gcd(a,b) \cdot lcm(a,b)$$da $min(e_{i}, f_{i})+max(e_{i},f_{i})=e_{i}+f_{i}$ für alle $i$.
+$$
+ab = gcd(a,b) \cdot lcm(a,b)
+$$
+da $min(e_{i}, f_{i})+max(e_{i},f_{i})=e_{i}+f_{i}$ für alle $i$.
 
 ## Äquivalenzrelation Modulo
 
@@ -86,10 +105,12 @@ ist eine [[04 Spezielle Relationen|Äquivalenzrelation]] (reflexiv, symmetrisch,
 
 Außerdem
 
-$$\begin{align}
+$$
+\begin{align}
 a=b &\implies a \equiv_{m} b \\
 a \not\equiv_{m}b &\implies a \neq b
-\end{align}$$
+\end{align}
+$$
 
 und
 
@@ -153,7 +174,9 @@ Also z.B. mult. Inverse von 11 mod 26:  $11\cdot u \equiv_{26} 1$
 
 **Voraussetzung**: $\textcolor{red}{p}$ ist Primzahl und teilt $\textcolor{green}{m}$ nicht
 
-$$R_{\textcolor{red}{p}}(\textcolor{green}{m}^{\textcolor{orange}{E}}) = R_{\textcolor{red}{p}}\left(\textcolor{green}{m}^{R_{\textcolor{blue}{p-1}}(\textcolor{orange}{E})}\right)$$
+$$
+R_{\textcolor{red}{p}}(\textcolor{green}{m}^{\textcolor{orange}{E}}) = R_{\textcolor{red}{p}}\left(\textcolor{green}{m}^{R_{\textcolor{blue}{p-1}}(\textcolor{orange}{E})}\right)
+$$
 
 Ersetze großen Exponenten $\textcolor{orange}{E}$ durch Rest bei Division durch $\textcolor{blue}{p-1}$.
 

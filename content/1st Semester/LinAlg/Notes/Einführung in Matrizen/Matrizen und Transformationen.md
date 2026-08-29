@@ -76,7 +76,8 @@ $$
 Zusammen:
 $$
 T_C(x) = T_A(T_B(x)) = A(Bx)
-$$**Komposition**:
+$$
+**Komposition**:
 $$
 T_C = T_A \circ T_B
 $$

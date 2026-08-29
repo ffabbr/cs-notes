@@ -18,7 +18,9 @@ $$
 P ist die Projektionsmatrix. Für in-depth Informationen, siehe [[Least Squares und Lineare Regression]].
 
 **Vektor-weise Projektion:**
-$$\text{proj}_{s}(b)=\frac{a^\top b}{a^\top a} a$$
+$$
+\text{proj}_{s}(b)=\frac{a^\top b}{a^\top a} a
+$$
 
 ---
 

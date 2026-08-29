@@ -5,19 +5,29 @@
 ## Notation
 
 #### Spaltenraum (Column Space)
-$$\text{Col}(A) = \text{span} \left\{ \begin{pmatrix} a_{1} \\ a_{2} \\ \vdots \\ a_{m} \end{pmatrix}, \begin{pmatrix} b_{1} \\ b_{2} \\ \vdots \\ b_{m} \end{pmatrix} \right\}$$
-$$\operatorname{Col}(A) = \left\{ A x \mid x \in \mathbb{R}^n \right\}.$$ 
+$$
+\text{Col}(A) = \text{span} \left\{ \begin{pmatrix} a_{1} \\ a_{2} \\ \vdots \\ a_{m} \end{pmatrix}, \begin{pmatrix} b_{1} \\ b_{2} \\ \vdots \\ b_{m} \end{pmatrix} \right\}
+$$
+$$
+\operatorname{Col}(A) = \left\{ A x \mid x \in \mathbb{R}^n \right\}.
+$$
 *Pivot-Spalten vom [[Gauss and Gauss-Jordan|RREF]] aus der Originalmatrix nehmen.* 
 
 #### Zeilenraum (Rowspace)
 
 *Die Zeilen in der RREF die nicht 0 sind.*
-$$\text{Row}(A) = \text{span} \big\{ (1, 0, 2), (0, 1, 5) \big\}$$
+$$
+\text{Row}(A) = \text{span} \big\{ (1, 0, 2), (0, 1, 5) \big\}
+$$
 > $x, y \in R(A)$, dann $Ax = Ay \iff x = y$
 
 #### Nullraum (Nullspace)
-$$\text{Nul}(A) = \left\{ x \in \mathbb{R}^n \mid Ax = 0 \right\}$$
-$$\operatorname{Null}(A) = \operatorname{Row}(A)^\perp$$
+$$
+\text{Nul}(A) = \left\{ x \in \mathbb{R}^n \mid Ax = 0 \right\}
+$$
+$$
+\operatorname{Null}(A) = \operatorname{Row}(A)^\perp
+$$
 
 ---
 

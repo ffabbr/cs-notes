@@ -5,9 +5,11 @@
   $$
 V \perp W \quad \Longleftrightarrow \quad v_i \perp w_j \text{ für alle } i,j.
 $$
-- Wenn $V$ und $W$ orthogonale Unterräume sind, dann ist $$
+- Wenn $V$ und $W$ orthogonale Unterräume sind, dann ist
+$$
 \{v_1,\dots,v_k,w_1,\dots,w_\ell\}
-$$ linear unabhängig.
+$$
+linear unabhängig.
 
 - **Korollar 5.1.4**
 	1. $V \cap W = \{0\}$  
@@ -24,8 +26,12 @@ $$
 $$
 N(A) = C(A^T)^\perp = R(A)^\perp.
 $$
-$$V=(V^\perp)^\perp$$
-$$\mathbb{R}^n = V + V^\perp = \{\, v + w \mid v \in V,\; w \in V^\perp \,\}$$
+$$
+V=(V^\perp)^\perp
+$$
+$$
+\mathbb{R}^n = V + V^\perp = \{\, v + w \mid v \in V,\; w \in V^\perp \,\}
+$$
 
 ## Orthogonale Vektorräume
 

@@ -10,7 +10,9 @@ Zerlegung einer Matrix in ihre linear unabhängigen Spalten ($C$) und ihre Zeile
 
 Beispiel:
 
-$$A = \begin{bmatrix} 1 & 3 & 4 \\ 2 & 6 & 8 \end{bmatrix}$$
+$$
+A = \begin{bmatrix} 1 & 3 & 4 \\ 2 & 6 & 8 \end{bmatrix}
+$$
 
 1. **rref(A):** $\begin{bmatrix} \mathbf{1} & 3 & 4 \\ 0 & 0 & 0 \end{bmatrix}$ (Pivot ist in Spalte 1).
 2. **R:** $\begin{pmatrix} 1 & 3 & 4 \end{pmatrix}$ (die einzige Nicht-Null-Zeile).
@@ -31,7 +33,10 @@ $$A = \begin{bmatrix} 1 & 3 & 4 \\ 2 & 6 & 8 \end{bmatrix}$$
 Gegeben $n$ linear unabhängige Vektoren $a_1, \dots, a_n$, die den Unterraum $S$ erzeugen. 
 
 1. $q_1 = \frac{a_1}{\|a_1\|}$
-2. Für $k=2, \dots, n$ setze: $$q_k' = a_k - \sum_{i=1}^{k-1} (a_k^\top q_i) q_i \quad , \quad q_k = \frac{q_k'}{\|q_k'\|}$$
+2. Für $k=2, \dots, n$ setze:
+$$
+q_k' = a_k - \sum_{i=1}^{k-1} (a_k^\top q_i) q_i \quad , \quad q_k = \frac{q_k'}{\|q_k'\|}
+$$
 ---
 
 ## QR-Zerlegung

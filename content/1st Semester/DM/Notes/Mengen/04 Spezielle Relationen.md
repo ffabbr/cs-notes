@@ -24,7 +24,9 @@ Beweise, z.B:
 Eine **Äquivalenzklasse** entsteht, wenn man eine Menge von Dingen (z. B. Zahlen, Personen, Objekten) nach einer bestimmten Regel (**Äquivalenzrelation**) in Gruppen einteilt. Zwei Elemente gehören **zur selben Klasse**, wenn sie nach dieser Regel „gleich“ sind. 
 
 z.B. 
-$$[0]_{\equiv_{3}}=\{\dots, -6, -3, 0, 3, 6, \dots\}$$
+$$
+[0]_{\equiv_{3}}=\{\dots, -6, -3, 0, 3, 6, \dots\}
+$$
 ### Partitionen
 
 Sie bilden eine Partition, da 
@@ -33,7 +35,9 @@ Sie bilden eine Partition, da
 2. Zwei Äquivalenzklassen sind entweder identisch oder disjunkt.
 3. Wenn man alle Klassen zusammenfasst, hat man wieder die Menge.
 
-$$[a]_\Theta = \{\, b \in A \mid b \,\Theta\, a \,\}$$
+$$
+[a]_\Theta = \{\, b \in A \mid b \,\Theta\, a \,\}
+$$
 
 Bsp.: $A = \mathbb{Z}$, $\Theta = \equiv_5$, $[0]_\Theta = \{0, -5, 5, -10, 10, \ldots\}$, $[2]_\Theta = \{2, -3, 7, -8, 12, \ldots\}$, $[5]_\Theta = [0]_\Theta$
 
@@ -44,10 +48,14 @@ Die Quotientenmenge A/θ ist die Menge **aller Äquivalenzklassen**.
 
 Beispiel:
 
-$$\mathbb{Z}/\equiv_{3}=\{[0],[1],[2]\}$$
+$$
+\mathbb{Z}/\equiv_{3}=\{[0],[1],[2]\}
+$$
 
 Definittion: Die Menge aller Äquivalenzklassen (Quotientenmenge) einer Äquivalenzrelation $\theta$ ist
-$$A / \theta \overset{\text{def}}{=} \{ [a]_\theta \mid a \in A \}$$
+$$
+A / \theta \overset{\text{def}}{=} \{ [a]_\theta \mid a \in A \}
+$$
 
 ## Ordnungsrelationen
 

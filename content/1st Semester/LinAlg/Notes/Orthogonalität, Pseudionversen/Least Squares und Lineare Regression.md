@@ -9,7 +9,9 @@
 - [[#Least Squares mit der QR-Zerlegung]]
 
 Explizite Lösung für lineare Regression mit Summen
-$$\begin{bmatrix} \alpha_0 \\ \alpha_1 \end{bmatrix} = \begin{bmatrix} m & \sum_{k=1}^m t_k \\ \sum_{k=1}^m t_k & \sum_{k=1}^m t_k^2 \end{bmatrix}^{-1} \begin{bmatrix} \sum_{k=1}^m b_k \\ \sum_{k=1}^m t_k b_k \end{bmatrix}$$
+$$
+\begin{bmatrix} \alpha_0 \\ \alpha_1 \end{bmatrix} = \begin{bmatrix} m & \sum_{k=1}^m t_k \\ \sum_{k=1}^m t_k & \sum_{k=1}^m t_k^2 \end{bmatrix}^{-1} \begin{bmatrix} \sum_{k=1}^m b_k \\ \sum_{k=1}^m t_k b_k \end{bmatrix}
+$$
 
 ## Least Squares, Vorgehen
 
@@ -37,7 +39,8 @@ $$
 
 *R und $R^\top$ sind invertierbar, also ist es ev. einfacher, zuerst die QR-Zerlegung durchzuführen, und dann die einfachere Gleichung zu lösen*
 
-$$\begin{align*}
+$$
+\begin{align*}
 &A = QR \\
 &\Rightarrow A^T A \hat{x} = A^T b \\
 &\Rightarrow (QR)^T QR \hat{x} = (QR)^T b \\
@@ -45,7 +48,8 @@ $$\begin{align*}
 &\Rightarrow R^T R \hat{x} = R^T Q^T b \\
 &\Rightarrow (R^T)^{-1} R^T R \hat{x} = (R^T)^{-1} R^T Q^T b \\
 &\Rightarrow R \hat{x} = Q^T b
-&\end{align*}$$
+&\end{align*}
+$$
 R ist obere Dreiecksmatrix, also *Rückwertseinsetzen*
 
 ## Least Squares, Herleitung
@@ -61,7 +65,9 @@ $$
 $$
 
 Der "Fehler" ist somit $e = b - A\hat{x}=\operatorname{proj}_{C(A)}(b)$, und damit der möglichst klein ist, muss er normal auf die Ebene (die gespanned wird vom Spaltenraum, also normal auf alle Spalten) stehen. Somit gilt 
-$$A^T (b - A\hat{x}) = 0$$
+$$
+A^T (b - A\hat{x}) = 0
+$$
 Aufgelöst haben wir dann die **normal equations**.
 $$
 \begin{align*}
@@ -77,7 +83,8 @@ $$
 \min_x \|Ax-b\|^2
 = \|b - \operatorname{proj}_{C(A)}(b)\|^2
 $$
-und per normal equations auch $$
+und per normal equations auch
+$$
 \hat{x}=(A^T A)^{-1}A^T b=A^\dagger b
 $$ 
 **Im Beispiel von der Notiz zu [[Projektionen (Formel und Beispiel)]]:**
@@ -95,18 +102,24 @@ $$
 b_k \approx \alpha_0 + \alpha_1 t_k
 $$
 Vgl. klassiche Geradengleichung $y = ax + b$. 
-Wir wandeln das in eine Matrix-Situation um und schreiben $Ax \approx b$ mit $$A = \begin{bmatrix} 1 & t_1 \\ 1 & t_2 \\ \vdots & \vdots \\ 1 & t_m \end{bmatrix}$$
-Die Spalten stehen für die $t$-Werte. $\alpha_0$ hat den Koeffizient 1, und $t_{k}$ ist unterschiedlich. B ist ein Vektor $$
+Wir wandeln das in eine Matrix-Situation um und schreiben $Ax \approx b$ mit
+$$
+A = \begin{bmatrix} 1 & t_1 \\ 1 & t_2 \\ \vdots & \vdots \\ 1 & t_m \end{bmatrix}
+$$
+Die Spalten stehen für die $t$-Werte. $\alpha_0$ hat den Koeffizient 1, und $t_{k}$ ist unterschiedlich. B ist ein Vektor
+$$
 \qquad
 b=\begin{pmatrix}b_1\\ b_2\\ \vdots\\ b_m\end{pmatrix}
 $$
 Wir suchen jetzt also $\alpha_0$ und $\alpha_1$, sodass die Fehler minimal sind. Mathematisch: 
 
-$$\begin{align*}
+$$
+\begin{align*}
 & \min_{\alpha_0, \alpha_1} \sum_{k=1}^{m} (b_k - (\alpha_0 + \alpha_1 t_k))^2 \\
 &= \min_{\alpha_0, \alpha_1} \left\| b - A \begin{bmatrix} \alpha_0 \\ \alpha_1 \end{bmatrix} \right\|^2 \\
 &= \min_{\alpha_0, \alpha_1} \left\| \begin{bmatrix} b_1 \\ \vdots \\ b_m \end{bmatrix} - \begin{bmatrix} 1 & t_1 \\ \vdots & \vdots \\ 1 & t_m \end{bmatrix} \begin{bmatrix} \alpha_0 \\ \alpha_1 \end{bmatrix} \right\|^2
-\end{align*}$$
+\end{align*}
+$$
 Normal equations:
 $$
 \begin{align}

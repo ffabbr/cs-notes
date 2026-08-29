@@ -28,7 +28,8 @@ $$
 \;\;\Longleftrightarrow\;\;
 (a_1 \prec a_2)
 \;\text{ oder }\;
-(a_1 = a_2 \;\text{ und }\; b_1 \sqsubseteq b_2)$$
+(a_1 = a_2 \;\text{ und }\; b_1 \sqsubseteq b_2)
+$$
 - Erst nach dem **ersten Element** vergleichen.  
 - Nur wenn das gleich ist, entscheidet das zweite.
 

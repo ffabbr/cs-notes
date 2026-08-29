@@ -12,4 +12,7 @@ replit.nix
 .quartz/
 quartz/cli/tui/dist/
 .turbo/
+
+# Keep exercise material in the local vault, but out of the published repository.
+content/**/[Ee]xercises/
 content/CLAUDE.md

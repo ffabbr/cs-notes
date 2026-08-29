@@ -10,20 +10,28 @@ lösen linearer Gleichungssysteme $Ax = b$.
 
 ### Beispiel
 
-$$\begin{aligned} x + y + z &= 6 \\ 2x + 4y + 2z &= 16 \\ -x + 5y - 4z &= -3 \end{aligned}$$
+$$
+\begin{aligned} x + y + z &= 6 \\ 2x + 4y + 2z &= 16 \\ -x + 5y - 4z &= -3 \end{aligned}
+$$
 
-$$\begin{bmatrix} 1 & 1 & 1 & 6 \\ 2 & 4 & 2 & 16 \\ -1 & 5 & -4 & -3 \end{bmatrix}$$
+$$
+\begin{bmatrix} 1 & 1 & 1 & 6 \\ 2 & 4 & 2 & 16 \\ -1 & 5 & -4 & -3 \end{bmatrix}
+$$
 
 **Nullen in ersten Spalte**
 
 - $Z_2 \rightarrow Z_2 - 2 \cdot Z_1$
 - $Z_3 \rightarrow Z_3 + Z_1$
-$$\begin{bmatrix} 1 & 1 & 1 & 6 \\ 0 & 2 & 0 & 4 \\ 0 & 6 & -3 & 3 \end{bmatrix}$$
+$$
+\begin{bmatrix} 1 & 1 & 1 & 6 \\ 0 & 2 & 0 & 4 \\ 0 & 6 & -3 & 3 \end{bmatrix}
+$$
 
 **Nullen in zweiten Spalte**
 
 - $Z_3 \rightarrow Z_3 - 3 \cdot Z_2$
-$$\begin{bmatrix} 1 & 1 & 1 & 6 \\ 0 & 2 & 0 & 4 \\ 0 & 0 & -3 & -9 \end{bmatrix}$$
+$$
+\begin{bmatrix} 1 & 1 & 1 & 6 \\ 0 & 2 & 0 & 4 \\ 0 & 0 & -3 & -9 \end{bmatrix}
+$$
 
 *Ist Zeilenstufenform, also done*
 
@@ -47,20 +55,30 @@ Lösung: $(1, 2, 3)$
 
 **Von oben:**
 
-$$\begin{bmatrix} 1 & 1 & 1 & 6 \\ 0 & 2 & 0 & 4 \\ 0 & 0 & -3 & -9 \end{bmatrix}$$
+$$
+\begin{bmatrix} 1 & 1 & 1 & 6 \\ 0 & 2 & 0 & 4 \\ 0 & 0 & -3 & -9 \end{bmatrix}
+$$
 
 **Normieren**
 
 - $Z_2 \rightarrow Z_2 : 2$
 - $Z_3 \rightarrow Z_3 : (-3)$
-$$\begin{bmatrix} 1 & 1 & 1 & 6 \\ 0 & 1 & 0 & 2 \\ 0 & 0 & 1 & 3 \end{bmatrix}$$
+$$
+\begin{bmatrix} 1 & 1 & 1 & 6 \\ 0 & 1 & 0 & 2 \\ 0 & 0 & 1 & 3 \end{bmatrix}
+$$
 
 **Rückwärts-Elimination**
 
 - $Z_1 \rightarrow Z_1 - 1 \cdot Z_3$
-$$\begin{bmatrix} 1 & 1 & 0 & 3 \\ 0 & 1 & 0 & 2 \\ 0 & 0 & 1 & 3 \end{bmatrix}$$
+$$
+\begin{bmatrix} 1 & 1 & 0 & 3 \\ 0 & 1 & 0 & 2 \\ 0 & 0 & 1 & 3 \end{bmatrix}
+$$
 - $Z_1 \rightarrow Z_1 - 1 \cdot Z_2$
-$$\begin{bmatrix} 1 & 0 & 0 & 1 \\ 0 & 1 & 0 & 2 \\ 0 & 0 & 1 & 3 \end{bmatrix}$$
+$$
+\begin{bmatrix} 1 & 0 & 0 & 1 \\ 0 & 1 & 0 & 2 \\ 0 & 0 & 1 & 3 \end{bmatrix}
+$$
 Also:
 
-$$x = 1, \quad y = 2, \quad z = 3$$
+$$
+x = 1, \quad y = 2, \quad z = 3
+$$

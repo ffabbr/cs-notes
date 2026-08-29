@@ -22,7 +22,9 @@ Wenn ein $x$ an ein $\exists$ oder $\forall$ gebunden ist, dann ist es gebunden.
 
 ### Definition
 
-$$\mathcal{A} = (U, \phi, \psi, \xi)$$
+$$
+\mathcal{A} = (U, \phi, \psi, \xi)
+$$
 
 Eine Interpretation weisst allen freien Elementen etwas zu. 
 
@@ -47,8 +49,12 @@ Eine Interpretation weisst allen freien Elementen etwas zu.
 
 ## Semantik
 
-$$\mathcal{A}(\forall x~G) = \begin{cases} 1 & \text{falls } \mathcal{A}_{[x \to u]}(G) = 1 \text{ für alle } u \text{ in } U \\ 0 & \text{sonst} \end{cases}$$
-$$\mathcal{A}(\exists x~G) = \begin{cases} 1 & \text{falls } \mathcal{A}_{[x \to u]}(G) = 1 \text{ für einige } u \text{ in } U \\ 0 & \text{sonst.} \end{cases}$$
+$$
+\mathcal{A}(\forall x~G) = \begin{cases} 1 & \text{falls } \mathcal{A}_{[x \to u]}(G) = 1 \text{ für alle } u \text{ in } U \\ 0 & \text{sonst} \end{cases}
+$$
+$$
+\mathcal{A}(\exists x~G) = \begin{cases} 1 & \text{falls } \mathcal{A}_{[x \to u]}(G) = 1 \text{ für einige } u \text{ in } U \\ 0 & \text{sonst.} \end{cases}
+$$
 
 ![[Semantik.png]]
 ![[Lemma 6-7.png]]![[Formeln.png]]

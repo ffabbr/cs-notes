@@ -50,9 +50,15 @@ $\Longleftrightarrow \det(A-\lambda I)=0$
 ## Beispiele, Eigenwerte
 
 #### Beispiel 1
-$$A = \begin{bmatrix} 2 & 3 \\ 1 & 0 \end{bmatrix}$$
-$$\det(A - \lambda I) = \det \left( \begin{bmatrix} 2-\lambda & 3 \\ 1 & -\lambda \end{bmatrix} \right) = \lambda^2 - 2\lambda - 3 = 0$$
-$$\lambda^2 - 2\lambda - 3 = (\lambda - 3)(\lambda + 1) = 0$$
+$$
+A = \begin{bmatrix} 2 & 3 \\ 1 & 0 \end{bmatrix}
+$$
+$$
+\det(A - \lambda I) = \det \left( \begin{bmatrix} 2-\lambda & 3 \\ 1 & -\lambda \end{bmatrix} \right) = \lambda^2 - 2\lambda - 3 = 0
+$$
+$$
+\lambda^2 - 2\lambda - 3 = (\lambda - 3)(\lambda + 1) = 0
+$$
 
 **Eigenwerte:** 
 - $\lambda_1 = 3$
@@ -61,9 +67,15 @@ $$\lambda^2 - 2\lambda - 3 = (\lambda - 3)(\lambda + 1) = 0$$
 #### Beispiel 2
 
 → siehe [[06 Komplexe Zahlen]]
-$$A = \begin{bmatrix} 1 & -1 \\ 1 & 1 \end{bmatrix}$$
-$$\det(A - \lambda I) = \det \left( \begin{bmatrix} 1-\lambda & -1 \\ 1 & 1-\lambda \end{bmatrix} \right) = \lambda^2 - 2\lambda + 2 = 0$$
-$$\lambda_{1,2} = \frac{2 \pm \sqrt{-4}}{2}= \frac{2 \pm 2i}{2}= 1 \pm i$$
+$$
+A = \begin{bmatrix} 1 & -1 \\ 1 & 1 \end{bmatrix}
+$$
+$$
+\det(A - \lambda I) = \det \left( \begin{bmatrix} 1-\lambda & -1 \\ 1 & 1-\lambda \end{bmatrix} \right) = \lambda^2 - 2\lambda + 2 = 0
+$$
+$$
+\lambda_{1,2} = \frac{2 \pm \sqrt{-4}}{2}= \frac{2 \pm 2i}{2}= 1 \pm i
+$$
 **Eigenwerte**
 - $\lambda_1 = 1 + i$
 - $\lambda_2 = 1 - i$

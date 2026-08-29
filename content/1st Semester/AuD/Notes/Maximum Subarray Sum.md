@@ -63,7 +63,9 @@ Man löst beide Seiten rekursiv und kombiniert die Resultate durch den größten
 
 **Komplexität:**  
 
-$$T(n) = 2T(n/2) + O(n) = O(n \log n)$$
+$$
+T(n) = 2T(n/2) + O(n) = O(n \log n)
+$$
 
 ---
 

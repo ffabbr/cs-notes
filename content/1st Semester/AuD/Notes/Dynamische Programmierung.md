@@ -92,18 +92,21 @@ Siehe [[1st Semester/AuD/Exercises/06 Sheet.pdf|06 Sheet]]
 
 1. **Teilproblem:** L(i,j) = Länge einer LGT von ($a_{1}, \dots a_{i}$ und $b_{1},\dots,b_{j}$) 
    *hier wieder basically Parameterisierung*
-2. **Rekursionformel:**$$
+2. **Rekursionformel:**
+$$
 L[i,j] = 
 \begin{cases}
 0, & \text{falls } i = 0 \text{ oder } j = 0 \text{ ist}, \\[6pt]
 1 + L[i-1, j-1], & \text{falls } i > 0 \text{ und } j > 0 \text{ und } a_i = b_j \text{ ist}, \\[6pt]
 \max\{L[i, j-1], L[i-1, j]\}, & \text{falls } i > 0 \text{ und } j > 0 \text{ und } a_i \neq b_j \text{ ist}.
-\end{cases}$$
+\end{cases}
+$$
 
 ### Editierdistanz
 
 1. **Teilproblem:** ED(i,j) = Editierdistanz von ($a_{1}, \dots a_{i}$) und ($b_{1}, \dots, b_{j}$)
-2. **Rekursionsformel:** (und zusätzlich ==Base Case nicht vergessen==) $$
+2. **Rekursionsformel:** (und zusätzlich ==Base Case nicht vergessen==)
+$$
 ED(i,j) = \min \begin{cases}
 ED(i-1, j) + 1, \\[6pt]
 ED(i, j-1) + 1, \\[6pt]
@@ -119,10 +122,13 @@ $$
 *Definition 2.4, Rückgabe, ob eine Teilmenge möglich ist (1) oder nicht (0)*
 
 1. **Teilproblem:** siehe Skript [[4_Dynamische Programmierung.pdf]], S. 24
-2. **Rekursion:** T(0,s)=1 $\Leftrightarrow$ s=0 $$T(i, s) = \begin{cases}
+2. **Rekursion:** T(0,s)=1 $\Leftrightarrow$ s=0
+$$
+T(i, s) = \begin{cases}
 1 & \text{falls es eine Teilmenge } I \subseteq \{1, \ldots, i\} \text{ gibt mit } \sum_{j \in I} A[j] = s, \\
 0 & \text{sonst.}
-\end{cases}$$
+\end{cases}
+$$
 DP-Tabelle rückverfolgen (siehe Notizen der Übung)
 
 ### Rucksackproblem

@@ -1,4 +1,6 @@
-$$A = U \Sigma V^T$$
+$$
+A = U \Sigma V^T
+$$
 
 - $U \in \mathbb{R}^{m \times m}$ orthogonale Matrix
 - $V \in \mathbb{R}^{n \times n}$: orthogonale Matrix

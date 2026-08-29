@@ -83,7 +83,9 @@ Frage: Gilt $R \in R$?
 
 Die Potenzmenge ist die Menge aller Teilmengen. 
 
-$$\mathcal{P}(A) \;\stackrel{\text{def}}{=}\; \{\, S \mid S \subseteq A \,\}$$
+$$
+\mathcal{P}(A) \;\stackrel{\text{def}}{=}\; \{\, S \mid S \subseteq A \,\}
+$$
 Beispiel: 
 $$
 \mathcal{P}(\{a, b, c\}) = \{\emptyset, \{a\}, \{b\}, \{c\}, \{a, b\}, \{a, c\}, \{b, c\}, \{a, b, c\}\}.

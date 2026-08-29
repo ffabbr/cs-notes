@@ -67,11 +67,14 @@ Berechne die Inverse von $x+4$ in $R^* = \mathbb{Z}_5[x]^*_{x^2+1}$.
 
 1. Wir suchen ein Polynom in der Form $(ax+b)$, sodass $(x+4)(ax+b)=1$
 2. $(x+4)(ax+b)=ax^2+bx+4ax+4b=ax^2 + (4a+b)x + 4b$
-3. Wir müssen das $x^2$ wegbringen. In dem Ring gilt $x^2+1 = 0$. Ginge mit Polynomdivision, aber einfacher $a \cdot (x^2+1)$ abziehen: $$\begin{align}
+3. Wir müssen das $x^2$ wegbringen. In dem Ring gilt $x^2+1 = 0$. Ginge mit Polynomdivision, aber einfacher $a \cdot (x^2+1)$ abziehen:
+$$
+\begin{align}
 [ax^2 + (4a+b)x + 4b] - [ax^2 + a]  \\
 = \underbrace{(ax^2 - ax^2)}_{0} + (4a+b)x + (4b - a) \\
 =(4a+b)x + (4b-a)
-\end{align}$$
+\end{align}
+$$
 4. $(4a+b)x + (4b-a)$ soll ja 1 ergeben, also $0x+1$ also muss gelten $4a + b = 0$ und $4b - a = 1$. Das Gleichungssystem kann man ja einfach lösen (Achtung modulo, negative Zahlen also immer umdrehen)
 5. Lösung: $2x + 2$
 

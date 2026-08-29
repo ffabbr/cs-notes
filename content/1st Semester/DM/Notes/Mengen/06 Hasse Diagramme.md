@@ -24,12 +24,14 @@ z.B: Teilbarkeit:
 
 (Achtung, Pfeile gehen von unten nach oben, Transitivität nutzen)
 
-$$\begin{bmatrix}
+$$
+\begin{bmatrix}
 1 & 0 & 0 & 0 \\
 1 & 1 & 1 & 0 \\
 0 & 0 & 1 & 0 \\
 1 & 1 & 1 & 1
-\end{bmatrix}$$
+\end{bmatrix}
+$$
 
 ![[Matrixdarstellung von Hasse.jpeg]]
 

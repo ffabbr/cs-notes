@@ -22,7 +22,11 @@ Rank-Nullity: $\text{rank}(A)+\text{dim}(N(A)))=\text{Anzahl Spalten}$ #helpshee
 
 - The polynomial $0$ has the degree $-1$
 - Der Vektorraum der Polynomfunktionen ist ein Vektorraum, weil man zwei Polynome addieren und einen Polynom mit einem Skalar multiplizieren kann.
-- The vector space of polynomials is to be treated with particular care. It is a prime example of why we only allow a finite amount of linear combinations, because the sum $$\sum_{j=0}^{\infty} x^j$$is not a polynomial, as those only have finitely many different powers of x (per definition 4.3).
+- The vector space of polynomials is to be treated with particular care. It is a prime example of why we only allow a finite amount of linear combinations, because the sum
+$$
+\sum_{j=0}^{\infty} x^j
+$$
+is not a polynomial, as those only have finitely many different powers of x (per definition 4.3).
 
 #### Endlich Generiert
 
@@ -40,7 +44,9 @@ Rank-Nullity: $\text{rank}(A)+\text{dim}(N(A)))=\text{Anzahl Spalten}$ #helpshee
 
 - Die **Linearitätsbedingung** auch hier ist $T(\lambda_1 x_1 + \lambda_2 x_2) = \lambda_1 T(x_1) + \lambda_2 T(x_2)$
 - Invertierbare Matrizen haben umkehrbare Transformationen und ändern die Dimension somit nicht. 
-- Ein **Isomorphismus** ist eine bijektive (umkehrbare) lineare Abbildung T zwischen zwei Vektorräumen V und W. V und W sind also im Prinzip „derselbe Raum“, nur mit einer anderen Darstellung der Elemente. V und W haben die gleiche Dimension, wenn es einen Isomorphismus zwischen ihnen gibt. Außerdem gilt $|T(B)|=|B|$ (die Anzahl der Vektoren die wir "reingeben" ist gleich mit der Anzahl der Vektoren die wir "rausbekommen", da bijektiv. Eine Basis bleibt nach der Transformation weiterhin eine Basis, aber für einen anderen Raum. Somit sind die Dimensionen der beiden Vektorräumen auch gleich. Siehe Theorem 4.29. z.B. Matrix flattening (siehe unten). $$V = \mathbb{R}^{2 \times 2}, 
+- Ein **Isomorphismus** ist eine bijektive (umkehrbare) lineare Abbildung T zwischen zwei Vektorräumen V und W. V und W sind also im Prinzip „derselbe Raum“, nur mit einer anderen Darstellung der Elemente. V und W haben die gleiche Dimension, wenn es einen Isomorphismus zwischen ihnen gibt. Außerdem gilt $|T(B)|=|B|$ (die Anzahl der Vektoren die wir "reingeben" ist gleich mit der Anzahl der Vektoren die wir "rausbekommen", da bijektiv. Eine Basis bleibt nach der Transformation weiterhin eine Basis, aber für einen anderen Raum. Somit sind die Dimensionen der beiden Vektorräumen auch gleich. Siehe Theorem 4.29. z.B. Matrix flattening (siehe unten).
+$$
+V = \mathbb{R}^{2 \times 2}, 
 \quad 
 W = \mathbb{R}^4, 
 \quad 
@@ -52,7 +58,8 @@ c & d
 \mapsto
 \begin{pmatrix}
 a \\ b \\ c \\ d
-\end{pmatrix}$$ 
+\end{pmatrix}
+$$
 - Wenn $Ax = b$ eine Lösung hat, dann besteht die Lösungsmenge aus allen Vektoren, die man erhält, wenn man eine bestimmte Lösung $s$ nimmt und **alle Vektoren aus dem Nullraum** $N(A)$ dazuaddiert. 
 - Das heißt: Jede Lösung sieht aus wie $s + x$, wobei $x \in N(A)$. Wenn $b = 0$, ist das einfach der Nullraum selbst; wenn $b \neq 0$, ist es derselbe Raum, nur verschoben, also ein sog. shifted nullspace.
 

@@ -3,7 +3,9 @@
 - → siehe [[05 Kofaktoren]] 
 - Möglichkeit, mit [[Gauss and Gauss-Jordan|Gauss-Elimination]] in eine triangular Matrix umzustellen und dann det einfach zu berechnen. Die Determinante ändert sich nicht bei row operations, ausser beim swappen ändert sich das Vorzeichen der det.
 - Sonst (Def.7.2.3): 
-$$\det(A) = \sum_{\sigma \in \Pi_n} \text{sgn}(\sigma) \prod_{i=1}^{n} A_{i, \sigma(i)}$$
+$$
+\det(A) = \sum_{\sigma \in \Pi_n} \text{sgn}(\sigma) \prod_{i=1}^{n} A_{i, \sigma(i)}
+$$
 $\Pi_n$: Menge aller Permutationen ("alle Möglichkeiten, die Zahlen $1$ bis $n$ durcheinanderzuwürfeln")
 $\prod_{i=1}^{n} A_{i, \sigma(i)}$: pro Zeile wählen wir einen Eintrag, bestimmt von $\sigma$.
 

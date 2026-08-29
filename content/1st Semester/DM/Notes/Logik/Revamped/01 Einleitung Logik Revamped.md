@@ -2,7 +2,9 @@
 
 Beweissystem als Tupel:
 
-$$\Pi = (\mathcal{S}, \mathcal{P}, \tau, \phi)$$
+$$
+\Pi = (\mathcal{S}, \mathcal{P}, \tau, \phi)
+$$
 
 | **Symbol**    | **Name**       | **Beschreibung**                                                                                                                                                             |
 | ------------- | -------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -13,8 +15,14 @@ $$\Pi = (\mathcal{S}, \mathcal{P}, \tau, \phi)$$
 
 **Wichtige Eigenschaften:**
 
-- Korrekt (**sound**): Es gibt kein Beweis für eine falsche Aussage $$\forall s \in \mathcal{S} : (\exists p \in \mathcal{P} \text{ mit } \phi(s,p)=1) \implies \tau(s)=1$$
-- Vollständig (**complete**): Für jede korrekte Aussage existiert ein Beweis $$\forall s \in \mathcal{S} : \tau(s)=1 \implies (\exists p \in \mathcal{P} \text{ mit } \phi(s,p)=1)$$
+- Korrekt (**sound**): Es gibt kein Beweis für eine falsche Aussage
+$$
+\forall s \in \mathcal{S} : (\exists p \in \mathcal{P} \text{ mit } \phi(s,p)=1) \implies \tau(s)=1
+$$
+- Vollständig (**complete**): Für jede korrekte Aussage existiert ein Beweis
+$$
+\forall s \in \mathcal{S} : \tau(s)=1 \implies (\exists p \in \mathcal{P} \text{ mit } \phi(s,p)=1)
+$$
 → siehe Übung
 
 ![[Aufgabe Beweissystem.png]]

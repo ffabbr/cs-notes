@@ -73,10 +73,12 @@ z.B. $(x^2+1)$ in $\mathbb R$ irreduzibel, in $\mathbb C$ nicht, da: $x^2+1 = (x
 
 ---
 ### Auswertung
-$$\begin{align}
+$$
+\begin{align}
 \alpha \text{ ist Nullstelle} &\Longleftrightarrow p(\alpha)=0 \\
 &\Longleftrightarrow (x-\alpha) \ | \ p(x)
-\end{align}$$
+\end{align}
+$$
 Also ist $p(x)$ reduzibel, wenn es eine Nullstelle gibt. Die Umkehrung gilt nur bei Grad $\leq$ 3, siehe oben
 
 ---
