@@ -16,3 +16,4 @@ quartz/cli/tui/dist/
 # Keep exercise material in the local vault, but out of the published repository.
 content/**/[Ee]xercises/
 content/CLAUDE.md
+content/Todo.md
