@@ -1,0 +1,4 @@
+- welcome to eth, etc.
+- what is programming
+- the plan for the semester
+- other tips and my experience

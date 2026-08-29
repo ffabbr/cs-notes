@@ -45,12 +45,20 @@ export function gitPull(origin, branch) {
 
 export async function popContentFolder(contentFolder) {
   await fs.promises.rm(contentFolder, { force: true, recursive: true })
-  await fs.promises.cp(contentCacheFolder, contentFolder, {
-    force: true,
-    recursive: true,
-    verbatimSymlinks: true,
-    preserveTimestamps: true,
-  })
+
+  const cachedContentStat = await fs.promises.lstat(contentCacheFolder)
+  if (cachedContentStat.isSymbolicLink()) {
+    const linkTarget = await fs.promises.readlink(contentCacheFolder)
+    await symlinkOrCopy(linkTarget, contentFolder)
+  } else {
+    await fs.promises.cp(contentCacheFolder, contentFolder, {
+      force: true,
+      recursive: true,
+      verbatimSymlinks: true,
+      preserveTimestamps: true,
+    })
+  }
+
   await fs.promises.rm(contentCacheFolder, { force: true, recursive: true })
 }
 

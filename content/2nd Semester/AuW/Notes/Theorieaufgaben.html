@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AuW – Theorieaufgaben</title>
+<script>
+window.MathJax = {
+  tex: {
+    inlineMath: [['$','$'],['\\(','\\)']],
+    displayMath: [['$$','$$'],['\\[','\\]']]
+  },
+  svg: { fontCache: 'global' }
+};
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" async></script>
+<style>
+:root{ --ink:#1a1a1a; --accent:#c0271c; }
+body{
+  font-family:"Times New Roman", Georgia, serif;
+  color:var(--ink); max-width:860px; margin:0 auto;
+  padding:32px 28px 80px; line-height:1.55; background:#fafafa;
+}
+h1{font-size:26px;margin:0 0 6px;}
+.sub{color:#555;font-size:15px;margin:0 0 8px;}
+h2{font-size:20px;margin:34px 0 10px;border-bottom:1px solid #ccc;padding-bottom:5px;}
+h3{font-size:16px;margin:20px 0 6px;}
+hr{border:none;border-top:1px solid #ddd;margin:26px 0;}
+.exercise{
+  background:#eef4fb;border:1px solid #b9d3ea;
+  padding:16px 20px;border-radius:6px;margin:18px 0;
+}
+.exercise .lead{margin:0 0 10px;}
+.exercise ul{margin:8px 0;}
+.exercise li{margin:8px 0;}
+.points{
+  display:inline-block;margin-top:12px;color:#555;font-style:italic;font-size:15px;
+}
+.tag{
+  display:inline-block;font-family:Arial,Helvetica,sans-serif;font-size:11px;
+  letter-spacing:.4px;text-transform:uppercase;color:#c0271c;
+  border:1px solid #e3a9a3;background:#fdeceb;border-radius:3px;
+  padding:1px 7px;margin-bottom:8px;
+}
+code{ font-family:"Courier New",monospace;
+  background:#eef0f2;padding:1px 5px;border-radius:3px;font-size:14px; }
+strong{font-weight:bold;}
+details{margin-top:12px;background:#fff;border:1px solid #ddd;border-radius:5px;padding:2px 14px;}
+details[open]{padding-bottom:12px;}
+summary{cursor:pointer;font-family:Arial,Helvetica,sans-serif;font-size:13px;color:var(--accent);padding:9px 0;font-weight:bold;}
+details p{margin:8px 0;}
+.hint{font-size:14px;color:#555;font-style:italic;}
+</style>
+</head>
+<body>
+<h1>AuW &ndash; Theorieaufgaben</h1>
+<p class="sub">Algorithmen und Wahrscheinlichkeit &middot; Uebungsblatt im Pruefungsstil (Zeigen/Widerlegen &amp; Beweise)</p>
+<p class="hint">Zeigen bedeutet: liefere einen Beweis. Widerlegen bedeutet: gib ein konkretes Gegenbeispiel an. Klicke auf eine Loesungsskizze, um sie aufzuklappen.</p>
+
+<hr>
+<h2>Aufgabe 1 &mdash; Graphen &amp; Zusammenhang</h2>
+<div class="exercise">
+<span class="tag">Zeigen / Widerlegen</span>
+<p class="lead">Zeigen oder widerlegen Sie die folgenden Aussagen.</p>
+<ul>
+<li><strong>a)</strong> Sei $G=(A \uplus B, E)$ ein bipartiter, $k$-regulaerer Graph mit $k \ge 1$. Dann besitzt $G$ ein perfektes Matching.</li>
+<li><strong>b)</strong> Sei $G=(V,E)$ ein Graph mit $|E| > |V|-1$. Dann enthaelt $G$ einen Kreis.</li>
+<li><strong>c)</strong> Sei $v$ ein Knoten mit $\deg(v) \ge 2$. Dann liegt $v$ auf einem Kreis.</li>
+</ul>
+<span class="points">jeweils 4 Punkte</span>
+</div>
+<details>
+<summary>Loesungsskizze Aufgabe 1</summary>
+<p><strong>a) Wahr.</strong> Aus der $k$-Regularitaet folgt $k|A| = |E| = k|B|$, also $|A|=|B|$. Fuer jede Teilmenge $X \subseteq A$ gehen genau $k|X|$ Kanten von $X$ aus, die alle in $N(X)$ enden; jeder Knoten in $N(X)$ hat Grad $k$, also $k|X| \le k|N(X)|$ und somit $|X| \le |N(X)|$. Die Hall-Bedingung ist erfuellt, es gibt ein Matching der Groesse $|A|$, wegen $|A|=|B|$ ist es perfekt (Satz von Frobenius).</p>
+<p><strong>b) Wahr.</strong> Kontraposition: ein kreisfreier Graph (Wald) mit $c$ Zusammenhangskomponenten hat genau $|V|-c \le |V|-1$ Kanten. Wer mehr als $|V|-1$ Kanten hat, kann also nicht kreisfrei sein.</p>
+<p><strong>c) Falsch.</strong> Gegenbeispiel: der Pfad $a - v - b$. Hier ist $\deg(v)=2$, aber der Graph ist ein Baum und enthaelt keinen Kreis. (Hoher Grad garantiert keinen Kreis, entscheidend ist ein Kreis in der Struktur.)</p>
+</details>
+
+<hr>
+<h2>Aufgabe 2 &mdash; Wahrscheinlichkeit</h2>
+<div class="exercise">
+<span class="tag">Zeigen / Widerlegen</span>
+<p class="lead">Zeigen oder widerlegen Sie die folgenden Aussagen. $X, Y$ bezeichnen (diskrete) Zufallsvariablen.</p>
+<ul>
+<li><strong>a)</strong> Fuer alle Zufallsvariablen $X, Y$ gilt $\mathbb{E}[X \cdot Y] = \mathbb{E}[X] \cdot \mathbb{E}[Y]$.</li>
+<li><strong>b)</strong> Sei $X \ge 0$ eine nicht-negative Zufallsvariable mit $\mathbb{E}[X] > 0$. Dann gilt $\Pr\!\left[X \ge 2\,\mathbb{E}[X]\right] \le \tfrac{1}{2}$.</li>
+<li><strong>c)</strong> Seien $X$ und $Y$ unabhaengig. Dann gilt $\operatorname{Var}[X - Y] = \operatorname{Var}[X] - \operatorname{Var}[Y]$.</li>
+</ul>
+<span class="points">jeweils 4 Punkte</span>
+</div>
+<details>
+<summary>Loesungsskizze Aufgabe 2</summary>
+<p><strong>a) Falsch.</strong> Die Gleichheit gilt nur bei Unabhaengigkeit. Gegenbeispiel: $X$ gleichverteilt auf $\{-1, +1\}$ und $Y := X$. Dann ist $\mathbb{E}[X]=0$, aber $\mathbb{E}[XY] = \mathbb{E}[X^2] = 1 \ne 0 = \mathbb{E}[X]\,\mathbb{E}[Y]$.</p>
+<p><strong>b) Wahr.</strong> Direkt aus der Markov-Ungleichung mit $t = 2\,\mathbb{E}[X]$: $\Pr[X \ge 2\mathbb{E}[X]] \le \frac{\mathbb{E}[X]}{2\,\mathbb{E}[X]} = \frac{1}{2}$.</p>
+<p><strong>c) Falsch.</strong> Wegen $\operatorname{Var}[-Y] = (-1)^2\operatorname{Var}[Y] = \operatorname{Var}[Y]$ und Unabhaengigkeit gilt $\operatorname{Var}[X-Y] = \operatorname{Var}[X] + \operatorname{Var}[Y]$. Gegenbeispiel: $X, Y$ unabhaengig mit je $\operatorname{Var}=1$ liefert $\operatorname{Var}[X-Y]=2$, nicht $0$.</p>
+</details>
+
+<hr>
+<h2>Aufgabe 3 &mdash; Faerbungen &amp; Matchings</h2>
+<div class="exercise">
+<span class="tag">Zeigen / Widerlegen</span>
+<p class="lead">Zeigen oder widerlegen Sie die folgenden Aussagen. $G=(V,E)$ ist stets ein einfacher Graph.</p>
+<ul>
+<li><strong>a)</strong> Fuer jeden Graphen $G$ gilt $\chi(G) \le \Delta(G) + 1$, wobei $\Delta(G)$ der Maximalgrad ist.</li>
+<li><strong>b)</strong> Jeder planare Graph ist $3$-faerbbar.</li>
+<li><strong>c)</strong> Sei $M$ ein inklusionsmaximales und $M^\ast$ ein kardinalitaetsmaximales Matching in $G$. Dann gilt $|M| \ge \tfrac{1}{2}\,|M^\ast|$.</li>
+</ul>
+<span class="points">jeweils 4 Punkte</span>
+</div>
+<details>
+<summary>Loesungsskizze Aufgabe 3</summary>
+<p><strong>a) Wahr.</strong> Der Greedy-Algorithmus faerbt die Knoten in beliebiger Reihenfolge; beim Faerben von $v_i$ sind hoechstens $\deg(v_i) \le \Delta(G)$ Nachbarn schon gefaerbt, blockieren also hoechstens $\Delta(G)$ Farben. Die kleinste freie Farbe ist somit $\le \Delta(G)+1$.</p>
+<p><strong>b) Falsch.</strong> Gegenbeispiel: $K_4$ ist planar (zeichenbar ohne Kreuzungen), aber je zwei seiner vier Knoten sind benachbart, also $\chi(K_4)=4 > 3$. (Wahr ist nur der Vierfarbensatz.)</p>
+<p><strong>c) Wahr.</strong> Jede Kante von $M^\ast$ hat mindestens einen Endknoten, der von $M$ ueberdeckt ist, sonst koennte man sie zu $M$ hinzufuegen, im Widerspruch zur Inklusionsmaximalitaet. Jede $M$-Kante deckt hoechstens $2$ Endknoten ab, also $|M^\ast| \le 2|M|$.</p>
+</details>
+
+<hr>
+<h2>Aufgabe 4 &mdash; Probabilistische Methode</h2>
+<div class="exercise">
+<span class="tag">Beweis</span>
+<p class="lead">In der Vorlesung haben Sie einen randomisierten Algorithmus gesehen, der eine stabile (unabhaengige) Menge findet, indem jeder Knoten unabhaengig mit Wahrscheinlichkeit $p$ ausgewaehlt wird und danach fuer jede Konfliktkante ein Endknoten entfernt wird.</p>
+<p class="lead">Zeigen Sie mit dieser Idee die folgende Aussage: <strong>Jeder Graph $G$ mit $n$ Knoten und $m \ge 1$ Kanten besitzt eine stabile Menge der Groesse mindestens $\dfrac{n^2}{4m}$.</strong></p>
+<span class="points">8 Punkte</span>
+</div>
+<details>
+<summary>Loesungsskizze Aufgabe 4</summary>
+<p>Sei $X$ die Anzahl anfangs gewaehlter Knoten und $Y$ die Anzahl der Konfliktkanten (beide Endknoten gewaehlt). Die konstruierte stabile Menge $S$ erfuellt $|S| \ge X - Y$, da man pro Konfliktkante hoechstens einen Knoten entfernen muss.</p>
+<p>Mit Indikatorvariablen und Linearitaet des Erwartungswerts: $\mathbb{E}[X] = np$ und $\mathbb{E}[Y] = m p^2$ (jede Kante ist mit Wahrscheinlichkeit $p^2$ ein Konflikt, da unabhaengig). Also $\mathbb{E}[|S|] \ge np - mp^2$.</p>
+<p>Der Ausdruck $np - mp^2$ ist maximal fuer $p = \frac{n}{2m}$ (Ableitung $n - 2mp = 0$). Da $m \ge n/2$ angenommen werden darf (sonst gibt es isolierte Knoten und eine noch groessere stabile Menge), ist $p \le 1$ zulaessig. Einsetzen liefert $\mathbb{E}[|S|] \ge \frac{n^2}{2m} - m\cdot\frac{n^2}{4m^2} = \frac{n^2}{4m}$.</p>
+<p>Nach der probabilistischen Methode muss es mindestens ein Ergebnis geben, dessen Wert $\ge \mathbb{E}[|S|]$ ist. Also existiert eine stabile Menge der Groesse $\ge \frac{n^2}{4m}$. $\qquad\blacksquare$</p>
+</details>
+
+<hr>
+<h2>Aufgabe 5 &mdash; Fluesse &amp; Satz von Menger</h2>
+<div class="exercise">
+<span class="tag">Beweis</span>
+<p class="lead">Sei $G=(V,E)$ ein ungerichteter Graph und $s, t \in V$ mit $s \ne t$. Ein $s$-$t$-Kantenseparator ist eine Kantenmenge, deren Entfernung jeden $s$-$t$-Pfad zerstoert.</p>
+<p class="lead">Zeigen Sie mithilfe des <strong>Max-Flow-Min-Cut-Satzes</strong>: Die maximale Anzahl paarweise kantendisjunkter $s$-$t$-Pfade ist gleich der minimalen Groesse eines $s$-$t$-Kantenseparators.</p>
+<span class="points">8 Punkte</span>
+</div>
+<details>
+<summary>Loesungsskizze Aufgabe 5</summary>
+<p>Konstruiere ein Netzwerk: ersetze jede ungerichtete Kante durch zwei gerichtete Kanten (je Richtung) mit Kapazitaet $1$; Quelle $s$, Senke $t$.</p>
+<p><strong>Fluss $\Rightarrow$ Pfade.</strong> Da alle Kapazitaeten ganzzahlig sind, existiert ein ganzzahliger Maximalfluss $f$ (Ford-Fulkerson). Durch Flusszerlegung laesst sich $f$ in $\operatorname{val}(f)$ kantendisjunkte $s$-$t$-Pfade zerlegen, denn jede Kante traegt Fluss $\le 1$. Also gibt es mindestens $\operatorname{val}(f)$ kantendisjunkte Pfade.</p>
+<p><strong>Schnitt $=$ Separator.</strong> Ein minimaler $s$-$t$-Schnitt $(S,T)$ hat Kapazitaet gleich der Anzahl der Kanten von $S$ nach $T$ (je Kapazitaet $1$). Diese Kanten bilden einen $s$-$t$-Kantenseparator; umgekehrt liefert jeder Separator einen Schnitt gleicher Groesse.</p>
+<p>Nach Max-Flow-Min-Cut gilt $\max \operatorname{val}(f) = \min \operatorname{cap}(S,T)$. Die linke Seite ist die maximale Anzahl kantendisjunkter Pfade, die rechte die minimale Separatorgroesse. Damit sind beide gleich (Kantenversion des Satzes von Menger). $\qquad\blacksquare$</p>
+</details>
+
+<hr>
+<h2>Aufgabe 6 &mdash; Konzentration (Chebyshev)</h2>
+<div class="exercise">
+<span class="tag">Beweis</span>
+<p class="lead">Sei $X \sim \operatorname{Bin}(n, \tfrac{1}{2})$, also die Anzahl Kopf bei $n$ fairen Muenzwuerfen.</p>
+<p class="lead">Zeigen Sie mit der Chebyshev-Ungleichung, dass
+$$\Pr\!\left[\,\left|X - \tfrac{n}{2}\right| \ge n^{2/3}\,\right] \le \frac{1}{4}\, n^{-1/3},$$
+und folgern Sie, dass diese Wahrscheinlichkeit fuer $n \to \infty$ gegen $0$ geht.</p>
+<span class="points">8 Punkte</span>
+</div>
+<details>
+<summary>Loesungsskizze Aufgabe 6</summary>
+<p>Es ist $\mathbb{E}[X] = n \cdot \tfrac{1}{2} = \tfrac{n}{2}$ und $\operatorname{Var}[X] = n \cdot \tfrac{1}{2} \cdot \tfrac{1}{2} = \tfrac{n}{4}$.</p>
+<p>Chebyshev mit $t = n^{2/3}$:
+$$\Pr\!\left[\left|X - \tfrac{n}{2}\right| \ge n^{2/3}\right] \le \frac{\operatorname{Var}[X]}{(n^{2/3})^2} = \frac{n/4}{n^{4/3}} = \frac{1}{4}\, n^{\,1 - 4/3} = \frac{1}{4}\, n^{-1/3}.$$</p>
+<p>Da $\frac{1}{4} n^{-1/3} \to 0$ fuer $n \to \infty$, geht auch die betrachtete Wahrscheinlichkeit gegen $0$. Die Anzahl Kopf konzentriert sich also stark um $\tfrac{n}{2}$. $\qquad\blacksquare$</p>
+</details>
+
+</body>
+</html>

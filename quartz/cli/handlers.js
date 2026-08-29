@@ -743,10 +743,34 @@ export async function handleSync(argv) {
       await stashContentFolder(contentFolder)
 
       // follow symlink and copy content
+      const unavailableFiles = []
       await fs.promises.cp(linkTarg, contentFolder, {
         recursive: true,
         preserveTimestamps: true,
+        filter: async (source) => {
+          const sourceStat = await fs.promises.lstat(source)
+          const isUnavailableCloudFile =
+            sourceStat.isFile() && sourceStat.size > 0 && sourceStat.blocks === 0
+
+          if (isUnavailableCloudFile) {
+            unavailableFiles.push(path.relative(linkTarg, source))
+            return false
+          }
+
+          return true
+        },
       })
+
+      if (unavailableFiles.length > 0) {
+        console.log(
+          styleText(
+            "yellow",
+            `Skipped ${unavailableFiles.length} unavailable cloud file(s):\n${unavailableFiles
+              .map((filePath) => `  - ${filePath}`)
+              .join("\n")}`,
+          ),
+        )
+      }
     }
 
     const currentTimestamp = new Date().toLocaleString("en-US", {
