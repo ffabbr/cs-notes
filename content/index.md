@@ -11,5 +11,8 @@ Otherwise, dive right in:
 
 - [[1st Semester/index|1st Semester]] 
 - [[2nd Semester/index|2nd Semester]]
+- [[3rd Semester/index|3rd Semester]]
+
+
 
 

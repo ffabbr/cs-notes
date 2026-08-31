@@ -1,4 +1,11 @@
-- welcome to eth, etc.
-- what is programming
-- the plan for the semester
-- other tips and my experience
+
+yet to be written...
+
+## Welcome to ETH
+
+## What is Programming
+
+## The plan for the semester
+
+## Tips and experience
+
