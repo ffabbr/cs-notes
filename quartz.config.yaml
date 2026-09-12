@@ -240,7 +240,6 @@ plugins:
     enabled: true
     options:
       links:
-        GitHub: https://github.com/ffabbr
         About me: https://rohlik.net
     layout:
       position: footer

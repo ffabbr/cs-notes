@@ -7,4 +7,7 @@ Welcome to my exercise session.
 > - G-23
 > - German
 
+%% Begin Waypoint %%
 - [[01 Hello and Welcome]]
+
+%% End Waypoint %%
