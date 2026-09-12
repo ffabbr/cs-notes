@@ -3,9 +3,11 @@ title: CS Notes
 ---
 Hi there, glad you found your way to this site :) 
 
-I am [Fabian Rohlik](https://rohlik.net), originally from Vienna, studying Computer Science at ETH Zurich.
+I am [Fabian Rohlik](https://rohlik.net), studying Computer Science at ETH Zurich.
 
-Here you can find my lecure notes from my studies. If you're thinking about studying at ETH or if your studies are starting shortly, read [[Welcome/]].
+If you are here for my exercise sessions for EProg, visit [[00 Overview|EProg Übungsstunden]].
+
+Else, you can find here some of my lecure notes. In case that you're thinking about studying at ETH or if your studies are starting shortly, read [[Welcome/]].
 
 Otherwise, dive right in:
 
