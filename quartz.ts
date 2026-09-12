@@ -1,5 +1,6 @@
 import { loadQuartzConfig, loadQuartzLayout } from "./quartz/plugins/loader/config-loader"
 import * as ExternalPlugin from "./.quartz/plugins"
+import { componentRegistry } from "./quartz/components/registry"
 import { SocialImage } from "./quartz/components/SocialImage"
 import { SiteTweaks } from "./quartz/plugins/transformers/siteTweaks"
 import { PdfEmbeds } from "./quartz/plugins/transformers/pdfEmbeds"
@@ -11,7 +12,8 @@ ExternalPlugin.CustomOgImages({
 
 // The root index belongs to the trie root, which Explorer does not render.
 // Add just that page as a visible child; folder index pages stay as folders.
-ExternalPlugin.Explorer({
+// The npm layout loader looks up the package name, not the generated wrapper key.
+componentRegistry.setOptionOverrides("@quartz-community/explorer", {
   mapFn: (node) => {
     if (node.slugSegments?.length === 0 && node.data?.slug === "index") {
       const home = Object.assign(Object.create(Object.getPrototypeOf(node)), node, {
