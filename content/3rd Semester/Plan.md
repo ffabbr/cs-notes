@@ -1,3 +1,6 @@
+---
+draft: "true"
+---
 # Plan
 
 - [Theoretische Informatik](#theoretische-informatik)

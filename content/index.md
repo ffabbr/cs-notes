@@ -5,9 +5,8 @@ Hi there, glad you found your way to this site :)
 
 I am [Fabian Rohlik](https://rohlik.net), studying Computer Science at ETH Zurich.
 
-If you are here for my exercise sessions for EProg, visit [[00 Overview|EProg Übungsstunden]].
-
-Else, you can find here some of my lecure notes. In case that you're thinking about studying at ETH or if your studies are starting shortly, read [[Welcome/]].
+- If you are here for my **EProg exercise sessions**, go to [[00 Overview|EProg Übungsstunden]]
+- In case you're thinking about studying at ETH or are just getting started, read [[Welcome/]]
 
 Otherwise, dive right in:
 
