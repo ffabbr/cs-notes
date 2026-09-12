@@ -8,6 +8,8 @@ Welcome to my exercise session.
 > - German
 
 %% Begin Waypoint %%
-- [[01 Hello and Welcome]]
+- **Pages**
+- [[01 Introduction and Setup]]
+- [[02 EBNF]]
 
 %% End Waypoint %%
