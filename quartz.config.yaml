@@ -10,6 +10,7 @@ configuration:
   baseUrl: cs.rohlik.net
   ignorePatterns:
     - private
+    - "**/Private/**"
     - templates
     - .obsidian
     - CLAUDE.md
