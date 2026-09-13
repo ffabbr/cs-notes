@@ -3,7 +3,7 @@
 
 > [!success]
 > - ( ) Gruppierung wie in der Mathematik
-> - [ ] optional
+> - \[ \] optional
 > - { } beliebig oft, auch 0-mal möglich
 > - | "oder"
 
