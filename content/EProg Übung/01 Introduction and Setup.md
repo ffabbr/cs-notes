@@ -1,10 +1,26 @@
+Hallo in die Runde, und willkommen nicht nur zu meiner Übungsstunde, sondern auch an der ETH. Für viele von euch heißt das auch willkommen in einer neuen Stadt, einem neuen Umfeld und vor allem der Start zu einem Semester. 
 
-yet to be written...
+Ich bin Fabian, 19, und studiere Informatik im 3. Semester. In der ersten Übungsstunde heute schauen wir uns Organisatorisches an, richten IntelliJ ein und schauen uns Grundlagen von [[02 EBNF]] an. Stellt gerne viele Fragen zu EProg, gerne auch zu allgemeinen Themen oder anderen Anliegen. Ihr könnt mir auch gerne jederzeit eine Email schreiben an frohlik@student.ethz.ch, solltet ihr lieber anonymes Feedback geben wollen, könnt ihr das hier tun.
 
-## Einführung 
+Meine Notizen hier sind sehr kompakt und kürzer als was wir in der Übungsstunde besprechen. 
+## Einführung und Organisatorisches
 
-## Organisatorisches 
+- Ich habe paar persönliche Erkentnisse und Tipps zum ersten Semester hier notiert [[03 1st Semester Takeways]].
+- EProg fällt vielen vor Woche 8 einfach, insbesondere wenn ihr schon Programmiererfahrung habt. Ich empfehle dennoch die Serien zu lösen um mit der Java Syntax familiär zu werden. 
+## IntelliJ und Java Setup
 
-## Themenüberblick
+Wir installieren Java (**25**) und IntelliJ auf unseren Laptops. Java ist die Programmiersprache die wir verwenden, IntelliJ ist die IDE, also das Programm, in dem wir unseren Code schreiben. 
 
-## IntelliJ Setup
+In der Prüfung habt ihr genau das gleiche Setup. 
+
+> Wir folgen [dieser Anleitung](https://lec.inf.ethz.ch/infk/eprog/2026/exercises/additionals/eprog_arbeitsumgebung.pdf) um Java und IntelliJ zu installieren.
+
+Ihr könnt jetzt das *Hello World* Projekt [hier herunterladen](https://lec.inf.ethz.ch/infk/eprog/2026/exercises/additionals/u01.zip) und den Ordner in IntelliJ öffnen, und das Programm ausführen. 
+## Q&A
+
+> [!info]- Warum Java?
+> 
+
+> [!info]- Warum lernen wir programmieren? 
+> 
+

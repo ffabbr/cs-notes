@@ -1,17 +1,6 @@
 ---
 draft: "true"
 ---
-# Plan
-
-- [Theoretische Informatik](#theoretische-informatik)
-- [Numerical Methods for CS](#numerical-methods-for-cs)
-- [Systems Programming and Computer Architecture](#systems-programming-and-computer-architecture)
-- [Analysis 2](#analysis-2)
-- [Artificial Intelligence and Human Values](#artificial-intelligence-and-human-values)
-- [[#EProg TAce]]
-- [Claude AI Events](#claude-ai-events)
-- [Aube iPad App](#aube-ipad-app)
-
 ### Theoretische Informatik
 
 - Moodle Quizzes und Serien
@@ -32,7 +21,7 @@ draft: "true"
 - 10 Seiten Cheatsheet
 ### Artificial Intelligence and Human Values
 
-### EProg TAce
+### EProg TA
 
 ### Claude AI Events
 
