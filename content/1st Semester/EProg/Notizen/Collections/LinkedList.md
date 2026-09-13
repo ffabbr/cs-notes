@@ -1,6 +1,6 @@
 ## Custom
 
-→ siehe [[LinkedList.java]]
+→ siehe [[1st Semester/EProg/Notizen/Collections/LinkedList.java]]
 
 ## Java-Integrated
 

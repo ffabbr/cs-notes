@@ -1,6 +1,6 @@
 
-→ siehe auch [[Slides zu Klassen und Objekte]]
-→ siehe auch [[LinkedList.java]]
+→ siehe auch [[1st Semester/EProg/Notizen/Object Oriented Programming/Slides zu Klassen und Objekte]]
+→ siehe auch [[1st Semester/EProg/Notizen/Collections/LinkedList.java]]
 ## Übersicht
 
 | Konzept                           | Idee                 | Bedeutung                         |
@@ -18,7 +18,7 @@
 | [[#Sichtbarkeit]]                 |                      |                                   |
 
 
-Siehe auch die Slides bei [[Slides zu Klassen und Objekte]] und [[07_Klassen_und_Objekte.pdf]]
+Siehe auch die Slides bei [[1st Semester/EProg/Notizen/Object Oriented Programming/Slides zu Klassen und Objekte]] und [[07_Klassen_und_Objekte.pdf]]
 
 ## Klassen und Attribute
 
@@ -124,7 +124,7 @@ public class Person {
 
 ## Vererbung
 
-→ siehe [[Vererbung und Polymorphismus]]
+→ siehe [[1st Semester/EProg/Notizen/Object Oriented Programming/Vererbung und Polymorphismus]]
 
 ## toString()
 

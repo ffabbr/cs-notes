@@ -134,7 +134,7 @@ for (int i = 0; i < 10; i++) {
 
 ## Arrays
 
-[[Arrays]]
+[[1st Semester/EProg/Notizen/Grundlagen/Arrays]]
 
 ```java 
 int[] arr = {1, 2, 3, 4};
@@ -235,7 +235,7 @@ public class ReadFileExample {
 }
 ```
 
-→ Slides about the [[Scanner.pdf]]
+→ Slides about the [[1st Semester/EProg/Notizen/Scanner.pdf]]
 ## Random (Zufallszahlen)
 
 ```java

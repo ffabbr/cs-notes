@@ -1,5 +1,5 @@
 
-Siehe auch [[Object Oriented Programming]].
+Siehe auch [[1st Semester/EProg/Notizen/Object Oriented Programming/Object Oriented Programming]].
 
 ![[07_Klassen_und_Objekte.pdf#page=18]]
 ![[07_Klassen_und_Objekte.pdf#page=24]]
