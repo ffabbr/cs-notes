@@ -16,5 +16,6 @@ Welcome to my exercise session.
 
 %% Begin Waypoint %%
 - [[01 Introduction and Setup]]
+- [[02 EBNF]]
 
 %% End Waypoint %%
