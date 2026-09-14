@@ -1,22 +1,22 @@
-Hallo in die Runde, willkommen zu meiner Übungsstunde und an der ETH. Für viele von euch heißt das auch willkommen in einer neuen Stadt, einem neuen Umfeld und vor allem der Start zu einem Semester. Ich bin Fabian, 19, und studiere Informatik im 3. Semester. 
+Hallo in die Runde, willkommen zu meiner Übungsstunde und an der ETH. Für viele von euch bedeutet das auch willkommen in einer neuen Stadt, einem neuen Umfeld und vor allem in einem neuen Semester. Ich bin Fabian, 19, und studiere Informatik im 3. Semester. Freut mich, euch kennenzulernen :)
 
-In der **ersten Übungsstunde** heute besprechen wir Organisatorisches, richten IntelliJ ein und schauen uns Grundlagen von [[02 EBNF]] an. Stellt gerne viele Fragen zu EProg, gerne auch zu allgemeinen Themen oder anderen Anliegen. Ihr könnt mir auch gerne jederzeit eine Email schreiben an frohlik@student.ethz.ch, solltet ihr lieber anonymes Feedback geben wollen, könnt ihr das [hier](https://forms.gle/shtxKNFm6rJMhGZX6) tun.
+In der **ersten Übungsstunde** heute besprechen wir Organisatorisches, richten IntelliJ ein und schauen uns die Grundlagen von [02 EBNF](https://chatgpt.com/g/g-p-6aa86d603d5c8191af4f1112f875e7bf-eprog-ta/c/02%20EBNF) an. Stellt gerne viele Fragen, zu EProg, aber auch zu allgemeinen Themen oder anderen Anliegen. Ihr könnt mir jederzeit eine E-Mail an [frohlik@student.ethz.ch](mailto:frohlik@student.ethz.ch) schreiben. Solltet ihr lieber anonymes Feedback geben wollen, könnt ihr das [hier](https://forms.gle/shtxKNFm6rJMhGZX6) tun.
 
-Meine Notizen hier sind sehr kompakt und kürzer als was wir in der Übungsstunde besprechen. 
+Meine Notizen hier sind bewusst sehr kompakt und kürzer als das, was wir in der Übungsstunde besprechen.
+
 ## Einführung und Organisatorisches
 
-- **Aufgaben veröffentlicht**: Dienstag Abend
-- **Abgabe der Aufgaben**: Dienstag Abend in der Folgewoche
+- **Aufgaben veröffentlicht**: Dienstagabend
+- **Abgabe der Aufgaben**: Dienstagabend in der Folgewoche
 - Abgabe per Git (Git schauen wir uns in der Übungsstunde in Woche 2 an)
-
-- Ich habe paar persönliche Erkentnisse und Tipps zum ersten Semester hier notiert [[03 1st Semester Takeways]].
-- EProg fällt vielen vor Woche 8 tendenziell einfach, insbesondere denjenigen, die schon Programmiererfahrung haben; unterschätzt es nicht.
+- Ich habe ein paar persönliche Erkenntnisse und Tipps zum ersten Semester hier notiert: [03 1st Semester Takeways](https://chatgpt.com/g/g-p-6aa86d603d5c8191af4f1112f875e7bf-eprog-ta/c/03%201st%20Semester%20Takeways).
+- EProg fällt vielen vor Woche 8 tendenziell leicht, insbesondere denjenigen, die schon Programmiererfahrung haben. Unterschätzt es trotzdem nicht.
 ## IntelliJ und Java Setup
 
-Wir installieren Java (**25**) und IntelliJ auf unseren Laptops. Java ist die Programmiersprache die wir verwenden, IntelliJ ist die IDE, also das Programm, in dem wir unseren Code schreiben. 
+Wir installieren Java (**25**) und IntelliJ auf unseren Laptops. Java ist die Programmiersprache, die wir verwenden. IntelliJ ist die IDE, also unsere Entwichlungsumgebung (das Programm, in dem wir unseren Code schreiben).
 
-In der Prüfung habt ihr genau das gleiche Setup. 
+In der Prüfung habt ihr genau das gleiche Setup.
 
-> Wir folgen [dieser Anleitung](https://lec.inf.ethz.ch/infk/eprog/2026/exercises/additionals/eprog_arbeitsumgebung.pdf) um Java und IntelliJ zu installieren.
+> Wir folgen [dieser Anleitung](https://lec.inf.ethz.ch/infk/eprog/2026/exercises/additionals/eprog_arbeitsumgebung.pdf), um Java und IntelliJ zu installieren.
 
-Ihr könnt jetzt das *Hello World* Projekt [hier herunterladen](https://lec.inf.ethz.ch/infk/eprog/2026/exercises/additionals/u01.zip) und den Ordner in IntelliJ öffnen, und das Programm ausführen. 
+Ihr könnt jetzt das _Hello World_-Projekt [hier herunterladen](https://lec.inf.ethz.ch/infk/eprog/2026/exercises/additionals/u01.zip), den Ordner in IntelliJ öffnen und das Programm ausführen.
