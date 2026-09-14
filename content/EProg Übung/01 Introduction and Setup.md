@@ -1,6 +1,6 @@
 Hallo in die Runde, willkommen zu meiner Übungsstunde und an der ETH. Für viele von euch heißt das auch willkommen in einer neuen Stadt, einem neuen Umfeld und vor allem der Start zu einem Semester. Ich bin Fabian, 19, und studiere Informatik im 3. Semester. 
 
-In der **ersten Übungsstunde** heute schauen wir uns Organisatorisches an, richten IntelliJ ein und schauen uns Grundlagen von [[02 EBNF]] an. Stellt gerne viele Fragen zu EProg, gerne auch zu allgemeinen Themen oder anderen Anliegen. Ihr könnt mir auch gerne jederzeit eine Email schreiben an frohlik@student.ethz.ch, solltet ihr lieber anonymes Feedback geben wollen, könnt ihr das [hier](https://forms.gle/shtxKNFm6rJMhGZX6) tun.
+In der **ersten Übungsstunde** heute besprechen wir Organisatorisches, richten IntelliJ ein und schauen uns Grundlagen von [[02 EBNF]] an. Stellt gerne viele Fragen zu EProg, gerne auch zu allgemeinen Themen oder anderen Anliegen. Ihr könnt mir auch gerne jederzeit eine Email schreiben an frohlik@student.ethz.ch, solltet ihr lieber anonymes Feedback geben wollen, könnt ihr das [hier](https://forms.gle/shtxKNFm6rJMhGZX6) tun.
 
 Meine Notizen hier sind sehr kompakt und kürzer als was wir in der Übungsstunde besprechen. 
 ## Einführung und Organisatorisches
