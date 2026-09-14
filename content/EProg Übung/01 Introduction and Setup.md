@@ -10,7 +10,7 @@ Meine Notizen hier sind sehr kompakt und kürzer als was wir in der Übungsstund
 - Abgabe per Git (Git schauen wir uns in der Übungsstunde in Woche 2 an)
 
 - Ich habe paar persönliche Erkentnisse und Tipps zum ersten Semester hier notiert [[03 1st Semester Takeways]].
-- EProg fällt vielen vor Woche 8 einfach, insbesondere wenn ihr schon Programmiererfahrung habt. Ich empfehle dennoch die Serien zu lösen um mit der Java Syntax familiär zu werden. 
+- EProg fällt vielen vor Woche 8 tendenziell einfach, insbesondere denjenigen, die schon Programmiererfahrung haben. Ich empfehle dennoch die Serien zu lösen um mit der Java Syntax familiär zu werden. 
 ## IntelliJ und Java Setup
 
 Wir installieren Java (**25**) und IntelliJ auf unseren Laptops. Java ist die Programmiersprache die wir verwenden, IntelliJ ist die IDE, also das Programm, in dem wir unseren Code schreiben. 
