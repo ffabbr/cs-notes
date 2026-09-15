@@ -1,6 +1,4 @@
 
-Welcome to my exercise session. 
-
 > [!info] 
 > - Wednesday 16:15—18:00
 > - ETH HG 26.1
@@ -16,5 +14,6 @@ Welcome to my exercise session.
 
 %% Begin Waypoint %%
 - [[01 Introduction and Setup]]
+- [[02 EBNF]]
 
 %% End Waypoint %%

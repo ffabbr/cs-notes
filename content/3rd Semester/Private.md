@@ -4,7 +4,7 @@ draft: "true"
 ### Theoretische Informatik
 
 - Moodle Quizzes und Serien
-- 2 Zwischenklausuren (Anfang November und Mitte Dezember)
+- 2 Zwischenklausuren (Anfang November und Mitte Dezember), zum Antritt sind Bonuspunkte nötig
 - kein Cheatsheet
 ### Numerical Methods for CS
 

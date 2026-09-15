@@ -9,8 +9,9 @@ configuration:
   locale: en-US
   baseUrl: cs.rohlik.net
   ignorePatterns:
-    - private
-    - "**/Private/**"
+    - "**/*.[Pp][Pp][Tt][Xx]"
+    - "**/*[Pp][Rr][Ii][Vv][Aa][Tt][Ee]*"
+    - "**/*[Pp][Rr][Ii][Vv][Aa][Tt][Ee]*/**"
     - templates
     - .obsidian
     - CLAUDE.md

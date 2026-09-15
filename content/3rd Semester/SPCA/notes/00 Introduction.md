@@ -1,0 +1,1 @@
+`*p = v` store value v into memory at address p

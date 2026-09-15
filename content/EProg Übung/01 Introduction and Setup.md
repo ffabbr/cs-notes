@@ -10,7 +10,7 @@ Meine Notizen hier sind bewusst sehr kompakt und kürzer als das, was wir in der
 - **Abgabe der Aufgaben**: Dienstagabend in der Folgewoche
 - Abgabe per Git (Git schauen wir uns in der Übungsstunde in Woche 2 an)
 - Ich habe ein paar persönliche Erkenntnisse und Tipps zum ersten Semester hier notiert: [03 1st Semester Takeways](https://chatgpt.com/g/g-p-6aa86d603d5c8191af4f1112f875e7bf-eprog-ta/c/03%201st%20Semester%20Takeways).
-- EProg fällt vielen vor Woche 8 tendenziell leicht, insbesondere denjenigen, die schon Programmiererfahrung haben. Unterschätzt es trotzdem nicht.
+- EProg fällt vielen vor ca. Woche 8 tendenziell leicht, insbesondere denjenigen, die schon Programmiererfahrung haben. Unterschätzt es trotzdem nicht.
 ## IntelliJ und Java Setup
 
 Wir installieren Java (**25**) und IntelliJ auf unseren Laptops. Java ist die Programmiersprache, die wir verwenden. IntelliJ ist die IDE, also unsere Entwichlungsumgebung (das Programm, in dem wir unseren Code schreiben).
