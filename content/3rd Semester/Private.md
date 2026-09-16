@@ -15,9 +15,11 @@ draft: "true"
 ### Systems Programming and Computer Architecture
 
 - kein Cheatsheet
+- kein Bonus
 ### Analysis 2
 
 - SEB Moodle Quizze
+- Bonus wie Analysis 1
 - 10 Seiten Cheatsheet
 ### Artificial Intelligence and Human Values
 
