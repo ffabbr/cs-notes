@@ -28,3 +28,7 @@ Beispiel [[Ableitung als Tabelle.png|Ableitung als Tabelle]], Beispiel [[Ableitu
 ## EBNF Quiz der Slides
 
 <div style="width:100%;display:flex;flex-direction:column;gap:8px;min-height:635px;"><iframe src="https://wayground.com/embed/quiz/6aa86613fb2dec5b66f7885e" title=" - Wayground" style="flex:1;" frameBorder="0" allowfullscreen></iframe></div>
+
+
+> [!success] Slides 
+> Slides Woche 1: [[EProg Übung/media/Slides Woche 1.pdf|Slides Woche 1]]

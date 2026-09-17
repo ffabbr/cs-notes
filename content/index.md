@@ -3,7 +3,7 @@ title: CS Notes
 ---
 Hi there, glad you found your way to this site :) I am [Fabian Rohlik](https://rohlik.net), studying Computer Science at ETH Zurich.
 
-- If you are here for my **EProg exercise sessions**, go to [[00 Overview|EProg Übungsstunden]]
+- If you are here for my **[[00 Overview|EProg Exercise Sessions]]**, go to [[EProg Übung/00 Overview|EProg Übungsstunden]]
 - In case you're thinking about studying at ETH or are just getting started, read [[Welcome/]]
 
 Otherwise, here are some of my lecture notes:
