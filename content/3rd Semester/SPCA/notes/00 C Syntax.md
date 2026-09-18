@@ -1,6 +1,17 @@
 ## General Overvations
 
+- `#include <stdio.h>` (stdio stands for standard io)
+- main is needed
+- switch only works with integers
+- 0 means false, non-zero means true, so int can be seen as bool
+
 - no support for function overloading
+- there are no methods
+
+- goto jumps to a different part, **try not to use**. can be useful for f.ex. breaking out of nested loops (could instead do a bool and break, then in the outer loop check condition of bool)
+
+- arg 1 is always the **filename**
+
 - `const char name[] = "Fabian";` (String is an array of chars)
 - `bool` instead of `boolean`
 - instructions looked at in order, so either put method definitions above them being called or "announce" them before with just the signature, call them, then define them.
