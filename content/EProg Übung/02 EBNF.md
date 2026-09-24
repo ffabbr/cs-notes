@@ -32,3 +32,7 @@ Beispiel [[Ableitung als Tabelle.png|Ableitung als Tabelle]], Beispiel [[Ableitu
 
 > [!success] Slides 
 > Slides Woche 1: [[EProg Übung/media/Slides Woche 1.pdf|Slides Woche 1]]
+> Slides Woche 3: [[Slides Woche 2.pdf|Slides Woche 2]]
+
+
+

@@ -23,3 +23,5 @@ Ihr könnt jetzt das _Hello World_-Projekt [hier herunterladen](https://lec.inf.
 
 > [!success] Slides 
 > Slides Woche 1: [[EProg Übung/media/Slides Woche 1.pdf|Slides Woche 1]]
+
+Hier geht es weiter: [[02 EBNF]]

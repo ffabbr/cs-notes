@@ -12,7 +12,7 @@
 
 - arg 1 is always the **filename**
 
-- `const char name[] = "Fabian";` (String is an array of chars)
+- matrices (2d arrays) are stored linearly, row for row 
 - `bool` instead of `boolean`
 - instructions looked at in order, so either put method definitions above them being called or "announce" them before with just the signature, call them, then define them.
 - use `void greet(void);` for no parameters, else f.ex. `int square(int number);`
@@ -58,3 +58,12 @@ size_t length = sizeof(numbers) / sizeof(numbers[0]);
 - since `sizeof(numbers)` is the size of "the entire thing" and `sizeof(numbers[0])` is the size of a single int
 - the arrays name becomes a pointer to its first element (so `*numbers` is same to `numbers[0]`)
 - there is no index out of bounds error, it would just print something unwanted or crash
+
+## Strings
+
+- there is no String, String is an array of chars
+- char array for string needs to have end position \0 to indicate ending
+- `char name[] = "Fabian";` 
+- `strncpy` (copy), arguments: destination, origin, max number of chars to copy
+- `strncat` (concatenation)
+

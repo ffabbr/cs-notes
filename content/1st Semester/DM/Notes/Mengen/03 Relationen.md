@@ -1,6 +1,6 @@
 
 → siehe auch 
-- [[01 Mengen]] 
+- [[1st Semester/DM/Notes/Mengen/01 Mengen]] 
 - [[04 Spezielle Relationen]]
 - [[06 Hasse Diagramme]]
 - [[#Wichtige Eigenschaften]]
