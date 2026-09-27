@@ -153,6 +153,23 @@ $$
 }
 $$
 
+```python
+def diffih(f,x, h0):
+    nit = 60 # max depth of iterations
+    h = np.zeros(nit); 
+    h[0] = h0 # width of diff. quot.
+    y = np.zeros(nit)
+    # TODO: implement here the complex imaginary step formula
+    
+    for k in range(nit):
+      y[k] = np.imag(f(x+1j*h[k]))/h[k]
+      
+      if (k < (nit-1)):
+        h[k+1] = h[k]/2
+    
+    return y, h
+```
+
 ## Ableitung zweiter Ordnung
 
 Wir schauen nach links und nach rechts, nehmen den Mittelwert. 
@@ -209,3 +226,24 @@ Jetzt ist der $h^2$ Fehler weg, der nächste größte Fehler ist $h^4$, dann $h^
 1. neuer grösster Fehler ist $h^4$
 2. **h halbieren**   $\left(\frac h2\right)^4 = \frac{h^4}{16}.$
 3. **also** $R_2(h)=\frac{16R_1(h/2)-R_1(h)}{15}$  
+
+```python
+# Richardson extrapolation; fixed level for vectorisation
+def diffRichardsonV(f,x, h0, rtol=1e-12, atol=1e-12):
+    nit = 30 # max depth of iterations
+    h = h0/2**np.arange(nit)
+    y = np.zeros(nit)
+    y, _ = diffd2(f,x,h0)
+    y = y[:nit]
+    
+    for k in range(1, nit):
+      fact = 4**k
+      y[k:] = (fact*y[k:] - y[k-1:-1]) / (fact-1)
+      
+      errest = abs(y[k] - y[k-1])
+      if errest < atol and errest < rtol * abs(y[k]):
+          break
+    
+    return y[:k+1], h[:k+1] 
+```
+
