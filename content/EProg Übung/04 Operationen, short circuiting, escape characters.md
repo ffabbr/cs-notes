@@ -20,8 +20,6 @@ Die [[Operatoren.png|meisten Operatoren]] sind links-assoziativ. Die Zuweisung (
 
 ## Implizites Casting
 
-*Im Folgenden verwende ich Addition als Beispiel, selbiges gilt für andere Operationen auch.*
-
 - int + int = int
 - double + double = double
 - Bei Ausdrücken, die verschiedene Typen enthalten, „gewinnt“ der genauere Typ falls möglich. `double + int = double`, `String + int = String`
@@ -80,4 +78,4 @@ Da `\` escapen bedeutet, müssen wir `\\` machen, um tatsächlich einen Backsla
 Falls euch bei den Coding-Aufgaben die Knowledge über die Java Syntax fehlt, schaut ev. in [[03 Hi Java]] nach.
 
 > [!success] Slides
-> C
+> → [[Slides Woche 3.pdf]]
