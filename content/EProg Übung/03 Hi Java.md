@@ -55,3 +55,11 @@ Da `\` escapen bedeutet, müssen wir `\\` machen, um tatsächlich einen Backsla
 ![[Pasted image 20260928133703.png]]
 
 Slides (work in progress)
+
+
+---
+
+![[Pasted image 20260928134152.png]]
+![[Pasted image 20260928134214.png]]
+
+![[Pasted image 20260928134233.png]]
