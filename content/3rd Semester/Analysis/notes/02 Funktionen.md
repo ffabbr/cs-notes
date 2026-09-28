@@ -1,3 +1,7 @@
+## Grenzwerte
+
+z.B. 2 dimensional—teste beide dimensionen, $\left( \frac{1}{k}, 0 \right)$ und $\left( 0, \frac{1}{k} \right)$ und prüfe, ob Wert gleich
+
 ## Stetigkeit
 
 einer Funktion $f: \mathbb{R}^n \to \mathbb{R}^m$ 

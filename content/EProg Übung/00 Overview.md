@@ -11,6 +11,7 @@
 - [[01 Introduction and Setup]]
 - [[02 EBNF]]
 - [[03 Hi Java]]
+- [[04 Operationen, short circuiting, escape characters]]
 
 %% End Waypoint %%
 ### Links

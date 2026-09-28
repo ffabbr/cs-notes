@@ -1,6 +1,6 @@
 $A^\circ$ **Inneres**: ohne Randpunkte, optimale offene Menge
 $\overline A$ **Abschluss**: A plus Randpunkte
-**Rand**: $\overline A\setminus A^\circ$ 
+$\delta A$ **Rand**: $\overline A\setminus A^\circ$ 
 
 Beispiel: $A=(0,1]$
 - $A^\circ=(0,1)$

@@ -1,25 +1,20 @@
 ## General 
 
 ```java
-
 public class HelloWorld {  // Klasse ist Dateiname, UpperCamelCase
 	// void wenn keine Rückgabe
     public static void main(String[] args) {  // lowerCamelCase (main)
         System.out.println("Hello World!");
     }  
 }
-
-
 ```
 
 ## System
 
 ```java
-
 System.out.println("Hello World!");
 System.out.println("Hello World!".toUpperCase());
 System.out.println("Hello " + "World!");   // String-Verkettung
-
 ```
 
 ## Variablen und Datentypen
@@ -44,15 +39,24 @@ if (number > 0) {
 } else {
     System.out.println("Zero");
 }
+```
 
-// Switch-Case
+## Switch
+
+```java
 int day = 3;
-switch(day) {
-    case 1 -> System.out.println("Monday");
-    case 2 -> System.out.println("Tuesday");
-    case 3 -> System.out.println("Wednesday");
-    default -> System.out.println("Other day");
-} 
+switch (day) { 
+	case 1: 
+		System.out.println("Monday"); 
+		break; 
+	case 2: 
+		System.out.println("Tuesday"); 
+		break; 
+	case 3: 
+		System.out.println("Wednesday"); 
+		break; 
+	default: 
+		System.out.println("Other day"); }
 ```
 
 ## Schleifen
@@ -84,11 +88,16 @@ for (int n : numbers) {
 }
 ```
 
-## Funktionen 
+## Methoden 
 
 ```java
 public class Calculator {
-
+    public static void main(String[] args) {
+        int sum = add(5, 3);
+        System.out.println(sum);      // 8
+        printHello("Fabian");         // Hello Fabian
+    }
+    
     // Funktion, die int zurückgibt
     public static int add(int a, int b) { // Rückgabetyp int
         return a + b;
@@ -97,12 +106,6 @@ public class Calculator {
     // Funktion ohne Rückgabewert
     public static void printHello(String name) {
         System.out.println("Hello " + name);
-    }
-
-    public static void main(String[] args) {
-        int sum = add(5, 3);
-        System.out.println(sum);      // 8
-        printHello("Fabian");         // Hello Fabian
     }
 }
 ```
