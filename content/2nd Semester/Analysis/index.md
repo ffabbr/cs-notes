@@ -1,6 +1,8 @@
 ---
 title: Analysis
 ---
+my cheatsheet: [[cheatsheet.pdf]]
+
 my lecture notes: 
 
 %% Begin Waypoint %%
@@ -19,6 +21,5 @@ my lecture notes:
 	- [[12 Integral]]
 	- [[13 Tabelle]]
 - **Summaries**
-
 
 %% End Waypoint %%
