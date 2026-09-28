@@ -1,7 +1,3 @@
----
-title: Mengen
----
-
 $A^\circ$ **Inneres**: ohne Randpunkte, optimale offene Menge
 $\overline A$ **Abschluss**: A plus Randpunkte
 **Rand**: $\overline A\setminus A^\circ$ 
