@@ -1,4 +1,5 @@
-
+---
+title: Mengen
 ---
 
 $A^\circ$ **Inneres**: ohne Randpunkte, optimale offene Menge
