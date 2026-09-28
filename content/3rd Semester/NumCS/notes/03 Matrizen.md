@@ -68,7 +68,7 @@ y = K @ x
 ```python
 n = A.shape[0]
 X = x.reshape(n, n)
-y = (A @ X) @ B.T     # !!!!!
+y = (A @ X) @ B.T     # ?!?!?!?!
 return y.ravel()
 ```
 
@@ -77,4 +77,4 @@ return y.ravel()
 
 ## Vandermonde Matrix
 
-→ [[03 Interpolation]]
+→ [[04 Polynominterpolation]]

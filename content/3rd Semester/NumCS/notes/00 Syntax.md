@@ -1,0 +1,1 @@
+![[Bildschirmfoto 2026-09-28 um 09.21.49.png]]![[Bildschirmfoto 2026-09-28 um 09.21.55.png]]![[Bildschirmfoto 2026-09-28 um 09.38.03.png]]![[Bildschirmfoto 2026-09-28 um 09.38.10.png]]

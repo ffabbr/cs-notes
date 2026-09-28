@@ -11,3 +11,7 @@ von $K \subset \mathbb{R}^n$
 
 - $\iff$ abgeschlossen und beschränkt
 - $\iff$ jede Folge $(x_s)_{s \in \mathbb{N}_0} \subset K$ in $K$ eine in $K$ konvergente Teilfolge hat
+
+> eine stetige Funktion hat in jedem kompakten $K \subset \mathbb{R}^n$ ein minimum und maximum
+
+

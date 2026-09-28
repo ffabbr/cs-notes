@@ -10,6 +10,7 @@
 %% Begin Waypoint %%
 - [[01 Introduction and Setup]]
 - [[02 EBNF]]
+- [[03 Hi Java]]
 
 %% End Waypoint %%
 ### Links
