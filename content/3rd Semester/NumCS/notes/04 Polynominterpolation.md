@@ -5,8 +5,20 @@ Polynom von Grad k ist durch $k+1$ Punkte eindeutig bestimmt.
 
 Wir notieren das Polynom als eine Linearkombination von Basen. 
 
-z.B. Monome als Basis: $p_n(x) = \alpha_0 + \alpha_1 x + \alpha_2 x^2 + \dots + \alpha_n x^n$
+## Basen
+
+Eine **Basis** $b_0,\dots,b_m$ ist linear unabhängig und erzeugend. Jedes $f\in\mathcal{P}_m$ lässt sich eindeutig schreiben als
+
+$$f(t) = \sum_{j=0}^m \alpha_j b_j(t) = \boldsymbol{\alpha}^\top \mathbf{b}(t).$$
+
+z.B. Monombasis: $p_n(x) = \alpha_0 + \alpha_1 x + \alpha_2 x^2 + \dots + \alpha_n x^n$
 Dimension der Basis: Anzahl der Elemente in der Basisdefinition
+
+## Interpolationsgleichung
+
+Die Bedingungen $f(t_i)=y_i$ ergeben ein lineares Gleichungssystem:
+
+$$\underbrace{\begin{bmatrix} b_0(t_0) & \dots & b_m(t_0)\\ \vdots & \ddots & \vdots \\ b_0(t_n) & \dots & b_m(t_n)\end{bmatrix}}_{B\in\mathbb{R}^{(n+1)\times(m+1)}} \begin{bmatrix}\alpha_0\\ \vdots \\ \alpha_m\end{bmatrix} = \begin{bmatrix}y_0\\ \vdots \\ y_n\end{bmatrix} \iff B\boldsymbol{\alpha} = \mathbf{y}$$
 
 Und suchen die Koeffizienten mit Bedingung $p_n(x_i) = y_i$.
 
@@ -40,7 +52,7 @@ def dirZ(Z):
 Kumulatives Produkt: 
 
 - Spalte 0: Algorithmus startet. Wert ist 1
-- Spalte 1: bisheriges Ergebnis (1) multipliziert mit aktuellen Wert der Spalte ($x$), also: $1 \cdot x$. 
+- Spalte 1: bisheriges Ergebnis (1) multipliziert mit aktuellen Wert der Spalte ($x$), also: $1 \cdot x$
 - Spalte 2: bisheriges Ergebnis ($x$) multipliziert mit dem aktuellen Wert der Spalte ($x$), also: $x \cdot x$. 
 - etc.
 

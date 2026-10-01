@@ -9,6 +9,7 @@ einer Funktion $f: \mathbb{R}^n \to \mathbb{R}^m$
 - $\iff \forall x \in X : \forall \varepsilon > 0 \ \exists \delta > 0 \text{ sodass } (\vert{}\vert{}x - x'\vert{}\vert{} < \delta \Rightarrow \vert{}\vert{}f(x) - f(x')\vert{}\vert{} < \varepsilon)$
 - $\iff \text{für jede Folge } (x_k)_{k \in \mathbb{N}_0} \subset \mathbb{R}^n \text{ mit } x_k \to x \text{ konvergiert } (f(x_k))_{k \in \mathbb{N}_0} \text{ gegen } f(x)$
 
+z.B. bei einem kritischen Punkt der eine spezielle Festlegung in der Definition der Funktion benötigt, nutze Folgenkriterium. 
 ## Kompaktheit
 
 von $K \subset \mathbb{R}^n$

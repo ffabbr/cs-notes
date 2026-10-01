@@ -83,8 +83,21 @@ L_1^+ & \text{regulär}
 \end{cases}}
 $$
 
+### Nicht-Regularität zeigen
 
-## Lemmas
+### Automaten sind Gedächtnislos (Lemma 3.3)
+
+Wir lesen 2 unterschiedliche Wörter ein die zu dem gleichen Zustand führen. Wenn wir jetzt ein neues Wort einlesen, führt das zu dem gleichen Zustand, egal welches Wort wir davor gelesen haben. 
+
+Also $x, y \in \Sigma^*$, $(q_0, x) \vdash_A^* (p, \lambda)$ und $(q_0, y) \vdash_A^* (p, \lambda)$, dann für jedes z $xz \in L(A) \iff yz \in L(A)$. 
+### Satz von Myhill-Nerode
+
+Widerspruch
+1. Regularität annehmen
+2. fixiere die Anzahl der Zustände m
+3. Weil $\exists$ mehr Wörter als Zustände, existiere $i, j, i \neq j$, die zum gleichen Zustand führen
+4. nach Lemma 3.3, für alle z drangehängt, führt zum gleichen
+5. zeige dass das nicht gilt (z.B. finde Präfixe i, j wo wenn man den Suffix dranhängt, ein Wort gültig ist, das andere nicht)
 
 ### Pumping Lemma
 
