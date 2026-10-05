@@ -85,28 +85,60 @@ $$
 
 ### Nicht-Regularität zeigen
 
-### Automaten sind Gedächtnislos (Lemma 3.3)
+###  Lemma 3.3 (Automaten sind Gedächtnislos)
 
 Wir lesen 2 unterschiedliche Wörter ein die zu dem gleichen Zustand führen. Wenn wir jetzt ein neues Wort einlesen, führt das zu dem gleichen Zustand, egal welches Wort wir davor gelesen haben. 
 
 Also $x, y \in \Sigma^*$, $(q_0, x) \vdash_A^* (p, \lambda)$ und $(q_0, y) \vdash_A^* (p, \lambda)$, dann für jedes z $xz \in L(A) \iff yz \in L(A)$. 
-### Satz von Myhill-Nerode
 
-Widerspruch
-1. Regularität annehmen
-2. fixiere die Anzahl der Zustände m
-3. Weil $\exists$ mehr Wörter als Zustände, existiere $i, j, i \neq j$, die zum gleichen Zustand führen
-4. nach Lemma 3.3, für alle z drangehängt, führt zum gleichen
-5. zeige dass das nicht gilt (z.B. finde Präfixe i, j wo wenn man den Suffix dranhängt, ein Wort gültig ist, das andere nicht)
+**Widerspruch**
+1. Regularität annehmen. Es gibt also einen EA
+2. nehme an, es gibt n Zustände
+3. betrachte $n+1$ Wörter. Da mehr Wörter als Zustände, gibt es 2, die im gleichen Zustand landen.
+4. nach Lemma 3.3 müssen sie sich gleich verhalten für jedes Suffix
+5. Das gilt aber nicht
+	1. zeige, gibt für alle $i, j, i \neq j$, ein Suffix, sodass ein Wort gültig ist, aber das andere nicht
 
-### Pumping Lemma
+**Beispiel**
+Sei $L_2 = \{a^n b^m \mid n, m \in \mathbb{N}, 2 \le m \le n-1, m \text{ ist Teiler von } n\}$
+1. nehme an, $L_{2}$ sei regulär. gibt also einen EA mit $L(A) = L_2$ 
+2. sei k die Anzahl der Zustände von A
+3. Betrachte $k+1$ Wörter a², a⁴, a⁸, a¹⁶, a³², …
+4. es gibt mehr Wörter als Zustände, also müssen 2 davon in dem gleichen Zustand landen 
+5. Nach Lemma 3.3 müssen sie sich gleich verhalten für jedes Suffix
+6. Das gilt aber nicht (unteres muss man allgemein zeigen, nicht nur das Beispiel)
+	1. nehme 2 dieser Wörter, bspw. a⁴ und a⁸. 
+	2. nehme b hoch (Hälfte des grösseren a-Wortes, hier b⁴)
+	3. a⁸b⁴ ist in $L_{2}$
+	4. a⁴b⁴ ist nicht in $L_{2}$ 
+
+
+> [!info]
+> $L = \{0^{n^2} \mid n \in \mathbb{N} \setminus \{0\}\}$ ist nicht regulär
+
+### Pumping Lemma für reguläre Sprachen
+
+Sei L regulär. Man kann alle Wörter Länge $\geq n_{0}$ in $w = yxz$ zerlegen mit
+(i) $|yx| \leq n_{0}$
+(ii) $|x|  \geq 1$
+(iii) entweder $\{ yx^k z \mid k \in \mathbb{N} \} \subseteq L$ oder $\{ yx^k z \mid k \in \mathbb{N} \} \cap L = \emptyset$
+
+In jedem Automaten ist $n_{0}$ nicht größer  als die Anzahl Zustände. 
 
 > [!info] Pumping Lemma
-> endlicher Automat hat endlich viele Zustände, muss also bei einem langen Wort irgendwann im Kreis laufen (Schleife)
+> endlicher Automat hat endlich viele Zustände, muss also bei einem langen Wort irgendwann im Kreis laufen (Schleife), somit ist das Wort nach beliebig vielen Schlaufen immer noch in der Sprache.
+
+Gegeben ein $n_{0}$ finden wir ein Wort $w, |w|\geq n_{0}$, sodass gegeben ein $y,x,z$, gilt (i) und (ii), nicht (iii) gelten kann
 
 Widerspruch
-- Regularität annehmen 
-- gibt also Pumping-Länge p
-- wähle Wort Länge größer  p
-- darf nun in $w = xyz$ zerlegen, gelten muss $\vert{}xy\vert{} \le p$ und $\vert{}y\vert{} \ge 1$ 
+- Regularität annehmen. 
+- dann gibt es ein $n_{0}$ mit der Eigenschaft, die das Pumping-Lemma beschreibt
+- wähle Wort Länge größer  $n_{0}$
+- es muss eine Zerlegung $w = yxz$ geben, die (i) und (ii) und (iii) erfüllt
+- zeige: nach (i) gilt ..., nach (ii) gilt ...
 - zeige, dass für jede Zerlegung mindestens ein $i$ existiert (z.B. i=0 oder i=2), sodass das aufgepumpte Wort $x y^i z$ nicht in $L$ liegt
+
+
+---
+
+

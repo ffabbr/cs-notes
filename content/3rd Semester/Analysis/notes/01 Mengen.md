@@ -52,3 +52,11 @@ Bsp. zeige, dass D nicht abgeschlossen ist
 
 ---
 
+## Urbildkriterium
+
+Ist $f: X\to Y$ eine stetige Funktion, $U \subseteq Y$ offen (abgeschlossen), dann ist auch das Urbild dieser Teilmenge offen (abgeschlossen) $f^{-1}(U)$. 
+
+z.B. $C=\{(x, y):xy>1\}$. Definiere $f(x,y)=xy, U=(1, \infty)$. Das Urbild dieser Funktion auf U ist C. Nach dem Urbildkriterium ist also C auch offen.
+
+z.B. $B=\{(x,y):x^2+y^2 \leq 4, y \geq x\}$. Ist eine Intersection von 2 Mengen, also $=\{(x,y):x^2+y^2 \leq 4\} \cap \{(x,y):y \geq x\}$. Nutze Urbildkriterium auf beiden Mengen separat. 1. $f_{1}(x,y)=x^2 + y^2, U=[0, 4] \text{ abgeschlossen}$. $f_{1}^{-1}(U)=\{(x,y):x^2+y^2 \leq 4\}$ 2. $f_{2}(x,y)=y-x, U=[0, \infty)$. 
+
