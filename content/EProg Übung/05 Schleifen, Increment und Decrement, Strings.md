@@ -2,6 +2,15 @@
 > [!info]
 > Das Projekt-Template zum Herunterladen: [[exercise-additionals-main-Reihe-Projekt.zip]]
 
+## Strings
+
+![[Pasted image 20261006105804.png]]
+![[Pasted image 20261006105810.png]]
+![[Pasted image 20261006105815.png]]
+![[Pasted image 20261006105823.png]]
+![[Pasted image 20261006105829.png]]
+![[Pasted image 20261006105835.png]]
+![[Pasted image 20261006105841.png]]
 ## Schleifen 
 
 In der heutigen Übungsstunde schauen wir uns zuerst `for` und `while` Schleifen an. 
@@ -33,7 +42,6 @@ Auch hier gilt, nutzt sie nur, wenn ihr euch der Bedeutung unterbewusst klar sei
 - [[Bildschirmfoto 2026-10-05 um 20.02.06.png|String Methoden, die String liefern]]
 - [[Bildschirmfoto 2026-10-05 um 20.02.14.png|Substrings]]
 - [[Bildschirmfoto 2026-10-05 um 20.02.21.png|String Methoden, die int liefern]]
-- [[Bildschirmfoto 2026-10-05 um 20.03.20.png|String Methoden, die boolean liefern]]
+- [[Bildschirmfoto 2026-10-05 um 20.03.20.png|String Methoden, die boolean liefern]] (hier ist insbesondere `.equals()` wichtig, um 2 Strings zu vergleichen)
 
 Wir üben die Anwendung dieser String Methoden mit verschiedenen Beispielen (siehe Slides).
-

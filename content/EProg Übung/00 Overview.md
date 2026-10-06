@@ -12,7 +12,7 @@
 - [[02 EBNF]]
 - [[03 Hi Java]]
 - [[04 Operationen, short circuiting, escape characters]]
-- [[05 Schleifen, Tests, Strings]]
+- [[05 Schleifen, Increment und Decrement, Strings]]
 
 %% End Waypoint %%
 ### Links
