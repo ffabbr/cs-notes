@@ -42,7 +42,7 @@ Ein oder mehrere Bänder mit Kästchen und einem Lesekopf. Kann Zeichen lesen, s
 > - $M=(Q, \Sigma, \delta, q_{0}, F)$
 > - Q Zustände
 > - F akzeptierende Zustände
-> - $\delta$ Übergangsfunktion, z.B. $\delta(q_{1}, 0)=q_{2}$
+> - $\delta$ Übergangsfunktion, z.B. $\delta(q_{1}, 0)=q_{2}$.  $\delta$ heißt ich nehme 1 Zeichen, $\hat{\delta}$ heißt ich nehme ein ganzes Wort
 
 **Konfiguration** 
 - (aktuelle Position, remaining input) $\vdash_M$ (neue Position, aktualisierter remaining input)

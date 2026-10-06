@@ -1,85 +1,89 @@
 ## Partielle Ableitung
 
-Wähle Zielvariable, betrachte die andere als Konstante und leite normal ab.
+**Partielle Ableitung**: Man wählt eine Zielvariable, betrachtet alle anderen Variablen als Konstanten und leitet ganz normal ab.
 
 $$
-\begin{align}
-f_i(x) =\frac{\partial f}{\partial x_i}(x) &= \lim_{h \to 0} \frac{f(x + he_i) - f(x)}{h} \\
-&= \lim_{h \to 0} \frac{f(x_1, \dots, x_i + h, \dots, x_n) - f(x_1, \dots, x_i, \dots, x_n)}{h}
-\end{align}
+f_i(x) = \frac{\partial f}{\partial x_i}(x) = \lim_{h \to 0} \frac{f(x_1, \dots, x_i + h, \dots, x_n) - f(x_1, \dots, x_i, \dots, x_n)}{h}
 $$
 
-## Differential
+*vor allem bei stückweiser Definition so arbeiten*
 
-Im Eindimensionalen haben wir durch die Ableitung (Tangente) den nächsten Wert approximieren können: $f(z+h) = f(z) + f'(z) \cdot h + \text{Rest}$ (forme um auf $f'(z)$). Im Mehrdimensionalen haben wir z.B. eine Ebene, nicht eine Gerade.
+**Gradient-Vektor**
+- Gilt für skalare Funktionen (mehrere Variablen Input, _eine_ Zahl Output)
+- Bildung: Für jede Variable wird die partielle Ableitung gebildet und untereinander in einen Spaltenvektor geschrieben
+- Visuell: Pfeile die zur größten Steigung zeigen, Länge des Pfeils ist wie steil es ist.
 
-Eine Funktion ist an einer Stelle $x$ **differenzierbar**, falls es eine **lineare Abbildung** $L$ (z.B. Matrix) gibt, die die Funktion bei $x$ nahezu perfekt approximiert. 
-$$
-\lim_{h \to 0} \frac{\vert{}\vert{}f(x + h) - f(x) - L(h)\vert{}\vert{}}{\vert{}\vert{}h\vert{}\vert{}} = 0
-$$
-- $f(x + h) - f(x)$ ist Änderung der Funktion
-- $L(h)$ ist durch Matrix vorrausgesagte Änderung
+---
+## Jacobi Matrix
 
-**Globale Differenzierbarkeit**: gibt für jeden Punkt ein solches $L$.
-
-### Gradient-Vektor
-
-mehrere Variablen Input, eine Zahl Output
-
-**Visuell**: Pfeile die zur größten Steigung zeigen, Länge des Pfeils ist wie steil es ist.
-**Bildung**: für jede Variable eine Dimension im Vektor, bilde partielle Ableitungen und schreibe die Ergebnisse untereinander in einen Spaltenvektor
-### Jacobi Matrix
-
-mehrere Variablen Input, mehrere Werte Output (Vektorfunktionen)
+Gilt für Funktionen mit mehreren Variablen Input und _mehreren_ Werten Output (Vektorfunktionen)
 
 **Bildung**: für jede Ausgabekomponente eine Zeile, für jede der Variablen ihre partielle Ableitungen in eine Spalte
 
-$$
-f(x + h) \approx f(x) + J_f(x) \cdot h
-$$
+Funktion ist total differenzierbar $\implies$ Jacobi Matrix $J_{f}$ ist genau die Matrix, die die lineare Abbildung beschreibt $f(x + h) \approx f(x) + J_f(x) \cdot h$
 
-differenzierbar $\implies$ Jacobi Matrix ist die Abbildung
+Rechenregeln: 
+- $J_{f \circ g}(x) = J_f(g(x)) \cdot J_g(x)$
+- $J_{f \cdot g}(x) = g(x) \cdot J_f(x) + f(x) \cdot J_g(x)$
+
+## Totale Differenzierbarkeit 
+
+Im Eindimensionalen approximiert die Tangente (Ableitung) den nächsten Wert. Im Mehrdimensionalen ist das zum Beispiel eine Tangentialebene.
+
+Eine Funktion ist an einer Stelle $x$ total differenzierbar, falls es eine lineare Abbildung $L$ (die Jacobi-Matrix) gibt, die die Funktion bei $x$ nahezu perfekt approximiert. 
+$$
+\lim_{h \to 0} \frac{\vert{}\vert{}f(x + h) - f(x) - L(h)\vert{}\vert{}}{\vert{}\vert{}h\vert{}\vert{}} = 0
+$$
+- $f(x + h) - f(x)$ ist die tatsächliche Änderung der Funktion
+- $L(h)$ ist die durch Matrix vorrausgesagte Änderung (Jacobi mal h) 
+
+Alle partiellen Ableitungen $\partial_i f$ (Kombonenten der Jacobi-Matrix) sind stetig $\implies$ $f$ ist stetig differenzierbar
 
 ---
+## Richtungsableitungen
 
-Beispiel: 
-$f(x,y) = \begin{cases} \frac{xy}{\sqrt{x^2+y^2}} & (x,y) \neq (0,0) \\ 0 & (x,y) = (0,0) \end{cases}$
-Ist f bei (0,0) differenzierbar? Da $\lim_{h \to 0} \frac{f(0+h, 0) - f(0,0)}{h}=0$ und $\lim_{h \to 0} \frac{f(0, 0+h) - f(0, 0)}{h}=0$, somit ist unsere Jacobi Matrix $\begin{bmatrix}0 & 0\end{bmatrix} \in \mathbb{R}^{1 \times 2}$ . Dennoch jedoch nicht differenzierbar. Zeige mit $\lim_{h \to 0} \frac{\vert{}\vert{}f(x + h) - f(x) - L(h)\vert{}\vert{}}{\vert{}\vert{}h\vert{}\vert{}} = 0$. Nehme $h=(t,t)$ und betrachte $\lim_{ t \to 0 }$ mit $f(t,t)=\frac{|t|}{\sqrt{ 2 }}$ und $L(h)=(0, 0)\cdot \begin{bmatrix}t \\ t\end{bmatrix}$. Lim ist $\frac{1}{2}$, nicht 0 wie oben in der "zeige" Definition gefordert, somit nicht differenzierbar. 
+Die Richtungsableitung einer Funktion $f$ an der Stelle $x_0$ in eine beliebige Richtung $v$ berechnet sich durch:
 
----> nehme an L linear, also nehme an L hat eine jacobi matrix und schaue ob es in die definition der differenzierbarkeit passt
+$$D_v f(x_0) = \lim_{h \to 0} \frac{f(x_0 + h v) - f(x_0)}{h}$$
 
-Beispiel für **Richtungsableitung**
-Prüfe ob bei (0,0) differenzierbar. Ableitung in eine beliebige Richtung. Ableitung ist eine lineare Funktion, dann oder sonst muss man händisch prüfen, . ----> suche einen ausdruck für L und prüfe ob L linear ist. 
+Wenn eine Funktion total differenzierbar ist, **muss** diese Richtungsableitung eine lineare Abbildung bezüglich des Richtungsvektors $v$ sein. Es gilt dann zwingend:
+$$D_v f(x_0) = J_f(x_0) \cdot v$$
 
-Wichtiges Lemma: alle partiellen Ableitungen stetig =>  f ist differenzierbar.
-
-Also zb alle komponenten der jacobi matrix sind stetig , dann folgt direkt, dass f stetig differenzierbar ist.
-
-Kettenregel: Jacobi matrix von f kreis g (x) ist jacobi von f ( g(x)) * jacobi_ g(x)
-Produktregel: nehme an beide Funktionen scalare funktionen. j von f mal g = g(x)*jacobi von f(x) + f(X) * jacobi von g(x)
+Algorithmus zur Prüfung auf Differenzierbarkeit (z.B. in (0,0)):
+1. Berechne den Limes für $D_v f(0,0)$ für einen allgemeinen Vektor $v = (v_1, v_2)$
+2. Ergebnis **nicht** linear in $v_1$ und $v_2$ (z.B. Brüche $\frac{v_1^2}{v_2}$ oder Wurzeln wie $\sqrt{v_1^2+v_2^2}$ ), somit L nicht linear. Die Funktion ist **nicht** total differenzierbar.
+3. **Ergebnis ist linear**: müssen händisch prüfen mit der Definition (Limes mit Jacobi Matrix und Norm)
 
 ---
+## Beispiel: Widerlegung Differenzierbarkeit
 
-## Stetig differenzierbar
 
-Eine Funktion $f$, die von einem offenen Definitionsbereich $U$ im $\mathbb{R}^n$ in den $\mathbb{R}^m$ abbildet, wird als stetig differenzierbar bezeichnet, falls alle ihre partiellen Ableitungen ($f_i$ für $1 \leq i \leq n$) existieren und auf dem Bereich $U$ stetig sind.
+"Prüfe ob bei (0,0) differenzierbar": Nehme allgemeinen $v = (v_1, v_2)$. Berechne Grenzwert für Richtungsableitung $L(v) = \lim_{t \to 0} \frac{f(0 + t v_1, 0 + t v_2) - f(0,0)}{t}$. Prüfe, ob linear gegenüber $v$. Nicht linear $\implies$ fertig, ist nicht total differenzierbar. Linear $\implies$ händischer Beweis notwendig (mit Jacobi Matrix, etc.)
 
-Solche Funktionen fasst man in einer Menge zusammen und schreibt dafür $f \in C^1(U, \mathbb{R}^m)$.
+**Globale Differenzierbarkeit**: gibt für jeden Punkt ein solches $L$.
 
-Falls für eine Funktion $f$ alle partiellen Ableitungen $\partial_i f$ auf einem offenen Bereich $U$ existieren und stetige Funktionen sind, dann ist $f$ auf dem gesamten Bereich $U$ differenzierbar.
+
+$$
+f(x,y) = \begin{cases} \frac{xy}{\sqrt{x^2+y^2}} & (x,y) \neq (0,0) \\ 0 & (x,y) = (0,0) \end{cases}
+$$
+
+1. Partielle Ableitungen an $(0,0)$ prüfen. $\lim_{h \to 0} \frac{f(0+h, 0) - f(0,0)}{h} = 0 \quad \text{und} \quad \lim_{h \to 0} \frac{f(0, 0+h) - f(0, 0)}{h} = 0$. Die partiellen Ableitungen existieren. Gäbe es eine totale Ableitung, müsste die Jacobi-Matrix $J_f = \begin{bmatrix}0 & 0\end{bmatrix}$ sein.
+2. Totale Differenzierbarkeit händisch prüfen. Es muss gelten $\lim_{h \to 0} \frac{\Vert{}f(x + h) - f(x) - L(h)\Vert{}}{\Vert{}h\Vert{}} = 0$. Da $x=(0,0)$ und $L(h) = \begin{bmatrix}0 & 0\end{bmatrix} \cdot \begin{bmatrix}h_1 \\ h_2\end{bmatrix} = 0$, vereinfacht sich der Bruch zu $\lim_{h \to 0} \frac{\vert{}f(h_1, h_2)\vert{}}{\Vert{}h\Vert{}} = 0$. Damit dieser Grenzwert $0$ ist, muss er aus *jeder* beliebigen Richtung $0$ ergeben. 
+3. Gegenbeispiel: Wähle $h = (t,t)$ und bilde den Limes $t \to 0$. $\lim_{t \to 0} \frac{\frac{\vert{}t\vert{}}{\sqrt{2}}}{\vert{}t\vert{}\sqrt{2}} = \frac{1}{2}$. 
+4. Da der Grenzwert $\frac{1}{2}$ und nicht $0$ ist, ist bewiesen, die Funktion ist im Ursprung **nicht total differenzierbar**.
+
+---
 
 ## Mehrfache Ableitungen
-
-**Satz von Schwarz**
-$f \in C^k(U)$: Reihenfolge der bis zu $k$ partiellen Ableitungen ist irrelevant, Ergebnis ist gleich. Satz von Schwarz ist technically nur mit 2 Ableitungsschritten, gilt aber für beliebig viele.
 
 $C^0$: stetige Funktionen
 $C^k$: kann die Funktion $k$-mal ableiten, Ergebnis ist immer noch stetig
 $C^\infty$: glatt
-### Erhaltung
 
-f und g sind $k$-fach stetig differenzierbar 
+**Satz von Schwarz**
+$f \in C^k(U)$: Reihenfolge der bis zu $k$ partiellen Ableitungen ist irrelevant, Ergebnis ist gleich. Satz von Schwarz ist technically nur mit 2 Ableitungsschritten, gilt aber für beliebig viele.
 
+**Erhaltung**: f und g sind $k$-fach stetig differenzierbar 
 - $f + g$ auch
 - $f \cdot g$ auch
 - $f \circ h$ auch
