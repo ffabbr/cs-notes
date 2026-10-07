@@ -8,6 +8,8 @@ f'(x)\approx\frac{f(x+h)-f(x)}{h}
 }
 $$
 
+**Laufzeit:** $O(1)$, also 2 Auswertungen von $f$ pro Ableitung.
+
 Multipliziert man mit $h$, erhält man:
 
 $$
@@ -41,6 +43,8 @@ f'(x)\approx
 \frac{\operatorname{Im}(f(x+ih))}{h}
 }
 $$
+
+**Laufzeit:** $O(1)$, also nur 1 (komplexe) Auswertung von $f$ pro Ableitung.
 
 ### Warum funktioniert das?
 
@@ -170,6 +174,8 @@ def diffih(f,x, h0):
     return y, h
 ```
 
+**Laufzeit:** $O(\text{nit})$, eine Auswertung von $f$ pro Schrittweite $h_k$.
+
 ## Ableitung zweiter Ordnung
 
 Wir schauen nach links und nach rechts, nehmen den Mittelwert. 
@@ -187,6 +193,8 @@ f'(x)\approx
 \frac{f(x+h)-f(x-h)}{2h}
 }
 $$
+
+**Laufzeit:** $O(1)$, also 2 Auswertungen von $f$ pro Ableitung.
 
 ## Richardson Konvergenzbeschleunigung
 
@@ -246,4 +254,6 @@ def diffRichardsonV(f,x, h0, rtol=1e-12, atol=1e-12):
     
     return y[:k+1], h[:k+1] 
 ```
+
+**Laufzeit:** $O(\text{nit})$ Auswertungen von $f$ (für die zentralen Differenzen in `diffd2`) plus $O(\text{nit}^2)$ arithmetische Operationen für das Extrapolationsschema (Schritt $k$ aktualisiert $O(\text{nit}-k)$ Einträge). Bricht die Schleife nach $K$ Stufen ab, sind es nur $O(K\cdot\text{nit})$ Operationen.
 

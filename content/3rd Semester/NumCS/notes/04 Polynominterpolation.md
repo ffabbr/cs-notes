@@ -17,6 +17,8 @@ $$
 \underbrace{ \begin{bmatrix} 1 & x_0 & \cdots & x_0^n \\ 1 & x_1 & \cdots & x_1^n \\ \vdots & \vdots & \ddots & \vdots \\ 1 & x_n & \cdots & x_n^n \end{bmatrix} }_{\text{Vandermonde-Matrix}} \begin{bmatrix} \alpha_0 \\ \alpha_1 \\ \vdots \\ \alpha_n \end{bmatrix} = \begin{bmatrix} y_0 \\ y_1 \\ \vdots \\ y_n \end{bmatrix}
 $$
 
+**Laufzeit** (für $n+1$ Stützstellen): Lösen mit Gauss-Elimination kostet $O(n^3)$, da die Vandermonde-Matrix voll besetzt ist.
+
 ## Vandermonde Matrix erstellen
 
 Langsam: 
@@ -46,6 +48,8 @@ Kumulatives Produkt:
 - Spalte 2: bisheriges Ergebnis ($x$) multipliziert mit dem aktuellen Wert der Spalte ($x$), also: $x \cdot x$. 
 - etc.
 
+**Laufzeit:** beide Varianten $O(n^2)$, da die Matrix $(n+1)^2$ Einträge hat. Die schnelle Variante braucht aber nur eine Multiplikation pro Eintrag (statt einer Potenz `t ** j`) und keine Python-Schleife, also einen viel kleineren Vorfaktor.
+
 ## Horner Schema
 
 Schnelles **Auswerten** eines Polynoms: 
@@ -64,6 +68,8 @@ def horner(p, x):
 		y = x * y + p[i]
 	return y
 ```
+
+**Laufzeit:** $O(n)$ pro Auswertungspunkt ($n$ Multiplikationen und $n$ Additionen), für $N$ Punkte also $O(nN)$. Naiv (jede Potenz $x^k$ einzeln berechnen) wären es $O(n^2)$ pro Punkt.
 
 ---
 
@@ -110,6 +116,8 @@ Lösen des Gleichungssystems:
 2. zweite Zeile: $\alpha_0 + (t_1 - t_0)\alpha_1 = y_1$, mit $\alpha_0 = y_0$ also $\alpha_1 = \frac{y_1 - y_0}{t_1 - t_0}$ 
 3. etc. 
 
+**Laufzeit:** Vorwärtseinsetzen mit einer unteren Dreiecksmatrix kostet $O(n^2)$ statt $O(n^3)$ wie bei der Vandermonde-Matrix.
+
 **b: dividierte Differenzen**
 
 Base Case $k=0$:    $f[t_i] = y_i$
@@ -141,6 +149,8 @@ for i in range (1, n):
 return y
 ```
 
+**Laufzeit:** beide Varianten $O(n^2)$ (Dreiecksschema mit $\frac{n(n+1)}{2}$ Einträgen). Die zweite ist nur vektorisiert, also schneller in der Praxis.
+
 
 **Dann: Interpolant aufstellen**
 berechnete Koeffizienten der Diagonalen mit den Basiselementen multiplizieren und Summieren
@@ -166,7 +176,9 @@ for i in range(n-1, -1, -1):
 return r
 ```
 
--> Vorteil: können einfach neue Werte hinzufügen, ohne alles neu zu berechnen.
+**Laufzeit:** $O(n)$ pro Auswertungspunkt (Horner-artig), für $N$ Punkte also $O(nN)$.
+
+-> Vorteil: können einfach neue Werte hinzufügen, ohne alles neu zu berechnen. Eine neue Stützstelle braucht nur eine neue Zeile im Dreiecksschema, also $O(n)$.
 
 ---
 ## Lagrange-Basis statt Monome
@@ -186,6 +198,8 @@ $$
 z.B. $x_0=1,\quad x_1=2,\quad x_2=4$, $\quad L_0(x)=\frac{(x-2)(x-4)}{(1-2)(1-4)}$,  entweder es kürzt sich alles zu 1 oder es kommt Faktor 0 im Zähler
 
 Bei $B\alpha=y$ haben wir also die Einheitsmatrix und somit $\mathbf{I}\alpha=y \;\Rightarrow\; \alpha=y$, $f(t)=\sum_{i=0}^n y_i\,L_i(t)$. 
+
+**Laufzeit:** Koeffizienten bestimmen ist gratis ($O(1)$, $\alpha=y$). Dafür kostet ein $L_i(t)$ $O(n)$, die Auswertung von $f(t)$ also $O(n^2)$ pro Punkt, für $N$ Punkte $O(n^2 N)$.
 
 > [!example] Beispiel: Monombasis vs. Lagrange-Basis
 > Gesucht: $f$ mit $f(0)=3$ und $f(1)=5$.
@@ -218,12 +232,16 @@ def barycentric_weights(x):
     return barweight
 ```
 
+**Laufzeit:** Gewichte $\lambda_i$ einmalig in $O(n^2)$ ($n+1$ Produkte mit je $n$ Faktoren), danach jede Auswertung von $f(t)$ in $O(n)$. Für $N$ Punkte also $O(n^2 + nN)$ statt $O(n^2 N)$.
+
 ## Chebyshev Interpolation
 
 Wir optimieren, indem wir andere, nicht-gleichverteilte Punkte als Referenz wählen. 
 
 - **Chebyshev-Knoten:** Die $n+1$ Knotenpunkte für $k=0, \dots, n$ berechnen sich durch die Formel $x_k = a + \frac{1}{2}(b-a)\left(\cos\left(\frac{2k+1}{2(n+1)}\pi\right) + 1\right)$.
 - **Chebyshev-Abszissen:** Diese berechnen sich durch $x_k = a + \frac{1}{2}(b-a)\left(\cos\left(\frac{k}{n}\pi\right) + 1\right)$. Wenn man die Endpunkte des Intervalls bei der Berechnung auslassen möchte, läuft der Index lediglich über $k=1, \dots, n-1$.
+
+**Laufzeit:** Knoten bzw. Abszissen berechnen kostet $O(n)$.
 
 Chebyshev-Polynome $T_k(x)$ als Basis: 
 $p(x) = c_0 + c_1 T_1(x) + \dots + c_n T_n(x)$
@@ -246,4 +264,6 @@ def clenshaw(a,x):
 	y = a[0] + x * d_k1 - d_k2
 	return y
 ```
+
+**Laufzeit:** $O(n)$ pro Auswertungspunkt (eine Rückwärtsschleife über die $n+1$ Koeffizienten, analog zu Horner), für $N$ Punkte also $O(nN)$.
 

@@ -2,10 +2,39 @@ Thanks to https://emils.site/docs/lecture_notes/systems_programming/alloc_memory
 
 ## Malloc
 
+Often we want to store memory that is allocated and returned by a function as a result whose size is not known to the caller. 
+
+Initiall content is trash (uninitialized, holds leftover bytes). `n*size` can silently overflow if n is huge. 
+
 Local array: `char arr[x];` lives in the functions own space, can't return that. Also can't solve with pointers since calling the function again overwrites that. 
 
-Malloc `char* arr = malloc(x);`, asks system for memory and can be **freed** with `free(...)`, system returns NULL if no memory for malloc available, so check for that. 
 
+```c
+int *arr = malloc(10 * sizeof(int));   // room for 10 ints (40 bytes on most machines)
+if (arr == NULL) {
+    return 1;
+}
+
+arr[0] = 5;     // no suffix needed, 5 is already an int
+arr[1] = 42;
+
+free(arr);
+```
+
+## Calloc
+
+Like Malloc but initialized to zero
+can not overflow (returns NULL)
+
+```c
+void *calloc(size_t count, size_t size);
+```
+
+2 Parameters: 
+- count (how many elements)
+- size (how many bytes per element)
+
+(with malloc we need to multiply it ourselves, with calloc that is done automatically)
 ## Structs
 
 copied on assignment and pass-by-value

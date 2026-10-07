@@ -8,9 +8,9 @@ $$
 
 *vor allem bei stückweiser Definition so arbeiten*
 
-**Gradient-Vektor**
+**Gradient-Vektor**  $\nabla f(p)$ 
 - Gilt für skalare Funktionen (mehrere Variablen Input, _eine_ Zahl Output)
-- Bildung: Für jede Variable wird die partielle Ableitung gebildet und untereinander in einen Spaltenvektor geschrieben
+- **Bildung**: Für jede Variable wird die partielle Ableitung gebildet und untereinander in einen Spaltenvektor geschrieben
 - Visuell: Pfeile die zur größten Steigung zeigen, Länge des Pfeils ist wie steil es ist.
 
 ---

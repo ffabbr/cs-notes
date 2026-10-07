@@ -17,6 +17,8 @@ D.diagonal()[:, np.newaxis]*A
 
 `D.diagonal()` ist ein 1D Array der Diagonalwerte, `[:, np.newaxis]` macht daraus ein 2D Array (also macht aus der Zeile eine Spalte), und dann `*A` macht die Elementweise Multiplikation mit A.
 
+**Laufzeit:** `D @ A` als volle Matrixmultiplikation $O(n^3)$, mit Ausnutzen der Diagonalstruktur nur $O(n^2)$ (jeder Eintrag von A wird einmal multipliziert).
+
 ## Multiplikation mit Relevanz oben rechts
 
 Wir wollen $\mathbf{y} = \text{triu}(\mathbf{A}\mathbf{B}^T)\mathbf{x}$ berechnen. `triu` meint nur den Teil rechts oben. 
@@ -29,6 +31,8 @@ U = np.triu(M)
 y = np.dot(U, x)
 return(y)
 ```
+
+**Laufzeit** (mit $A, B \in \mathbb{R}^{n\times p}$): $O(n^2 p)$ für $AB^T$, dann $O(n^2)$ für `triu` und $U x$, insgesamt also $O(n^2 p)$, bei $p=n$ $O(n^3)$.
 
 **Schnelle Variante**: Wir berechnen $Bx$, dann machen wir $T\cdot (Bx)$, wobei T eine Matrix die `1` überhalb der Diagonalen hat, ist. 
 
@@ -44,6 +48,8 @@ Bx = B * x.reshape(-1, 1) # reshape macht Spaltenvektor
 partial_sums = np.cumsum(Bx[::-1, :], axis=0)[::-1, :]
 y = np.sum(A * partial_sums, axis=1)
 ```
+
+**Laufzeit:** Skalieren der Zeilen von $B$ $O(np)$, `cumsum` $O(np)$, zeilenweise Skalarprodukte $O(np)$, insgesamt also $O(np)$, bei $p=n$ $O(n^2)$.
 
 ## Kronecker Produkt
 
@@ -63,6 +69,8 @@ K = np.kron(A, B)
 y = K @ x
 ```
 
+**Laufzeit** (mit $A, B \in \mathbb{R}^{n\times n}$): $A\otimes B$ ist $n^2\times n^2$, Aufstellen und $K x$ kosten also je $O(n^4)$ (Speicher ebenfalls $O(n^4)$).
+
 **Schnell**: 
 
 ```python
@@ -71,6 +79,8 @@ X = x.reshape(n, n)
 y = (A @ X) @ B.T     # ?!?!?!?!
 return y.ravel()
 ```
+
+**Laufzeit:** zwei $n\times n$ Matrixprodukte, also $O(n^3)$ (Speicher $O(n^2)$). `reshape` und `ravel` sind $O(n^2)$ bzw. gratis.
 
 - reshape nimmt den Vektor und zerteilt ihn in n Spalten
 - ravel nimmt die Matrix und gibt alle Spalten untereinander in einen Vektor
