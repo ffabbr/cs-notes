@@ -1,16 +1,4 @@
 
-> [!info]
-> Das Projekt-Template zum Herunterladen: [[Reihe-Projekt.zip]]
-
-## Strings
-
-![[Pasted image 20261006105804.png]]
-![[Pasted image 20261006105810.png]]
-![[Pasted image 20261006105815.png]]
-![[Pasted image 20261006105823.png]]
-![[Pasted image 20261006105829.png]]
-![[Pasted image 20261006105835.png]]
-![[Pasted image 20261006105841.png]]
 ## Schleifen 
 
 In der heutigen Übungsstunde schauen wir uns zuerst `for` und `while` Schleifen an. 
@@ -20,6 +8,9 @@ Eine `for` Schleife wiederholt den *body* solange die Schleifenkondition erfüll
 Eine `while` Schleife wiederholt den *body* solange die Schleifenkondition erfüllt ist. Das klingt sehr ähnlich zu dem obigen Satz über `for`, denn tatsächlich sind for und while Schleifen semantisch Äquivalent. Wir schauen uns in der Übungsstunde Beispiele dazu an. 
 
 ![[Bildschirmfoto 2026-10-05 um 19.51.27.png]]![[Bildschirmfoto 2026-10-05 um 19.51.39.png]]
+
+> [!info]
+> Das Projekt-Template zum Herunterladen: [[Reihe-Projekt.zip]]
 
 ## Increment und Decrement
 
@@ -45,3 +36,7 @@ Auch hier gilt, nutzt sie nur, wenn ihr euch der Bedeutung unterbewusst klar sei
 - [[Bildschirmfoto 2026-10-05 um 20.03.20.png|String Methoden, die boolean liefern]] (hier ist insbesondere `.equals()` wichtig, um 2 Strings zu vergleichen)
 
 Wir üben die Anwendung dieser String Methoden mit verschiedenen Beispielen (siehe Slides).
+
+
+> [!success] Slides
+> → [[Slides Woche 4.pdf]]
