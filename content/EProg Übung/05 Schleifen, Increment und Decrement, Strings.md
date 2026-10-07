@@ -1,6 +1,6 @@
 
 > [!info]
-> Das Projekt-Template zum Herunterladen: [[exercise-additionals-main-Reihe-Projekt.zip]]
+> Das Projekt-Template zum Herunterladen: [[Reihe-Projekt.zip]]
 
 ## Strings
 
