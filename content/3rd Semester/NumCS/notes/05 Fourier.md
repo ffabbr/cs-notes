@@ -3,13 +3,17 @@
 > **Problem:** Wir haben viele Messwerte, die ein *periodisches* Muster zeigen (z.B. Audio, Temperatur über Jahre). Wir wollen sie gut darstellen, analysieren und interpolieren.
 >
 > **Idee:** Jedes Signal lässt sich als **Summe von reinen Schwingungen** (sin/cos mit verschiedenen Frequenzen) schreiben. Die Fourier-Transformation berechnet, *wie viel* von jeder Frequenz im Signal steckt.
->
-> 1. **Motivation:** Warum nicht einfach Polynome?
-> 2. **Werkzeug:** komplexe Zahlen & Einheitswurzeln
-> 3. **Basis:** Signale als Summe von Schwingungen $\varphi_k$
-> 4. **DFT:** Gewichte $y[k]$ berechnen (Formel + Matrix), und **IDFT** zurück
-> 5. **Eigenschaften & Interpretation:** Zeit- vs. Frequenzbereich
-> 6. **Anwendungen:** Filter, trigonometrische Interpolation
+
+> [!note] Formel-Übersicht
+> | | Formel |
+> | --- | --- |
+> | Einheitswurzel | $\omega_n = e^{-2\pi i/n}$ |
+> | Basis-Schwingung | $\varphi_k[t] = e^{2\pi i k t/n}$ |
+> | Orthogonalität | $\langle \varphi_k, \varphi_l \rangle = n$ falls $k = l$, sonst $0$ |
+> | DFT | $y[k] = \sum_{t} x[t]\,\omega_n^{kt}$, $\ \mathbf{y} = \mathbf{F}_n \mathbf{x}$ |
+> | IDFT | $x[t] = \frac{1}{n}\sum_{k} y[k]\,e^{2\pi i k t/n}$, $\ \mathbf{x} = \frac{1}{n}\mathbf{F}_n^H \mathbf{y}$ |
+> | Energie | $\sum_t \lvert x[t] \rvert^2 = \frac{1}{n}\sum_k \lvert y[k] \rvert^2$ |
+> | Aufwand | naiv $O(n^2)$, FFT $O(n \log n)$ |
 
 ## 0 Notation
 
@@ -251,15 +255,3 @@ $$p_m(t) = \sum_{k=-m}^{m} c_k\, e^{2\pi ikt}, \quad t \in [0,1)$$
 > [!note] Ergänzung: Zusammenhang mit der DFT
 > Die Messwerte liegen bei $t_j = j/n$, also $x[j] = p_m(j/n)$. Für negative $k$ nimmt man wegen der Periodizität $c_{-k} = y[n-k]/n$ (vgl. 5.3: Frequenz $n-k$ = Frequenz $-k$).
 
-## 7 Spickzettel
-
-> [!note] Ergänzung: Die wichtigsten Formeln auf einen Blick
-> | | Formel |
-> | --- | --- |
-> | Einheitswurzel | $\omega_n = e^{-2\pi i/n}$ |
-> | Basis-Schwingung | $\varphi_k[t] = e^{2\pi i k t/n}$ |
-> | Orthogonalität | $\langle \varphi_k, \varphi_l \rangle = n$ falls $k = l$, sonst $0$ |
-> | DFT | $y[k] = \sum_{t} x[t]\,\omega_n^{kt}$, $\ \mathbf{y} = \mathbf{F}_n \mathbf{x}$ |
-> | IDFT | $x[t] = \frac{1}{n}\sum_{k} y[k]\,e^{2\pi i k t/n}$, $\ \mathbf{x} = \frac{1}{n}\mathbf{F}_n^H \mathbf{y}$ |
-> | Energie | $\sum_t \lvert x[t] \rvert^2 = \frac{1}{n}\sum_k \lvert y[k] \rvert^2$ |
-> | Aufwand | naiv $O(n^2)$, FFT $O(n \log n)$ |
