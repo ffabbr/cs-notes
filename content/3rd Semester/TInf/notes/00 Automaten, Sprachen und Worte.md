@@ -1,3 +1,8 @@
+
+> [!warning]
+> - AUSGABEZUSTÄNDE markieren
+> - Zustände BENENNEN
+
 ## Allgemein
 
 > [!success] Allgemein
@@ -71,6 +76,7 @@ $\text{Kl}[q]$ ... Menge aller Wörter die uns an diesem Zustand landen lassen
 
 $$
 \boxed{
+\text{\textbf{Regularität:}}\\
 L_1,L_2\text{ regulär}
 \Longrightarrow
 \begin{cases}
@@ -83,7 +89,16 @@ L_1^+ & \text{regulär}
 \end{cases}}
 $$
 
-### Nicht-Regularität zeigen
+$$
+\boxed{ \begin{array}{l} \text{\textbf{Nicht-Regularität:}} \\ L \text{ nicht regulär} \iff \overline{L} \text{ nicht regulär} \\ \left. \begin{array}{r} L_1 \cap L_2 \text{ nicht regulär} \\ L_2 \text{ regulär} \end{array} \right\} \implies L_1 \text{ \textbf{nicht} regulär} \\ \left. \begin{array}{r} L_1 \cup L_2 \text{ nicht regulär} \\ L_2 \text{ regulär} \end{array} \right\} \implies L_1 \text{ \textbf{nicht} regulär} \\ \left. \begin{array}{r} L_1 \setminus L_2 \text{ nicht regulär} \\ L_2 \text{ regulär} \end{array} \right\} \implies L_1 \text{ \textbf{nicht} regulär} \end{array} }
+$$
+
+
+> [!info]
+> - $L = \{0^{n^2} \mid n \in \mathbb{N} \setminus \{0\}\}$ ist nicht regulär
+> - $L = \{ww \mid w \in \{0,1\}^*\}$ ist nicht regulär 
+
+## Nicht-Regularität zeigen
 
 ###  Lemma 3.3 (Automaten sind Gedächtnislos)
 
@@ -112,11 +127,24 @@ Sei $L_2 = \{a^n b^m \mid n, m \in \mathbb{N}, 2 \le m \le n-1, m \text{ ist Tei
 	3. a⁸b⁴ ist in $L_{2}$
 	4. a⁴b⁴ ist nicht in $L_{2}$ 
 
-
-> [!info]
-> $L = \{0^{n^2} \mid n \in \mathbb{N} \setminus \{0\}\}$ ist nicht regulär
+> [!proof]- Beweisskizze
+> Sei $A = (Q, \Sigma, \delta, q_0, F)$ ein DEA.
+> 
+> 1. **Voraussetzung:** Für $x, y \in \Sigma^*$ gilt:
+>    $$\delta^*(q_0, x) = \delta^*(q_0, y) = p$$
+> 2. **Erweiterung um Suffix $z$:** Für ein beliebiges $z \in \Sigma^*$ gilt aufgrund des Determinismus:
+>    - $\delta^*(q_0, xz) = \delta^*(\delta^*(q_0, x), z) = \delta^*(p, z)$
+>    - $\delta^*(q_0, yz) = \delta^*(\delta^*(q_0, y), z) = \delta^*(p, z)$
+> 3. **Zustandsgleichheit:** $\delta^*(q_0, xz) = \delta^*(q_0, yz)$. Beide Wörter enden im selben Zustand.
+> 4. **Fazit:** Da der Endzustand identisch ist, liegt er entweder in $F$ oder nicht. Daraus folgt direkt:
+>    $$xz \in L(A) \iff yz \in L(A) \quad \square$$
 
 ### Pumping Lemma für reguläre Sprachen
+
+> [!info] Pumping Lemma
+> endlicher Automat hat endlich viele Zustände, muss also bei einem langen Wort irgendwann im Kreis laufen (Schleife), somit ist das Wort nach beliebig vielen Schlaufen immer noch in der Sprache.
+
+Gegeben ein $n_{0}$ finden wir ein Wort $w, |w|\geq n_{0}$, sodass gegeben ein $y,x,z$, gilt (i) und (ii), aber (iii) nicht gelten kann
 
 Sei L regulär. Man kann alle Wörter Länge $\geq n_{0}$ in $w = yxz$ zerlegen mit
 (i) $|yx| \leq n_{0}$
@@ -125,19 +153,31 @@ Sei L regulär. Man kann alle Wörter Länge $\geq n_{0}$ in $w = yxz$ zerlegen 
 
 In jedem Automaten ist $n_{0}$ nicht größer  als die Anzahl Zustände. 
 
-> [!info] Pumping Lemma
-> endlicher Automat hat endlich viele Zustände, muss also bei einem langen Wort irgendwann im Kreis laufen (Schleife), somit ist das Wort nach beliebig vielen Schlaufen immer noch in der Sprache.
-
-Gegeben ein $n_{0}$ finden wir ein Wort $w, |w|\geq n_{0}$, sodass gegeben ein $y,x,z$, gilt (i) und (ii), nicht (iii) gelten kann
-
-Widerspruch
+**Widerspruch**
 - Regularität annehmen. 
-- dann gibt es ein $n_{0}$ mit der Eigenschaft, die das Pumping-Lemma beschreibt
+- dann gibt es ein $n_{0} \in \mathbb{N}$ mit der Eigenschaft, die das Pumping-Lemma beschreibt
 - wähle Wort Länge größer  $n_{0}$
 - es muss eine Zerlegung $w = yxz$ geben, die (i) und (ii) und (iii) erfüllt
 - zeige: nach (i) gilt ..., nach (ii) gilt ...
 - zeige, dass für jede Zerlegung mindestens ein $i$ existiert (z.B. i=0 oder i=2), sodass das aufgepumpte Wort $x y^i z$ nicht in $L$ liegt
 
+> [!info]- Beweis: Pumping Lemma
+> Sei $L$ regulär und $A = (Q, \Sigma, \varphi, q_0, F)$ ein deterministischer endlicher Automat mit $L(A) = L$.
+> **1. Wahl von $n_0$:** Setze $n_0 = |Q|$.
+> 
+> **2. Zustandsfolge:** Sei $w \in L$ mit $|w| = m \ge n_0$. Das Einlesen von $w = a_1 \dots a_m$ induziert eine Zustandsfolge $p_0, \dots, p_m$, wobei $p_0 = q_0$ und $p_i = \varphi(p_{i-1}, a_i)$.
+> 
+> **3. Schubfachprinzip:** Da $|w| \ge n_0$, werden beim Lesen der ersten $n_0$ Zeichen genau $n_0 + 1$ Zustände besucht. Da der Automat nur $n_0$ Zustände hat, muss sich zwingend ein Zustand wiederholen: Es existieren Indizes $j < l \le n_0$ mit $p_j = p_l$.
+> 
+> **4. Zerlegung:** Wir definieren:
+> * $y = a_1 \dots a_j$ (Weg von $q_0$ nach $p_j$)
+> * $x = a_{j+1} \dots a_l$ (Schleife von $p_j$ zurück nach $p_j$)
+> * $z = a_{l+1} \dots a_m$ (Restweg von $p_j$ in den Endzustand $p_m \in F$)
+> 
+> **5. Verifikation der Bedingungen:**
+> * **(i) $|yx| \le n_0$:** Folgt direkt aus $l \le n_0$.
+> * **(ii) $|x| \ge 1$:** Folgt aus $j < l$, die Schleife hat die Länge $l - j \ge 1$.
+> * **(iii) $yx^k z \in L$ für alle $k \in \mathbb{N}$:** Der Automat verarbeitet $y$ und erreicht $p_j$. Das Wort $x^k$ durchläuft die Schleife $p_j \xrightarrow{x} p_j$ exakt $k$-mal und verbleibt in $p_j$. Das Wort $z$ überführt den Automaten anschließend von $p_j$ in den akzeptierenden Zustand $p_m \in F$. Somit ist $yx^k z \in L(A)$.
 
 ---
 

@@ -13,6 +13,7 @@
 - [[03 Hi Java]]
 - [[04 Operationen, short circuiting, escape characters]]
 - [[05 Schleifen, Increment und Decrement, Strings]]
+- [[06 Arrays, Rekursion]]
 
 %% End Waypoint %%
 ### Links

@@ -1,24 +1,26 @@
 Thanks to https://emils.site/docs/lecture_notes/systems_programming/alloc_memory/
+There is metadata (length and availability) stored in a block to the left of the first block and to the right of the last block. Needed to combine region with other free blocks when freeing a block. We also keep 2 linked-lists, a list for allocated and free blocks. 
 
 ## Malloc
 
 Often we want to store memory that is allocated and returned by a function as a result whose size is not known to the caller. 
 
-Initiall content is trash (uninitialized, holds leftover bytes). `n*size` can silently overflow if n is huge. 
+Initial content is trash (uninitialized, holds leftover bytes). `n*size` can silently overflow if n is huge. 
 
 Local array: `char arr[x];` lives in the functions own space, can't return that. Also can't solve with pointers since calling the function again overwrites that. 
 
 
 ```c
-int *arr = malloc(10 * sizeof(int));   // room for 10 ints (40 bytes on most machines)
+int *arr = malloc(10 * sizeof(int));   // room for 10 ints 
 if (arr == NULL) {
     return 1;
 }
 
-arr[0] = 5;     // no suffix needed, 5 is already an int
+arr[0] = 5;
 arr[1] = 42;
 
 free(arr);
+// there's also realloc to change size
 ```
 
 ## Calloc
@@ -68,3 +70,29 @@ u.i = 10;
 u.f = 0.5;
 // u.i = 1056964608 and u.f = 0.5
 ```
+
+---
+
+
+**Memory Structure**
+
+```
+high addresses (0xfff...)
+┌─────────────────────────┐
+│ stack                   │  local vars, function calls
+│   ↓ grows down          │  (done automatically)
+│                         │
+│   (free space)          │
+│                         │
+│   ↑ grows up            │
+│ heap                    │  malloc / free (manually)
+├─────────────────────────┤
+│ read-only data          │  string literals like
+├─────────────────────────┤
+│ unmapped                │  address 0 = NULL lives here
+└─────────────────────────┘
+low addresses (0)
+```
+
+---
+

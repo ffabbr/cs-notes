@@ -1,3 +1,7 @@
+
+> [!success]
+> Komplexe Zahl $i$ in Python: `1j`
+
 Computer können nur endlich viele Zahlen darstellen, alle anderen werden approximiert. Die Abstände zwischen den Maschinenzahlen sind für grosse Zahlen größer . 
 
 - Beim Subtrahieren ähnlich großer Zahlen vergrößert sich der Fehler
