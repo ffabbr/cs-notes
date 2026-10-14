@@ -8,17 +8,25 @@ $$
 
 *vor allem bei stückweiser Definition so arbeiten*
 
-**Gradient-Vektor**  $\nabla f(p)$ 
+### Gradient 
+
+ $\nabla f(p)$ 
+ 
 - Gilt für skalare Funktionen (mehrere Variablen Input, _eine_ Zahl Output)
+- Vektor, zeigt in die **Richtung der größten Steigung**
+- "Länge" ist die maximale Änderungsrate
+
 - **Bildung**: Für jede Variable wird die partielle Ableitung gebildet und untereinander in einen Spaltenvektor geschrieben
-- Visuell: Pfeile die zur größten Steigung zeigen, Länge des Pfeils ist wie steil es ist.
+
+- Richtung des größten Abstiegs finden: entgegengesetzte $\cdot (-1)$ Richtung der größten Steigung
 
 ---
-## Jacobi Matrix
+### Jacobi Matrix
 
 Gilt für Funktionen mit mehreren Variablen Input und _mehreren_ Werten Output (Vektorfunktionen)
 
-**Bildung**: für jede Ausgabekomponente eine Zeile, für jede der Variablen ihre partielle Ableitungen in eine Spalte
+**Bildung**: 
+für jede Ausgabekomponente eine Zeile, für jede der Variablen ihre partielle Ableitungen in eine Spalte
 
 Funktion ist total differenzierbar $\implies$ Jacobi Matrix $J_{f}$ ist genau die Matrix, die die lineare Abbildung beschreibt $f(x + h) \approx f(x) + J_f(x) \cdot h$
 
@@ -39,17 +47,54 @@ $$
 
 Alle partiellen Ableitungen $\partial_i f$ (Kombonenten der Jacobi-Matrix) sind stetig $\implies$ $f$ ist stetig differenzierbar
 
+## Tangentialebene aufstellen
+
+$$
+z = f(x_0, y_0) + \frac{\partial f}{\partial x}(x_0, y_0) \cdot (x - x_0) + \frac{\partial f}{\partial y}(x_0, y_0) \cdot (y - y_0)
+$$
+Bzw. 
+
+$$
+\frac{\partial F}{\partial x}(x_0, y_0, z_0) \cdot (x - x_0) + \frac{\partial F}{\partial y}(x_0, y_0, z_0) \cdot (y - y_0) + \frac{\partial F}{\partial z}(x_0, y_0, z_0) \cdot (z - z_0) = 0
+$$
+
+### Gleichung der Normalengeraden
+
+Gleichung der Tangentialebene: 
+$$
+ax+by+cz=d
+$$
+Somit Normalvektor: 
+$$
+\vec n=\begin{pmatrix}a\\b\\c\end{pmatrix}
+$$
+Und Normalengerade: 
+$$
+\boxed{
+g:\ \vec x=
+\begin{pmatrix}x_0\\y_0\\z_0\end{pmatrix}
++t\begin{pmatrix}a\\b\\c\end{pmatrix}
+}
+$$
+
+
 ---
+
 ## Richtungsableitungen
 
 Statt nach nur einer Variablen abzuleiten, wollen wir von einer spezifischeren Richtung kommen. 
 
 Der Vektor $v$ gibt diese Richtung an.
 
-$$D_v f(x_0) = \lim_{h \to 0} \frac{f(x_0 + h v) - f(x_0)}{h}$$
+$$D_v f(x_0) =  \lim_{h \to 0} \frac{f(x_0 + h v) - f(x_0)}{h}$$
 
 Wenn eine Funktion total differenzierbar ist, **muss** diese Richtungsableitung eine lineare Abbildung bezüglich des Richtungsvektors $v$ sein. Es gilt dann zwingend:
 $$D_v f(x_0) = J_f(x_0) \cdot v$$
+
+Bzw.
+$$
+D_{v}f(x_{0}) = \nabla f(p) \cdot v
+$$
 
 Algorithmus zur Prüfung auf Differenzierbarkeit (z.B. in (0,0)):
 1. Berechne den Limes für $D_v f(0,0)$ für einen allgemeinen Vektor $v = (v_1, v_2)$
@@ -96,7 +141,7 @@ $f \in C^k(U)$: Reihenfolge der bis zu $k$ partiellen Ableitungen ist irrelevant
 
 "aussere Ableitung mal innere Ableitung", aber hier mit Jacobi-Matrizen, da mit mehreren Variablen gleichzeitig. 
 
-$$ D(g \circ f)_x = Dg_{f(x)} \circ Df_x $$
+$$D(g \circ f)(x) = Dg(f(x)) \cdot Df(x)$$
 
 
 ## Mittelwertsatz
@@ -167,3 +212,10 @@ Um die Krümmung auszulesen, nutzen wir die Eigenwerte. Sei $U$ offen und die St
 $\Delta f(x)$: Spur der Hasse-Matrix (Summe der Werte der Diagonale). Die Spur einer Matrix ist immer exakt gleich der Summe ihrer Eigenwerte. Zeit sparen: z.B. Spur ist negativ, so können nicht alle EW positiv sein.
 
 Berechnen der Eigenwerte: $\det(M - \lambda I) = 0$ 
+
+---
+
+## Kurve
+
+
+Eine Kurve ist eine Funktion mit einem Eingabewert (Vorestllung: Zeit) und einem Vektor mit drei Komponenten als Ausgabe. 

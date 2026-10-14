@@ -1,4 +1,5 @@
-Thanks to https://emils.site/docs/lecture_notes/systems_programming/alloc_memory/
+C does explicit memory allocation. 
+
 There is metadata (length and availability) stored in a block to the left of the first block and to the right of the last block. Needed to combine region with other free blocks when freeing a block. We also keep 2 linked-lists, a list for allocated and free blocks. 
 
 ## Malloc
@@ -87,7 +88,9 @@ high addresses (0xfff...)
 │   ↑ grows up            │
 │ heap                    │  malloc / free (manually)
 ├─────────────────────────┤
-│ read-only data          │  string literals like
+│ read-only data          │  string literals outside of function
+├─────────────────────────┤
+│ text.                   │  return of function
 ├─────────────────────────┤
 │ unmapped                │  address 0 = NULL lives here
 └─────────────────────────┘
@@ -95,4 +98,5 @@ low addresses (0)
 ```
 
 ---
+
 

@@ -3,6 +3,8 @@ Thanks to https://emils.site/docs/lecture_notes/systems_programming/pointers/
 **pointer**: variable that stores a memory location
 **dereference**: get the value of that location
 
+size of a pointer is 8
+
 - `&` means "address of."
 - `*` in a declaration means "this is a pointer." 
 - `*` in an expression means "go to the address." This is called dereferencing.
