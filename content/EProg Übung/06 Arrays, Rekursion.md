@@ -1,8 +1,4 @@
 
-
-> [!success] Download
-> Ladet das Projekt [[Checksum-Projekt.zip]] herunter, entpackt es, öffnet in IntelliJ, und implementiert die `checksum` Methode rekursiv.
-
 ## Arrays
 
 Arrays haben eine **feste Länge**, jeder Eintrag hat speichert einen Wert des deklarierten Datentyps. 
@@ -19,9 +15,11 @@ Eine Matrix kann als zweidimensionales Array dargestellt werden. Dabei enthält 
 
 ## Referenzen
 
-Deklarieren wir `int[] numbers = {1, 2, 3, 4, 5};`,  so speichert `numbers` die Referenz zu den eigentlichen Werten. Übergeben wir `numbers` als Parameter an eine Methode, wird nur die Referenz übergeben. Ändern wir Werte in diesem Array, sind diese Änderungen auch anderswo sichtbar (nicht so wie bei primitiven Typen wie `ints`). Ändern wir in der Methode jedoch die Referenz auf ein anderes Array, so sind diese Änderungen nicht mehr sichtbar. 
+Deklarieren wir `int[] numbers = {1, 2, 3, 4, 5};`,  so speichert `numbers` die Referenz zu den eigentlichen Werten. Übergeben wir `numbers` als Parameter an eine Methode, wird nur die Referenz übergeben. Ändern wir Werte in diesem Array, sind diese Änderungen auch anderswo sichtbar (nicht so wie bei primitiven Typen wie `ints`). **==Ändern wir jedoch die Referenz==** innerhalb der Methode auf ein anderes Array (oder `null`) , so sind diese Änderungen nicht mehr sichtbar. 
 
-(Beispiele folgen)
+![[Bildschirmfoto 2026-10-15 um 15.35.59.png]]
+
+![[Bildschirmfoto 2026-10-15 um 15.39.47.png]]
 
 ## Method-Overloading
 
@@ -50,3 +48,7 @@ Wir schauen uns verschiedene Beispiele in der Übungsstunde an.
 
 Versucht den Java Debugger aus, ich persönlich habe auch in der Prüfung viele print-Statements genutzt, statt dem debugger, das funktioniert natürlich weiterhin. 
 
+
+> [!success] Downloads
+> - [[Slides Woche 5.pdf]]
+> - [[Checksum-Projekt.zip]]
