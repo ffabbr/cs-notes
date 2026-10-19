@@ -93,6 +93,10 @@ $$
 \boxed{ \begin{array}{l} \text{\textbf{Nicht-Regularität:}} \\ L \text{ nicht regulär} \iff \overline{L} \text{ nicht regulär} \\ \left. \begin{array}{r} L_1 \cap L_2 \text{ nicht regulär} \\ L_2 \text{ regulär} \end{array} \right\} \implies L_1 \text{ \textbf{nicht} regulär} \\ \left. \begin{array}{r} L_1 \cup L_2 \text{ nicht regulär} \\ L_2 \text{ regulär} \end{array} \right\} \implies L_1 \text{ \textbf{nicht} regulär} \\ \left. \begin{array}{r} L_1 \setminus L_2 \text{ nicht regulär} \\ L_2 \text{ regulär} \end{array} \right\} \implies L_1 \text{ \textbf{nicht} regulär} \end{array} }
 $$
 
+$$
+\boxed{ \begin{array}{l} \text{\textbf{Operationen auf nicht-regulären Sprachen:}} \\ L_1, L_2 \text{ nicht regulär} \implies \left\{ \begin{array}{ll} \overline{L_1} & \text{\textbf{nie} regulär} \\ L_1 \setminus L_2 & \text{\textbf{manchmal} regulär} \\ L_1 \cup L_2 & \text{\textbf{manchmal} regulär} \\ L_1 L_2 & \text{\textbf{manchmal} regulär} \end{array} \right. \end{array} }
+$$
+
 
 > [!info]
 > - $L = \{0^{n^2} \mid n \in \mathbb{N} \setminus \{0\}\}$ ist nicht regulär
@@ -156,7 +160,7 @@ In jedem Automaten ist $n_{0}$ nicht größer  als die Anzahl Zustände.
 **Widerspruch**
 - Regularität annehmen. 
 - dann gibt es ein $n_{0} \in \mathbb{N}$ mit der Eigenschaft, die das Pumping-Lemma beschreibt
-- wähle Wort Länge größer  $n_{0}$
+- wähle Wort Länge $\geq n_{0}$
 - es muss eine Zerlegung $w = yxz$ geben, die (i) und (ii) und (iii) erfüllt
 - zeige: nach (i) gilt ..., nach (ii) gilt ...
 - zeige, dass für jede Zerlegung mindestens ein $i$ existiert (z.B. i=0 oder i=2), sodass das aufgepumpte Wort $x y^i z$ nicht in $L$ liegt

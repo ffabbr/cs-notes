@@ -234,19 +234,70 @@ def barycentric_weights(x):
 
 **Laufzeit:** Gewichte $\lambda_i$ einmalig in $O(n^2)$ ($n+1$ Produkte mit je $n$ Faktoren), danach jede Auswertung von $f(t)$ in $O(n)$. Für $N$ Punkte also $O(n^2 + nN)$ statt $O(n^2 N)$.
 
+**Wenn meine Punkte die Chebyshev-Knoten (siehe unten) sind, dann kann ich für die barycentric weights auch das hier nutzen**, da die Abstände ja immer gleich sind nach dem Halbkreis-Muster $x = \cos(\theta)$. Viel bessere Laufzeit.
+
+```python
+w = (-1.0)**k * np.sin(theta)
+```
+
 ## Chebyshev Interpolation
 
 Wir optimieren, indem wir andere, nicht-gleichverteilte Punkte als Referenz wählen. 
 
-- **Chebyshev-Knoten:** Die $n+1$ Knotenpunkte für $k=0, \dots, n$ berechnen sich durch die Formel $x_k = a + \frac{1}{2}(b-a)\left(\cos\left(\frac{2k+1}{2(n+1)}\pi\right) + 1\right)$.
-- **Chebyshev-Abszissen:** Diese berechnen sich durch $x_k = a + \frac{1}{2}(b-a)\left(\cos\left(\frac{k}{n}\pi\right) + 1\right)$. Wenn man die Endpunkte des Intervalls bei der Berechnung auslassen möchte, läuft der Index lediglich über $k=1, \dots, n-1$.
+### Chebyshev-Knoten 
+$$
+x_k = a + \frac{1}{2}(b-a)\left(\cos\left(\frac{2k+1}{2(n+1)}\pi\right) + 1\right)
+$$
+
+```python
+k = np.arange(n+1) # Vektor mit n+1 Punkten
+
+# formel für chebyshev knoten
+theta = (2*k + 1) * np.pi / (2*(n + 1))
+x_nodes = a + 0.5 * (b - a) * (np.cos(theta) + 1.0)
+
+w = (-1.0)**k * np.sin(theta) # baryzentrische gewichte berechnen
+P = BarycentricInterpolator(x_nodes, f(x_nodes), wi=w) # polynom erstellen 
+y_fine_approx = P(x_fine) # für viele x werte die y werte ausgeben
+dy_fine_approx = P.derivative(x_fine) # Steigung (Ableitung) an diesen vielen Punkten berechnen
+```
+
+### Chebyshev-Abszissen
+**Alternative** zu den Chebyshev Knoten.
+
+$$
+x_k = a + \frac{1}{2}(b-a)\left(\cos\left(\frac{k}{n}\pi\right) + 1\right)
+$$
 
 **Laufzeit:** Knoten bzw. Abszissen berechnen kostet $O(n)$.
 
 Chebyshev-Polynome $T_k(x)$ als Basis: 
 $p(x) = c_0 + c_1 T_1(x) + \dots + c_n T_n(x)$
 
-**Clenshaw-Algorithmus**
+```python
+k = np.arange(n + 1)
+
+# abszissen
+theta = k * np.pi / n
+x_nodes = a + 0.5*(b - a)*(np.cos(theta) + 1.0)
+
+w = (-1.0)**k # baryzentrische Gewichte
+w[0]  = w[0] * 0.5  # erstees Gewicht muss halbiert werden
+w[-1] = w[-1] * 0.5 # letztes Gewicht muss halbiert werden
+
+P = BarycentricInterpolator(x_nodes, f(x_nodes), wi=w)
+y_fine_approx  = P(x_fine)
+dy_fine_approx = P.derivative(x_fine)
+```
+
+### Schnelle Chebyshev-Interpolation
+
+
+
+## Clenshaw-Algorithmus
+
+Statt dem baryzentrischen Weg kann man auch so das interpolierte Polynom an einer neuen Stelle auswerten.
+
 - Man setzt die Startwerte $d_{n+2} = d_{n+1} = 0$.
 - Man berechnet rückwärts für jedes $k$: $d_k = c_k + (2x)d_{k+1} - d_{k+2}$.
 - Der endgültige Funktionswert ergibt sich dann aus $p(x) = d_0 - x d_1 = \frac{1}{2}(d_0 - d_2)$.

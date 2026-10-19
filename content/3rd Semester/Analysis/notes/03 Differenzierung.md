@@ -88,13 +88,14 @@ Der Vektor $v$ gibt diese Richtung an.
 
 $$D_v f(x_0) =  \lim_{h \to 0} \frac{f(x_0 + h v) - f(x_0)}{h}$$
 
-Wenn eine Funktion total differenzierbar ist, **muss** diese Richtungsableitung eine lineare Abbildung bezüglich des Richtungsvektors $v$ sein. Es gilt dann zwingend:
+Wenn eine Funktion total differenzierbar ist, **muss** diese Richtungsableitung eine lineare Abbildung bezüglich des **normierten Richtungsvektors** $v$ sein. Es gilt dann zwingend:
 $$D_v f(x_0) = J_f(x_0) \cdot v$$
 
 Bzw.
 $$
 D_{v}f(x_{0}) = \nabla f(p) \cdot v
 $$
+(Richtungsvektor ist Geschwindigkeitsvektor, also die Ableitung vom Ortsvektor; zum Normieren durch seine Norm teilen)
 
 Algorithmus zur Prüfung auf Differenzierbarkeit (z.B. in (0,0)):
 1. Berechne den Limes für $D_v f(0,0)$ für einen allgemeinen Vektor $v = (v_1, v_2)$
@@ -153,31 +154,29 @@ f(x+h) - f(x) = Df_{\xi}(h) = \partial_h f(\xi)
 $$
 
 
-## Mehrdimensionale Taylorapproximation
-
-Im Eindimensionalen notieren wir z.B. fünfmal ableiten als $f^{(5)}(x)$. Im Mehrdimensionalen ist pro Ableitung relevant, nach welcher Variablen wir ableiten. 
-
-- $\alpha = (\alpha_1, \alpha_2, \dots, \alpha_n)$ heisst **Multiindex**. 
-- $|\alpha| := \alpha_1 + \dots + \alpha_n$ ist, wie oft abgeleitet wird. 
- - Jede Stelle steht für eine Variable. Wenn $\alpha = (3, 2)$ ist, leitest du insgesamt $5$-mal ab. 
-- $\alpha! := \alpha_1! \cdots \alpha_n!$ 
-- Ableitung $\partial^\alpha f$: "Leite $f$ $\alpha_1$-mal nach $x_1$ ab, dann $\alpha_2$-mal nach $x_2$ ab, etc."
-
-**Theorem (Satz von Taylor)**
-Einfachere Approximation der Umgebung von $x_{0}$ an $x_0 + h$. 
-
+## Hesse Matrix  
 $$
-f(x_0 + h) = \sum_{\alpha \in \mathbb{N}_0^n, \vert{}\alpha\vert{} \leq k} \frac{\partial^\alpha f(x_0)}{\alpha!} h^\alpha + R_{k+1}f(x_0, h)
+H_{ij}f(x) = \partial_i \partial_j f(x)
 $$
-- Summe: alle Kombinationen von Ableitungen bis zur maximalen Tiefe $k$
-- Bruch: wir berechnen Ableitung an $x_{0}$ und teilen durch die Multiindex-Fakultät
-- $h^{\alpha}$ ist Entfernung zum Zielpunkt für jede Variable, potenziert mit den Zählern
+Alle Kombinationen die Ableitungen zu machen in einer Matrix. 
 
-Restterm:
+Beispiel mit 2 Variablen: 
 $$
-R_{k+1}f(x_0, h) := \int_0^1 (k+1)(1-t)^k \sum_{\alpha \in \mathbb{N}_0^n, |\alpha|=k+1} \frac{\partial^\alpha f(x_0 + th)}{\alpha!} h^\alpha dt
+H_f(x,y) = \begin{pmatrix} f_{xx}(x,y) & f_{xy}(x,y) \\ f_{yx}(x,y) & f_{yy}(x,y) \end{pmatrix}
 $$
 
+Um die Krümmung auszulesen, nutzen wir die Eigenwerte. Sei $U$ offen und die Stelle $x_0 \in U$ ein kritischer Punkt. Es gilt:
+
+- **Positiv definit:** alle Eigenwerte positiv, "Landschaft in alle Richtungen nach oben gekrümmt", lokales Minimum
+- **Negativ definit:** alle Eigenwerte negativ "Landschaft überall nach unten", lokales Maximum
+- **Indefinit:** gibt positive und negative EW, "in eine Richtung rauf, in die andere runter", Sattelpunkt
+- **Degeneriert:** mind. ein Eigenwert ist null, keine Aussage
+
+$\Delta f(x)$: Spur der Hasse-Matrix (Summe der Werte der Diagonale). Die Spur einer Matrix ist immer exakt gleich der Summe ihrer Eigenwerte. Zeit sparen: z.B. Spur ist negativ, so können nicht alle EW positiv sein.
+
+Berechnen der Eigenwerte: $\det(M - \lambda I) = 0$ 
+
+---
 
 ## Lokale Extremwerte 
 
@@ -194,24 +193,6 @@ Achtung, Implikationsrichtung
 Lokales Extremum $\implies \nabla f(x_0) = 0$
 
 Jetzt prüfen, ob Maximal-/Minimalstelle und nicht Sattelstelle ist. Wir erstellen eine Matrix aus allen zweiten Ableitungen:
-
-**Hesse Matrix**  
-$$
-H_{ij}f(x) = \partial_i \partial_j f(x)
-$$
-
-z.B. bei 2 Variablen: leite zuerst einmal nach x ab, einmal nach y. Dann ausgehend von der x-Ableitung nochmal alle Optionen, also xx und xy, gleich mit erst y. Alle Kombinationen in die Matrix. 
-
-Um die Krümmung auszulesen, nutzen wir die Eigenwerte. Sei $U$ offen und die Stelle $x_0 \in U$ ein kritischer Punkt. Es gilt:
-
-- **Positiv definit:** alle Eigenwerte positiv, "Landschaft in alle Richtungen nach oben gekrümmt", lokales Minimum
-- **Negativ definit:** alle Eigenwerte negativ "Landschaft überall nach unten", lokales Maximum
-- **Indefinit:** gibt positive und negative EW, "in eine Richtung rauf, in die andere runter", Sattelpunkt
-- **Degeneriert:** mind. ein Eigenwert ist null, keine Aussage
-
-$\Delta f(x)$: Spur der Hasse-Matrix (Summe der Werte der Diagonale). Die Spur einer Matrix ist immer exakt gleich der Summe ihrer Eigenwerte. Zeit sparen: z.B. Spur ist negativ, so können nicht alle EW positiv sein.
-
-Berechnen der Eigenwerte: $\det(M - \lambda I) = 0$ 
 
 ---
 

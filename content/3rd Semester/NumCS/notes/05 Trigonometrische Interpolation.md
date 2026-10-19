@@ -1,22 +1,3 @@
-## 0 Notation
-
-| Symbol | Bedeutung |
-| --- | --- |
-| $n$ | Anzahl Messwerte (Länge des Signals) |
-| $t = 0, \dots, n-1$ | Zeitindex (welcher Messpunkt) |
-| $k = 0, \dots, n-1$ | Frequenzindex (welche Schwingung) |
-| $\mathbf{x} = (x[0], \dots, x[n-1]) \in \mathbb{C}^n$ | Signal, **Zeitbereich** |
-| $\mathbf{y} = (y[0], \dots, y[n-1]) \in \mathbb{C}^n$ | Fourier-Koeffizienten / Gewichte, **Frequenzbereich** |
-| $i$ | imaginäre Einheit, $i^2 = -1$ |
-| $\overline{z}$ | komplex konjugiert (Imaginärteil negiert, an reeller Achse gespiegelt) |
-| $\lvert z \rvert$ | Betrag = Länge von $z$ |
-| $\omega_n = e^{-2\pi i/n}$ | $n$-te Einheitswurzel: Drehung um $\frac{1}{n}$ Kreis |
-| $\varphi_k[t] = e^{2\pi i k t/n}$ | Basis-Schwingung mit Frequenz $k$ |
-| $\langle \mathbf{u}, \mathbf{v} \rangle = \mathbf{u}^H \mathbf{v} = \sum_t \overline{u[t]}\, v[t]$ | inneres Produkt (Skalarprodukt) in $\mathbb{C}^n$ |
-| $\mathbf{A}^H = \overline{\mathbf{A}}^\top$ | konjugiert-transponiert („hermitesch“) |
-| $\mathbf{F}_n$ | Fourier-Matrix, $\mathbf{y} = \mathbf{F}_n \mathbf{x}$ |
-| $j \equiv 0 \pmod n$ | $j$ ist ein Vielfaches von $n$ |
-| $p_m(t),\ c_k$ | trigonometrisches Polynom vom Grad $m$ und seine Koeffizienten |
 
 ## 00 Introduction
 
@@ -223,7 +204,10 @@ Wir können Frequenzen löschen und zurücktransformieren.
 2. **Ungewollte Frequenzen auf 0 setzen:** daraus entsteht $\tilde{\mathbf{y}}$.
 3. **Inverse Fourier Transformation** um wieder zusammenzusetzen $\tilde{\mathbf{x}} = F_n^{-1}\tilde{\mathbf{y}}$, zurück in die Zeit
 
+---
+
 Beispiel, schwache Frequenzen (Noise) entfernen
+
 ```python
 r = 0.25 # Threshold
 N = len(y)
@@ -239,6 +223,7 @@ y_filtered = np.fft.ifft(c_filtered).real # inverse, back to zeitsignal
 ```
 
 Beispiel, hohe Frequenzen entfernen
+
 ```python
 # Vorwärtstransformation (Zeit -> Frequenz)
 c = fft.fft(y)
@@ -257,6 +242,7 @@ y_filtered = np.fft.ifft(c_filtered)
 ```
 
 Beispiel, tiefe Frequenzen entfernen
+
 ```python
 # Vorwärtstransformation
 c = fft.fft(y)
@@ -281,21 +267,22 @@ def evaliptrig(y, N):
     if(n % 2 != 0):
         raise ValueError("y must be of even length") 
         
-    max_freq = n // 2 
+    max_freq = n // 2 # Ganzzahldivision
     coeffs = np.fft.ifft(y) # Originaldaten -> Frequenzbereich mit Koeffizienten
     
     # ---- FALLs mit f' statt f ---
     # k = np.fft.fftfreq(n, d=1.0 / n)
     # dcoeffs = -2j * np.pi * k * coeffs
+    # padded = np.zeros(N, dtype=complex)
     # padded[:max_freq] = dcoeffs[:max_freq]
     # padded[-max_freq:] = dcoeffs[max_freq:]
-    # ---- END ----
+    # --------
     
     padded = np.zeros(N, dtype=complex) # neues, großes Zielarray
     
     # niedrige Frequenzen kopieren
     padded[:max_freq] = coeffs[:max_freq]
-    padded[-max_freq:] = coeffs[max_freq:] 
+    padded[-max_freq:] = coeffs[max_freq:] # beginne bei dem max_freq letzten element und gehe bis ans Ende
     
     v = np.fft.fft(padded) # verlängertes Frequenz-Array -> Ortsbereich
     
@@ -330,9 +317,37 @@ Die beiden Vektoren haben die gleiche Länge. Der Lösungsvektor ebenso. Gleiche
 
 **Zirkulante Matrizen**
 
-![[Bildschirmfoto 2026-10-12 um 22.51.20.png]]![[Bildschirmfoto 2026-10-12 um 22.51.29.png]]![[Bildschirmfoto 2026-10-12 um 22.51.40.png]]![[Bildschirmfoto 2026-10-12 um 22.51.47.png]]![[Bildschirmfoto 2026-10-12 um 22.51.54.png]]![[Bildschirmfoto 2026-10-12 um 22.52.02.png]]![[Bildschirmfoto 2026-10-12 um 22.52.10.png]]
+![[Bildschirmfoto 2026-10-12 um 22.51.20.png]]
 
-## Stückweise Lineare Interpolation
+![[Bildschirmfoto 2026-10-12 um 22.51.29.png]]
+
+![[Bildschirmfoto 2026-10-12 um 22.51.40.png]]
+
+![[Bildschirmfoto 2026-10-12 um 22.51.47.png]]
+
+![[Bildschirmfoto 2026-10-12 um 22.51.54.png]]
+
+![[Bildschirmfoto 2026-10-12 um 22.52.02.png]]
+
+![[Bildschirmfoto 2026-10-12 um 22.52.10.png]]
+
+## Stückweise Interpolation mit Splines
+
+Vermeidet das Runge-Phänomen. Vorteil ist auch, dass wir die Interpolation lokal anpassen können.
+
+Ein Spline ist eine Funktion, die **stückweise aus Polynomen** zusammengesetzt ist. Man hat Stützstellen $x_0 < x_1 < \dots < x_n$ (die „Knoten“). Auf jedem Teilintervall $[x_i, x_{i+1}]$ ist der Spline ein eigenes Polynom, und an den Knoten werden die Stücke **glatt aneinandergeklebt**.
+
+Slides
+
+$S_{1, D}$ Menge der stückweise linearen Funktionen die auf $D$ stetig sind
+$S_{3, D}$ Menge der zweimal stetig differenzierbaren kubischen Polynome auf D
+
+
+### Stückweise linearer Spline
+
+**linearer Spline**
+jedes Stück ist eine Gerade (Punkte einfach verbunden)
+
 
 ![[Bildschirmfoto 2026-10-12 um 23.00.36.png]]
 
@@ -344,6 +359,49 @@ $\lambda(t) = \frac{t - t_s}{t_e - t_s}$
 ![[Bildschirmfoto 2026-10-12 um 23.01.48.png]]
 
 
-## Kubische Hermite-Interpolation
+### Stückweise kubischer Spline
 
-![[Bildschirmfoto 2026-10-12 um 23.51.02.png]]![[Bildschirmfoto 2026-10-12 um 23.51.07.png]]![[Bildschirmfoto 2026-10-12 um 23.51.15.png]]![[Bildschirmfoto 2026-10-12 um 23.51.24.png]]![[Bildschirmfoto 2026-10-12 um 23.51.34.png]]![[Bildschirmfoto 2026-10-12 um 23.51.39.png]]![[Bildschirmfoto 2026-10-12 um 23.51.45.png]]![[Bildschirmfoto 2026-10-12 um 23.51.52.png]]
+stückweise lineare Interpolation ist nicht glatt (nur $C^0$-stetig), das lösen wir hier. 
+
+jedes Stück ein Polynom 3. Grades. An jedem inneren Knoten muss der Spline durch den Datenpunkt gehen, und mit $s$, $s'$ und $s''$ von links und rechts übereinstimmen.
+
+anliegende **innere** Splines
+- stetig
+- 1. Ableitung stetig
+- 2. Ableitung stetig
+
+Dadurch hängen alle Stücke zusammen, und man muss ein globales Gleichungssystem mit $3(n-1)+(n+1)=4n-1$ Bedingungen (3 Bedingungen pro innerem Punkt, plus für jeden Punkt gleich der ursprünglichen Funktion) lösen. Das Ergebnis ist $C^2$. 
+
+*vollständiger* kubischer Spline: 1. Ableitungen an den Endpunkten (ganz links, ganz rechts) festgelegt, $O(N)$
+*natürlicher* kubischer Spline: 2. Ableitungen an den Endpunkten 0, minimiert die Gesamtkrümmung $O(N)$
+*periodischer* kubischer Spline: 1. und 2. Ableitungen an den Endpunkten gleich
+
+### Kubische Hermite-Interpolation Spline
+
+**Ein Spline ist $C^2$-stetig, ein Hermite-Polynom im Allgemeinen nur $C^1$-stetig.**
+
+Auf jedem Teilintervall gibt man **zwei Werte und zwei Ableitungen** vor, nämlich $f(x_i), f'(x_i)$ und $f(x_{i+1}), f'(x_{i+1})$. Das sind genau 4 Bedingungen für 4 Koeffizienten, also ist jedes Stück für sich allein eindeutig festgelegt.
+
+Hermite Basisfunktionen $\varphi(t), \varphi(1-t)$ und $\psi(t), \psi(1-t)$ gewichten den Einfluss der Funktions- und Ableitungswerte auf das Polynomsegment.
+
+![[Bildschirmfoto 2026-10-12 um 23.51.07.png]]
+
+![[Bildschirmfoto 2026-10-12 um 23.51.15.png]]
+
+![[Bildschirmfoto 2026-10-12 um 23.51.24.png]]
+
+![[Bildschirmfoto 2026-10-12 um 23.51.34.png]]
+
+![[Bildschirmfoto 2026-10-12 um 23.51.39.png]]
+
+![[Bildschirmfoto 2026-10-12 um 23.51.45.png]]
+
+![[Bildschirmfoto 2026-10-12 um 23.51.52.png]]
+
+## Quadratur
+
+Approximation von Integralen
+
+Algebraische Konvergenz: $E(n) \in O\left( \frac{1}{n^p} \right) \text{ für } p> 0$
+Exponentielle Konvergenz: $E(n) \in O(q^n) \text{ für } 0 \leq q \leq 1$ 
+
