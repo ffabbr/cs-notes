@@ -45,7 +45,7 @@ $$
 - $f(x + h) - f(x)$ ist die tatsächliche Änderung der Funktion
 - $L(h)$ ist die durch Matrix vorrausgesagte Änderung (Jacobi mal h) 
 
-Alle partiellen Ableitungen $\partial_i f$ (Kombonenten der Jacobi-Matrix) sind stetig $\implies$ $f$ ist stetig differenzierbar
+Alle partiellen Ableitungen $\partial_i f$ (Komponenten der Jacobi-Matrix) sind stetig $\implies$ $f$ ist stetig differenzierbar
 
 ## Tangentialebene aufstellen
 
