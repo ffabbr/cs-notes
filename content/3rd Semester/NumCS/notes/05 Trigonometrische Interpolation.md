@@ -119,16 +119,13 @@ def exactFourierSeries(x,N):
 
 ## Diskrete Fourier-Transformation
 
-Statt kontinuierliche Funktionen betrachten haben wir jetzt nur eine endliche Liste an Datenpunkten. 
+Bei der trigonometrischen Interpolation wollen wir $n$ gegebene Datenpunkte (unser Signal $x[t]$) durch ein trigonometrisches Polynom annähern. Da die Daten periodisch sind, arbeiten wir meist mit äquidistanten Stützstellen.
 
-$$\langle\varphi_k, \mathbf{x}\rangle = \sum_t \overline{\varphi_k[t]}\, x[t] = \sum_t x[t]\, e^{-2\pi i k t/n}$$
+Wir nutzen als Basis die $n$-te primitive komplexe Einheitswurzel $\omega_n = e^{-2\pi i/n}$.
 
-> [!success] DFT
-> $$y[k] = \sum_{t=0}^{n-1} x[t]\, e^{-2\pi i k t/n}, \quad k = 0, \dots, n-1$$
+Um die Koeffizienten $y[k]$ für unser trigonometrisches Polynom zu finden, nutzen wir die DFT:
 
-$e^{-2\pi i k t/n} = \omega_n^{kt}$, also
-
-$$y[k] = \sum_{t=0}^{n-1} x[t]\,\omega_n^{kt}$$
+$$y[k] = \sum_{t=0}^{n-1} x[t] \omega_n^{kt}$$
 
 **Intuition**
 Für **eine** Frequenz k gehst du alle Zeitpunkte t durch. Jeden Messwert `x[t]` multiplizierst du mit einem Punkt auf dem Kreis, der sich **rückwärts** mit Frequenz k dreht. Dann summierst du alles. Steckt Frequenz k im Signal, dreht sich dieser Anteil vorwärts mit k. Das Rückwärtsdrehen hebt die Drehung genau auf. Alle Beiträge zeigen in dieselbe Richtung und addieren sich, also wird `y[k]` gross. Andere Frequenzen drehen weiter und heben sich auf (Orthogonalität).
@@ -169,7 +166,7 @@ $$
 
 ![[Pasted image 20261005110141.png]]
 
-## Eigenschaften
+### Eigenschaften
 
 - Periodisch: $y[k] = y[k+n]$
 - Symmetrie: $y[k] = \overline{y[n-k]}$ (*Ergänzung: gilt nur für **reelles** Signal $\mathbf{x}$*)
@@ -191,8 +188,7 @@ Rechenaufwand naiv: $O(n^2)$, FFT $O(n \log n)$
 
 Das ist wegen der Periodizität. **Frequenz n − k ist dasselbe wie Frequenz −k.**
 
-
-## Anwendungen
+### Anwendungen
 
 ### Filter
 
@@ -203,8 +199,6 @@ Wir können Frequenzen löschen und zurücktransformieren.
 1. **Fourier Transformation:** $\mathbf{y} = F_n\mathbf{x}$
 2. **Ungewollte Frequenzen auf 0 setzen:** daraus entsteht $\tilde{\mathbf{y}}$.
 3. **Inverse Fourier Transformation** um wieder zusammenzusetzen $\tilde{\mathbf{x}} = F_n^{-1}\tilde{\mathbf{y}}$, zurück in die Zeit
-
----
 
 Beispiel, schwache Frequenzen (Noise) entfernen
 
@@ -296,79 +290,99 @@ def evaliptrig(y, N):
 
 $O(N \log N)$
 
-Statt alle $N^2$ Multiplikationen direkt auszuführen, verwenden wir Berechnungen wieder, indem wir das Problem in Hälften aufteilen (divide and conquer). Pro Ebene ist das Zusammenführen in $O(N)$.
+Statt alle $N^2$ Multiplikationen direkt auszuführen, verwenden wir Berechnungen wieder, mit divide and conquer. 
 
-![[Bildschirmfoto 2026-10-12 um 21.12.28.png]]
+Wenn $N$ gerade, teilen wir auf 
 
+1. Summe über alle geraden Indizes
+2. Summer über alle ungeraden Indizes
+
+Pro Ebene ist das Zusammenführen in $O(N)$.
 
 ![[Bildschirmfoto 2026-10-12 um 16.36.08.png]]
 
 ## Faltung
 
-**Diskrete Faltung**
+Eine Faltung im Zeitbereich entspricht einer (einfachen) Multiplikation  im Frequenzbereich.
+$$
+\text{DFT}(u * v) = \text{DFT}(u) \odot \text{DFT}(v)
+$$
+Mit der FFT können wir die Faltung in $O(n \log n)$ berechnen. 
+
+1. $u$ und $v$ mit FFT in Frequenzbereich $2 \cdot \mathcal{O}(n \log n)$
+2. Multipliziere die Spektren elementweise ($\odot$) $\mathcal{O}(n)$.
+3. Transformiere das Ergebnis mit IFFT zurück in den Zeitbereich $\mathcal{O}(n \log n)$
+
+### Diskrete Faltung
+
 Kombinieren zweier Vektoren unterschiedlicher Länge zu einem Vektor. Nehme Vektor 1, invertiere, lege links oben über Vektor 2 und schiebe dann Schritt für Schritt nach rechts. Bei jedem Schritt addiere das Ergebnis der Multiplikationen der Zahlen, die direkt übereinander liegen übereinander liegen. Wenn keine zweite Zahl verfügbar, rechne mit `0`.
 
 ![[Bildschirmfoto 2026-10-12 um 22.16.37.png]]
 
-**Periodische Faltung**
+### Periodische Faltung
+
 Die beiden Vektoren haben die gleiche Länge. Der Lösungsvektor ebenso. Gleicher Ablauf wie vorher, aber statt wenn keine Zahl des anderen Vektors verfügbar ist, `0` zu verwenden, sind die zahlen hier periodisch, daher nehmen wir einen Eintrag mod. 
 
-![[Bildschirmfoto 2026-10-12 um 22.49.42.png]]![[Bildschirmfoto 2026-10-12 um 22.49.56.png]]
+![[Bildschirmfoto 2026-10-12 um 22.49.42.png]]
 
-**Zirkulante Matrizen**
+![[Bildschirmfoto 2026-10-12 um 22.49.56.png]]
 
-![[Bildschirmfoto 2026-10-12 um 22.51.20.png]]
+### Zirkulante Matrizen
 
-![[Bildschirmfoto 2026-10-12 um 22.51.29.png]]
+Eine zirkulante Matrix ist eine quadratische $n \times n$ Matrix, bei der jede Zeile (oder Spalte) eine um eine Position nach rechts (bzw. unten) verschobene Version der vorherigen Zeile ist. 
 
-![[Bildschirmfoto 2026-10-12 um 22.51.40.png]]
+$$
+C = \begin{pmatrix} c_0 & c_{n-1} & \dots & c_2 & c_1 \\  c_1 & c_0 & c_{n-1} & & c_2 \\  \vdots & c_1 & c_0 & \ddots & \vdots \\  c_{n-2} & & \ddots & \ddots & c_{n-1} \\  c_{n-1} & c_{n-2} & \dots & c_1 & c_0 \end{pmatrix}
+$$
 
-![[Bildschirmfoto 2026-10-12 um 22.51.47.png]]
+Die zirkulante Matrix ist die Matrix-Darstellung der zyklischen Faltungsoperation. 
 
-![[Bildschirmfoto 2026-10-12 um 22.51.54.png]]
+Eigenschaften
 
-![[Bildschirmfoto 2026-10-12 um 22.52.02.png]]
-
-![[Bildschirmfoto 2026-10-12 um 22.52.10.png]]
+![[Bildschirmfoto 2026-10-12 um 22.51.29.png|270]]
+![[Bildschirmfoto 2026-10-12 um 22.51.40.png|271]]
+![[Bildschirmfoto 2026-10-12 um 22.51.47.png|273]]
+![[Bildschirmfoto 2026-10-12 um 22.51.54.png|271]]
+![[Bildschirmfoto 2026-10-12 um 22.52.02.png|271]]
+![[Bildschirmfoto 2026-10-12 um 22.52.10.png|273]]
 
 ## Stückweise Interpolation mit Splines
 
 Vermeidet das Runge-Phänomen. Vorteil ist auch, dass wir die Interpolation lokal anpassen können.
 
-Ein Spline ist eine Funktion, die **stückweise aus Polynomen** zusammengesetzt ist. Man hat Stützstellen $x_0 < x_1 < \dots < x_n$ (die „Knoten“). Auf jedem Teilintervall $[x_i, x_{i+1}]$ ist der Spline ein eigenes Polynom, und an den Knoten werden die Stücke **glatt aneinandergeklebt**.
+Ein Spline ist eine Funktion, die stückweise aus Polynomen zusammengesetzt ist. 
 
-Slides
+Man hat Stützstellen $x_0 < x_1 < \dots < x_n$ (Knoten). Auf jedem Teilintervall $[x_i, x_{i+1}]$ ist der Spline ein eigenes Polynom, und an den Knoten werden die Stücke glatt aneinandergeklebt.
 
 $S_{1, D}$ Menge der stückweise linearen Funktionen die auf $D$ stetig sind
 $S_{3, D}$ Menge der zweimal stetig differenzierbaren kubischen Polynome auf D
 
-
 ### Stückweise linearer Spline
 
-**linearer Spline**
-jedes Stück ist eine Gerade (Punkte einfach verbunden)
+jedes Stück ist eine Gerade, somit sind Punkte einfach verbunden. Es gibt "Knicks".
 
 
 ![[Bildschirmfoto 2026-10-12 um 23.00.36.png]]
 
-Vgl. $\lambda(t)$ als "Fortschrittsbalken". Den y-Wert bekommen wir mit $f(t) = y_s(1 - \lambda(t)) + y_e\lambda(t)$.
-
-Fortschritt $\lambda(t)$ berechnen: 
-$\lambda(t) = \frac{t - t_s}{t_e - t_s}$
+Vgl. $\lambda(t)$ als "Fortschrittsbalken". 
+Den y-Wert bekommen wir mit $f(t) = y_s(1 - \lambda(t)) + y_e\lambda(t)$.
+Fortschritt $\lambda(t)$ berechnen: $\lambda(t) = \frac{t - t_s}{t_e - t_s}$
 
 ![[Bildschirmfoto 2026-10-12 um 23.01.48.png]]
 
-
 ### Stückweise kubischer Spline
 
-stückweise lineare Interpolation ist nicht glatt (nur $C^0$-stetig), das lösen wir hier. 
+stückweise lineare Interpolation ist nicht glatt (nur $C^0$-stetig), daher kubisch
 
-jedes Stück ein Polynom 3. Grades. An jedem inneren Knoten muss der Spline durch den Datenpunkt gehen, und mit $s$, $s'$ und $s''$ von links und rechts übereinstimmen.
+- jedes Stück ist ein Polynom 3. Grades
+- der Spline muss exakt durch alle gegebenen Stützstellen (Datenpunkte) gehen
 
 anliegende **innere** Splines
-- stetig
-- 1. Ableitung stetig
-- 2. Ableitung stetig
+- stetig (Ende des einen Polynoms stimmt überein mit Anfang des nächsten)
+- 1. Ableitung stetig $S_i'(x_{i+1}) = S_{i+1}'(x_{i+1})$, Glattheit der Steigung
+- 2. Ableitung stetig $S_i''(x_{i+1}) = S_{i+1}''(x_{i+1})$, Glattheit der Krümmung
+
+#### Randwertproblem
 
 Dadurch hängen alle Stücke zusammen, und man muss ein globales Gleichungssystem mit $3(n-1)+(n+1)=4n-1$ Bedingungen (3 Bedingungen pro innerem Punkt, plus für jeden Punkt gleich der ursprünglichen Funktion) lösen. Das Ergebnis ist $C^2$. 
 
@@ -397,11 +411,3 @@ Hermite Basisfunktionen $\varphi(t), \varphi(1-t)$ und $\psi(t), \psi(1-t)$ gewi
 ![[Bildschirmfoto 2026-10-12 um 23.51.45.png]]
 
 ![[Bildschirmfoto 2026-10-12 um 23.51.52.png]]
-
-## Quadratur
-
-Approximation von Integralen
-
-Algebraische Konvergenz: $E(n) \in O\left( \frac{1}{n^p} \right) \text{ für } p> 0$
-Exponentielle Konvergenz: $E(n) \in O(q^n) \text{ für } 0 \leq q \leq 1$ 
-
