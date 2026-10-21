@@ -1,4 +1,4 @@
-Diese Woche schauen wir uns zum ersten Mal Java an, insbesondere unterschiedliche Operationen. Den eigentlichen Inhalt dieser Übungsstunde findet ihr hier (→ [[04 Operationen, short circuiting, escape characters]]). Das hier ist eine Übersicht über grundlegende Java Syntax. 
+Diese Woche schauen wir uns zum ersten Mal Java an, insbesondere unterschiedliche Operationen. Den eigentlichen Inhalt dieser Übungsstunde findet ihr hier (→ [[03b Operationen, short circuiting, escape characters]]). Das hier ist eine Übersicht über grundlegende Java Syntax. 
 
 >Versucht sie nicht auswendig zu lernen, sondern durch das wiederholte Anwenden zu verinnerlichen. 
 

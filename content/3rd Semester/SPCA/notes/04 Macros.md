@@ -9,6 +9,20 @@ int arr[SIZE];                // becomes: int arr[100];
 int y = SQUARE(5);            // becomes: int y = ((5) * (5));
 ```
 
+```c
+#include<stdio.h>
+#define SQUARE(x) x*x
+
+int main(void) {
+  int a = 3;
+  printf("%d\n", SQUARE(a + 1));
+  # output: 7
+  # a+1*a+1 = 3+1*3+1 = 7
+  return 0;
+}
+```
+
+
 
 ![[Pasted image 20261007131033.png]]
 

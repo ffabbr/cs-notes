@@ -28,6 +28,7 @@ free(arr);
 
 Like Malloc but initialized to zero
 can not overflow (returns NULL)
+still need to check for null
 
 ```c
 void *calloc(size_t count, size_t size);
@@ -80,7 +81,7 @@ u.f = 0.5;
 ```
 high addresses (0xfff...)
 ┌─────────────────────────┐
-│ stack                   │  local vars, function calls
+│ stack                   │  local vars, function calls, return addresses
 │   ↓ grows down          │  (done automatically)
 │                         │
 │   (free space)          │
@@ -88,15 +89,26 @@ high addresses (0xfff...)
 │   ↑ grows up            │
 │ heap                    │  malloc / free (manually)
 ├─────────────────────────┤
-│ read-only data          │  string literals outside of function
+│ .bss                    │  uninitialized global & static variables
 ├─────────────────────────┤
-│ text.                   │  return of function
+│ .data                   │  initialized global & static variables
+├─────────────────────────┤
+│ read-only data          │  string literals outside of function, constants
+├─────────────────────────┤
+│ text                    │  machine code / executable instructions
 ├─────────────────────────┤
 │ unmapped                │  address 0 = NULL lives here
 └─────────────────────────┘
 low addresses (0)
 ```
 
+
+
+
 ---
 
+- NULL and false are the same thing, so we can check if p false instead of p NULL
+- here if calloc successful, then it points to a `0`, so false either way
 
+
+![[Pasted image 20261020175154.png]]

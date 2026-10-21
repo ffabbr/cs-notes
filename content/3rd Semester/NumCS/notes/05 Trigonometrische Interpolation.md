@@ -361,7 +361,6 @@ $S_{3, D}$ Menge der zweimal stetig differenzierbaren kubischen Polynome auf D
 
 jedes Stück ist eine Gerade, somit sind Punkte einfach verbunden. Es gibt "Knicks".
 
-
 ![[Bildschirmfoto 2026-10-12 um 23.00.36.png]]
 
 Vgl. $\lambda(t)$ als "Fortschrittsbalken". 
@@ -375,30 +374,38 @@ Fortschritt $\lambda(t)$ berechnen: $\lambda(t) = \frac{t - t_s}{t_e - t_s}$
 stückweise lineare Interpolation ist nicht glatt (nur $C^0$-stetig), daher kubisch
 
 - jedes Stück ist ein Polynom 3. Grades
-- der Spline muss exakt durch alle gegebenen Stützstellen (Datenpunkte) gehen
+- der Spline muss exakt durch die Stützstellen (Datenpunkte) gehen
 
-anliegende **innere** Splines
-- stetig (Ende des einen Polynoms stimmt überein mit Anfang des nächsten)
+anliegende **innere** Splines sind
+- stetig (Ende des einen Polynoms gleich Anfang des nächsten)
 - 1. Ableitung stetig $S_i'(x_{i+1}) = S_{i+1}'(x_{i+1})$, Glattheit der Steigung
 - 2. Ableitung stetig $S_i''(x_{i+1}) = S_{i+1}''(x_{i+1})$, Glattheit der Krümmung
 
-#### Randwertproblem
+**Randwertproblem**
+Wenn man $n$ Stützstellen hat, entstehen $n-1$ Intervalle. Man muss ein globales Gleichungssystem mit $3(n-1)+(n+1)=4n-1$ Bedingungen (3 pro innerem Punkt, plus jeder Punkt gleich der ursprünglichen Funktion) lösen. Das Ergebnis ist $C^2$. 
 
-Dadurch hängen alle Stücke zusammen, und man muss ein globales Gleichungssystem mit $3(n-1)+(n+1)=4n-1$ Bedingungen (3 Bedingungen pro innerem Punkt, plus für jeden Punkt gleich der ursprünglichen Funktion) lösen. Das Ergebnis ist $C^2$. 
+Es fehlen 2 Gleichungen, um das GLS eindeutig lösbar zu machen. Das sind die Randbedingungen an den äußersten Punkten ($x_0$ und $x_{n-1}$).
 
-*vollständiger* kubischer Spline: 1. Ableitungen an den Endpunkten (ganz links, ganz rechts) festgelegt, $O(N)$
-*natürlicher* kubischer Spline: 2. Ableitungen an den Endpunkten 0, minimiert die Gesamtkrümmung $O(N)$
-*periodischer* kubischer Spline: 1. und 2. Ableitungen an den Endpunkten gleich
+![[Bildschirmfoto 2026-10-19 um 21.47.16.png]]
+
+- ***vollständiger* kubischer Spline**: 1. Ableitungen an den Endpunkten festgelegt, $O(N)$
+- ***natürlicher* kubischer Spline**: 2. Ableitungen an den Endpunkten 0, minimiert die Gesamtkrümmung $O(N)$
+- ***periodischer* kubischer Spline**: 1. und 2. Ableitungen an den beiden Endpunkten ident
 
 ### Kubische Hermite-Interpolation Spline
 
-**Ein Spline ist $C^2$-stetig, ein Hermite-Polynom im Allgemeinen nur $C^1$-stetig.**
+Bei den kubischen Splines beeinflusst das Verschieben eines Punktes die Form der gesamten Kurve. 
 
-Auf jedem Teilintervall gibt man **zwei Werte und zwei Ableitungen** vor, nämlich $f(x_i), f'(x_i)$ und $f(x_{i+1}), f'(x_{i+1})$. Das sind genau 4 Bedingungen für 4 Koeffizienten, also ist jedes Stück für sich allein eindeutig festgelegt.
+**Hermite-Interpolation** ist $C^1$ stetig, nicht $C^2$, aber dafür sind die Splines "entkoppelt", jedes Intervall ist rein lokal/isoliert.
 
-Hermite Basisfunktionen $\varphi(t), \varphi(1-t)$ und $\psi(t), \psi(1-t)$ gewichten den Einfluss der Funktions- und Ableitungswerte auf das Polynomsegment.
+Auf jedem Teilintervall gibt man **zwei Werte und zwei Ableitungen** vor, nämlich $f(x_i), f'(x_i)$ und $f(x_{i+1}), f'(x_{i+1})$. 
 
-![[Bildschirmfoto 2026-10-12 um 23.51.07.png]]
+**Hermite-Basis**
+$\varphi(t), \varphi(1-t)$ und $\psi(t), \psi(1-t)$ gewichten den Einfluss der Funktions- und Ableitungswerte auf das Polynomsegment.
+
+![[Bildschirmfoto 2026-10-12 um 23.51.45.png]]
+
+Herleitung:
 
 ![[Bildschirmfoto 2026-10-12 um 23.51.15.png]]
 
@@ -408,6 +415,6 @@ Hermite Basisfunktionen $\varphi(t), \varphi(1-t)$ und $\psi(t), \psi(1-t)$ gewi
 
 ![[Bildschirmfoto 2026-10-12 um 23.51.39.png]]
 
-![[Bildschirmfoto 2026-10-12 um 23.51.45.png]]
 
-![[Bildschirmfoto 2026-10-12 um 23.51.52.png]]
+
+

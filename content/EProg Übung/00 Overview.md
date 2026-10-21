@@ -11,9 +11,10 @@
 - [[01 Introduction and Setup]]
 - [[02 EBNF]]
 - [[03 Hi Java]]
-- [[04 Operationen, short circuiting, escape characters]]
-- [[05 Schleifen, Increment und Decrement, Strings]]
-- [[06 Arrays, Rekursion]]
+- [[03b Operationen, short circuiting, escape characters]]
+- [[04 Schleifen, Increment und Decrement, Strings]]
+- [[05 Arrays, Rekursion]]
+- [[06 Referenzen, Rekursion, Logisches Schliessen]]
 
 %% End Waypoint %%
 ### Links

@@ -67,3 +67,8 @@ size_t length = sizeof(numbers) / sizeof(numbers[0]);
 - `strncpy` (copy), arguments: destination, origin, max number of chars to copy
 - `strncat` (concatenation)
 
+---
+
+The return of printf is the number of symbols that were printed. So here the inner `printf` returns 5.
+
+![[Pasted image 20261020173252.png]]

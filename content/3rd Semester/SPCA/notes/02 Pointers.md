@@ -197,3 +197,25 @@ copies character by character from `from` to `to` and after each time move the p
 1. `cpp[-1]` is one back from `cp[2]`, so `cp[1]`, which is `c+2`. This one was never changed.
 2. `[-1]` on that is `*(c+2 - 1)`, so `c[1]`, which is `"NEW"`.
 3. `+1` skips `"N"`, leaving `"EW"`.
+
+---
+
+- `strlen()`  zählt Anzahl Zeichen bis (exklusive) `\0`. 
+	- `strlen(s1)` ist 6
+- `sizeof()` 
+	- bei Arrays die Größe, `sizeof(s2)` ist 100
+	- bei Pointers `8` (größe der pointer-variablen selbst)
+
+```cpp
+char s1[100] = "Simone";
+char s2[100] = "Guy";
+char *s3 = "Ignazio";
+```
+
+
+
+![[Pasted image 20261020174036.png]]
+
+---
+
+![[Bildschirmfoto 2026-10-20 um 18.06.29.png]]

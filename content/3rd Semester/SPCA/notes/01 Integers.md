@@ -77,3 +77,13 @@ when mixing unsigned and signed in an expression, **signed values** are being ca
 
 → see Code Expert!!
 
+---
+
+little endian vs big endian
+(big endian is most upper **byte** first)
+![[Pasted image 20261020172923.png]]
+x hat 4 **bytes** 
+- **Adresse + 0:** `78`
+- **Adresse + 1:** `56`
+- **Adresse + 2:** `34`
+- **Adresse + 3:** `12`
