@@ -4,7 +4,12 @@ z.B. 2 dimensional—teste beide dimensionen, $\left( \frac{1}{k}, 0 \right)$ un
 ## Stetigkeit
 
 **Folgenkriterium**
-stetig $\iff \text{für jede Folge } (x_k)_{k \in \mathbb{N}_0} \subset \mathbb{R}^n \text{ mit } x_k \to x \text{ konvergiert } (f(x_k))_{k \in \mathbb{N}_0} \text{ gegen } f(x)$
+stetig $\iff$ für jede Folge, wenn die Argumente nach 0 Konvergieren, konvergieren auch die Funktionswerte nach 0
+
+z.B. Konvergenz in (0,0) prüfen von $f(x,y) = \begin{cases} 0, & \text{falls } (x,y) = (0,0), \\ \frac{xy}{x^2+y^2}, & \text{sonst.} \end{cases}$. 
+1. Betrachte $(x_k, y_k) = (\frac{1}{k}, \frac{1}{k})$ für $k \to \infty$.
+2. Eingesetzt: $f\left(\frac{1}{k}, \frac{1}{k}\right) = \frac{\frac{1}{k} \cdot \frac{1}{k}}{\left(\frac{1}{k}\right)^2 + \left(\frac{1}{k}\right)^2} = \frac{\frac{1}{k^2}}{\frac{2}{k^2}} = \frac{1}{2}$ 
+3. Nicht stetig
 
 **Epsilon-Delta Kriterium**
 stetig $\iff \forall x \in X : \forall \varepsilon > 0 \ \exists \delta > 0 \text{ sodass } (\vert{}\vert{}x - x'\vert{}\vert{} < \delta \Rightarrow \vert{}\vert{}f(x) - f(x')\vert{}\vert{} < \varepsilon)$

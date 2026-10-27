@@ -1,3 +1,7 @@
+
+An Stelle nicht stetig $\implies$ nicht differenzierbar
+Stetige partielle Ableitungen $\Rightarrow$ Totale Differenzierbarkeit $\Rightarrow$ Stetigkeit
+
 ## Partielle Ableitung
 
 **Partielle Ableitung**: Man wählt eine Zielvariable, betrachtet alle anderen Variablen als Konstanten und leitet ganz normal ab.
@@ -14,11 +18,12 @@ $$
  
 - Gilt für skalare Funktionen (mehrere Variablen Input, _eine_ Zahl Output)
 - Vektor, zeigt in die **Richtung der größten Steigung**
-- "Länge" ist die maximale Änderungsrate
+- "Länge" ist die maximale Steigung/Änderungsrate
 
 - **Bildung**: Für jede Variable wird die partielle Ableitung gebildet und untereinander in einen Spaltenvektor geschrieben
 
 - Richtung des größten Abstiegs finden: entgegengesetzte $\cdot (-1)$ Richtung der größten Steigung
+- Der Gradient ist also gerade die transponierte Jacobi-Matrix. Beide enthalten dieselben partiellen Ableitungen, lediglich ihre Anordnung unterscheidet sich.
 
 ---
 ### Jacobi Matrix
@@ -34,9 +39,9 @@ Rechenregeln:
 - $J_{f \circ g}(x) = J_f(g(x)) \cdot J_g(x)$
 - $J_{f \cdot g}(x) = g(x) \cdot J_f(x) + f(x) \cdot J_g(x)$
 
-## Totale Differenzierbarkeit 
+---
 
-Im Eindimensionalen approximiert die Tangente (Ableitung) den nächsten Wert. Im Mehrdimensionalen ist das zum Beispiel eine Tangentialebene.
+## Totale Differenzierbarkeit 
 
 Eine Funktion ist an einer Stelle $x$ total differenzierbar, falls es eine lineare Abbildung $L$ (die Jacobi-Matrix) gibt, die die Funktion bei $x$ nahezu perfekt approximiert. 
 $$
@@ -47,18 +52,36 @@ $$
 
 Alle partiellen Ableitungen $\partial_i f$ (Komponenten der Jacobi-Matrix) sind stetig $\implies$ $f$ ist stetig differenzierbar
 
-## Tangentialebene aufstellen
+### Spezialfall Ausgabe in R
 
+differenzierbar, wenn
+$$f(p + h) = f(p) + \nabla f(p)^T h + o(\vert{}\vert{}h\vert{}\vert{})$$
+
+für $h \to 0$. Also
+$$f(p + h) \approx f(p) + \nabla f(p)^T h$$
+
+## Tangentialebene und lineare Approximation
+
+Im Eindimensionalen approximiert die Tangente (Ableitung) den nächsten Wert. Im Mehrdimensionalen ist das zum Beispiel eine Tangentialebene.
+
+Bestimme Funktionswert und Gradient an dem gegebenen Punkt. Multipliziere den Gradienten mit dem Verschiebungsfaktor $h = \begin{pmatrix} x \\ y \end{pmatrix} - \begin{pmatrix} x_{0} \\ y_{0} \end{pmatrix} = \boxed{\begin{pmatrix} x-x_{0} \\ y-y_{0} \end{pmatrix}}$.  Und setze in die Formel 
 $$
-z = f(x_0, y_0) + \frac{\partial f}{\partial x}(x_0, y_0) \cdot (x - x_0) + \frac{\partial f}{\partial y}(x_0, y_0) \cdot (y - y_0)
-$$
+f(p+h) \approx f(p) + \nabla f(p)^T h
+$$ 
+ein. Geometrisch entspricht diese Approximation der Tangentialebene an den Graphen von $f$ im Punkt. 
+
+Beispiel: 
+
+![[Bildschirmfoto 2026-10-26 um 16.40.37.png]]
+
+### Spezialfall in R3 
+
+$z = f(x_0, y_0) + \frac{\partial f}{\partial x}(x_0, y_0) \cdot (x - x_0) + \frac{\partial f}{\partial y}(x_0, y_0) \cdot (y - y_0)$
+
 Bzw. 
+$\frac{\partial F}{\partial x}(x_0, y_0, z_0) \cdot (x - x_0) + \frac{\partial F}{\partial y}(x_0, y_0, z_0) \cdot (y - y_0) + \frac{\partial F}{\partial z}(x_0, y_0, z_0) \cdot (z - z_0) = 0$
 
-$$
-\frac{\partial F}{\partial x}(x_0, y_0, z_0) \cdot (x - x_0) + \frac{\partial F}{\partial y}(x_0, y_0, z_0) \cdot (y - y_0) + \frac{\partial F}{\partial z}(x_0, y_0, z_0) \cdot (z - z_0) = 0
-$$
-
-### Gleichung der Normalengeraden
+## Gleichung der Normalengeraden
 
 Gleichung der Tangentialebene: 
 $$
@@ -93,9 +116,12 @@ $$D_v f(x_0) = J_f(x_0) \cdot v$$
 
 Bzw.
 $$
-D_{v}f(x_{0}) = \nabla f(p) \cdot v
+D_{v}f(x_{0}) = \nabla f(p)^T \cdot v
 $$
+
 (Richtungsvektor ist Geschwindigkeitsvektor, also die Ableitung vom Ortsvektor; zum Normieren durch seine Norm teilen)
+
+Der Gradient einer differenzierbaren Funktion steht immer senkrecht auf ihren Niveaulinien bzw. Niveauflächen, sofern der Gradient nicht der Nullvektor ist.
 
 Algorithmus zur Prüfung auf Differenzierbarkeit (z.B. in (0,0)):
 1. Berechne den Limes für $D_v f(0,0)$ für einen allgemeinen Vektor $v = (v_1, v_2)$
@@ -143,6 +169,7 @@ $f \in C^k(U)$: Reihenfolge der bis zu $k$ partiellen Ableitungen ist irrelevant
 "aussere Ableitung mal innere Ableitung", aber hier mit Jacobi-Matrizen, da mit mehreren Variablen gleichzeitig. 
 
 $$D(g \circ f)(x) = Dg(f(x)) \cdot Df(x)$$
+$$J_{f \circ g}(x) = J_f(g(x)) \cdot J_g(x)$$
 
 
 ## Mittelwertsatz
@@ -152,47 +179,6 @@ Irgendwo zwischen $x+h$ und $x$ gibt es eine Stelle, an der die momentane Steigu
 $$
 f(x+h) - f(x) = Df_{\xi}(h) = \partial_h f(\xi)
 $$
-
-
-## Hesse Matrix  
-$$
-H_{ij}f(x) = \partial_i \partial_j f(x)
-$$
-Alle Kombinationen die Ableitungen zu machen in einer Matrix. 
-
-Beispiel mit 2 Variablen: 
-$$
-H_f(x,y) = \begin{pmatrix} f_{xx}(x,y) & f_{xy}(x,y) \\ f_{yx}(x,y) & f_{yy}(x,y) \end{pmatrix}
-$$
-
-Um die Krümmung auszulesen, nutzen wir die Eigenwerte. Sei $U$ offen und die Stelle $x_0 \in U$ ein kritischer Punkt. Es gilt:
-
-- **Positiv definit:** alle Eigenwerte positiv, "Landschaft in alle Richtungen nach oben gekrümmt", lokales Minimum
-- **Negativ definit:** alle Eigenwerte negativ "Landschaft überall nach unten", lokales Maximum
-- **Indefinit:** gibt positive und negative EW, "in eine Richtung rauf, in die andere runter", Sattelpunkt
-- **Degeneriert:** mind. ein Eigenwert ist null, keine Aussage
-
-$\Delta f(x)$: Spur der Hasse-Matrix (Summe der Werte der Diagonale). Die Spur einer Matrix ist immer exakt gleich der Summe ihrer Eigenwerte. Zeit sparen: z.B. Spur ist negativ, so können nicht alle EW positiv sein.
-
-Berechnen der Eigenwerte: $\det(M - \lambda I) = 0$ 
-
----
-
-## Lokale Extremwerte 
-
-Kritische Punkte im Eindimensionalen: $f'(x) = 0$, dann prüfen mit $f''(x) = 0$
-
-Kritische Punkte im Mehrdimensionalen: alle partiellen Ableitungen 0:  $\partial_i f(x_0) = 0 \quad \forall 1 \leq i \leq n$
-
-Wir prüfen das mit dem Gradienten 
-$$
-x_{0} \text{ ist kritischer Punkt} \iff\nabla f(x_0) = 0
-$$
-
-Achtung, Implikationsrichtung 
-Lokales Extremum $\implies \nabla f(x_0) = 0$
-
-Jetzt prüfen, ob Maximal-/Minimalstelle und nicht Sattelstelle ist. Wir erstellen eine Matrix aus allen zweiten Ableitungen:
 
 ---
 

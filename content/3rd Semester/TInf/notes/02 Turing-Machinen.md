@@ -34,11 +34,11 @@ Die Berechnung muss nicht endlich sein.
 
 ## Menge der Sprachen, für die es eine Turing-Machine gibt
 
-**Rekursiv aufzählbar**
+$\mathcal{L}_{RE}$ **Rekursiv aufzählbar**
 
 Sprache $L \subseteq \Sigma^*$ ist rekursiv aufzählbar, falls es $M$ gibt, für die $L = L(M)$ gilt. Gehört das Wort **nicht** nur Sprache, kann es zu einer Endlosschleife kommen. 
 
-**Rekursiv**
+$\mathcal{L}_R$ **Rekursiv**
 
 Sprache $L \subseteq \Sigma^*$ ist rekursiv, falls es $M$ gibt, für die $L = L(M)$ gilt und die für jede Eingabe in endlicher Zeit *ja* oder *nein* ausgibt (keine Endlosschleife)
 
@@ -46,10 +46,10 @@ Sprache $L \subseteq \Sigma^*$ ist rekursiv, falls es $M$ gibt, für die $L = L(
 
 Funktion $F : \Sigma^* \to \Gamma^*$ ist total berechenbar, wenn eine Turingmaschine existiert, die diese **Funktion** für beliebige Eingabe berechnet.
 
-## Mehrband-Turingmachinen
+## k - Band-Turingmachinen
 
-Eingabeband ist read-only
-Arbeitsbänder zum lesen/schreiben
+1 Eingabeband ist read-only
+k Arbeitsbänd==er== zum lesen/schreiben 
 
 ![[Bildschirmfoto 2026-10-17 um 18.51.21.png]]
 
@@ -69,7 +69,7 @@ Wir unterteilen das eine Band der TM in virtuelle Bänder mit virtuellen Köpfen
 ![[Bildschirmfoto 2026-10-17 um 19.15.56.png]]
 
 > [!success]
-> TM und beliebige höhere Programmiersprachen sind äquivalent.
+> TM und Programmiersprachen sind äquivalent.
 
 > [!info] Church Turing These
 > TM als Definition für Algorithmus
@@ -87,6 +87,12 @@ Sei $M$ eine NTM. Dann existiert TM $A$, sodass
 - $L(M) = L(A)$
 - falls $M$ keine unendl. Berechnungen hat, hält $A$ immer
 
+![[Bildschirmfoto 2026-10-26 um 13.12.42.png]]
+
+
+![[Bildschirmfoto 2026-10-26 um 13.12.00.png]]
+
+
 ## Berechnungsbaum
 
 $T_{M,x}$ für eine NTM
@@ -99,9 +105,19 @@ Somit sind Pfade Berechnungen.
 
 Um alle parallelen Pfade abzuarbeiten, muss die TM den Baum Ebene für Ebene (Breitensuche) absuchen.
 
+![[Bildschirmfoto 2026-10-26 um 13.13.16.png]]
+
 ## Kodierung einer TM
+
+Wir könnten Turingmaschinen als Wörter über bool darstellen. 
 
 - regulärer Zustand $q_i$ wird kodiert als eine Eins, gefolgt von $i+1$ Nullen, und einer abschließenden Eins ($10^{i+1}1$). Die Endzustände $q_{acc}$ und $q_{rej}$ erhalten analoge, aber längere Codes
 - Jedes Bandsymbol $A_j$ wird als $110^{j+1}11$ kodiert
 - Kopfbewegungen $N$, $R$ (und implizit $L$) erhalten feste Codes, wie z.B. $1110111$ für $N$.
 - Übergangsregel (Transition) $\delta(p, A_l) = (q, A_n, \alpha)$ wird gebildet, indem man die Codes der Einzelteile hintereinanderschreibt und mit einem Hash-Symbol ($\#$) abtrennt
+
+
+---
+
+
+![[Bildschirmfoto 2026-10-26 um 13.04.02.png]]

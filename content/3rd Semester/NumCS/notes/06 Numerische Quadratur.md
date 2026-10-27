@@ -86,3 +86,103 @@ Romberg Schema
 ![[slide-25.png]]
 
 ![[slide-26.png]]
+
+
+
+## Gauss Quadratur
+
+Die Trapezregel oder die Simpsonregel unterteilen das Intervall in feste, meist gleichmäßig verteilte Abschnitte. Die Gauß-Quadratur wählt sowohl **Stützstellen** (Knotenpunkte) als auch deren **Gewichte** optimal aus.
+
+So bekommen wir bei gleichem Rechenaufwand bessere Genauigkeit. Eine Gauß-Quadratur mit $n$ Stützstellen berechnet das exakte Integral für jedes Polynom bis zum Grad $2n-1$.
+
+Bei der Gauss-Legendre-Quadratur entsprechen die Stützstelle den Nullstellen der Legendre-Polynome auf dem Standardintervall $[-1, 1]$. Jedes reale Integrationsintervall $[a, b]$ wird vor der Berechnung auf $[-1, 1]$ transformiert.
+
+| Methode         | Feste Punkte | Ordnung | Verwendetes Polynom                                     |
+| --------------- | ------------ | ------- | ------------------------------------------------------ |
+| Gauss–Legendre  | keine        | $2n$    | $P_n^{(0,0)}(x)$                                         |
+| Gauss–Radau     | 1 Randpunkt  | $2n-1$  | $P_{n-1}^{(1,0)}(x)$ oder $P_{n-1}^{(0,1)}(x)$           |
+| Gauss–Lobatto   | 2 Randpunkte | $2n-2$  | $P_{n-2}^{(1,1)}(x)$                                     |
+
+
+![[slide-05 1.png]]
+
+![[slide-06 1.png]]
+
+![[slide-07 1.png]]
+
+![[slide-09 1.png]]
+
+![[slide-10 1.png]]
+
+![[slide-11 1.png]]
+
+![[slide-12 1.png]]
+
+![[slide-13 1.png]]
+
+### Gauss-Legrende Quadratur
+
+![[slide-14 1.png]]
+
+![[slide-15 1.png]]
+
+![[slide-16 1.png]]
+
+![[slide-17 1.png]]
+
+![[slide-18 1.png]]
+
+![[slide-19 1.png]]
+
+![[slide-20 1.png]]
+
+![[slide-21 1.png]]
+
+
+### Gauss-Radau Quadratur
+
+![[slide-22 1.png]]
+
+
+### Gauss-Lobatto Quadratur
+
+![[slide-24 1.png]]
+
+
+**Symmetrie der Knoten**: Auf dem Intervall $[-1, 1]$ sind die inneren Knoten symmetrisch um 0:
+$x_i = -x_{n+1-i}$
+
+**Symmetrie der Gewichte**: Die dazugehörigen Gewichte sind auch symmetrisch:
+$b_i = b_{n+1-i}$
+
+
+### Adaptive Quadratur
+
+![[slide-27.png]]
+
+![[slide-28.png]]
+
+![[slide-29.png]]
+
+![[slide-30.png]]
+
+![[slide-31.png]]
+
+![[slide-32.png]]
+
+
+## Quadratur in Rd 
+
+![[slide-33.png]]
+
+![[slide-34.png]]
+
+![[slide-35.png]]
+
+![[slide-36.png]]
+
+![[slide-37.png]]
+
+![[slide-38.png]]
+
+![[slide-40.png]]

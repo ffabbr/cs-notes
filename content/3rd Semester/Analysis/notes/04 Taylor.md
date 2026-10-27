@@ -19,15 +19,25 @@ $$
 - $h^{\alpha}$ ist Entfernung zum Zielpunkt für jede Variable, potenziert mit den Zählern
 
 Restterm:
-$$
-R_{k+1}f(x_0, h) := \int_0^1 (k+1)(1-t)^k \sum_{\alpha \in \mathbb{N}_0^n, |\alpha|=k+1} \frac{\partial^\alpha f(x_0 + th)}{\alpha!} h^\alpha dt
-$$
+$R_{k+1}f(x_0, h) := \int_0^1 (k+1)(1-t)^k \sum_{\alpha \in \mathbb{N}_0^n, |\alpha|=k+1} \frac{\partial^\alpha f(x_0 + th)}{\alpha!} h^\alpha dt$
 
-Beispiel
+## Quadratische Approximation (2. Grades)
+
 $$
 T_2(x,y) = \underbrace{f(0,0)}_{\text{Startwert}} + \underbrace{f_x(0,0) \cdot x + f_y(0,0) \cdot y}_{\text{1. Ableitungen (Steigung)}} + \underbrace{\frac{f_{xx}(0,0)}{2} \cdot x^2 + f_{xy}(0,0) \cdot xy + \frac{f_{yy}(0,0)}{2} \cdot y^2}_{\text{2. Ableitungen (Krümmung)}}
 $$
+$$
+\begin{align*} f(p+h) &= f(p) + \nabla f(p)^T h + \frac{1}{2} h^T H_f(p) h + O(\Vert{}h\Vert{}^2) \quad \text{f. } h \to 0 \end{align*}
+$$
+
+![[Bildschirmfoto 2026-10-25 um 21.31.49.png]]
 
 ### Example
 
 ![[Bildschirmfoto 2026-10-17 um 16.56.26.png]]
+
+
+
+## Substitution
+
+![[Bildschirmfoto 2026-10-26 um 16.20.23.png]]

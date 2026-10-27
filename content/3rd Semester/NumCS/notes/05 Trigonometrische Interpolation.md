@@ -369,6 +369,30 @@ Fortschritt $\lambda(t)$ berechnen: $\lambda(t) = \frac{t - t_s}{t_e - t_s}$
 
 ![[Bildschirmfoto 2026-10-12 um 23.01.48.png]]
 
+
+```python
+# === 1. VORBEREITUNG (in __init__) ===
+
+# 1. Daten nach x-Werten sortieren
+idx = np.argsort(t)
+self.t = t[idx]
+self.y = y[idx]
+
+# 2. Steigung für jedes Intervall berechnen: m = (y2 - y1) / (t2 - t1)
+self.slopes = np.diff(self.y) / np.diff(self.t)
+
+# === 2. AUSWERTUNG (in __call__) ===
+
+# 3. passendes Intervall finden
+idx = np.searchsorted(self.t, x, side="right") - 1
+
+# random safety ding
+idxc = np.clip(idx, 0, self.t.size - 2)
+
+# 4. y_neu = y_start + Steigung * Distanz_zum_Start
+out = self.y[idxc] + self.slopes[idxc] * (x - self.t[idxc])
+```
+
 ### Stückweise kubischer Spline
 
 stückweise lineare Interpolation ist nicht glatt (nur $C^0$-stetig), daher kubisch
@@ -405,6 +429,7 @@ $\varphi(t), \varphi(1-t)$ und $\psi(t), \psi(1-t)$ gewichten den Einfluss der F
 
 ![[Bildschirmfoto 2026-10-12 um 23.51.45.png]]
 
+
 Herleitung:
 
 ![[Bildschirmfoto 2026-10-12 um 23.51.15.png]]
@@ -418,3 +443,382 @@ Herleitung:
 
 
 
+## Kurveninterpolation mit quadratischen Splines
+
+```python
+def chord_length_knots(points):
+    """
+    Normierte Bogenlängen-Parametrisierung:
+    liefert Stützstellen t und Schrittweiten h.
+    Voraussetzung: geschlossene Punktmenge, also p[0] == p[-1].
+    """
+    p = np.asarray(points, float)
+    if p.ndim != 2 or p.shape[1] != 2:
+        raise ValueError("points muss die Form (n+1, 2) haben")
+    if not np.allclose(p[0], p[-1]):
+        raise ValueError("Kurve muss geschlossen sein (p[-1] == p[0])")
+
+    n = p.shape[0] - 1
+    if n < 3:
+        raise ValueError("mindestens 3 Segmente erforderlich")
+
+    chords = np.linalg.norm(p[1:] - p[:-1], axis=1)
+    if np.any(chords <= 0):
+        raise ValueError("aufeinanderfolgende Duplikate sind nicht erlaubt")
+
+    L = np.sum(chords)
+    t = np.zeros(n + 1)
+    t[1:] = np.cumsum(chords) / L
+    h = np.diff(t)
+    return t, h
+
+
+# ---------- zyklisches System A = I + shift ----------
+def _build_A(n):
+    """
+    Zirkulante Matrix A: Einsen auf der Diagonale und Superdiagonale,
+    plus Wrap-Around A[-1, 0] = 1.
+    Entspricht d_j + d_{j+1} = rhs_j.
+    """
+    A = np.zeros((n, n))
+    np.fill_diagonal(A, 1.0)
+    A[np.arange(n - 1), np.arange(1, n)] = 1.0
+    A[-1, 0] = 1.0
+    return A
+
+
+class ClosedQuadraticSplineCurve:
+    """
+    Geschlossener quadratischer Spline durch Punkte p (p[0] == p[-1]).
+    """
+
+    def __init__(self, points):
+        p = np.asarray(points, float)
+        t, h = chord_length_knots(p)
+        n = len(h)
+
+        dp = p[1:] - p[:-1]                    # Form (n, 2)
+        rhs = 2.0 * dp / h[:, None]            
+        A = _build_A(n)        # A d = rhs, getrennt pro Koordinate
+
+        # pro Koordinate lösen; falls singulär (n gerade), auf Least Squares ausweichen
+        try:
+            d_x = np.linalg.solve(A, rhs[:, 0])
+        except np.linalg.LinAlgError:
+            d_x = np.linalg.lstsq(A, rhs[:, 0], rcond=None)[0]
+        try:
+            d_y = np.linalg.solve(A, rhs[:, 1])
+        except np.linalg.LinAlgError:
+            d_y = np.linalg.lstsq(A, rhs[:, 1], rcond=None)[0]
+        d = np.column_stack([d_x, d_y])        # Form (n, 2)
+
+        # chi_j = 0.5 * (d_j - d_{j+1})
+        d_next = np.roll(d, -1, axis=0)
+        chi = 0.5 * (d - d_next)
+
+        self.points = p
+        self.t = t
+        self.h = h
+        self.d = d
+        self.chi = chi
+        self.n = n
+
+    def _locate(self, t):
+        """Intervallindex j und lokale Koordinate tau bestimmen."""
+        tt = np.mod(t, 1.0)
+        j = np.searchsorted(self.t, tt, side="right") - 1
+        j = np.clip(j, 0, self.n - 1)
+        tau = (tt - self.t[j]) / self.h[j]
+        return j, tau
+
+    def eval(self, t):
+        t = np.asarray(t, float)
+        j, tau = self._locate(t)
+        p_j  = self.points[j]
+        p_j1 = self.points[(j + 1) % self.n]
+        chi_j = self.chi[j]
+        h_j   = self.h[j][..., None]
+        tau   = tau[..., None]
+        # s_j(t) = (1-τ) p_j + τ p_{j+1} + χ_j h_j τ(1-τ)
+        return p_j * (1 - tau) + p_j1 * tau + chi_j * h_j * tau * (1 - tau)
+
+    def derivative(self, t):
+        t = np.asarray(t, float)
+        j, tau = self._locate(t)
+        dp   = self.points[(j + 1) % self.n] - self.points[j]
+        base = dp / self.h[j][..., None]
+        chi_j = self.chi[j]
+        tau   = tau[..., None]
+        # s'_j(t) = base + χ_j (1 - 2τ)
+        return base + chi_j * (1 - 2 * tau)
+
+    def curvature(self, t):
+        t = np.asarray(t, float)
+        j, _ = self._locate(t)
+        s1 = self.derivative(t)
+        s2 = (-2.0 * self.chi[j]) / self.h[j][..., None]
+        x1, y1 = s1[..., 0], s1[..., 1]
+        x2, y2 = s2[..., 0], s2[..., 1]
+        num = x1 * y2 - y1 * x2
+        den = np.linalg.norm(s1, axis=-1) ** 3
+        out = np.zeros_like(num)
+        m = den > 0
+        out[m] = num[m] / den[m]
+        return out
+
+    def length(self, n_per_seg=200):
+        """Gesamtlänge per gleichmäßiger Abtastung (Trapezregel) approximieren."""
+        ts = np.linspace(0, 1, self.n * n_per_seg)
+        s1 = self.derivative(ts)
+        v = np.linalg.norm(s1, axis=1)
+        return float(np.trapz(v, ts))
+```
+
+
+## Hermite und co. 
+
+```python
+import numpy as np
+import matplotlib.pyplot as plt
+
+
+# ----------------------------
+# Hilfsfunktionen für Geometrie
+# ----------------------------
+
+def _to_points(Sigma):
+    """Stellt sicher, dass Sigma ein Float-Array der Form (n,2) mit n>=2 ist."""
+    P = np.array(Sigma, dtype=float)
+    if P.ndim != 2 or P.shape[1] != 2 or P.shape[0] < 2:
+        raise ValueError("Sigma muss eine Form (n, 2) mit n>=2 haben.")
+    return P
+
+
+def _arc_data(P):
+    """
+    Berechnet:
+      deltas[i] = ||p_{i+1}-p_i|| für i=0..n-2, deltas[n-1] = ||p1 - pn||
+      lambdas[k] : λ_0=0, λ_k = Summe_{j=0}^{k-1} deltas[j]
+      tangents[i] = (p_{i+1}-p_i)/||...||
+    Gibt deltas, lambdas, tangents zurück.
+    """
+    n = P.shape[0]
+    diffs = np.zeros((n, 2))
+    for i in range(n - 1):
+        diffs[i] = P[i + 1] - P[i]
+    diffs[n - 1] = P[0] - P[n - 1]  # Schlisskante
+
+    deltas = np.sqrt((diffs**2).sum(axis=1))
+    if np.any(deltas == 0):
+        raise ValueError("Aufeinanderfolgende Punkte müssen verschieden sein.")
+    tangents = diffs / deltas[:, None]
+
+    lambdas = np.zeros(n + 1)
+    for k in range(1, n + 1):
+        lambdas[k] = lambdas[k - 1] + deltas[k - 1]
+
+    return deltas, lambdas, tangents
+
+
+def _find_segment(lambdas, t):
+    """
+    Finde j in {1..n} mit λ_{j-1} <= t < λ_j (rechts nur am Ende abgeschlossen).
+    Falls t == λ_n, gib j = n zurück.
+    """
+    n = len(lambdas) - 1
+    if t >= lambdas[-1]:
+        return n
+    for j in range(1, n + 1):
+        if lambdas[j - 1] <= t < lambdas[j]:
+            return j
+    return n  # Fallback (sollte nicht auftreten)
+
+
+# ----------------------------
+# (a) Geschlossener polygonaler Interpolant
+# ----------------------------
+
+def closed_polygonal_interpolant(Sigma, x):
+    """
+    Liefert Π_Σ(x_k * λ_n) für sortierte 0 <= x_k < 1.
+    """
+    P = _to_points(Sigma)
+    x = np.asarray(x, dtype=float)
+    if x.ndim != 1 or np.any(x < 0) or np.any(x >= 1) or np.any(np.diff(x) < 0):
+        raise ValueError("x muss sortiert sein mit 0 <= x_k < 1.")
+
+    deltas, lambdas, _ = _arc_data(P)
+    L = lambdas[-1]
+    n = P.shape[0]
+
+    Y = np.zeros((x.size, 2))
+    for k in range(x.size):
+        tk = x[k] * L
+        j = _find_segment(lambdas, tk)         # j in 1..n
+        t0, t1 = lambdas[j - 1], lambdas[j]
+        a = 0.0 if t1 == t0 else (tk - t0) / (t1 - t0)
+        p_left = P[j - 1]
+        p_right = P[j % n]                     # zyklischer Anschluss
+        Y[k] = (1 - a) * p_left + a * p_right
+    return Y
+
+
+# ----------------------------
+# (b) Geschlossener kubischer Hermite-Interpolant
+# ----------------------------
+
+def _hermite_local(t, t1, t2, y1, y2, c1, c2):
+    """
+    Skalarer kubischer Hermite auf [t1,t2] mit Werten y1,y2 und Randableitungen c1,c2.
+    """
+    h = t2 - t1
+    if h <= 0:
+        return y1
+    tau = (t - t1) / h
+    # Basisfunktionen
+    h00 = (1 + 2*tau) * (1 - tau)**2
+    h10 = tau * (1 - tau)**2
+    h01 = tau**2 * (3 - 2*tau)
+    h11 = tau**2 * (tau - 1)
+    return h00 * y1 + h10 * h * c1 + h01 * y2 + h11 * h * c2
+
+
+def closed_hermite_interpolant(Sigma, x):
+    """
+    Liefert H_Σ(x_k * λ_n) für sortierte 0 <= x_k <= 1.
+    Ableitungen an Knoten gemäss Vorgabe:
+      H'(λ_k) = s_k / ||s_k||, wobei s_k aus δ und t gebildet wird.
+    """
+    P = _to_points(Sigma)
+    x = np.asarray(x, dtype=float)
+    if x.ndim != 1 or np.any(x < 0) or np.any(x > 1) or np.any(np.diff(x) < 0):
+        raise ValueError("x muss sortiert sein mit 0 <= x_k <= 1.")
+
+    deltas, lambdas, tangents = _arc_data(P)
+    n = P.shape[0]
+    L = lambdas[-1]
+
+    # Ableitungen an den Knoten λ_k, speichere v[0..n] (mit v[n]=v[0])
+    v = np.zeros((n + 1, 2))
+    # k = 1..n-1
+    for k in range(1, n):
+        denom = deltas[k - 1] + deltas[k % n]
+        s = (deltas[(k) % n] / denom) * tangents[k - 1] + (deltas[k - 1] / denom) * tangents[k % n]
+        v[k] = s / np.linalg.norm(s)
+    # k = 0 und n
+    denom0 = deltas[0] + deltas[-1]
+    s0 = (deltas[-1] / denom0) * tangents[0] + (deltas[0] / denom0) * tangents[-1]
+    s0 = s0 / np.linalg.norm(s0)
+    v[0] = s0
+    v[n] = s0
+
+    # Auswertung
+    Y = np.zeros((x.size, 2))
+    # dupliziere p1 am Ende zur Ausrichtung mit λ_n
+    Pk = np.vstack([P, P[0]])
+    for k in range(x.size):
+        tk = x[k] * L
+        j = _find_segment(lambdas, tk)  # [λ_{j-1}, λ_j]
+        t1, t2 = lambdas[j - 1], lambdas[j]
+        p1, p2 = Pk[j - 1], Pk[j]
+        c1, c2 = v[j - 1], v[j]
+        Y[k, 0] = _hermite_local(tk, t1, t2, p1[0], p2[0], c1[0], c2[0])
+        Y[k, 1] = _hermite_local(tk, t1, t2, p1[1], p2[1], c1[1], c2[1])
+    return Y
+
+
+# ----------------------------
+# (c) Adaptive Hermite-Interpolation
+# ----------------------------
+
+def adapted_hermite_interpolant(c, nmin, x, tol=1e-3):
+    """
+    Adaptiver Algorithmus gemäß Pseudocode:
+      - starte mit M = {0, 1/nmin, ..., (nmin-1)/nmin}
+      - bilde Σ = (c(t))_{t in M}
+      - berechne σ_k = ||(H_Σ - Π_Σ)( Mittelpunkt des Segments k in λ )||
+      - α = Mittelwert(σ_k); verfeinere dort, wo σ_j > 0.9α (füge t-Mittelpunkte ein)
+      - stoppe, wenn max σ_k <= tol
+    Gibt (H_vals_at_x, Sigma_final) zurück.
+    """
+    if nmin <= 1:
+        raise ValueError("nmin muss >= 2 sein.")
+    x = np.asarray(x, dtype=float)
+    if x.ndim != 1 or np.any(x < 0) or np.any(x > 1) or np.any(np.diff(x) < 0):
+        raise ValueError("x muss sortiert sein mit 0 <= x_k <= 1.")
+
+    # initiale Parametersammlung M in [0,1)
+    M = list(np.linspace(0.0, 1.0, nmin, endpoint=False))
+
+    while True:
+        # Σ aus aktuellem M
+        Sigma = np.array([c(t) for t in M], dtype=float)
+        deltas, lambdas, _ = _arc_data(Sigma)
+        n = Sigma.shape[0]
+        L = lambdas[-1]
+
+        # λ-Mittelpunkte der Segmente -> normalisierte Mittelpunkte in x
+        mids_lambda = 0.5 * (lambdas[:-1] + lambdas[1:])
+        mids_x = mids_lambda / L
+
+        # beide Kurven an Mittelpunkten auswerten
+        Hm = closed_hermite_interpolant(Sigma, mids_x)
+        Pm = closed_polygonal_interpolant(Sigma, mids_x)
+        sigmas = np.sqrt(((Hm - Pm) ** 2).sum(axis=1))
+        alpha = float(sigmas.mean())
+
+        if sigmas.max() <= tol:
+            # fertig
+            H_vals = closed_hermite_interpolant(Sigma, x)
+            return H_vals, Sigma
+
+        # Verfeinerung: vergleiche jedes σ_j mit 0.9*α
+        new_params = []
+        for j in range(n):
+            if sigmas[j] > 0.9 * alpha:
+                # Mittelpunkt im Parameter t zwischen M[j] und M[j+1] (zyklisch)
+                t_left = M[j]
+                t_right = M[(j + 1) % n] if j + 1 < n else 1.0
+                t_mid = 0.5 * (t_left + t_right)
+                if t_mid >= 1.0:
+                    t_mid -= 1.0
+                new_params.append(t_mid)
+
+        # zusammenführen und sortiert eindeutige Werte bilden
+        M = sorted(set(M + new_params))
+
+
+# ----------------------------
+# (d) Plot der Drachenform-Kurve
+# ----------------------------
+
+def plot_kite(filename, tol=1e-3):
+    # c(t) gemäß Aufgabenstellung
+    def c(t):
+        return np.array([
+            np.cos(2*np.pi*t) + (2.0/3.0)*np.cos(4*np.pi*t),
+            1.5*np.sin(2*np.pi*t)
+        ], dtype=float)
+
+    N = 10_000
+    nmin = 6
+    xs = np.linspace(0.0, 1.0, N, endpoint=False)
+
+    H_vals, Sigma = adapted_hermite_interpolant(c, nmin, xs, tol=tol)
+    P_vals = closed_polygonal_interpolant(Sigma, xs)
+
+    plt.figure()
+    plt.plot(P_vals[:, 0], P_vals[:, 1], label="Polygonal interpolant")
+    plt.plot(H_vals[:, 0], H_vals[:, 1], label="Hermite interpolation")
+    plt.plot(Sigma[:, 0], Sigma[:, 1], "o", markersize=3, label="Vertices Σ")
+    plt.gca().set_aspect("equal", adjustable="box")
+    plt.xlabel("x"); plt.ylabel("y")
+    plt.title(f"Adaptive interpolation (tol={tol:g})")
+    plt.legend()
+    if not filename.lower().endswith(".png"):
+        filename += ".png"
+    plt.savefig('./cx_out/'+filename, dpi=150, bbox_inches="tight")
+    plt.close()
+
+plot_kite('kite01.png')
+```

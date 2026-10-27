@@ -148,7 +148,7 @@ Sei $L_2 = \{a^n b^m \mid n, m \in \mathbb{N}, 2 \le m \le n-1, m \text{ ist Tei
 > [!info] Pumping Lemma
 > endlicher Automat hat endlich viele Zustände, muss also bei einem langen Wort irgendwann im Kreis laufen (Schleife), somit ist das Wort nach beliebig vielen Schlaufen immer noch in der Sprache.
 
-Gegeben ein $n_{0}$ finden wir ein Wort $w, |w|\geq n_{0}$, sodass gegeben ein $y,x,z$, gilt (i) und (ii), aber (iii) nicht gelten kann
+Gegeben ein $n_{0}$ finden wir ein Wort $w, |w|\geq n_{0}$, sodass gegeben ein $y,x,z$, gilt (i) und (ii), aber (iii) nicht gelten kann.
 
 Sei L regulär. Man kann alle Wörter Länge $\geq n_{0}$ in $w = yxz$ zerlegen mit
 (i) $|yx| \leq n_{0}$
@@ -160,7 +160,7 @@ In jedem Automaten ist $n_{0}$ nicht größer  als die Anzahl Zustände.
 **Widerspruch**
 - Regularität annehmen. 
 - dann gibt es ein $n_{0} \in \mathbb{N}$ mit der Eigenschaft, die das Pumping-Lemma beschreibt
-- wähle Wort Länge $\geq n_{0}$
+- wähle Wort Länge $\geq n_{0}$ (entweder in der Sprache oder nicht)
 - es muss eine Zerlegung $w = yxz$ geben, die (i) und (ii) und (iii) erfüllt
 - zeige: nach (i) gilt ..., nach (ii) gilt ...
 - zeige, dass für jede Zerlegung mindestens ein $i$ existiert (z.B. i=0 oder i=2), sodass das aufgepumpte Wort $x y^i z$ nicht in $L$ liegt
