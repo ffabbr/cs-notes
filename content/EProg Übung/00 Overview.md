@@ -15,6 +15,7 @@
 - [[04 Schleifen, Increment und Decrement, Strings]]
 - [[05 Arrays, Rekursion]]
 - [[06 Referenzen, Rekursion, Logisches Schliessen]]
+- [[07 Logisches Schliessen, Rekursion]]
 
 %% End Waypoint %%
 ### Links
