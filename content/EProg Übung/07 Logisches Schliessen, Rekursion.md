@@ -28,10 +28,50 @@ Um die Gültigkeit bei if/else zu zeigen, gehen wir ebenso vor. Um das aber einf
 
 ## Rekursion
 
-Wir schauen uns die Beispiele der Präfixkonstruktion und der *Towers of Hanoi* an. 
+Wir schauen uns die Beispiele der Präfixkonstruktion und der *Towers of Hanoi* an. Den Code der Präfixkonstruktion aus der Übung findet ihr unten. Das ist meine alternative Lösung, ein wenig anders als die Lösung, die ihr in dem `u06-sol` Ordner findet (gerne beides anschauen und vergleichen).
 
 
 > [!success] Downloads
 > Slides: [[u07.pdf|Slides Woche 7]]
 
 
+
+----
+
+
+
+
+## Präfixkonstruktion
+
+```java
+public class PrefixAlternativ {  
+  
+    // SIGNATUR gleich belassen  
+    public boolean isPrefixConstruction(String s, String t, int n) {  
+  
+        if (s.isEmpty()) return true;  
+        if (n==0) return false;  
+  
+        return tryPrefix(s, t, n, 1); // start mit präfix länge 1  
+    }  
+  
+    // Reststring s, Referenzstring t, n mögliche Restbausteine, Länge des Präfix-Abschnitts len  
+    public boolean tryPrefix(String restString, String referenzString, int n, int prefixLen) {  
+  
+        if (prefixLen > restString.length()) return false;  
+        if (prefixLen > referenzString.length()) return false;  
+  
+        // stimmt das Zeichen an der aktuellen Stelle überein?  
+        if (restString.charAt(prefixLen - 1) == referenzString.charAt(prefixLen - 1)) {  
+            // option 1, "abschneiden" und den rest prüfen  
+            if (isPrefixConstruction(restString.substring(prefixLen), referenzString, n - 1)) {
+	            return true;  
+			}
+            // option 2, falls option 1 nicht funktioniert:  
+            // versuche alles mit längerem präfix            
+            return tryPrefix(restString, referenzString, n, prefixLen + 1);  
+        }  
+        return false; // zeichen stimmen nicht überein  
+    }  
+}
+```
