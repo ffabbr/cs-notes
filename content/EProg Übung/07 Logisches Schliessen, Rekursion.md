@@ -8,8 +8,8 @@ Beispiel:
 
 Insbesondere, gibt es keinen else-Fall, betrachten wir dies als einen "leeren" else-Fall. 
 
-- Falls die Postcondition { true } ist, so ist { true } die schwächste Vorbedingung. Alles impliziert die Postcondition, also insbesondere auch die schwächste Bedingung true.
-- Falls die Postcondition  { false } ist, so ist { false } die schwächste Vorbedingung. Nur { false } impliziert die Postcondition, demensprechend ist es die schwächste (und einzige) Vorbedingung.
+- Falls die Postcondition `{ true }` ist, so ist `{ true }` die schwächste Vorbedingung. Alles impliziert die Postcondition, also insbesondere auch die schwächste Bedingung true.
+- Falls die Postcondition  `{ false }` ist, so ist `{ false }` die schwächste Vorbedingung. Nur `{ false }` impliziert die Postcondition, demensprechend ist es die schwächste (und einzige) Vorbedingung.
 
 Um die Gültigkeit eines Triples zu prüfen, finden wir unsere Weakest Precondition, und schauen, ob die gegebene Precondition die Weakest Precondition impliziert. 
 
