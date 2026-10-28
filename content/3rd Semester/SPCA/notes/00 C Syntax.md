@@ -1,3 +1,19 @@
+
+## Data types
+
+
+| char                 | 1 byte    |
+| -------------------- | --------- |
+| unsigned char        | 1 byte    |
+| short                | 2 bytes   |
+| int                  | 4 bytes   |
+| long                 | 8 bytes   |
+| long long            | 8 bytes   |
+| float                | 4 bytes   |
+| double               | 8 bytes   |
+| long double          | 16 bytes* |
+| Pointer (e.g. int *) | 8 bytes   |
+
 ## General Overvations
 
 - `#include <stdio.h>` (stdio stands for standard io)
